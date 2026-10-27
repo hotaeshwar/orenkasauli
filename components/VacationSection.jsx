@@ -53,7 +53,7 @@ export default function VacationSection() {
         <motion.div
           initial={{ opacity: 0, y: 40, scale: 0.96 }}
           whileInView={{ opacity: 1, y: 0, scale: 1 }}
-          viewport={{ once: false, amount: 0.15 }}
+          viewport={{ once: true, amount: 0.15 }}
           transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
           className="flex flex-col items-center w-full"
         >
@@ -74,17 +74,22 @@ export default function VacationSection() {
             A BEAUTIFUL VACATION DESTINATION
           </span>
 
-          {/* Main Heading: ENJOY YOUR HOLIDAYS with Typewriter Effect */}
+          {/* Main Heading: ENJOY YOUR HOLIDAYS with Zero-Layout-Shift Typewriter Effect */}
           <h2
-            className="font-serif text-neutral-900 text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-light tracking-[0.06em] leading-tight min-h-[1.25em] flex items-center justify-center break-words mb-3 sm:mb-4"
+            className="font-serif text-neutral-900 text-2xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-light tracking-[0.03em] sm:tracking-[0.06em] leading-tight text-center break-words mb-3 sm:mb-4 w-full select-none"
             style={{ fontFamily: "var(--font-cormorant), Georgia, serif" }}
           >
-            <span className="sr-only">ENJOY YOUR HOLIDAYS</span>
-            <span aria-hidden="true">{currentHeadingText}</span>
-            <span
-              className="inline-block w-[2.5px] sm:w-[3.5px] h-[0.8em] bg-[#a87d24] ml-2 animate-pulse align-middle"
-              aria-hidden="true"
-            />
+            <span className="sr-only">{TYPEWRITER_TEXT}</span>
+            <span aria-hidden="true" className="inline relative">
+              <span>{currentHeadingText}</span>
+              <span
+                className="inline-block w-[2px] sm:w-[3px] h-[0.8em] bg-[#a87d24] ml-1 sm:ml-1.5 align-middle animate-pulse"
+                aria-hidden="true"
+              />
+              <span className="opacity-0 select-none pointer-events-none" aria-hidden="true">
+                {TYPEWRITER_TEXT.slice(charIndex)}
+              </span>
+            </span>
           </h2>
 
           {/* Subtitle Paragraph */}
@@ -97,7 +102,7 @@ export default function VacationSection() {
         <motion.div
           initial={{ opacity: 0, y: 55, scale: 0.96 }}
           whileInView={{ opacity: 1, y: 0, scale: 1 }}
-          viewport={{ once: false, amount: 0.15 }}
+          viewport={{ once: true, amount: 0.15 }}
           transition={{ duration: 0.85, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
           className="w-full relative"
         >

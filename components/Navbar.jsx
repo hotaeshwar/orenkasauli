@@ -220,8 +220,8 @@ export default function Navbar() {
             </div>
 
             {/* Mobile Contact Reference */}
-            <div className="pt-8 border-t border-white/10 flex flex-col space-y-2 text-xs text-[#f8f9f7]/70 max-w-md w-full mx-auto">
-              <p className="font-semibold text-[#f8f9f7]">Oren Kasauli, Himachal Pradesh</p>
+            <div className="pt-6 sm:pt-8 border-t border-white/10 flex flex-col space-y-2 text-xs text-[#f8f9f7]/70 max-w-md w-full mx-auto">
+              <p className="hidden md:block font-semibold text-[#f8f9f7]">Oren Kasauli, Himachal Pradesh</p>
               <p>Direct: +91 9816155576 | +91 9816255576</p>
               <p>Email: booking@oren.co.in</p>
             </div>
