@@ -247,43 +247,6 @@ export default function HeroSection() {
         </video>
       </div>
 
-      {/* Responsive Gradient Overlay at Bottom */}
-      <div
-        className="absolute bottom-0 left-0 w-full h-1/4 sm:h-1/3 md:h-1/3 lg:h-1/3 bg-gradient-to-t from-black/50 via-black/20 to-transparent z-10 pointer-events-none"
-        aria-hidden="true"
-      />
-
-      {/* Responsive Luxury Gold Scroll Indicator */}
-      <div
-        className="absolute bottom-3 sm:bottom-5 md:bottom-7 left-1/2 -translate-x-1/2 z-20 pointer-events-none"
-        aria-hidden="true"
-      >
-        <div className="flex flex-col items-center">
-          <span className="text-white text-[10px] sm:text-xs md:text-sm mb-1 sm:mb-1.5 tracking-[0.2em] font-medium drop-shadow-md">
-            SCROLL
-          </span>
-          <div className="relative">
-            <div className="absolute -inset-1 rounded-full bg-[#c59737]/40 animate-pulse" />
-            <div className="animate-bounce bg-[#a87d24]/90 p-1.5 sm:p-2 rounded-full shadow-lg">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="h-3.5 w-3.5 sm:h-4 sm:w-4 md:h-5 md:w-5 text-white"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M19 14l-7 7m0 0l-7-7m7 7V3"
-                />
-              </svg>
-            </div>
-          </div>
-        </div>
-      </div>
-
       {/* Transparent Fixed Header / Navbar */}
       <Navbar />
     </section>
