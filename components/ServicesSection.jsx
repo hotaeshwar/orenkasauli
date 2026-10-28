@@ -109,12 +109,30 @@ export default function ServicesSection() {
       <div className="max-w-7xl mx-auto relative z-10">
         {/* Section Header: Centered Eyebrow & Grand Serif Heading */}
         <div className="flex flex-col items-center text-center mb-12 sm:mb-16 md:mb-20">
+          {/* Golden Circular Logo Emblem (oren1.png) */}
+          <motion.div
+            initial={shouldReduceMotion ? false : { opacity: 0, y: 12, scale: 0.96 }}
+            whileInView={{ opacity: 1, y: 0, scale: 1 }}
+            viewport={{ once: true, amount: 0.15 }}
+            transition={{ duration: 0.6, ease: "easeOut" }}
+            className="relative w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 lg:w-20 lg:h-20 mb-3 sm:mb-4 select-none drop-shadow-sm flex items-center justify-center"
+          >
+            <Image
+              src="/images/oren1.png"
+              alt="Oren Kasauli Logo Emblem"
+              width={81}
+              height={79}
+              priority={false}
+              className="w-full h-full object-contain"
+            />
+          </motion.div>
+
           {/* Eyebrow Label: Appears first when scrolling into view (same as About Us) */}
           <motion.div
             initial={shouldReduceMotion ? false : { opacity: 0, y: 14 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.15 }}
-            transition={{ duration: 0.5, ease: "easeOut" }}
+            transition={{ duration: 0.5, delay: shouldReduceMotion ? 0 : 0.15, ease: "easeOut" }}
             className="flex items-center justify-center gap-3 sm:gap-4 md:gap-5 mb-3 sm:mb-4 md:mb-5"
           >
             <span
@@ -180,7 +198,7 @@ export default function ServicesSection() {
               >
                 {/* Circular Icon Badge: Zooms in when active, remains normal when inactive */}
                 <div
-                  className={`relative w-16 h-16 sm:w-18 sm:h-18 md:w-20 md:h-20 rounded-full flex items-center justify-center flex-shrink-0 transition-all duration-500 ease-out ${
+                  className={`relative w-16 h-16 md:w-20 md:h-20 rounded-full flex items-center justify-center flex-shrink-0 transition-all duration-500 ease-out ${
                     isActive
                       ? "scale-110 border-2 border-[#a87d24] bg-gradient-to-br from-[#fbf8f2] to-[#f5edd9] shadow-[0_6px_22px_rgba(168,125,36,0.25)]"
                       : "scale-100 border border-neutral-200/80 bg-neutral-50/70 shadow-[0_2px_8px_rgba(0,0,0,0.04)]"

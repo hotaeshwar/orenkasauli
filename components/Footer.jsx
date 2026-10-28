@@ -42,7 +42,7 @@ export default function Footer() {
               className="group relative inline-flex items-center mb-5 sm:mb-6 focus:outline-none"
               aria-label="Oren Kasauli Homepage"
             >
-              <div className="relative h-16 sm:h-20 md:h-22 w-auto flex items-center p-1.5 rounded-2xl bg-white/[0.04] border border-white/10 group-hover:border-[#c59737]/40 transition-colors">
+              <div className="relative h-16 sm:h-20 md:h-24 w-auto flex items-center p-1.5 rounded-2xl bg-white/[0.04] border border-white/10 group-hover:border-[#c59737]/40 transition-colors">
                 <Image
                   src="/images/orenkasauli-logo.png"
                   alt="Oren Kasauli Luxury Hotel Logo"
@@ -230,13 +230,13 @@ export default function Footer() {
             © 2026 Oren Kasauli Hotel. All rights reserved.
           </p>
 
-          <div className="flex items-center gap-4">
+          <div className="flex flex-wrap items-center justify-center sm:justify-end gap-3 sm:gap-4">
             <span className="hidden sm:inline text-neutral-600">|</span>
-            <span className="text-neutral-400">Sanawar, Kasauli, Himachal Pradesh</span>
+            <span className="text-neutral-400 text-center">Sanawar, Kasauli, Himachal Pradesh</span>
 
             <button
               onClick={scrollToTop}
-              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/[0.05] hover:bg-white/[0.1] text-neutral-300 hover:text-white border border-white/10 transition-colors ml-2"
+              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/[0.05] hover:bg-white/[0.1] text-neutral-300 hover:text-white border border-white/10 transition-colors ml-1 sm:ml-2"
               aria-label="Back to top of page"
             >
               <span>Top</span>

@@ -49,7 +49,7 @@ export default function BlogPage() {
       <Navbar />
 
       {/* Sleek, Compact Top Hero Banner with Background, Dark Overlay & Typewriter Heading */}
-      <section className="relative h-[200px] sm:h-[230px] md:h-[260px] flex items-center justify-center pt-16 sm:pt-20 md:pt-22 pb-4 sm:pb-6 px-4 overflow-hidden border-b border-neutral-100">
+      <section className="relative min-h-[220px] sm:min-h-[250px] md:min-h-[280px] flex items-center justify-center pt-24 sm:pt-28 md:pt-32 pb-6 sm:pb-8 px-4 overflow-hidden border-b border-neutral-100">
         {/* Atmospheric Background Image */}
         <div className="absolute inset-0 z-0 select-none">
           <Image
@@ -63,8 +63,20 @@ export default function BlogPage() {
           <div className="absolute inset-0 bg-gradient-to-b from-black/85 via-black/60 to-black/80" />
         </div>
 
-        {/* Hero Content — Strictly the Typewriter Heading */}
-        <div className="max-w-4xl mx-auto text-center relative z-10 w-full px-2">
+        {/* Hero Content with Oren Logo Emblem */}
+        <div className="max-w-4xl mx-auto text-center relative z-10 w-full px-2 flex flex-col items-center">
+          {/* Golden Circular Logo Emblem (oren1.png) */}
+          <div className="relative w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 mb-2 sm:mb-3 select-none drop-shadow-md flex items-center justify-center">
+            <Image
+              src="/images/oren1.png"
+              alt="Oren Kasauli Logo Emblem"
+              width={81}
+              height={79}
+              priority={false}
+              className="w-full h-full object-contain"
+            />
+          </div>
+
           <h1
             className="font-serif text-white text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-light tracking-[0.06em] leading-tight min-h-[1.25em] flex items-center justify-center break-words drop-shadow-[0_2px_16px_rgba(0,0,0,0.6)]"
             style={{ fontFamily: "var(--font-cormorant), Georgia, serif" }}

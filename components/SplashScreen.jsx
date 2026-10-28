@@ -42,7 +42,7 @@ export default function SplashScreen() {
         // If it's internal route navigation within the same tab, check if already seen
         const alreadySeen = sessionStorage.getItem("orenSplashSeen");
         if (alreadySeen === "true") {
-          setIsActive(false);
+          queueMicrotask(() => setIsActive(false));
           return;
         }
       }

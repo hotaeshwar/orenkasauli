@@ -443,7 +443,7 @@ export default function RoomAndTariffPage() {
       <Navbar />
 
       {/* Sleek, Compact Top Hero Banner with Background Image (room.jpg) — Matching Gallery Top */}
-      <section className="relative h-[200px] sm:h-[230px] md:h-[260px] flex items-center justify-center pt-16 sm:pt-20 md:pt-22 pb-4 sm:pb-6 px-4 overflow-hidden border-b border-neutral-100">
+      <section className="relative min-h-[220px] sm:min-h-[250px] md:min-h-[280px] flex items-center justify-center pt-24 sm:pt-28 md:pt-32 pb-6 sm:pb-8 px-4 overflow-hidden border-b border-neutral-100">
         {/* Background room.jpg with Dark Atmospheric Overlay */}
         <div className="absolute inset-0 z-0 select-none">
           <Image
@@ -457,8 +457,20 @@ export default function RoomAndTariffPage() {
           <div className="absolute inset-0 bg-gradient-to-b from-black/85 via-black/60 to-black/80" />
         </div>
 
-        {/* Hero Content — Strictly ONLY Typewriter effect (same sleek styling as gallery) */}
-        <div className="max-w-4xl mx-auto text-center relative z-10 w-full px-2">
+        {/* Hero Content with Oren Logo Emblem */}
+        <div className="max-w-4xl mx-auto text-center relative z-10 w-full px-2 flex flex-col items-center">
+          {/* Golden Circular Logo Emblem (oren1.png) */}
+          <div className="relative w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 mb-2 sm:mb-3 select-none drop-shadow-md flex items-center justify-center">
+            <Image
+              src="/images/oren1.png"
+              alt="Oren Kasauli Logo Emblem"
+              width={81}
+              height={79}
+              priority={false}
+              className="w-full h-full object-contain"
+            />
+          </div>
+
           <h1
             className="font-serif text-white text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-light tracking-[0.06em] leading-tight min-h-[1.25em] flex items-center justify-center break-words drop-shadow-[0_2px_16px_rgba(0,0,0,0.6)]"
             style={{ fontFamily: "var(--font-cormorant), Georgia, serif" }}
@@ -637,7 +649,18 @@ export default function RoomAndTariffPage() {
       <section className="relative py-16 sm:py-20 md:py-24 px-4 sm:px-6 lg:px-8 bg-[#0c0a09] text-white overflow-hidden border-t border-neutral-800">
         <div className="max-w-7xl mx-auto relative z-10">
           {/* Header */}
-          <div className="text-center mb-10 sm:mb-14">
+          <div className="flex flex-col items-center text-center mb-10 sm:mb-14">
+            {/* Golden Circular Logo Emblem (oren1.png) */}
+            <div className="relative w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 lg:w-20 lg:h-20 mb-3 sm:mb-4 select-none drop-shadow-sm flex items-center justify-center">
+              <Image
+                src="/images/oren1.png"
+                alt="Oren Kasauli Logo Emblem"
+                width={81}
+                height={79}
+                priority={false}
+                className="w-full h-full object-contain"
+              />
+            </div>
             <div className="inline-flex items-center justify-center gap-2 sm:gap-3 mb-2.5 sm:mb-3">
               <span className="w-6 sm:w-10 h-[1.5px] bg-[#c59737]" />
               <span className="text-[11px] sm:text-xs md:text-sm font-semibold tracking-[0.22em] text-[#c59737] uppercase font-sans">
@@ -654,7 +677,7 @@ export default function RoomAndTariffPage() {
           </div>
 
           {/* 8 Facilities Grid */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3.5 sm:gap-4 lg:gap-5 mb-14 sm:mb-18 max-w-6xl mx-auto">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3.5 sm:gap-4 lg:gap-5 mb-14 sm:mb-16 md:mb-20 max-w-6xl mx-auto">
             {ROOM_FACILITIES.map((facility, idx) => {
               const IconComp = facility.icon;
               return (

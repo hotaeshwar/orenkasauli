@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef } from "react";
+import Image from "next/image";
 import { motion, useReducedMotion } from "motion/react";
 
 const BOOKING_URL =
@@ -32,12 +33,30 @@ export default function AboutSection() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 sm:gap-12 lg:gap-12 xl:gap-16 items-center">
           {/* Left Column: Text Content & Book Your Stay CTA */}
           <div className="lg:col-span-7 xl:col-span-7 flex flex-col items-start">
+            {/* Golden Circular Logo Emblem (oren1.png) */}
+            <motion.div
+              initial={shouldReduceMotion ? false : { opacity: 0, y: 12, scale: 0.96 }}
+              whileInView={{ opacity: 1, y: 0, scale: 1 }}
+              viewport={{ once: true, amount: 0.15 }}
+              transition={{ duration: 0.6, ease: "easeOut" }}
+              className="relative w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 lg:w-20 lg:h-20 mb-3 sm:mb-4 select-none drop-shadow-sm flex items-center justify-start"
+            >
+              <Image
+                src="/images/oren1.png"
+                alt="Oren Kasauli Logo Emblem"
+                width={81}
+                height={79}
+                priority={false}
+                className="w-full h-full object-contain"
+              />
+            </motion.div>
+
             {/* Eyebrow Label: Appears first when scrolling into view */}
             <motion.div
               initial={shouldReduceMotion ? false : { opacity: 0, y: 14 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.15 }}
-              transition={{ duration: 0.5, ease: "easeOut" }}
+              transition={{ duration: 0.5, delay: shouldReduceMotion ? 0 : 0.15, ease: "easeOut" }}
               className="flex items-center gap-3 sm:gap-4 md:gap-5 mb-3 sm:mb-4 md:mb-5"
             >
               <span

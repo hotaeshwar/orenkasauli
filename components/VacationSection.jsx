@@ -76,7 +76,7 @@ export default function VacationSection() {
 
           {/* Main Heading: ENJOY YOUR HOLIDAYS with Zero-Layout-Shift Typewriter Effect */}
           <h2
-            className="font-serif text-neutral-900 text-2xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-light tracking-[0.03em] sm:tracking-[0.06em] leading-tight text-center break-words mb-3 sm:mb-4 w-full select-none"
+            className="font-serif text-neutral-900 text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-light tracking-[0.03em] sm:tracking-[0.06em] leading-tight text-center break-words mb-3 sm:mb-4 w-full select-none"
             style={{ fontFamily: "var(--font-cormorant), Georgia, serif" }}
           >
             <span className="sr-only">{TYPEWRITER_TEXT}</span>
@@ -121,7 +121,7 @@ export default function VacationSection() {
             />
 
             {/* Left Side: Reserve your spot now, to enjoy tranquility later */}
-            <div className="relative z-10 text-left text-center md:text-left flex-1 min-w-0">
+            <div className="relative z-10 text-center md:text-left flex-1 min-w-0">
               <h3 className="font-sans text-lg sm:text-xl md:text-2xl lg:text-[28px] xl:text-[32px] font-bold tracking-normal leading-snug sm:leading-tight text-white drop-shadow-[0_2px_4px_rgba(0,0,0,0.2)]">
                 <span>Reserve your spot now, to</span>
                 <br className="hidden sm:inline" />

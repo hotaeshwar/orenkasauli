@@ -80,7 +80,7 @@ export default function Navbar() {
     <header className="fixed top-0 left-0 right-0 z-50 bg-transparent transition-all duration-300">
       {/* Main Always-Transparent Navbar */}
       <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-20 sm:h-22 md:h-24 lg:h-24 xl:h-28">
+        <div className="flex items-center justify-between h-20 md:h-24 xl:h-28">
           {/* Logo — Displayed ~60% larger, scaled responsively for mobile, iPad Mini/Air/Pro, and desktop */}
           <div className="flex-shrink-0 flex items-center">
             <Link
@@ -89,7 +89,7 @@ export default function Navbar() {
               className="relative flex items-center focus:outline-none focus-visible:ring-2 focus-visible:ring-[#a87d24] rounded-full"
               aria-label="Oren Kasauli Homepage"
             >
-              <div className="relative h-14 sm:h-16 md:h-18 lg:h-[72px] xl:h-[84px] w-auto flex items-center">
+              <div className="relative h-14 sm:h-16 md:h-20 lg:h-[72px] xl:h-[84px] w-auto flex items-center">
                 <Image
                   src="/images/orenkasauli-logo.png"
                   alt="Oren Kasauli Logo"
@@ -192,7 +192,7 @@ export default function Navbar() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -16 }}
             transition={{ duration: 0.25, ease: "easeOut" }}
-            className="lg:hidden fixed inset-x-0 top-20 sm:top-22 md:top-24 bottom-0 bg-[#0c0a09]/95 backdrop-blur-2xl border-t border-white/10 z-40 overflow-y-auto px-5 sm:px-8 py-6 sm:py-8 flex flex-col justify-between shadow-2xl"
+            className="lg:hidden fixed inset-x-0 top-20 md:top-24 bottom-0 bg-[#0c0a09]/95 backdrop-blur-2xl border-t border-white/10 z-40 overflow-y-auto px-5 sm:px-8 py-6 sm:py-8 flex flex-col justify-between shadow-2xl"
           >
             <div className="flex flex-col space-y-4 max-w-md w-full mx-auto">
               <span className="text-[11px] uppercase tracking-[0.25em] text-[#a87d24] font-bold">

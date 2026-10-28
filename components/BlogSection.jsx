@@ -171,8 +171,25 @@ export default function BlogSection() {
   }, [selectedPost]);
 
   return (
-    <section className="relative w-full bg-[#ffffff] text-neutral-900 pt-6 sm:pt-8 md:pt-10 pb-16 sm:pb-24 px-4 sm:px-6 lg:px-8 xl:px-12">
+    <section className="relative w-full bg-[#ffffff] text-neutral-900 pt-8 sm:pt-10 md:pt-12 pb-16 sm:pb-24 px-4 sm:px-6 lg:px-8 xl:px-12">
       <div className="max-w-7xl mx-auto">
+        {/* Section Heading */}
+        <div className="flex flex-col items-center text-center mb-10 sm:mb-14">
+          <div className="inline-flex items-center justify-center gap-2.5 sm:gap-3.5 mb-2 sm:mb-2.5">
+            <span className="w-8 sm:w-12 h-[1.5px] bg-[#c59737]" />
+            <span className="text-[11px] sm:text-xs md:text-sm font-bold tracking-[0.24em] text-[#a87d24] uppercase font-sans">
+              KASAULI TRAVEL STORIES
+            </span>
+            <span className="w-8 sm:w-12 h-[1.5px] bg-[#c59737]" />
+          </div>
+          <h2
+            className="font-serif text-neutral-900 text-2xl sm:text-3xl md:text-4xl font-normal tracking-wide"
+            style={{ fontFamily: "var(--font-cormorant), Georgia, serif" }}
+          >
+            Explore Historical &amp; Scenic Marvels
+          </h2>
+        </div>
+
         {/* Blog Post Grid: Responsive 1, 2, or 3 columns with same animation style as in Gallery */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-7 lg:gap-8">
           {BLOG_POSTS.map((post, index) => {

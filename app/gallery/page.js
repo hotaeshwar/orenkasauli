@@ -391,8 +391,8 @@ export default function GalleryPage() {
       {/* Navigation Bar */}
       <Navbar />
 
-      {/* Sleek, Compact Top Hero Banner with topimage.jpg & Overlay & Typewriter text "Gallery" only */}
-      <section className="relative h-[200px] sm:h-[230px] md:h-[260px] flex items-center justify-center pt-16 sm:pt-20 md:pt-22 pb-4 sm:pb-6 px-4 overflow-hidden border-b border-neutral-100">
+      {/* Sleek, Compact Top Hero Banner with topimage.jpg & Overlay */}
+      <section className="relative min-h-[220px] sm:min-h-[250px] md:min-h-[280px] flex items-center justify-center pt-24 sm:pt-28 md:pt-32 pb-6 sm:pb-8 px-4 overflow-hidden border-b border-neutral-100">
         {/* Background topimage.jpg with Dark Atmospheric Overlay */}
         <div className="absolute inset-0 z-0 select-none">
           <Image
@@ -406,8 +406,20 @@ export default function GalleryPage() {
           <div className="absolute inset-0 bg-gradient-to-b from-black/85 via-black/60 to-black/80" />
         </div>
 
-        {/* Hero Content — Strictly ONLY "Gallery" with typewriter effect */}
-        <div className="max-w-4xl mx-auto text-center relative z-10 w-full px-2">
+        {/* Hero Content with Oren Logo Emblem */}
+        <div className="max-w-4xl mx-auto text-center relative z-10 w-full px-2 flex flex-col items-center">
+          {/* Golden Circular Logo Emblem (oren1.png) */}
+          <div className="relative w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 mb-2 sm:mb-3 select-none drop-shadow-md flex items-center justify-center">
+            <Image
+              src="/images/oren1.png"
+              alt="Oren Kasauli Logo Emblem"
+              width={81}
+              height={79}
+              priority={false}
+              className="w-full h-full object-contain"
+            />
+          </div>
+
           <h1
             className="font-serif text-white text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-light tracking-[0.06em] leading-tight min-h-[1.25em] flex items-center justify-center break-words drop-shadow-[0_2px_16px_rgba(0,0,0,0.6)]"
             style={{ fontFamily: "var(--font-cormorant), Georgia, serif" }}
@@ -473,7 +485,18 @@ export default function GalleryPage() {
       <section className="relative w-full bg-[#ffffff] py-14 sm:py-20 md:py-24 px-4 sm:px-6 lg:px-8 xl:px-12 border-t border-neutral-100">
         <div className="max-w-7xl mx-auto">
           {/* Section Header with Typewriter Write & Erase Effect */}
-          <div className="text-center mb-8 sm:mb-12">
+          <div className="flex flex-col items-center text-center mb-8 sm:mb-12">
+            {/* Golden Circular Logo Emblem (oren1.png) */}
+            <div className="relative w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 mb-2.5 sm:mb-3 select-none drop-shadow-sm flex items-center justify-center">
+              <Image
+                src="/images/oren1.png"
+                alt="Oren Kasauli Logo Emblem"
+                width={81}
+                height={79}
+                priority={false}
+                className="w-full h-full object-contain"
+              />
+            </div>
             <div className="inline-flex items-center justify-center gap-2.5 sm:gap-3.5 mb-2.5 sm:mb-3">
               <span className="w-8 sm:w-12 h-[1.5px] bg-[#c59737]" />
               <span className="text-[11px] sm:text-xs md:text-sm font-bold tracking-[0.24em] text-[#a87d24] uppercase font-sans">
@@ -556,7 +579,19 @@ export default function GalleryPage() {
           <div className="absolute inset-0 bg-gradient-to-b from-black/85 via-black/75 to-black/90" />
         </div>
 
-        <div className="max-w-6xl mx-auto relative z-10 text-center">
+        <div className="max-w-6xl mx-auto relative z-10 text-center flex flex-col items-center">
+          {/* Golden Circular Logo Emblem (oren1.png) */}
+          <div className="relative w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 mb-2.5 sm:mb-3 select-none drop-shadow-sm flex items-center justify-center">
+            <Image
+              src="/images/oren1.png"
+              alt="Oren Kasauli Logo Emblem"
+              width={81}
+              height={79}
+              priority={false}
+              className="w-full h-full object-contain"
+            />
+          </div>
+
           {/* Eyebrow: BEST SERVICES FROM OREN KASAULI HOTEL */}
           <div className="inline-flex items-center justify-center gap-2.5 sm:gap-3.5 mb-3">
             <span className="w-8 sm:w-12 h-[1.5px] bg-[#c59737]" />
@@ -575,7 +610,7 @@ export default function GalleryPage() {
           </h2>
 
           {/* 6 Activities Grid with Proper Icons */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5 lg:gap-6 mb-14 sm:mb-18 text-left">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5 lg:gap-6 mb-14 sm:mb-16 md:mb-20 text-left">
             {ACTIVITIES_DATA.map((activity, idx) => {
               const IconComponent = activity.icon;
               return (
@@ -672,7 +707,7 @@ export default function GalleryPage() {
               {/* Previous Button */}
               <button
                 onClick={handlePrev}
-                className="absolute left-2 sm:left-4 z-20 w-11 h-11 sm:w-13 sm:h-13 rounded-full bg-black/50 hover:bg-black/80 text-white border border-white/20 backdrop-blur-md flex items-center justify-center transition-all duration-200 hover:scale-105 active:scale-95 focus:outline-none"
+                className="absolute left-2 sm:left-4 z-20 w-11 h-11 sm:w-12 sm:h-12 rounded-full bg-black/50 hover:bg-black/80 text-white border border-white/20 backdrop-blur-md flex items-center justify-center transition-all duration-200 hover:scale-105 active:scale-95 focus:outline-none"
                 aria-label="Previous image"
               >
                 <ChevronLeft className="w-6 h-6 text-white" />
@@ -704,7 +739,7 @@ export default function GalleryPage() {
               {/* Next Button */}
               <button
                 onClick={handleNext}
-                className="absolute right-2 sm:right-4 z-20 w-11 h-11 sm:w-13 sm:h-13 rounded-full bg-black/50 hover:bg-black/80 text-white border border-white/20 backdrop-blur-md flex items-center justify-center transition-all duration-200 hover:scale-105 active:scale-95 focus:outline-none"
+                className="absolute right-2 sm:right-4 z-20 w-11 h-11 sm:w-12 sm:h-12 rounded-full bg-black/50 hover:bg-black/80 text-white border border-white/20 backdrop-blur-md flex items-center justify-center transition-all duration-200 hover:scale-105 active:scale-95 focus:outline-none"
                 aria-label="Next image"
               >
                 <ChevronRight className="w-6 h-6 text-white" />

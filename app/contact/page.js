@@ -56,8 +56,8 @@ export default function ContactPage() {
       {/* Navigation Bar */}
       <Navbar />
 
-      {/* Sleek, Compact Top Hero Banner with contacttop.jpg & Overlay & Typewriter text "Contact Us" only */}
-      <section className="relative h-[200px] sm:h-[230px] md:h-[260px] flex items-center justify-center pt-16 sm:pt-20 md:pt-22 pb-4 sm:pb-6 px-4 overflow-hidden border-b border-neutral-100">
+      {/* Sleek, Compact Top Hero Banner with contacttop.jpg & Overlay */}
+      <section className="relative min-h-[220px] sm:min-h-[250px] md:min-h-[280px] flex items-center justify-center pt-24 sm:pt-28 md:pt-32 pb-6 sm:pb-8 px-4 overflow-hidden border-b border-neutral-100">
         {/* Background contacttop.jpg with Dark Atmospheric Overlay */}
         <div className="absolute inset-0 z-0 select-none">
           <Image
@@ -71,8 +71,20 @@ export default function ContactPage() {
           <div className="absolute inset-0 bg-gradient-to-b from-black/85 via-black/60 to-black/80" />
         </div>
 
-        {/* Hero Content — Strictly ONLY "Contact Us" with typewriter effect */}
-        <div className="max-w-4xl mx-auto text-center relative z-10 w-full px-2">
+        {/* Hero Content with Oren Logo Emblem */}
+        <div className="max-w-4xl mx-auto text-center relative z-10 w-full px-2 flex flex-col items-center">
+          {/* Golden Circular Logo Emblem (oren1.png) */}
+          <div className="relative w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 mb-2 sm:mb-3 select-none drop-shadow-md flex items-center justify-center">
+            <Image
+              src="/images/oren1.png"
+              alt="Oren Kasauli Logo Emblem"
+              width={81}
+              height={79}
+              priority={false}
+              className="w-full h-full object-contain"
+            />
+          </div>
+
           <h1
             className="font-serif text-white text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-light tracking-[0.06em] leading-tight min-h-[1.25em] flex items-center justify-center break-words drop-shadow-[0_2px_16px_rgba(0,0,0,0.6)]"
             style={{ fontFamily: "var(--font-cormorant), Georgia, serif" }}
@@ -89,6 +101,23 @@ export default function ContactPage() {
       {/* Main Contact Section — Background #ffffff with Scroll & Refresh "Stick from Bottom" Animation */}
       <main className="relative w-full bg-[#ffffff] pt-8 sm:pt-10 md:pt-12 pb-16 sm:pb-20 px-4 sm:px-6 lg:px-8 xl:px-12">
         <div className="max-w-7xl mx-auto">
+          {/* Section Heading */}
+          <div className="flex flex-col items-center text-center mb-10 sm:mb-12">
+            <div className="inline-flex items-center justify-center gap-2.5 sm:gap-3.5 mb-2 sm:mb-2.5">
+              <span className="w-8 sm:w-12 h-[1.5px] bg-[#c59737]" />
+              <span className="text-[11px] sm:text-xs md:text-sm font-bold tracking-[0.24em] text-[#a87d24] uppercase font-sans">
+                GET IN TOUCH
+              </span>
+              <span className="w-8 sm:w-12 h-[1.5px] bg-[#c59737]" />
+            </div>
+            <h2
+              className="font-serif text-neutral-900 text-2xl sm:text-3xl md:text-4xl font-normal tracking-wide"
+              style={{ fontFamily: "var(--font-cormorant), Georgia, serif" }}
+            >
+              We Are Here To Assist You
+            </h2>
+          </div>
+
           {/* 2-Column Layout: Contact Information Left, FormSubmit Contact Form Right */}
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 sm:gap-10 lg:gap-12 items-start mb-10 sm:mb-14">
             {/* Left Column: Contact Cards */}
