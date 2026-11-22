@@ -7,7 +7,7 @@ import VacationSection from "@/components/VacationSection";
 
 export default function Home() {
   return (
-    <main className="w-full min-h-screen relative overflow-x-hidden">
+    <main suppressHydrationWarning className="w-full min-h-screen relative overflow-x-hidden">
       <SplashScreen />
       <HeroSection />
       <AboutSection />

@@ -43,10 +43,19 @@ export default function RootLayout({ children }) {
     <html
       lang="en"
       suppressHydrationWarning
+      data-scroll-behavior="smooth"
       className={`${cormorant.variable} ${manrope.variable} ${montserrat.variable} scroll-smooth antialiased`}
     >
-      <body className="min-h-screen w-full overflow-x-hidden font-sans bg-[#0c0a09] text-white selection:bg-[#a87d24] selection:text-white flex flex-col justify-between">
-        <div className="flex-1 w-full">{children}</div>
+      <head>
+        <link rel="preload" href="/images/deep-teal-logo.png" as="image" type="image/png" fetchPriority="high" />
+      </head>
+      <body
+        suppressHydrationWarning
+        className="min-h-screen w-full overflow-x-hidden font-sans bg-[#FFF6F6] text-[#165823] selection:bg-[#165823] selection:text-[#FFF6F6] flex flex-col justify-between"
+      >
+        <div suppressHydrationWarning className="flex-1 w-full">
+          {children}
+        </div>
         <Footer />
       </body>
     </html>

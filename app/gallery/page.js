@@ -26,6 +26,7 @@ const BOOKING_URL =
 
 const TYPEWRITER_TEXT = "Gallery";
 const VIDEO_HEADING_TEXT = "Video Shoot By Guest";
+const VACATION_HEADING_TEXT = "Book Your Next Vacation!";
 
 const GUEST_VIDEOS = [
   {
@@ -335,6 +336,41 @@ export default function GalleryPage() {
 
   const currentVideoHeading = VIDEO_HEADING_TEXT.slice(0, videoCharIndex);
 
+  // Typewriter effect that writes and erases "Book Your Next Vacation!" on loop
+  const [vacationCharIndex, setVacationCharIndex] = useState(0);
+  const [isVacationDeleting, setIsVacationDeleting] = useState(false);
+
+  useEffect(() => {
+    let timer;
+    if (!isVacationDeleting) {
+      if (vacationCharIndex < VACATION_HEADING_TEXT.length) {
+        timer = setTimeout(() => {
+          setVacationCharIndex((prev) => prev + 1);
+        }, 110);
+      } else {
+        // Hold full phrase for 2.6 seconds
+        timer = setTimeout(() => {
+          setIsVacationDeleting(true);
+        }, 2600);
+      }
+    } else {
+      if (vacationCharIndex > 0) {
+        timer = setTimeout(() => {
+          setVacationCharIndex((prev) => prev - 1);
+        }, 55);
+      } else {
+        timer = setTimeout(() => {
+          setIsVacationDeleting(false);
+        }, 500);
+      }
+    }
+
+    return () => clearTimeout(timer);
+  }, [vacationCharIndex, isVacationDeleting]);
+
+  const currentVacationHeading = VACATION_HEADING_TEXT.slice(0, vacationCharIndex);
+  const ghostVacationRemainder = VACATION_HEADING_TEXT.slice(vacationCharIndex);
+
   // Full-screen Lightbox & Video State
   const [selectedImageIndex, setSelectedImageIndex] = useState(null);
   const [selectedVideo, setSelectedVideo] = useState(null);
@@ -387,55 +423,58 @@ export default function GalleryPage() {
   }, [selectedImageIndex, selectedVideo]);
 
   return (
-    <div className="relative min-h-screen w-full bg-[#ffffff] text-neutral-900 overflow-x-hidden selection:bg-[#a87d24] selection:text-white">
+    <div className="relative min-h-screen w-full bg-[#FFF6F6] text-[#165823] overflow-x-hidden selection:bg-[#C5A77B] selection:text-[#165823]">
       {/* Navigation Bar */}
       <Navbar />
 
-      {/* Sleek, Compact Top Hero Banner with topimage.jpg & Overlay */}
-      <section className="relative min-h-[220px] sm:min-h-[250px] md:min-h-[280px] flex items-center justify-center pt-24 sm:pt-28 md:pt-32 pb-6 sm:pb-8 px-4 overflow-hidden border-b border-neutral-100">
-        {/* Background topimage.jpg with Dark Atmospheric Overlay */}
-        <div className="absolute inset-0 z-0 select-none">
+      {/* Sleek, Compact Top Hero Banner with topimage.jpg & Light Backdrop */}
+      <section className="relative min-h-[220px] sm:min-h-[250px] md:min-h-[280px] flex items-center justify-center pt-24 sm:pt-28 md:pt-32 pb-6 sm:pb-8 px-4 overflow-hidden border-b border-[#e2d8c7] bg-[#FFF6F6]">
+        {/* Background topimage.jpg with Rich Ambient Backdrop Overlay */}
+        <div className="absolute inset-0 z-0 select-none overflow-hidden pointer-events-none" aria-hidden="true">
           <Image
             src="/images/gallery/topimage.jpg"
             alt="Oren Kasauli Gallery Banner"
             fill
             priority
-            className="object-cover object-center filter brightness-[0.72]"
+            sizes="100vw"
+            className="object-cover object-center scale-105"
           />
-          {/* Overlay: Sleek dark gradient for contrast */}
-          <div className="absolute inset-0 bg-gradient-to-b from-black/85 via-black/60 to-black/80" />
+          {/* Subtle balanced scrim: preserves rich photographic depth without washing out */}
+          <div className="absolute inset-0 bg-[#FFF6F6]/55 pointer-events-none" />
+          <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-transparent to-black/25 pointer-events-none" />
         </div>
 
-        {/* Hero Content with Oren Logo Emblem */}
+        {/* Hero Content */}
         <div className="max-w-4xl mx-auto text-center relative z-10 w-full px-2 flex flex-col items-center">
-          {/* Golden Circular Logo Emblem (oren1.png) */}
-          <div className="relative w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 mb-2 sm:mb-3 select-none drop-shadow-md flex items-center justify-center">
-            <Image
-              src="/images/oren1.png"
-              alt="Oren Kasauli Logo Emblem"
-              width={81}
-              height={79}
-              priority={false}
-              className="w-full h-full object-contain"
-            />
-          </div>
-
           <h1
-            className="font-serif text-white text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-light tracking-[0.06em] leading-tight min-h-[1.25em] flex items-center justify-center break-words drop-shadow-[0_2px_16px_rgba(0,0,0,0.6)]"
+            className="font-serif text-[#165823] text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-normal tracking-[0.06em] leading-tight min-h-[1.25em] flex items-center justify-center break-words drop-shadow-[0_1px_8px_rgba(255,255,255,0.85)]"
             style={{ fontFamily: "var(--font-cormorant), Georgia, serif" }}
           >
             <span>{currentHeadingText}</span>
             <span
-              className="inline-block w-[2.5px] sm:w-[3.5px] h-[0.8em] bg-[#c59737] ml-2 animate-pulse align-middle"
+              className="inline-block w-[2.5px] sm:w-[3.5px] h-[0.8em] bg-[#C5A77B] ml-2 animate-pulse align-middle"
               aria-hidden="true"
             />
           </h1>
         </div>
       </section>
 
-      {/* Main Gallery Section — Pure White Background (#fff) with Scroll & Refresh "Stick from Bottom" Animation */}
-      <main className="relative w-full bg-[#ffffff] pt-8 sm:pt-12 md:pt-14 pb-16 sm:pb-24 px-4 sm:px-6 lg:px-8 xl:px-12">
-        <div className="max-w-7xl mx-auto">
+      {/* Main Gallery Section — Warm Ivory Background with galler12.jpg & White Light Overlay */}
+      <main className="relative w-full bg-[#FFF6F6] pt-8 sm:pt-12 md:pt-14 pb-16 sm:pb-24 px-4 sm:px-6 lg:px-8 xl:px-12 overflow-hidden">
+        {/* Ambient Resort Background with White Light Overlay */}
+        <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none" aria-hidden="true">
+          <Image
+            src="/images/gallery/galler12.jpg"
+            alt=""
+            fill
+            sizes="100vw"
+            className="object-cover object-center scale-105"
+          />
+          <div className="absolute inset-0 bg-[#FFF6F6]/82 pointer-events-none" />
+          <div className="absolute inset-0 bg-gradient-to-b from-white/50 via-transparent to-white/50 pointer-events-none" />
+        </div>
+
+        <div className="max-w-7xl mx-auto relative z-10">
           {/* Uniform Responsive Grid (Aligned Rows and Columns) */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
             {GALLERY_IMAGES.map((item, index) => {
@@ -457,7 +496,7 @@ export default function GalleryPage() {
                   onClick={() => setSelectedImageIndex(index)}
                 >
                   {/* Uniform Aspect-Ratio Card Container with Soft Shadow and Rounded Corners */}
-                  <div className="relative w-full aspect-[4/3] overflow-hidden rounded-2xl sm:rounded-3xl bg-neutral-100 border border-neutral-200/80 shadow-[0_4px_20px_rgba(0,0,0,0.06)] hover:shadow-[0_18px_45px_rgba(168,125,36,0.22)] hover:border-[#c59737]/80 transition-all duration-500">
+                  <div className="relative w-full aspect-[4/3] overflow-hidden rounded-2xl sm:rounded-3xl bg-[#ede6d8]/60 border border-[#e2d8c7] shadow-[0_4px_20px_rgba(0,0,0,0.04)] hover:shadow-[0_18px_45px_rgba(197,167,123,0.22)] hover:border-[#C5A77B]/80 transition-all duration-500">
                     {/* Photograph with fill and smooth scale on hover */}
                     <Image
                       src={item.src}
@@ -481,38 +520,43 @@ export default function GalleryPage() {
         </div>
       </main>
 
-      {/* Video Shoot By Guest Section — Positioned below image card grid with same stick-from-bottom animation effect */}
-      <section className="relative w-full bg-[#ffffff] py-14 sm:py-20 md:py-24 px-4 sm:px-6 lg:px-8 xl:px-12 border-t border-neutral-100">
-        <div className="max-w-7xl mx-auto">
+      {/* Video Shoot By Guest Section */}
+      <section className="relative w-full bg-[#FFF6F6] py-14 sm:py-20 md:py-24 px-4 sm:px-6 lg:px-8 xl:px-12 border-t border-[#e2d8c7] overflow-hidden">
+        {/* Ambient Resort Background with White Light Overlay */}
+        <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none" aria-hidden="true">
+          <Image
+            src="/images/gallery/galler12.jpg"
+            alt=""
+            fill
+            sizes="100vw"
+            className="object-cover object-center scale-105"
+          />
+          <div className="absolute inset-0 bg-[#FFF6F6]/82 pointer-events-none" />
+          <div className="absolute inset-0 bg-gradient-to-b from-white/50 via-transparent to-white/50 pointer-events-none" />
+        </div>
+
+        <div className="max-w-7xl mx-auto relative z-10">
           {/* Section Header with Typewriter Write & Erase Effect */}
           <div className="flex flex-col items-center text-center mb-8 sm:mb-12">
-            {/* Golden Circular Logo Emblem (oren1.png) */}
-            <div className="relative w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 mb-2.5 sm:mb-3 select-none drop-shadow-sm flex items-center justify-center">
-              <Image
-                src="/images/oren1.png"
-                alt="Oren Kasauli Logo Emblem"
-                width={81}
-                height={79}
-                priority={false}
-                className="w-full h-full object-contain"
-              />
-            </div>
             <div className="inline-flex items-center justify-center gap-2.5 sm:gap-3.5 mb-2.5 sm:mb-3">
-              <span className="w-8 sm:w-12 h-[1.5px] bg-[#c59737]" />
-              <span className="text-[11px] sm:text-xs md:text-sm font-bold tracking-[0.24em] text-[#a87d24] uppercase font-sans">
+              <span className="w-8 sm:w-12 h-[1.5px] bg-[#C5A77B]" />
+              <span
+                className="text-[11px] sm:text-xs md:text-sm font-semibold tracking-[0.24em] text-[#C5A77B] uppercase"
+                style={{ fontFamily: "var(--font-montserrat), sans-serif" }}
+              >
                 AUTHENTIC MOMENTS &amp; EXPERIENCES
               </span>
-              <span className="w-8 sm:w-12 h-[1.5px] bg-[#c59737]" />
+              <span className="w-8 sm:w-12 h-[1.5px] bg-[#C5A77B]" />
             </div>
 
             {/* Heading with Typewriter Erase & Write Effect */}
             <h2
-              className="font-serif text-neutral-900 text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-light tracking-[0.04em] leading-tight min-h-[1.25em] flex items-center justify-center break-words text-center"
+              className="font-serif text-[#165823] text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-light tracking-[0.04em] leading-tight min-h-[1.25em] flex items-center justify-center break-words text-center"
               style={{ fontFamily: "var(--font-cormorant), Georgia, serif" }}
             >
               <span>{currentVideoHeading}</span>
               <span
-                className="inline-block w-[2.5px] sm:w-[3.5px] h-[0.8em] bg-[#c59737] ml-2 animate-pulse align-middle"
+                className="inline-block w-[2.5px] sm:w-[3.5px] h-[0.8em] bg-[#C5A77B] ml-2 animate-pulse align-middle"
                 aria-hidden="true"
               />
             </h2>
@@ -580,18 +624,6 @@ export default function GalleryPage() {
         </div>
 
         <div className="max-w-6xl mx-auto relative z-10 text-center flex flex-col items-center">
-          {/* Golden Circular Logo Emblem (oren1.png) */}
-          <div className="relative w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 mb-2.5 sm:mb-3 select-none drop-shadow-sm flex items-center justify-center">
-            <Image
-              src="/images/oren1.png"
-              alt="Oren Kasauli Logo Emblem"
-              width={81}
-              height={79}
-              priority={false}
-              className="w-full h-full object-contain"
-            />
-          </div>
-
           {/* Eyebrow: BEST SERVICES FROM OREN KASAULI HOTEL */}
           <div className="inline-flex items-center justify-center gap-2.5 sm:gap-3.5 mb-3">
             <span className="w-8 sm:w-12 h-[1.5px] bg-[#c59737]" />
@@ -640,10 +672,26 @@ export default function GalleryPage() {
               CONTACT US TODAY
             </span>
             <h3
-              className="font-serif text-white text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-light tracking-wide leading-tight mb-7 sm:mb-9"
+              className="font-serif text-white text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-light tracking-wide leading-tight mb-7 sm:mb-9 select-none text-center"
               style={{ fontFamily: "var(--font-cormorant), Georgia, serif" }}
             >
-              Book Your Next Vacation!
+              {/* Screen reader full text */}
+              <span className="sr-only">{VACATION_HEADING_TEXT}</span>
+
+              {/* Zero-Layout-Shift Typewriter Text */}
+              <span aria-hidden="true" className="inline relative">
+                <span>{currentVacationHeading}</span>
+                {/* Zero-width cursor container guarantees 0px horizontal layout shift */}
+                <span className="inline-block w-0 relative align-middle" aria-hidden="true">
+                  <span className="absolute left-0.5 sm:left-1 top-1/2 -translate-y-1/2 w-[2px] sm:w-[3px] h-[0.8em] bg-[#FFE4A0] rounded-full animate-pulse" />
+                </span>
+                {/* Invisible ghost remainder locks width, height, and line wraps */}
+                {ghostVacationRemainder && (
+                  <span className="opacity-0 select-none pointer-events-none" aria-hidden="true">
+                    {ghostVacationRemainder}
+                  </span>
+                )}
+              </span>
             </h3>
 
             <div className="flex flex-col sm:flex-row items-center justify-center gap-3.5 sm:gap-4 w-full sm:w-auto">
@@ -651,14 +699,21 @@ export default function GalleryPage() {
                 href={BOOKING_URL}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-full sm:w-auto relative inline-flex items-center justify-center gap-2.5 rounded-full font-semibold uppercase whitespace-nowrap text-white bg-gradient-to-r from-[#c59737] via-[#a87d24] to-[#886216] border border-[#f3d999]/50 shadow-[0_4px_18px_rgba(168,125,36,0.38)] hover:from-[#d4a949] hover:via-[#ba8c2e] hover:to-[#9e7420] hover:border-[#ffe8a8] hover:shadow-[0_6px_24px_rgba(168,125,36,0.6)] hover:-translate-y-0.5 active:translate-y-0 active:scale-95 transition-all duration-300 px-9 sm:px-12 py-3.5 sm:py-4 text-xs sm:text-sm tracking-[0.18em] text-center"
+                className="group relative w-full sm:w-auto inline-flex items-center justify-center gap-2.5 rounded-full font-semibold uppercase whitespace-nowrap text-[#FFF6F6] bg-[#165823] hover:bg-[#12481c] border border-[#165823] shadow-[0_4px_18px_rgba(22,88,35,0.38)] hover:shadow-[0_8px_28px_rgba(22,88,35,0.6)] hover:-translate-y-0.5 hover:scale-[1.03] active:translate-y-0 active:scale-95 transition-all duration-300 px-9 sm:px-12 py-3.5 sm:py-4 text-xs sm:text-sm tracking-[0.18em] text-center overflow-hidden"
+                style={{ fontFamily: "var(--font-montserrat), sans-serif" }}
               >
-                <span>BOOK NOW</span>
-                <ArrowUpRight className="w-4 h-4" />
+                {/* Shimmer sweep effect */}
+                <span
+                  className="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-white/40 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-in-out pointer-events-none"
+                  aria-hidden="true"
+                />
+                <span className="relative z-10">BOOK NOW</span>
+                <ArrowUpRight className="relative z-10 w-4 h-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 text-[#FFF6F6]" />
               </a>
               <Link
                 href="/"
                 className="w-full sm:w-auto relative inline-flex items-center justify-center rounded-full font-medium uppercase whitespace-nowrap text-white/90 hover:text-white bg-white/10 hover:bg-white/15 border border-white/20 transition-all duration-300 px-8 sm:px-10 py-3.5 sm:py-4 text-xs sm:text-sm tracking-[0.16em] text-center"
+                style={{ fontFamily: "var(--font-montserrat), sans-serif" }}
               >
                 <span>BACK TO HOME</span>
               </Link>

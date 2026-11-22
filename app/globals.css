@@ -2,20 +2,30 @@
 
 :root {
   --font-serif: var(--font-cormorant);
-  --font-sans: var(--font-manrope), var(--font-montserrat);
-  --brand-gold: #a87d24;
-  --brand-gold-hover: #8f671b;
-  --brand-gold-light: #c59737;
-  --brand-light: #f8f9f7;
+  --font-sans: var(--font-montserrat), var(--font-manrope);
+  --color-warm-ivory: #FFF6F6;
+  --color-champagne-gold: #C5A77B;
+  --color-charcoal: #165823;
+  --color-deep-teal: #165823;
+  --color-brand-green: #165823;
+  --brand-gold: #C5A77B;
+  --brand-gold-hover: #b59567;
+  --brand-gold-light: #d6bc94;
+  --brand-light: #FFF6F6;
 }
 
 @theme {
-  --color-brand-gold: #a87d24;
-  --color-brand-gold-hover: #8f671b;
-  --color-brand-gold-light: #c59737;
-  --color-brand-light: #f8f9f7;
+  --color-warm-ivory: #FFF6F6;
+  --color-champagne-gold: #C5A77B;
+  --color-charcoal: #165823;
+  --color-deep-teal: #165823;
+  --color-brand-green: #165823;
+  --color-brand-gold: #C5A77B;
+  --color-brand-gold-hover: #b59567;
+  --color-brand-gold-light: #d6bc94;
+  --color-brand-light: #FFF6F6;
   --font-serif: var(--font-cormorant), "Cormorant Garamond", Georgia, serif;
-  --font-sans: var(--font-manrope), "Manrope", var(--font-montserrat), "Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-sans: var(--font-montserrat), "Montserrat", var(--font-manrope), "Manrope", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
 }
 
 html {
@@ -28,7 +38,364 @@ body {
   min-height: 100vh;
   width: 100%;
   overflow-x: hidden;
-  color: #f8f9f7;
+  background-color: #FFF6F6;
+  color: #165823;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+/* ======================================================== */
+/* SENIOR LUXURY EDITORIAL TYPOGRAPHY ARCHITECTURE          */
+/* Headings & Paragraphs share unified, elegant weight (400)*/
+/* Distinctive luxury typefaces (Cormorant & Montserrat)    */
+/* ======================================================== */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-cormorant), "Cormorant Garamond", Georgia, serif;
+  font-weight: 400;
+  letter-spacing: 0.02em;
+}
+
+p {
+  font-family: var(--font-montserrat), var(--font-manrope), sans-serif;
+  font-weight: 400;
+  line-height: 1.7;
+}
+
+/* ======================================================== */
+/* ARCHITECTURAL DOOR 3D PERSPECTIVE & LIGHTING UTILITIES   */
+/* ======================================================== */
+.perspective-doorway {
+  perspective: 1600px;
+  perspective-origin: 50% 50%;
+  transform-style: preserve-3d;
+}
+
+@media (max-width: 640px) {
+  .perspective-doorway {
+    perspective: 1100px;
+  }
+}
+
+.preserve-3d {
+  transform-style: preserve-3d;
+}
+
+.backface-visible {
+  backface-visibility: visible;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes scaleUp {
+  from {
+    opacity: 0;
+    transform: scale(0.96) translateY(8px);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.25s ease-out forwards;
+}
+
+.animate-scaleUp {
+  animation: scaleUp 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* ======================================================== */
+/* 3D ROTATING CAROUSEL RING UTILITIES                      */
+/* ======================================================== */
+.carousel-stage-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 35px 0 55px 0;
+  overflow: hidden;
+}
+
+/* Default / Standard Desktop Stage (1024px - 1279px) */
+.carousel-stage {
+  position: relative;
+  width: 225px;
+  height: 295px;
+  perspective: 1350px;
+}
+
+.carousel-ring {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  animation: rotateRingDesktop 24s linear infinite;
+}
+
+.carousel-stage:hover .carousel-ring,
+.carousel-ring:hover {
+  animation-play-state: paused;
+}
+
+.carousel-panel {
+  position: absolute;
+  inset: 0;
+  border-radius: 18px;
+  background-color: #ffffff;
+  border: 1px solid #e5dccf;
+  box-shadow: 0 14px 35px rgba(38, 40, 36, 0.1), 0 3px 10px rgba(197, 167, 123, 0.15);
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  transform: rotateY(calc(var(--i) * 360deg / 8)) translateZ(295px);
+  user-select: none;
+  cursor: pointer;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.carousel-panel:hover {
+  border-color: #C5A77B;
+  box-shadow: 0 20px 45px rgba(197, 167, 123, 0.35), 0 6px 18px rgba(38, 40, 36, 0.12);
+}
+
+@keyframes rotateRingDesktop {
+  from {
+    transform: translateZ(-295px) rotateY(0deg);
+  }
+
+  to {
+    transform: translateZ(-295px) rotateY(-360deg);
+  }
+}
+
+/* Large Desktop (min-width: 1280px) */
+@media (min-width: 1280px) {
+  .carousel-stage {
+    width: 245px;
+    height: 315px;
+    perspective: 1450px;
+  }
+
+  .carousel-ring {
+    animation-name: rotateRingLargeDesktop;
+  }
+
+  .carousel-panel {
+    transform: rotateY(calc(var(--i) * 360deg / 8)) translateZ(325px);
+  }
+
+  @keyframes rotateRingLargeDesktop {
+    from {
+      transform: translateZ(-325px) rotateY(0deg);
+    }
+
+    to {
+      transform: translateZ(-325px) rotateY(-360deg);
+    }
+  }
+}
+
+/* Tablet (max-width: 1023px) */
+@media (max-width: 1023px) {
+  .carousel-stage {
+    width: 195px;
+    height: 255px;
+    perspective: 1200px;
+  }
+
+  .carousel-ring {
+    animation-name: rotateRingTablet;
+  }
+
+  .carousel-panel {
+    transform: rotateY(calc(var(--i) * 360deg / 8)) translateZ(260px);
+  }
+
+  @keyframes rotateRingTablet {
+    from {
+      transform: translateZ(-260px) rotateY(0deg);
+    }
+
+    to {
+      transform: translateZ(-260px) rotateY(-360deg);
+    }
+  }
+}
+
+/* Mobile (max-width: 640px) */
+@media (max-width: 640px) {
+  .carousel-stage {
+    width: 155px;
+    height: 210px;
+    perspective: 950px;
+  }
+
+  .carousel-ring {
+    animation-name: rotateRingMobile;
+  }
+
+  .carousel-panel {
+    transform: rotateY(calc(var(--i) * 360deg / 8)) translateZ(205px);
+  }
+
+  @keyframes rotateRingMobile {
+    from {
+      transform: translateZ(-205px) rotateY(0deg);
+    }
+
+    to {
+      transform: translateZ(-205px) rotateY(-360deg);
+    }
+  }
+}
+
+/* Small Mobile (max-width: 380px) */
+@media (max-width: 380px) {
+  .carousel-stage {
+    width: 135px;
+    height: 185px;
+    perspective: 850px;
+  }
+
+  .carousel-ring {
+    animation-name: rotateRingSmallMobile;
+  }
+
+  .carousel-panel {
+    transform: rotateY(calc(var(--i) * 360deg / 8)) translateZ(175px);
+  }
+
+  @keyframes rotateRingSmallMobile {
+    from {
+      transform: translateZ(-175px) rotateY(0deg);
+    }
+
+    to {
+      transform: translateZ(-175px) rotateY(-360deg);
+    }
+  }
+}
+
+/* Prefers Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  .carousel-ring {
+    animation: none !important;
+    transform: translateZ(-260px) rotateY(-22.5deg) !important;
+  }
+}
+
+/* Half-Radius 3D Cylindrical Vertical Stream for Our Rooms */
+.half-radius-stage {
+  perspective: 1100px;
+  perspective-origin: center center;
+  transform-style: preserve-3d;
+  mask-image: linear-gradient(to bottom,
+      transparent 0%,
+      black 6%,
+      black 94%,
+      transparent 100%);
+  -webkit-mask-image: linear-gradient(to bottom,
+      transparent 0%,
+      black 6%,
+      black 94%,
+      transparent 100%);
+}
+
+.half-radius-track {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+  transform-style: preserve-3d;
+  --scroll-start: 420px;
+  animation: scrollHalfRadius 38s linear infinite;
+  will-change: transform;
+}
+
+@media (min-width: 640px) {
+  .half-radius-track {
+    gap: 1rem;
+    --scroll-start: 460px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .half-radius-track {
+    gap: 1.1rem;
+    --scroll-start: 500px;
+  }
+}
+
+.half-radius-track:hover,
+.half-radius-track.is-paused {
+  animation-play-state: paused !important;
+}
+
+@keyframes scrollHalfRadius {
+  0% {
+    transform: translateY(var(--scroll-start, 460px));
+  }
+
+  100% {
+    transform: translateY(calc(var(--scroll-start, 460px) - 50%));
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .half-radius-track {
+    animation: none !important;
+  }
+}
+
+/* Vertical Running Cards Track (Bottom to Top) for Our Rooms */
+@keyframes scrollBottomToTop {
+  0% {
+    transform: translateY(var(--scroll-start, 460px));
+  }
+
+  100% {
+    transform: translateY(calc(var(--scroll-start, 460px) - 50%));
+  }
+}
+
+.vertical-running-track {
+  --scroll-start: 420px;
+  animation: scrollBottomToTop 38s linear infinite;
+  will-change: transform;
+}
+
+@media (min-width: 640px) {
+  .vertical-running-track {
+    --scroll-start: 460px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .vertical-running-track {
+    --scroll-start: 500px;
+  }
+}
+
+.vertical-running-track:hover,
+.vertical-running-track.is-paused {
+  animation-play-state: paused !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .vertical-running-track {
+    animation: none !important;
+  }
 }

@@ -44,54 +44,44 @@ export default function BlogPage() {
   const currentHeadingText = TYPEWRITER_TEXT.slice(0, charIndex);
 
   return (
-    <div className="relative min-h-screen w-full bg-[#ffffff] text-neutral-900 overflow-x-hidden selection:bg-[#a87d24] selection:text-white">
+    <div className="relative min-h-screen w-full bg-[#FFF6F6] text-[#165823] overflow-x-hidden selection:bg-[#C5A77B] selection:text-[#165823]">
       {/* Navigation Bar */}
       <Navbar />
 
-      {/* Sleek, Compact Top Hero Banner with Background, Dark Overlay & Typewriter Heading */}
-      <section className="relative min-h-[220px] sm:min-h-[250px] md:min-h-[280px] flex items-center justify-center pt-24 sm:pt-28 md:pt-32 pb-6 sm:pb-8 px-4 overflow-hidden border-b border-neutral-100">
-        {/* Atmospheric Background Image */}
-        <div className="absolute inset-0 z-0 select-none">
+      {/* Sleek, Compact Top Hero Banner with Background, Light Backdrop & Typewriter Heading */}
+      <section className="relative min-h-[220px] sm:min-h-[250px] md:min-h-[280px] flex items-center justify-center pt-24 sm:pt-28 md:pt-32 pb-6 sm:pb-8 px-4 overflow-hidden border-b border-[#e5dccf] bg-[#FFF6F6]">
+        {/* Atmospheric Background Image with Rich Ambient Backdrop */}
+        <div className="absolute inset-0 z-0 select-none overflow-hidden pointer-events-none" aria-hidden="true">
           <Image
             src="/images/gallery/topimage.jpg"
             alt="Oren Kasauli Blog Banner"
             fill
             priority
-            className="object-cover object-center filter brightness-[0.70]"
+            sizes="100vw"
+            className="object-cover object-center scale-105"
           />
-          {/* Sleek dark gradient overlay for text legibility */}
-          <div className="absolute inset-0 bg-gradient-to-b from-black/85 via-black/60 to-black/80" />
+          {/* Subtle balanced scrim: preserves rich photographic depth without washing out */}
+          <div className="absolute inset-0 bg-[#FFF6F6]/55 pointer-events-none" />
+          <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-transparent to-black/25 pointer-events-none" />
         </div>
 
-        {/* Hero Content with Oren Logo Emblem */}
+        {/* Hero Content */}
         <div className="max-w-4xl mx-auto text-center relative z-10 w-full px-2 flex flex-col items-center">
-          {/* Golden Circular Logo Emblem (oren1.png) */}
-          <div className="relative w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 mb-2 sm:mb-3 select-none drop-shadow-md flex items-center justify-center">
-            <Image
-              src="/images/oren1.png"
-              alt="Oren Kasauli Logo Emblem"
-              width={81}
-              height={79}
-              priority={false}
-              className="w-full h-full object-contain"
-            />
-          </div>
-
           <h1
-            className="font-serif text-white text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-light tracking-[0.06em] leading-tight min-h-[1.25em] flex items-center justify-center break-words drop-shadow-[0_2px_16px_rgba(0,0,0,0.6)]"
+            className="font-serif text-[#165823] text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-normal tracking-[0.06em] leading-tight min-h-[1.25em] flex items-center justify-center break-words drop-shadow-[0_1px_8px_rgba(255,255,255,0.85)]"
             style={{ fontFamily: "var(--font-cormorant), Georgia, serif" }}
           >
             <span>{currentHeadingText}</span>
             <span
-              className="inline-block w-[2.5px] sm:w-[3.5px] h-[0.8em] bg-[#c59737] ml-2 animate-pulse align-middle"
+              className="inline-block w-[2.5px] sm:w-[3.5px] h-[0.8em] bg-[#C5A77B] ml-2 animate-pulse align-middle"
               aria-hidden="true"
             />
           </h1>
         </div>
       </section>
 
-      {/* Main Blog Section Content (Background #ffffff) */}
-      <main className="relative w-full bg-[#ffffff]">
+      {/* Main Blog Section Content */}
+      <main className="relative w-full bg-transparent">
         <BlogSection />
       </main>
     </div>

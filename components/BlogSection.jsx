@@ -2,12 +2,14 @@
 
 import { useState, useEffect } from "react";
 import Image from "next/image";
-import { motion, AnimatePresence } from "motion/react";
+import { motion, AnimatePresence, useReducedMotion } from "motion/react";
 import {
   X,
   ArrowUpRight,
   ChevronRight,
 } from "lucide-react";
+
+const TYPEWRITER_TEXT = "Explore Historical & Scenic Marvels";
 
 export const BLOG_POSTS = [
   {
@@ -149,7 +151,51 @@ export const BLOG_POSTS = [
 ];
 
 export default function BlogSection() {
+  const shouldReduceMotion = useReducedMotion();
   const [selectedPost, setSelectedPost] = useState(null);
+
+  // Looping Typewriter Effect (types, pauses, erases, repeats)
+  const [charIndex, setCharIndex] = useState(0);
+  const [isDeleting, setIsDeleting] = useState(false);
+
+  useEffect(() => {
+    if (shouldReduceMotion) return;
+
+    let timer;
+    if (!isDeleting) {
+      if (charIndex < TYPEWRITER_TEXT.length) {
+        timer = setTimeout(() => {
+          setCharIndex((prev) => prev + 1);
+        }, 110);
+      } else {
+        // Hold full phrase for 2.6 seconds so guests can comfortably read it
+        timer = setTimeout(() => {
+          setIsDeleting(true);
+        }, 2600);
+      }
+    } else {
+      if (charIndex > 0) {
+        timer = setTimeout(() => {
+          setCharIndex((prev) => prev - 1);
+        }, 55);
+      } else {
+        // Brief pause before typing again
+        timer = setTimeout(() => {
+          setIsDeleting(false);
+        }, 500);
+      }
+    }
+
+    return () => clearTimeout(timer);
+  }, [charIndex, isDeleting, shouldReduceMotion]);
+
+  const currentHeadingText = shouldReduceMotion
+    ? TYPEWRITER_TEXT
+    : TYPEWRITER_TEXT.slice(0, charIndex);
+
+  const ghostRemainder = shouldReduceMotion
+    ? ""
+    : TYPEWRITER_TEXT.slice(charIndex);
 
   // Close modal on Escape key press
   useEffect(() => {
@@ -171,22 +217,62 @@ export default function BlogSection() {
   }, [selectedPost]);
 
   return (
-    <section className="relative w-full bg-[#ffffff] text-neutral-900 pt-8 sm:pt-10 md:pt-12 pb-16 sm:pb-24 px-4 sm:px-6 lg:px-8 xl:px-12">
-      <div className="max-w-7xl mx-auto">
+    <section className="relative w-full bg-[#FFF6F6] text-[#165823] pt-8 sm:pt-10 md:pt-12 pb-16 sm:pb-24 px-4 sm:px-6 lg:px-8 xl:px-12 border-t border-[#e2d8c7] overflow-hidden">
+      {/* Ambient Resort Background with White Light Overlay */}
+      <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none" aria-hidden="true">
+        <Image
+          src="/images/gallery/galler12.jpg"
+          alt=""
+          fill
+          sizes="100vw"
+          className="object-cover object-center scale-105"
+        />
+        <div className="absolute inset-0 bg-[#FFF6F6]/82 pointer-events-none" />
+        <div className="absolute inset-0 bg-gradient-to-b from-white/50 via-transparent to-white/50 pointer-events-none" />
+      </div>
+
+      <div className="max-w-7xl mx-auto relative z-10">
         {/* Section Heading */}
         <div className="flex flex-col items-center text-center mb-10 sm:mb-14">
-          <div className="inline-flex items-center justify-center gap-2.5 sm:gap-3.5 mb-2 sm:mb-2.5">
-            <span className="w-8 sm:w-12 h-[1.5px] bg-[#c59737]" />
-            <span className="text-[11px] sm:text-xs md:text-sm font-bold tracking-[0.24em] text-[#a87d24] uppercase font-sans">
+          <div className="flex items-center justify-center gap-3 sm:gap-4 mb-3 sm:mb-4">
+            <span
+              className="w-10 sm:w-14 h-[2px] bg-[#C5A77B] rounded-full flex-shrink-0"
+              aria-hidden="true"
+            />
+            <span
+              className="text-xs sm:text-sm font-bold uppercase tracking-[0.26em] text-[#C5A77B]"
+              style={{ fontFamily: "var(--font-montserrat), sans-serif" }}
+            >
               KASAULI TRAVEL STORIES
             </span>
-            <span className="w-8 sm:w-12 h-[1.5px] bg-[#c59737]" />
+            <span
+              className="w-10 sm:w-14 h-[2px] bg-[#C5A77B] rounded-full flex-shrink-0"
+              aria-hidden="true"
+            />
           </div>
           <h2
-            className="font-serif text-neutral-900 text-2xl sm:text-3xl md:text-4xl font-normal tracking-wide"
+            className="font-serif text-[#165823] text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-normal tracking-wide leading-tight select-none"
             style={{ fontFamily: "var(--font-cormorant), Georgia, serif" }}
           >
-            Explore Historical &amp; Scenic Marvels
+            {/* Screen reader full text */}
+            <span className="sr-only">{TYPEWRITER_TEXT}</span>
+
+            {/* Zero-Layout-Shift Typewriter Text */}
+            <span aria-hidden="true" className="inline relative">
+              <span>{currentHeadingText}</span>
+              {/* Zero-width cursor container guarantees 0px horizontal layout shift */}
+              {!shouldReduceMotion && (
+                <span className="inline-block w-0 relative align-middle" aria-hidden="true">
+                  <span className="absolute left-0.5 sm:left-1 top-1/2 -translate-y-1/2 w-[2px] sm:w-[3px] h-[0.8em] bg-[#C5A77B] rounded-full animate-pulse" />
+                </span>
+              )}
+              {/* Invisible ghost remainder locks width, height, and line wraps */}
+              {ghostRemainder && (
+                <span className="opacity-0 select-none pointer-events-none" aria-hidden="true">
+                  {ghostRemainder}
+                </span>
+              )}
+            </span>
           </h2>
         </div>
 
@@ -207,7 +293,7 @@ export default function BlogSection() {
                   ease: [0.16, 1, 0.3, 1],
                 }}
                 onClick={() => setSelectedPost(post)}
-                className="group cursor-pointer rounded-2xl sm:rounded-3xl bg-neutral-50 border border-neutral-200/80 shadow-[0_4px_20px_rgba(0,0,0,0.04)] hover:shadow-[0_16px_36px_rgba(168,125,36,0.18)] hover:border-[#c59737]/70 transition-all duration-300 flex flex-col overflow-hidden will-change-transform"
+                className="group cursor-pointer rounded-2xl sm:rounded-3xl bg-white border border-[#e2d8c7] shadow-[0_4px_20px_rgba(0,0,0,0.04)] hover:shadow-[0_16px_36px_rgba(197,167,123,0.22)] hover:border-[#C5A77B]/80 transition-all duration-300 flex flex-col overflow-hidden will-change-transform"
               >
                 {/* 1. Image on Top with Subtle Zoom on Hover */}
                 <div
@@ -229,37 +315,43 @@ export default function BlogSection() {
                 <div className="p-5 sm:p-6 md:p-7 flex-1 flex flex-col justify-between">
                   <div>
                     {/* Read time and Category line */}
-                    <div className="flex items-center justify-between text-[11px] sm:text-xs text-[#a87d24] font-semibold tracking-wider uppercase mb-2">
+                    <div className="flex items-center justify-between text-[11px] sm:text-xs text-[#C5A77B] font-medium tracking-wider uppercase mb-2">
                       <span className="inline-flex items-center gap-1.5">
-                        <span className="w-1.5 h-1.5 rounded-full bg-[#c59737]" />
+                        <span className="w-1.5 h-1.5 rounded-full bg-[#C5A77B]" />
                         {post.category}
                       </span>
-                      <span className="text-neutral-500 font-normal lowercase tracking-normal">
+                      <span className="text-[#165823]/60 font-light lowercase tracking-normal">
                         {post.readTime}
                       </span>
                     </div>
 
                     {/* Attraction / Blog Name */}
                     <h3
-                      className="font-serif text-neutral-900 group-hover:text-[#a87d24] text-xl sm:text-2xl font-medium leading-snug tracking-normal transition-colors duration-200 mb-3"
+                      className="font-serif text-[#165823] group-hover:text-[#C5A77B] text-xl sm:text-2xl font-normal leading-snug tracking-normal transition-colors duration-200 mb-3"
                       style={{ fontFamily: "var(--font-cormorant), Georgia, serif" }}
                     >
                       {post.title}
                     </h3>
 
-                    {/* Excerpt */}
-                    <p className="font-sans text-xs sm:text-sm text-neutral-600 line-clamp-3 leading-relaxed">
+                    {/* Excerpt with Montserrat */}
+                    <p
+                      className="text-xs sm:text-sm text-[#165823]/80 line-clamp-3 leading-relaxed font-light tracking-wide"
+                      style={{ fontFamily: "var(--font-montserrat), sans-serif" }}
+                    >
                       {post.excerpt}
                     </p>
                   </div>
 
                   {/* Bottom "Read Story" CTA Button */}
-                  <div className="pt-5 sm:pt-6 mt-4 border-t border-neutral-200/80 flex items-center justify-between">
-                    <span className="text-xs sm:text-[13px] font-semibold text-[#a87d24] group-hover:text-[#886216] inline-flex items-center gap-1.5 tracking-wider uppercase transition-colors">
+                  <div className="pt-5 sm:pt-6 mt-4 border-t border-[#e2d8c7]/80 flex items-center justify-between">
+                    <span
+                      className="text-xs sm:text-[13px] font-medium text-[#C5A77B] group-hover:text-[#b38e5c] inline-flex items-center gap-1.5 tracking-wider uppercase transition-colors"
+                      style={{ fontFamily: "var(--font-montserrat), sans-serif" }}
+                    >
                       <span>READ FULL STORY</span>
                       <ChevronRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                     </span>
-                    <div className="w-8 h-8 rounded-full bg-neutral-100 group-hover:bg-[#a87d24] group-hover:text-white flex items-center justify-center text-neutral-600 transition-colors">
+                    <div className="w-8 h-8 rounded-full bg-[#FFF6F6] group-hover:bg-[#C5A77B] group-hover:text-[#165823] flex items-center justify-center text-[#165823] transition-colors border border-[#e2d8c7]">
                       <ArrowUpRight className="w-4 h-4" />
                     </div>
                   </div>
@@ -287,7 +379,7 @@ export default function BlogSection() {
               exit={{ scale: 0.94, opacity: 0, y: 25 }}
               transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
               onClick={(e) => e.stopPropagation()}
-              className="relative w-full max-w-3xl max-h-[92vh] sm:max-h-[88vh] bg-white rounded-2xl sm:rounded-3xl shadow-[0_20px_60px_rgba(0,0,0,0.35)] border border-neutral-200 overflow-hidden flex flex-col"
+              className="relative w-full max-w-3xl max-h-[92vh] sm:max-h-[88vh] bg-[#FFF6F6] text-[#165823] rounded-2xl sm:rounded-3xl shadow-[0_20px_60px_rgba(22,88,35,0.25)] border border-[#e2d8c7] overflow-hidden flex flex-col"
             >
               {/* Modal Top Header with Close Button */}
               <div className="absolute top-3 right-3 sm:top-4 sm:right-4 z-20">
@@ -302,9 +394,9 @@ export default function BlogSection() {
 
               {/* Scrollable Body Content */}
               <div className="overflow-y-auto w-full flex-1">
-                {/* Hero Image Inside Modal */}
+                {/* Hero Image Inside Modal — 100% Crisp & Fully Visible */}
                 <div
-                  className="relative w-full h-[220px] sm:h-[300px] md:h-[350px] bg-neutral-950"
+                  className="relative w-full h-[220px] sm:h-[300px] md:h-[350px] bg-neutral-900 overflow-hidden"
                   style={{ position: "relative" }}
                 >
                   <Image
@@ -314,37 +406,36 @@ export default function BlogSection() {
                     priority
                     className="object-cover object-center"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/25 to-black/30" />
+                </div>
 
-                  {/* Title overlay in image for cinematic feel */}
-                  <div className="absolute bottom-4 left-4 right-4 sm:bottom-6 sm:left-6 sm:right-6 text-white z-10">
+                {/* Article Body Content — Signature Green Text Palette */}
+                <div className="p-5 sm:p-7 md:p-9 space-y-6 text-[#165823]">
+                  {/* Modal Header Title in Signature Green */}
+                  <div>
                     <h2
-                      className="font-serif text-white text-2xl sm:text-3xl md:text-4xl font-normal leading-tight drop-shadow-md"
+                      className="font-serif text-[#165823] text-2xl sm:text-3xl md:text-4xl font-normal leading-tight"
                       style={{ fontFamily: "var(--font-cormorant), Georgia, serif" }}
                     >
                       {selectedPost.title}
                     </h2>
+                    <div className="w-16 h-[2px] bg-[#C5A77B] rounded-full mt-3" aria-hidden="true" />
                   </div>
-                </div>
-
-                {/* Article Body Content */}
-                <div className="p-5 sm:p-7 md:p-9 space-y-6">
                   {/* Highlights Grid */}
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 p-4 sm:p-5 rounded-2xl bg-neutral-50 border border-neutral-200/80">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 p-4 sm:p-5 rounded-2xl bg-[#165823]/5 border border-[#165823]/15">
                     {selectedPost.highlights.map((h, i) => (
                       <div key={i} className="flex flex-col">
-                        <span className="text-[11px] font-bold uppercase tracking-wider text-[#a87d24]">
+                        <span className="text-[11px] font-bold uppercase tracking-wider text-[#C5A77B]">
                           {h.label}
                         </span>
-                        <span className="text-xs sm:text-sm font-medium text-neutral-800 mt-0.5">
+                        <span className="text-xs sm:text-sm font-semibold text-[#165823] mt-0.5">
                           {h.value}
                         </span>
                       </div>
                     ))}
                   </div>
 
-                  {/* Paragraphs */}
-                  <div className="space-y-4 font-sans text-sm sm:text-base text-neutral-700 leading-relaxed">
+                  {/* Paragraphs in Signature Green */}
+                  <div className="space-y-4 font-sans text-sm sm:text-base text-[#165823] leading-relaxed">
                     {selectedPost.fullContent.map((paragraph, pIdx) => {
                       // Format "How to Reach Kasauli Toy Train Boarding Point?" or "Location:" sections with bold styling
                       if (paragraph.includes("\n")) {
@@ -352,12 +443,12 @@ export default function BlogSection() {
                         return (
                           <div
                             key={pIdx}
-                            className="p-4 sm:p-5 rounded-2xl bg-amber-50/60 border border-amber-200/60 space-y-2 mt-4"
+                            className="p-4 sm:p-5 rounded-2xl bg-[#165823]/5 border border-[#165823]/20 space-y-2 mt-4"
                           >
-                            <h4 className="font-semibold text-neutral-900 text-sm sm:text-base">
+                            <h4 className="font-semibold text-[#165823] text-sm sm:text-base">
                               {parts[0]}
                             </h4>
-                            <p className="text-neutral-700 text-xs sm:text-sm">
+                            <p className="text-[#165823]/90 text-xs sm:text-sm">
                               {parts.slice(1).join(" ")}
                             </p>
                           </div>
@@ -366,14 +457,14 @@ export default function BlogSection() {
 
                       if (paragraph.startsWith("Location:") || paragraph.startsWith("Start Point/End Point:")) {
                         return (
-                          <p key={pIdx} className="font-medium text-neutral-800 bg-neutral-100/70 p-3 sm:p-4 rounded-xl border border-neutral-200/70">
+                          <p key={pIdx} className="font-medium text-[#165823] bg-[#165823]/5 p-3 sm:p-4 rounded-xl border border-[#165823]/15">
                             {paragraph}
                           </p>
                         );
                       }
 
                       return (
-                        <p key={pIdx} className="text-neutral-700">
+                        <p key={pIdx} className="text-[#165823]/90">
                           {paragraph}
                         </p>
                       );
@@ -381,12 +472,17 @@ export default function BlogSection() {
                   </div>
 
                   {/* Modal Footer / Close Action - Media-Responsive */}
-                  <div className="pt-5 sm:pt-6 border-t border-neutral-200 flex justify-end">
+                  <div className="pt-5 sm:pt-6 border-t border-[#e2d8c7] flex justify-end">
                     <button
                       onClick={() => setSelectedPost(null)}
-                      className="w-full sm:w-auto px-8 py-3 rounded-full text-xs sm:text-sm font-semibold uppercase tracking-wider text-neutral-700 hover:text-neutral-950 bg-neutral-100 hover:bg-neutral-200 border border-neutral-300 transition-all duration-200 cursor-pointer shadow-sm active:scale-95 text-center"
+                      className="group relative w-full sm:w-auto px-8 py-3 rounded-full text-xs sm:text-sm font-semibold uppercase tracking-wider text-[#FFF6F6] bg-[#165823] hover:bg-[#12481c] border border-[#165823] shadow-[0_4px_16px_rgba(22,88,35,0.35)] hover:shadow-[0_8px_24px_rgba(22,88,35,0.55)] hover:-translate-y-0.5 hover:scale-[1.03] active:translate-y-0 active:scale-95 transition-all duration-300 cursor-pointer text-center overflow-hidden"
+                      style={{ fontFamily: "var(--font-montserrat), sans-serif" }}
                     >
-                      Close Story
+                      <span
+                        className="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-white/50 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-in-out pointer-events-none"
+                        aria-hidden="true"
+                      />
+                      <span className="relative z-10">Close Story</span>
                     </button>
                   </div>
                 </div>

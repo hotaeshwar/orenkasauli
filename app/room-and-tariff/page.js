@@ -230,7 +230,7 @@ const ROOMS_TARIFF_DATA = [
     totalRooms: 6,
     description:
       "These all-wooden rooms offer an elevated stay with pleasing mountain views. Positioned higher for a more immersive experience A cosy choice for guests who enjoy warmth, privacy, and a classic hillside ambience.",
-    image: "/images/rooms/atticroom.jpg",
+    image: "/images/rooms/atticroom.png",
     alt: "Attic Room with Hillside View at Oren Kasauli",
     amenities: [
       "Approx. 225 sq.ft.",
@@ -438,55 +438,66 @@ export default function RoomAndTariffPage() {
   const currentHeadingText = TYPEWRITER_TEXT.slice(0, charIndex);
 
   return (
-    <div className="relative min-h-screen w-full bg-[#faf9f6] text-neutral-900 overflow-x-hidden">
+    <div className="relative min-h-screen w-full bg-[#FFF6F6] text-[#165823] overflow-x-hidden">
       {/* Navigation Bar */}
       <Navbar />
 
-      {/* Sleek, Compact Top Hero Banner with Background Image (room.jpg) — Matching Gallery Top */}
-      <section className="relative min-h-[220px] sm:min-h-[250px] md:min-h-[280px] flex items-center justify-center pt-24 sm:pt-28 md:pt-32 pb-6 sm:pb-8 px-4 overflow-hidden border-b border-neutral-100">
-        {/* Background room.jpg with Dark Atmospheric Overlay */}
-        <div className="absolute inset-0 z-0 select-none">
+      {/* Sleek, Compact Top Hero Banner with Background Image (room.jpg) — Light Backdrop */}
+      <section className="relative min-h-[220px] sm:min-h-[250px] md:min-h-[280px] flex items-center justify-center pt-24 sm:pt-28 md:pt-32 pb-6 sm:pb-8 px-4 overflow-hidden border-b border-[#e2d8c7] bg-[#FFF6F6]">
+        {/* Background room.jpg with Rich Ambient Backdrop Overlay */}
+        <div className="absolute inset-0 z-0 select-none overflow-hidden pointer-events-none" aria-hidden="true">
           <Image
             src="/images/room.jpg"
             alt="Oren Kasauli Luxurious Rooms"
             fill
             priority
-            className="object-cover object-center filter brightness-[0.72]"
+            sizes="100vw"
+            className="object-cover object-center scale-105"
           />
-          {/* Overlay: Sleek dark gradient for contrast */}
-          <div className="absolute inset-0 bg-gradient-to-b from-black/85 via-black/60 to-black/80" />
+          {/* Subtle balanced scrim: preserves rich photographic depth without washing out */}
+          <div className="absolute inset-0 bg-[#FFF6F6]/55 pointer-events-none" />
+          <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-transparent to-black/25 pointer-events-none" />
         </div>
 
-        {/* Hero Content with Oren Logo Emblem */}
+        {/* Hero Content */}
         <div className="max-w-4xl mx-auto text-center relative z-10 w-full px-2 flex flex-col items-center">
-          {/* Golden Circular Logo Emblem (oren1.png) */}
-          <div className="relative w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 mb-2 sm:mb-3 select-none drop-shadow-md flex items-center justify-center">
-            <Image
-              src="/images/oren1.png"
-              alt="Oren Kasauli Logo Emblem"
-              width={81}
-              height={79}
-              priority={false}
-              className="w-full h-full object-contain"
-            />
-          </div>
-
           <h1
-            className="font-serif text-white text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-light tracking-[0.06em] leading-tight min-h-[1.25em] flex items-center justify-center break-words drop-shadow-[0_2px_16px_rgba(0,0,0,0.6)]"
+            className="font-serif text-[#165823] text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-normal tracking-[0.06em] leading-tight min-h-[1.25em] flex items-center justify-center break-words drop-shadow-[0_1px_8px_rgba(255,255,255,0.85)]"
             style={{ fontFamily: "var(--font-cormorant), Georgia, serif" }}
           >
             <span>{currentHeadingText}</span>
             <span
-              className="inline-block w-[2.5px] sm:w-[3.5px] h-[0.8em] bg-[#c59737] ml-2 animate-pulse align-middle"
+              className="inline-block w-[2.5px] sm:w-[3.5px] h-[0.8em] bg-[#C5A77B] ml-2 animate-pulse align-middle"
               aria-hidden="true"
             />
           </h1>
+
+          {/* Rooms & Suites Narrative Story */}
+          <p
+            className="font-sans text-xs sm:text-sm md:text-base text-[#165823] font-medium max-w-2xl mx-auto leading-relaxed tracking-wide text-center mt-3 drop-shadow-[0_1px_6px_rgba(255,255,255,0.85)]"
+            style={{ fontFamily: "var(--font-montserrat), sans-serif" }}
+          >
+            Every stay has its own story. Choose from thoughtfully designed rooms and suites, each offering comfort and a beautiful connection with the surrounding hills. From cosy attic rooms and valley-facing balconies to private jacuzzis and plunge pool experiences, discover a room that suits the way you want to unwind.
+          </p>
         </div>
       </section>
 
       {/* Main Ladder-Type Cardless Showcase Section */}
-      <section className="relative w-full pt-8 sm:pt-12 md:pt-14 pb-16 sm:pb-24 px-4 sm:px-6 lg:px-8 xl:px-12 overflow-hidden">
-        <div className="max-w-7xl mx-auto relative">
+      <section className="relative w-full bg-[#FFF6F6] pt-8 sm:pt-12 md:pt-14 pb-16 sm:pb-24 px-4 sm:px-6 lg:px-8 xl:px-12 overflow-hidden">
+        {/* Ambient Resort Background with White Light Overlay */}
+        <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none" aria-hidden="true">
+          <Image
+            src="/images/gallery/galler12.jpg"
+            alt=""
+            fill
+            sizes="100vw"
+            className="object-cover object-center scale-105"
+          />
+          <div className="absolute inset-0 bg-[#FFF6F6]/82 pointer-events-none" />
+          <div className="absolute inset-0 bg-gradient-to-b from-white/50 via-transparent to-white/50 pointer-events-none" />
+        </div>
+
+        <div className="max-w-7xl mx-auto relative z-10">
           {/* 8 Rooms in a Proper Cardless Ladder Layout (Alternating Staggered Steps) */}
           <div className="space-y-16 sm:space-y-24 md:space-y-32 lg:space-y-40">
             {ROOMS_TARIFF_DATA.map((room, index) => {
@@ -515,24 +526,33 @@ export default function RoomAndTariffPage() {
                   >
                     {/* Room Title in Pure Editorial Typography (Cardless) */}
                     <h2
-                      className="font-serif text-neutral-900 text-2xl sm:text-3xl md:text-4xl lg:text-[40px] font-normal tracking-wide leading-tight mb-2 uppercase break-words"
+                      className="font-serif text-[#165823] text-2xl sm:text-3xl md:text-4xl lg:text-[40px] font-light tracking-wide leading-tight mb-2 uppercase break-words"
                       style={{ fontFamily: "var(--font-cormorant), Georgia, serif" }}
                     >
                       {room.title}
                     </h2>
 
-                    {/* Total Rooms Count in Gold */}
-                    <div className="text-sm sm:text-base font-semibold text-[#a87d24] tracking-wide mb-3 sm:mb-4">
+                    {/* Total Rooms Count in Champagne Gold */}
+                    <div
+                      className="text-sm sm:text-base font-medium text-[#C5A77B] tracking-wide mb-3 sm:mb-4"
+                      style={{ fontFamily: "var(--font-montserrat), sans-serif" }}
+                    >
                       Total Rooms: {room.totalRooms}
                     </div>
 
                     {/* Description Paragraph */}
-                    <p className="font-sans text-xs sm:text-sm md:text-[15px] text-neutral-600 leading-relaxed font-normal mb-5 sm:mb-6">
+                    <p
+                      className="text-xs sm:text-sm md:text-[15px] text-[#165823]/85 leading-relaxed font-light tracking-wide mb-5 sm:mb-6"
+                      style={{ fontFamily: "var(--font-montserrat), sans-serif" }}
+                    >
                       {room.description}
                     </p>
 
                     {/* Key Amenities Title */}
-                    <h3 className="font-sans text-sm sm:text-base md:text-lg font-semibold text-neutral-900 mb-3 tracking-tight">
+                    <h3
+                      className="text-sm sm:text-base md:text-lg font-medium text-[#165823] mb-3 tracking-tight"
+                      style={{ fontFamily: "var(--font-montserrat), sans-serif" }}
+                    >
                       Key Amenities:
                     </h3>
 
@@ -541,10 +561,11 @@ export default function RoomAndTariffPage() {
                       {room.amenities.map((amenity, aIdx) => (
                         <div
                           key={aIdx}
-                          className="flex items-center gap-2.5 text-xs sm:text-sm text-neutral-700"
+                          className="flex items-center gap-2.5 text-xs sm:text-sm text-[#165823]/85"
+                          style={{ fontFamily: "var(--font-montserrat), sans-serif" }}
                         >
                           <span
-                            className="w-4 h-4 sm:w-5 sm:h-5 rounded-full bg-[#b5882b] text-white flex items-center justify-center flex-shrink-0 shadow-sm"
+                            className="w-4 h-4 sm:w-5 sm:h-5 rounded-full bg-[#C5A77B] text-[#165823] flex items-center justify-center flex-shrink-0 shadow-sm"
                             aria-hidden="true"
                           >
                             <Check className="w-2.5 h-2.5 sm:w-3 sm:h-3 stroke-[3]" />
@@ -560,11 +581,17 @@ export default function RoomAndTariffPage() {
                         href={BOOKING_URL}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="group relative inline-flex items-center justify-center gap-2.5 rounded-full font-semibold uppercase whitespace-nowrap text-white bg-gradient-to-r from-[#c59737] via-[#a87d24] to-[#886216] border border-[#f3d999]/50 shadow-[0_4px_16px_rgba(168,125,36,0.32)] hover:from-[#d4a949] hover:via-[#ba8c2e] hover:to-[#9e7420] hover:border-[#ffe8a8] hover:shadow-[0_6px_22px_rgba(168,125,36,0.55)] hover:-translate-y-0.5 active:translate-y-0 active:scale-95 transition-all duration-300 px-7 sm:px-8 py-2.5 sm:py-3 text-xs sm:text-sm tracking-[0.14em] cursor-pointer select-none w-full sm:w-auto text-center"
+                        className="group relative inline-flex items-center justify-center gap-2.5 rounded-full font-semibold uppercase whitespace-nowrap text-[#FFF6F6] bg-[#165823] hover:bg-[#12481c] border border-[#165823] shadow-[0_4px_16px_rgba(22,88,35,0.35)] hover:shadow-[0_8px_24px_rgba(22,88,35,0.55)] hover:-translate-y-0.5 hover:scale-[1.03] active:translate-y-0 active:scale-95 transition-all duration-300 px-7 sm:px-8 py-2.5 sm:py-3 text-xs sm:text-sm tracking-[0.14em] cursor-pointer select-none w-full sm:w-auto text-center overflow-hidden"
+                        style={{ fontFamily: "var(--font-montserrat), sans-serif" }}
                         aria-label={`Book ${room.title} (opens booking engine)`}
                       >
-                        <span>BOOK YOUR ROOM NOW</span>
-                        <ArrowUpRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                        {/* Shimmer sweep effect */}
+                        <span
+                          className="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-white/40 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-in-out pointer-events-none"
+                          aria-hidden="true"
+                        />
+                        <span className="relative z-10">BOOK YOUR ROOM NOW</span>
+                        <ArrowUpRight className="relative z-10 w-4 h-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 text-[#FFF6F6]" />
                       </a>
                     </div>
                   </motion.div>
@@ -650,17 +677,6 @@ export default function RoomAndTariffPage() {
         <div className="max-w-7xl mx-auto relative z-10">
           {/* Header */}
           <div className="flex flex-col items-center text-center mb-10 sm:mb-14">
-            {/* Golden Circular Logo Emblem (oren1.png) */}
-            <div className="relative w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 lg:w-20 lg:h-20 mb-3 sm:mb-4 select-none drop-shadow-sm flex items-center justify-center">
-              <Image
-                src="/images/oren1.png"
-                alt="Oren Kasauli Logo Emblem"
-                width={81}
-                height={79}
-                priority={false}
-                className="w-full h-full object-contain"
-              />
-            </div>
             <div className="inline-flex items-center justify-center gap-2 sm:gap-3 mb-2.5 sm:mb-3">
               <span className="w-6 sm:w-10 h-[1.5px] bg-[#c59737]" />
               <span className="text-[11px] sm:text-xs md:text-sm font-semibold tracking-[0.22em] text-[#c59737] uppercase font-sans">
@@ -709,7 +725,7 @@ export default function RoomAndTariffPage() {
               href={BOOKING_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="w-full sm:w-auto relative inline-flex items-center justify-center rounded-full font-semibold uppercase whitespace-nowrap text-white bg-gradient-to-r from-[#c59737] via-[#a87d24] to-[#886216] border border-[#f3d999]/50 shadow-[0_4px_18px_rgba(168,125,36,0.38)] hover:from-[#d4a949] hover:via-[#ba8c2e] hover:to-[#9e7420] hover:border-[#ffe8a8] hover:shadow-[0_6px_22px_rgba(168,125,36,0.6)] hover:-translate-y-0.5 active:translate-y-0 active:scale-95 transition-all duration-300 px-8 sm:px-10 py-3 sm:py-3.5 text-xs sm:text-sm tracking-[0.16em] text-center"
+              className="w-full sm:w-auto relative inline-flex items-center justify-center rounded-full font-semibold uppercase whitespace-nowrap text-[#FFF6F6] bg-[#165823] hover:bg-[#12481c] border border-[#165823] shadow-[0_4px_20px_rgba(22,88,35,0.4)] hover:shadow-[0_8px_28px_rgba(22,88,35,0.6)] hover:-translate-y-0.5 hover:scale-[1.02] active:translate-y-0 active:scale-95 transition-all duration-300 px-8 sm:px-10 py-3.5 sm:py-4 text-xs sm:text-sm tracking-[0.16em] text-center overflow-hidden cursor-pointer"
             >
               <span>BOOK YOUR STAY NOW</span>
             </a>

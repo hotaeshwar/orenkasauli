@@ -5,13 +5,14 @@ import Link from "next/link";
 import Image from "next/image";
 import { usePathname, useRouter } from "next/navigation";
 import { motion, AnimatePresence } from "motion/react";
-import { Menu, X } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
+import SlidingLantern from "./SlidingLantern";
 
 // Navigation items
 const NAV_ITEMS = [
   { name: "Home", href: "/" },
-  { name: "About", href: "#about" },
-  { name: "Services", href: "#services" },
+  { name: "About", href: "/#about" },
+  { name: "Services", href: "/#services" },
   { name: "Room & Tariff", href: "/room-and-tariff" },
   { name: "Gallery", href: "/gallery" },
   { name: "Blog", href: "/blog" },
@@ -27,15 +28,75 @@ export default function Navbar() {
   const [hoveredHref, setHoveredHref] = useState(null);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [activeSection, setActiveSection] = useState("/");
+  const [slideDirection, setSlideDirection] = useState(0); // -1 (moving left), 0 (idle), 1 (moving right)
 
-  // Subtle background darkening when scrolling
+  // Determine active item: subpage pathname or homepage active section
+  const activeHref =
+    pathname === "/"
+      ? activeSection.startsWith("#")
+        ? `/${activeSection}`
+        : activeSection
+      : pathname;
+
+  const isLightNav = scrolled || pathname !== "/";
+
+  // Instant background appearance when user begins scrolling
   useEffect(() => {
     const handleScroll = () => {
-      setScrolled(window.scrollY > 20);
+      setScrolled(window.scrollY > 10);
     };
+    handleScroll();
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  // Listen to browser URL hash changes for direct deep linking (e.g. /#about)
+  useEffect(() => {
+    if (typeof window === "undefined" || pathname !== "/") return;
+
+    const onHashChange = () => {
+      const hash = window.location.hash;
+      if (NAV_ITEMS.some((item) => item.href === hash)) {
+        setActiveSection(hash);
+      }
+    };
+
+    window.addEventListener("hashchange", onHashChange);
+    return () => window.removeEventListener("hashchange", onHashChange);
+  }, [pathname]);
+
+  // On homepage, track scroll position to gracefully update active section between #about and #services
+  useEffect(() => {
+    if (pathname !== "/") return;
+
+    const handleScroll = () => {
+      const scrollY = window.scrollY;
+
+      // When near page top, Home is active
+      if (scrollY < 260) {
+        setActiveSection("/");
+        return;
+      }
+
+      const servicesEl = document.getElementById("services");
+      const aboutEl = document.getElementById("about");
+
+      const servicesTop = servicesEl ? servicesEl.offsetTop - 220 : Infinity;
+      const aboutTop = aboutEl ? aboutEl.offsetTop - 220 : Infinity;
+
+      if (scrollY >= servicesTop) {
+        setActiveSection("#services");
+      } else if (scrollY >= aboutTop) {
+        setActiveSection("#about");
+      } else {
+        setActiveSection("/");
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [pathname]);
 
   // Prevent background scrolling when mobile menu is open
   useEffect(() => {
@@ -49,35 +110,50 @@ export default function Navbar() {
     };
   }, [mobileMenuOpen]);
 
-  // Smooth scroll handler for anchor links and routing
+  // Smooth scroll handler for anchor links, routing, and directional lantern swing
   const handleNavClick = (e, href) => {
-    if (href.startsWith("#")) {
+    const currentIndex = NAV_ITEMS.findIndex((item) => item.href === activeHref);
+    const newIndex = NAV_ITEMS.findIndex((item) => item.href === href);
+    if (currentIndex !== -1 && newIndex !== -1 && currentIndex !== newIndex) {
+      setSlideDirection(newIndex > currentIndex ? 1 : -1);
+      setTimeout(() => setSlideDirection(0), 800);
+    }
+
+    setMobileMenuOpen(false);
+
+    if (href.includes("#")) {
+      const hash = href.substring(href.indexOf("#"));
       if (pathname === "/") {
         e.preventDefault();
-        setMobileMenuOpen(false);
-        const target = document.querySelector(href);
+        setActiveSection(hash);
+        const target = document.querySelector(hash);
         if (target) {
           target.scrollIntoView({ behavior: "smooth" });
         }
       } else {
-        setMobileMenuOpen(false);
-        router.push("/" + href);
+        router.push(href);
       }
     } else if (href === "/") {
       if (pathname === "/") {
         e.preventDefault();
-        setMobileMenuOpen(false);
+        setActiveSection("/");
         window.scrollTo({ top: 0, behavior: "smooth" });
       } else {
-        setMobileMenuOpen(false);
+        router.push("/");
       }
-    } else {
-      setMobileMenuOpen(false);
     }
   };
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-transparent transition-all duration-300">
+    <header
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-200 ease-out ${
+        scrolled
+          ? "bg-white/95 backdrop-blur-md shadow-[0_4px_24px_rgba(22,88,35,0.08)] border-b border-[#165823]/10"
+          : pathname !== "/"
+          ? "bg-[#FFF6F6]/85 backdrop-blur-md shadow-sm border-b border-[#165823]/10"
+          : "bg-transparent border-b border-transparent"
+      }`}
+    >
       {/* Main Always-Transparent Navbar */}
       <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-20 md:h-24 xl:h-28">
@@ -86,31 +162,35 @@ export default function Navbar() {
             <Link
               href="/"
               onClick={(e) => handleNavClick(e, "/")}
-              className="relative flex items-center focus:outline-none focus-visible:ring-2 focus-visible:ring-[#a87d24] rounded-full"
+              className="relative flex items-center focus:outline-none focus-visible:ring-2 focus-visible:ring-[#165823] rounded-full"
               aria-label="Oren Kasauli Homepage"
             >
               <div className="relative h-14 sm:h-16 md:h-20 lg:h-[72px] xl:h-[84px] w-auto flex items-center">
                 <Image
-                  src="/images/orenkasauli-logo.png"
+                  src="/images/deep-teal-logo.png"
                   alt="Oren Kasauli Logo"
                   width={278}
-                  height={176}
+                  height={186}
                   priority
                   loading="eager"
+                  style={{ width: "auto" }}
                   className="h-full w-auto object-contain filter drop-shadow-[0_2px_10px_rgba(0,0,0,0.4)] transition-transform duration-300 hover:scale-[1.02]"
                 />
               </div>
             </Link>
           </div>
 
-          {/* Desktop Navigation Links — #f8f9f7 */}
+          {/* Desktop Navigation Links — with Sliding Lantern Indicator */}
           <nav
-            className="hidden lg:flex items-center gap-0.5 lg:gap-1 xl:gap-2"
+            className="hidden lg:flex items-center gap-0.5 lg:gap-1 xl:gap-2 relative"
             onMouseLeave={() => setHoveredHref(null)}
           >
+
+
             {NAV_ITEMS.map((item) => {
-              const isActive = pathname === item.href;
+              const isActive = activeHref === item.href;
               const isHovered = hoveredHref === item.href;
+              const shouldShowLantern = isLightNav && isActive;
 
               return (
                 <Link
@@ -118,17 +198,56 @@ export default function Navbar() {
                   href={item.href}
                   onClick={(e) => handleNavClick(e, item.href)}
                   onMouseEnter={() => setHoveredHref(item.href)}
-                  className={`relative px-2 lg:px-2.5 xl:px-3.5 py-1.5 xl:py-2 text-[11px] lg:text-xs xl:text-[13px] uppercase tracking-[0.06em] lg:tracking-[0.08em] xl:tracking-[0.14em] font-semibold transition-colors duration-200 z-10 whitespace-nowrap drop-shadow-[0_1px_4px_rgba(0,0,0,0.85)] ${
-                    isActive
-                      ? "text-[#a87d24] font-bold"
-                      : "text-[#f8f9f7] hover:text-[#c59737]"
+                  aria-current={isActive ? "page" : undefined}
+                  className={`relative px-2 lg:px-2.5 xl:px-3.5 py-1.5 xl:py-2 text-[11px] lg:text-xs xl:text-[13px] uppercase tracking-[0.06em] lg:tracking-[0.08em] xl:tracking-[0.14em] font-medium transition-colors duration-200 z-10 whitespace-nowrap ${
+                    isLightNav
+                      ? isActive
+                        ? "text-[#165823] font-bold"
+                        : "text-[#165823]/75 hover:text-[#165823]"
+                      : isActive
+                      ? "text-emerald-400 font-bold drop-shadow-[0_1px_8px_rgba(0,0,0,0.9)]"
+                      : "text-white hover:text-emerald-300 drop-shadow-[0_1px_4px_rgba(0,0,0,0.85)]"
                   }`}
+                  style={{ fontFamily: "var(--font-montserrat), sans-serif" }}
                 >
-                  {/* Shared animated pill highlight using Motion for React */}
-                  {isHovered && (
+                  {/* Sliding Lantern Navigation Indicator — Active on Room, Gallery, Blog, Contact & upon Scroll */}
+                  <AnimatePresence>
+                    {shouldShowLantern && (
+                      <motion.div
+                        key="active-lantern-indicator"
+                        initial={{ opacity: 0, y: -12, scale: 0.85 }}
+                        animate={{ opacity: 1, y: 0, scale: 1 }}
+                        exit={{ opacity: 0, y: -12, scale: 0.85 }}
+                        transition={{ duration: 0.3, ease: "easeOut" }}
+                        className="absolute -top-[34px] lg:-top-[36px] xl:-top-[38px] left-0 right-0 flex justify-center pointer-events-none z-30"
+                      >
+                        <motion.div
+                          layoutId="desktop-sliding-lantern"
+                          transition={{
+                            type: "spring",
+                            stiffness: 380,
+                            damping: 30,
+                            mass: 0.8,
+                          }}
+                        >
+                          <SlidingLantern
+                            slideDirection={slideDirection}
+                            isScrolled={isLightNav}
+                          />
+                        </motion.div>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+
+                  {/* Shared animated pill highlight on hover */}
+                  {isHovered && !isActive && (
                     <motion.span
                       layoutId="navbar-pill"
-                      className="absolute inset-0 rounded-full bg-white/15 backdrop-blur-md border border-white/20 shadow-[0_2px_12px_rgba(0,0,0,0.35)] -z-10"
+                      className={`absolute inset-0 rounded-full -z-10 ${
+                        isLightNav
+                          ? "bg-[#165823]/8 border border-[#165823]/15 shadow-sm"
+                          : "bg-white/15 backdrop-blur-md border border-white/20 shadow-[0_2px_12px_rgba(0,0,0,0.35)]"
+                      }`}
                       transition={{
                         type: "spring",
                         stiffness: 450,
@@ -141,44 +260,72 @@ export default function Navbar() {
               );
             })}
 
-            {/* BOOK NOW CTA Button in Desktop Navbar (Pure Tailwind CSS, Rounded-Full Small) */}
+            {/* BOOK NOW CTA Button in Desktop Navbar with Forest Green & Hover Animation */}
             <a
               id="navbar-book-now-button"
               href={BOOKING_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="relative inline-flex items-center justify-center rounded-full font-semibold uppercase whitespace-nowrap text-white bg-gradient-to-r from-[#c59737] via-[#a87d24] to-[#886216] border border-[#f3d999]/50 shadow-[0_4px_16px_rgba(168,125,36,0.38)] hover:from-[#d4a949] hover:via-[#ba8c2e] hover:to-[#9e7420] hover:border-[#ffe8a8] hover:shadow-[0_6px_22px_rgba(168,125,36,0.65)] hover:-translate-y-0.5 hover:scale-[1.02] active:translate-y-0 active:scale-95 transition-all duration-300 ml-1.5 lg:ml-2.5 xl:ml-5 px-3 lg:px-3.5 xl:px-5 py-1.5 xl:py-2 text-[10px] lg:text-[11px] xl:text-xs tracking-[0.1em] xl:tracking-[0.16em]"
+              className="group relative inline-flex items-center justify-center rounded-full font-semibold uppercase whitespace-nowrap text-[#FFF6F6] bg-[#165823] hover:bg-[#12481c] border border-[#165823] shadow-[0_4px_16px_rgba(22,88,35,0.35)] hover:shadow-[0_8px_24px_rgba(22,88,35,0.55)] hover:-translate-y-0.5 hover:scale-[1.03] active:translate-y-0 active:scale-95 transition-all duration-300 ml-1.5 lg:ml-2.5 xl:ml-5 px-3 lg:px-4 xl:px-5 py-1.5 xl:py-2 text-[10px] lg:text-[11px] xl:text-xs tracking-[0.1em] xl:tracking-[0.16em] overflow-hidden"
+              style={{ fontFamily: "var(--font-montserrat), sans-serif" }}
               aria-label="Book Now (opens reservation system)"
             >
-              <span>BOOK NOW</span>
+              {/* Shimmer sweep effect */}
+              <span
+                className="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-white/40 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-in-out pointer-events-none"
+                aria-hidden="true"
+              />
+              <span className="relative z-10">BOOK NOW</span>
             </a>
           </nav>
 
-          {/* Mobile / Tablet Controls (Phones, iPad Mini 768px, iPad Air 820px, iPad Pro 11" 834px portrait) */}
-          <div className="flex items-center gap-2.5 sm:gap-3.5 lg:hidden">
+          {/* Mobile / Tablet Controls (Phones, iPhone Air/Pro, iPad Mini/Air/Pro) */}
+          <div className="flex items-center gap-2 sm:gap-3 lg:hidden">
             {/* Direct Book Now Button on Mobile/Tablet */}
             <a
               href={BOOKING_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="relative inline-flex items-center justify-center rounded-full font-semibold uppercase whitespace-nowrap text-white bg-gradient-to-r from-[#c59737] via-[#a87d24] to-[#886216] border border-[#f3d999]/50 shadow-[0_3px_12px_rgba(168,125,36,0.35)] hover:from-[#d4a949] hover:via-[#ba8c2e] hover:to-[#9e7420] hover:border-[#ffe8a8] hover:shadow-[0_4px_18px_rgba(168,125,36,0.55)] active:scale-95 transition-all duration-300 px-3 sm:px-4 md:px-5 py-1.5 md:py-2 text-[10px] sm:text-[11px] md:text-xs tracking-[0.12em] sm:tracking-[0.14em] md:tracking-[0.16em]"
+              className="group relative inline-flex items-center justify-center rounded-full font-semibold uppercase whitespace-nowrap text-[#FFF6F6] bg-[#165823] hover:bg-[#12481c] border border-[#165823] shadow-[0_3px_12px_rgba(22,88,35,0.35)] hover:shadow-[0_6px_20px_rgba(22,88,35,0.55)] active:scale-95 transition-all duration-300 px-2.5 sm:px-4 py-1.5 md:py-2 text-[10px] sm:text-[11px] md:text-xs tracking-[0.1em] sm:tracking-[0.14em] md:tracking-[0.16em] overflow-hidden"
+              style={{ fontFamily: "var(--font-montserrat), sans-serif" }}
               aria-label="Book Now"
             >
-              <span>BOOK NOW</span>
+              <span
+                className="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-white/40 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-in-out pointer-events-none"
+                aria-hidden="true"
+              />
+              <span className="relative z-10">BOOK NOW</span>
             </a>
 
-            {/* Hamburger Toggle Button */}
+            {/* Pure Tailwind CSS Animated Hamburger Button */}
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="p-2 sm:p-2.5 rounded-full text-[#f8f9f7] hover:text-[#a87d24] bg-black/40 hover:bg-black/60 border border-white/20 backdrop-blur-md focus:outline-none transition-colors"
-              aria-label={mobileMenuOpen ? "Close menu" : "Open menu"}
+              className={`relative w-9 h-9 sm:w-10 sm:h-10 md:w-11 md:h-11 rounded-full border flex flex-col items-center justify-center gap-1 sm:gap-1.5 transition-all duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#165823] active:scale-90 ${
+                isLightNav
+                  ? "bg-white/90 hover:bg-white text-[#165823] border-[#165823]/20 shadow-sm"
+                  : "bg-black/45 hover:bg-black/65 text-white border-white/25 backdrop-blur-md"
+              }`}
+              aria-label={mobileMenuOpen ? "Close navigation menu" : "Open navigation menu"}
               aria-expanded={mobileMenuOpen}
             >
-              {mobileMenuOpen ? (
-                <X className="w-5 h-5 sm:w-6 sm:h-6 text-[#f8f9f7]" />
-              ) : (
-                <Menu className="w-5 h-5 sm:w-6 sm:h-6 text-[#f8f9f7]" />
-              )}
+              {/* Top Bar */}
+              <span
+                className={`w-4 sm:w-5 h-[2px] rounded-full bg-current transition-all duration-300 ease-out origin-center ${
+                  mobileMenuOpen ? "translate-y-[6px] sm:translate-y-[7.5px] rotate-45" : ""
+                }`}
+              />
+              {/* Middle Bar */}
+              <span
+                className={`w-4 sm:w-5 h-[2px] rounded-full bg-current transition-all duration-300 ease-out ${
+                  mobileMenuOpen ? "opacity-0 scale-x-0" : "opacity-100 scale-x-100"
+                }`}
+              />
+              {/* Bottom Bar */}
+              <span
+                className={`w-4 sm:w-5 h-[2px] rounded-full bg-current transition-all duration-300 ease-out origin-center ${
+                  mobileMenuOpen ? "-translate-y-[6px] sm:-translate-y-[7.5px] -rotate-45" : ""
+                }`}
+              />
             </button>
           </div>
         </div>
@@ -195,33 +342,66 @@ export default function Navbar() {
             className="lg:hidden fixed inset-x-0 top-20 md:top-24 bottom-0 bg-[#0c0a09]/95 backdrop-blur-2xl border-t border-white/10 z-40 overflow-y-auto px-5 sm:px-8 py-6 sm:py-8 flex flex-col justify-between shadow-2xl"
           >
             <div className="flex flex-col space-y-4 max-w-md w-full mx-auto">
-              <span className="text-[11px] uppercase tracking-[0.25em] text-[#a87d24] font-bold">
+              <span
+                className="text-[11px] uppercase tracking-[0.25em] text-emerald-400 font-medium"
+                style={{ fontFamily: "var(--font-montserrat), sans-serif" }}
+              >
                 Menu
               </span>
-              <nav className="flex flex-col space-y-2">
+              <nav className="flex flex-col space-y-1.5 sm:space-y-2">
                 {NAV_ITEMS.map((item) => {
-                  const isActive = pathname === item.href;
+                  const isActive = activeHref === item.href;
                   return (
                     <Link
                       key={item.href}
                       href={item.href}
                       onClick={(e) => handleNavClick(e, item.href)}
-                      className={`flex items-center justify-between py-3 px-4 rounded-full text-sm sm:text-base uppercase tracking-[0.16em] font-medium transition-colors ${
+                      aria-current={isActive ? "page" : undefined}
+                      className={`relative flex items-center justify-between py-2.5 sm:py-3 px-4 rounded-full text-xs sm:text-sm uppercase tracking-[0.16em] font-medium transition-colors ${
                         isActive
-                          ? "bg-white/15 text-[#a87d24] font-bold border border-white/10"
-                          : "text-[#f8f9f7] hover:bg-white/10 hover:text-[#a87d24]"
+                          ? "bg-[#165823]/20 text-emerald-400 font-bold border border-emerald-500/40 shadow-[0_2px_12px_rgba(22,88,35,0.3)]"
+                          : "text-[#f8f9f7] hover:bg-white/10 hover:text-emerald-300"
                       }`}
+                      style={{ fontFamily: "var(--font-montserrat), sans-serif" }}
                     >
                       <span>{item.name}</span>
+                      {isActive && (
+                        <motion.div
+                          layoutId="mobile-sliding-lantern"
+                          transition={{
+                            type: "spring",
+                            stiffness: 350,
+                            damping: 28,
+                            mass: 0.85,
+                          }}
+                          className="relative flex items-center pr-1 pointer-events-none"
+                        >
+                          <SlidingLantern isMobile />
+                        </motion.div>
+                      )}
                     </Link>
                   );
                 })}
               </nav>
+
+              {/* Direct Full-Width Mobile Booking CTA inside drawer */}
+              <div className="pt-2">
+                <a
+                  href={BOOKING_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-full inline-flex items-center justify-center gap-2 py-3.5 px-6 rounded-full font-semibold uppercase text-xs tracking-[0.16em] text-[#FFF6F6] bg-[#165823] hover:bg-[#12481c] border border-emerald-500/40 shadow-[0_4px_16px_rgba(22,88,35,0.4)] active:scale-95 transition-all"
+                  style={{ fontFamily: "var(--font-montserrat), sans-serif" }}
+                >
+                  <span>BOOK YOUR STAY</span>
+                  <ArrowUpRight className="w-4 h-4 text-[#FFF6F6]" />
+                </a>
+              </div>
             </div>
 
             {/* Mobile Contact Reference */}
-            <div className="pt-6 sm:pt-8 border-t border-white/10 flex flex-col space-y-2 text-xs text-[#f8f9f7]/70 max-w-md w-full mx-auto">
-              <p className="hidden md:block font-semibold text-[#f8f9f7]">Oren Kasauli, Himachal Pradesh</p>
+            <div className="pt-6 sm:pt-8 border-t border-white/10 flex flex-col space-y-1.5 text-xs text-[#f8f9f7]/70 max-w-md w-full mx-auto">
+              <p className="font-semibold text-[#f8f9f7]">Oren Kasauli, Himachal Pradesh</p>
               <p>Direct: +91 9816155576 | +91 9816255576</p>
               <p>Email: booking@oren.co.in</p>
             </div>

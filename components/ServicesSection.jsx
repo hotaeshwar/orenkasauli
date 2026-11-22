@@ -3,244 +3,292 @@
 import { useState, useEffect } from "react";
 import Image from "next/image";
 import { motion, useReducedMotion } from "motion/react";
+import {
+  Bed,
+  CalendarCheck,
+  Mountain,
+  Utensils,
+  Car,
+  Trees,
+  Waves,
+  ShieldCheck,
+  ArrowUpRight,
+} from "lucide-react";
 
-const SERVICES_DATA = [
+const BOOKING_URL =
+  "https://letsbook.me/booking/orenkasauli?checkin=2026-10-26&checkout=2026-10-27&adults=2&children=0";
+
+const TYPEWRITER_TEXT = "MORE THAN JUST A STAY";
+
+// 6 Signature Hotel Services & Experiences for Oren Kasauli
+const HOTEL_SERVICES = [
   {
-    id: "luxury-stay",
-    title: "Luxury Stay",
-    subtitle: null,
-    icon: "/images/services/luxury-stay.png",
-    alt: "Luxury Stay at Oren Kasauli",
+    id: "comfortable-stay",
+    title: "Comfortable Mountain Stay",
+    subtitle: "Well-appointed rooms and suites designed for a relaxed and comfortable stay.",
+    iconSrc: "/images/services/luxury-stay.png",
+    IconComponent: Bed,
   },
   {
     id: "easy-booking",
-    title: "Easy Booking",
-    subtitle: null,
-    icon: "/images/services/booking.png",
-    alt: "Easy Online Booking",
+    title: "Easy Online Booking",
+    subtitle: "Plan your Kasauli getaway with a convenient booking experience.",
+    iconSrc: "/images/services/booking.png",
+    IconComponent: CalendarCheck,
   },
   {
     id: "nature-trails",
     title: "Private Nature Trails",
-    subtitle: null,
-    icon: "/images/services/nature-trails.png",
-    alt: "Private Nature Trails in Shivalik Hills",
+    subtitle: "Discover the natural surroundings and enjoy peaceful moments amidst the hills.",
+    iconSrc: "/images/services/nature-trails.png",
+    IconComponent: Mountain,
   },
   {
-    id: "rooftop-dining",
-    title: "Open to Sky restaurant",
-    subtitle: "(Pure Vegetarian)",
-    icon: "/images/services/rooftop-dining.png",
-    alt: "Open to Sky Pure Vegetarian Restaurant",
+    id: "vegetarian-dining",
+    title: "Pure Vegetarian Dining",
+    subtitle: "Enjoy authentic vegetarian cuisine at our open-to-sky restaurant.",
+    iconSrc: "/images/services/rooftop-dining.png",
+    IconComponent: Utensils,
   },
   {
     id: "parking-facility",
     title: "Parking Facility",
-    subtitle: null,
-    icon: "/images/services/parking.png",
-    alt: "On-site Parking Facility",
+    subtitle: "Convenient on-site parking for a hassle-free arrival.",
+    iconSrc: "/images/services/parking.png",
+    IconComponent: Car,
   },
   {
-    id: "natural-environment",
-    title: "Natural Environment",
-    subtitle: null,
-    icon: "/images/services/ecosystem.png",
-    alt: "Serene Natural Himalayan Environment",
+    id: "natural-surroundings",
+    title: "Beautiful Natural Surroundings",
+    subtitle: "Unwind in the calm atmosphere of Kasauli, surrounded by scenic mountain views.",
+    iconSrc: "/images/services/ecosystem.png",
+    IconComponent: Trees,
   },
 ];
 
 export default function ServicesSection() {
   const shouldReduceMotion = useReducedMotion();
-  const [activeIndex, setActiveIndex] = useState(0);
-  const [isUserInteracting, setIsUserInteracting] = useState(false);
 
-  // Automatically cycle through service cards (one zooms in while others remain zoomed out)
+  // Looping Typewriter Effect for "EXPLORE OUR HOTEL SERVICES" (types, pauses, erases, repeats)
+  const [charIndex, setCharIndex] = useState(0);
+  const [isDeleting, setIsDeleting] = useState(false);
+
   useEffect(() => {
-    if (shouldReduceMotion || isUserInteracting) return;
+    if (shouldReduceMotion) return;
 
-    const interval = setInterval(() => {
-      setActiveIndex((prev) => (prev + 1) % SERVICES_DATA.length);
-    }, 2400);
+    let timer;
+    if (!isDeleting) {
+      if (charIndex < TYPEWRITER_TEXT.length) {
+        timer = setTimeout(() => {
+          setCharIndex((prev) => prev + 1);
+        }, 110);
+      } else {
+        // Hold full phrase for 2.6 seconds so guests can comfortably read it
+        timer = setTimeout(() => {
+          setIsDeleting(true);
+        }, 2600);
+      }
+    } else {
+      if (charIndex > 0) {
+        timer = setTimeout(() => {
+          setCharIndex((prev) => prev - 1);
+        }, 55);
+      } else {
+        // Brief pause before typing again
+        timer = setTimeout(() => {
+          setIsDeleting(false);
+        }, 500);
+      }
+    }
 
-    return () => clearInterval(interval);
-  }, [shouldReduceMotion, isUserInteracting]);
+    return () => clearTimeout(timer);
+  }, [charIndex, isDeleting, shouldReduceMotion]);
+
+  const currentHeadingText = shouldReduceMotion
+    ? TYPEWRITER_TEXT
+    : TYPEWRITER_TEXT.slice(0, charIndex);
+
+  const ghostRemainder = shouldReduceMotion
+    ? ""
+    : TYPEWRITER_TEXT.slice(charIndex);
 
   return (
     <section
       id="services"
-      className="relative w-full bg-[#ffffff] text-neutral-900 py-16 sm:py-20 md:py-24 lg:py-28 xl:py-32 px-4 sm:px-6 lg:px-8 xl:px-12 overflow-hidden z-10 border-t border-neutral-100"
+      suppressHydrationWarning
+      className="relative w-full bg-[#FFF6F6] text-[#165823] py-16 sm:py-20 md:py-24 lg:py-28 xl:py-32 px-4 sm:px-6 lg:px-8 xl:px-12 overflow-hidden z-10 border-t border-[#e2d8c7]"
     >
-      {/* Decorative Botanical Leaf Watermark on the Right (Referenced from Design) */}
-      <div
-        className="absolute right-0 top-1/2 -translate-y-1/2 w-64 sm:w-80 md:w-96 lg:w-[480px] h-full pointer-events-none opacity-[0.06] select-none overflow-hidden"
-        aria-hidden="true"
-      >
-        <svg
-          viewBox="0 0 400 600"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-          className="w-full h-full object-contain object-right"
-        >
-          <path
-            d="M380 50C250 120 180 280 200 450C210 540 280 580 350 600"
-            stroke="#a87d24"
-            strokeWidth="3"
-            strokeDasharray="6 6"
-          />
-          <path
-            d="M200 450C150 400 120 330 140 250C160 170 230 110 320 80"
-            stroke="#a87d24"
-            strokeWidth="2"
-          />
-          <circle cx="200" cy="450" r="12" fill="#a87d24" fillOpacity="0.3" />
-          <path
-            d="M280 220C210 240 180 300 190 380"
-            stroke="#a87d24"
-            strokeWidth="2"
-          />
-          <path
-            d="M340 150C280 170 240 230 250 310"
-            stroke="#a87d24"
-            strokeWidth="2"
-          />
-        </svg>
+      {/* Ambient Resort Background with White Light Overlay */}
+      <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none" aria-hidden="true">
+        <Image
+          src="/images/gallery/galler12.jpg"
+          alt=""
+          fill
+          sizes="100vw"
+          className="object-cover object-center scale-105"
+        />
+        <div className="absolute inset-0 bg-[#FFF6F6]/82 pointer-events-none" />
+        <div className="absolute inset-0 bg-gradient-to-b from-white/50 via-transparent to-white/50 pointer-events-none" />
       </div>
 
-      <div className="max-w-7xl mx-auto relative z-10">
-        {/* Section Header: Centered Eyebrow & Grand Serif Heading */}
-        <div className="flex flex-col items-center text-center mb-12 sm:mb-16 md:mb-20">
-          {/* Golden Circular Logo Emblem (oren1.png) */}
-          <motion.div
-            initial={shouldReduceMotion ? false : { opacity: 0, y: 12, scale: 0.96 }}
-            whileInView={{ opacity: 1, y: 0, scale: 1 }}
-            viewport={{ once: true, amount: 0.15 }}
-            transition={{ duration: 0.6, ease: "easeOut" }}
-            className="relative w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 lg:w-20 lg:h-20 mb-3 sm:mb-4 select-none drop-shadow-sm flex items-center justify-center"
-          >
-            <Image
-              src="/images/oren1.png"
-              alt="Oren Kasauli Logo Emblem"
-              width={81}
-              height={79}
-              priority={false}
-              className="w-full h-full object-contain"
-            />
-          </motion.div>
+      {/* Decorative Subtle Radial Glow */}
+      <div
+        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[500px] bg-[radial-gradient(circle_at_50%_50%,rgba(197,167,123,0.14)_0%,transparent_70%)] pointer-events-none blur-2xl z-0"
+        aria-hidden="true"
+      />
 
-          {/* Eyebrow Label: Appears first when scrolling into view (same as About Us) */}
+      <div className="max-w-7xl mx-auto relative z-10">
+        {/* ======================================================== */}
+        {/* SECTION HEADER                                           */}
+        {/* ======================================================== */}
+        <div className="flex flex-col items-center text-center mb-8 sm:mb-12 md:mb-14">
+          {/* Eyebrow Label: OUR SERVICES */}
           <motion.div
             initial={shouldReduceMotion ? false : { opacity: 0, y: 14 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.15 }}
             transition={{ duration: 0.5, delay: shouldReduceMotion ? 0 : 0.15, ease: "easeOut" }}
-            className="flex items-center justify-center gap-3 sm:gap-4 md:gap-5 mb-3 sm:mb-4 md:mb-5"
+            className="flex items-center justify-center gap-3 sm:gap-4 mb-3 sm:mb-4"
           >
             <span
-              className="w-10 sm:w-14 md:w-16 lg:w-20 xl:w-24 h-[2.5px] sm:h-[3px] md:h-[3.5px] bg-[#a87d24] rounded-full flex-shrink-0"
+              className="w-10 sm:w-14 h-[2px] bg-[#C5A77B] rounded-full flex-shrink-0"
               aria-hidden="true"
             />
-            <span className="text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl font-bold uppercase tracking-[0.2em] sm:tracking-[0.24em] text-[#a87d24] font-sans">
-              OUR SERVICES
+            <span
+              className="text-xs sm:text-sm font-bold uppercase tracking-[0.26em] text-[#C5A77B]"
+              style={{ fontFamily: "var(--font-montserrat), sans-serif" }}
+            >
+              WHAT MAKES YOUR STAY SPECIAL
             </span>
             <span
-              className="w-10 sm:w-14 md:w-16 lg:w-20 xl:w-24 h-[2.5px] sm:h-[3px] md:h-[3.5px] bg-[#a87d24] rounded-full flex-shrink-0"
+              className="w-10 sm:w-14 h-[2px] bg-[#C5A77B] rounded-full flex-shrink-0"
               aria-hidden="true"
             />
           </motion.div>
 
-          {/* Main Title: EXPLORE OUR HOTEL SERVICES — Appears after a moment */}
+          {/* Main Title: More Than Just a Stay */}
           <motion.h2
             initial={shouldReduceMotion ? false : { opacity: 0, y: 18 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.15 }}
             transition={{
               duration: 0.6,
-              delay: shouldReduceMotion ? 0 : 0.7,
+              delay: shouldReduceMotion ? 0 : 0.3,
               ease: "easeOut",
             }}
-            className="font-serif text-neutral-900 text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-normal uppercase tracking-wider leading-tight max-w-4xl"
+            className="font-serif text-[#165823] text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-normal tracking-wide leading-tight max-w-4xl select-none mb-4"
             style={{ fontFamily: "var(--font-cormorant), Georgia, serif" }}
           >
-            EXPLORE OUR HOTEL SERVICES
+            {/* Screen reader full text */}
+            <span className="sr-only">{TYPEWRITER_TEXT}</span>
+
+            {/* Zero-Layout-Shift Typewriter Text */}
+            <span aria-hidden="true" className="inline relative">
+              <span>{currentHeadingText}</span>
+              {/* Zero-width cursor container guarantees 0px horizontal layout shift */}
+              {!shouldReduceMotion && (
+                <span className="inline-block w-0 relative align-middle" aria-hidden="true">
+                  <span className="absolute left-0.5 sm:left-1 top-1/2 -translate-y-1/2 w-[2px] sm:w-[3px] h-[0.8em] bg-[#C5A77B] rounded-full animate-pulse" />
+                </span>
+              )}
+              {/* Invisible ghost remainder locks width, height, and line wraps */}
+              {ghostRemainder && (
+                <span className="opacity-0 select-none pointer-events-none" aria-hidden="true">
+                  {ghostRemainder}
+                </span>
+              )}
+            </span>
           </motion.h2>
+
+          {/* Subtitle Description - Reduced Size & Unified Weight 400 */}
+          <motion.p
+            initial={shouldReduceMotion ? false : { opacity: 0, y: 14 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.15 }}
+            transition={{
+              duration: 0.6,
+              delay: shouldReduceMotion ? 0 : 0.45,
+              ease: "easeOut",
+            }}
+            className="font-sans text-xs sm:text-sm md:text-[15px] text-[#165823] max-w-2xl mx-auto leading-relaxed font-normal tracking-normal"
+            style={{ fontFamily: "var(--font-montserrat), sans-serif", fontWeight: 400 }}
+          >
+            At OREN Kasauli, the experience goes beyond your room. Enjoy thoughtful amenities, relaxing spaces and experiences that make your time in the hills even more rewarding.
+          </motion.p>
         </div>
 
-        {/* 6 Services Grid: Media Responsive (1 col on mobile, 2 col on tablet, 3 col on desktop) */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 lg:gap-10 xl:gap-12">
-          {SERVICES_DATA.map((service, index) => {
-            const isActive = activeIndex === index;
-
-            return (
-              <motion.div
-                key={service.id}
-                initial={shouldReduceMotion ? false : { opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, amount: 0.15 }}
-                transition={{
-                  duration: 0.55,
-                  delay: shouldReduceMotion ? 0 : 0.85 + index * 0.08,
-                  ease: "easeOut",
-                }}
-                onMouseEnter={() => {
-                  setIsUserInteracting(true);
-                  setActiveIndex(index);
-                }}
-                onMouseLeave={() => setIsUserInteracting(false)}
-                onClick={() => {
-                  setActiveIndex(index);
-                  setIsUserInteracting(true);
-                }}
-                className={`group relative flex items-center gap-4 sm:gap-5 p-4 sm:p-5 rounded-2xl cursor-pointer select-none transition-all duration-500 ease-out ${
-                  isActive
-                    ? "scale-[1.03] sm:scale-[1.05] md:scale-[1.06] z-20 bg-gradient-to-br from-white via-[#fcfaf5] to-[#fbf6ec] border border-[#a87d24] shadow-[0_14px_40px_rgba(168,125,36,0.18)] ring-1 ring-[#a87d24]/30 -translate-y-1"
-                    : "scale-100 z-10 bg-white/95 border border-neutral-100 shadow-[0_2px_12px_rgba(0,0,0,0.02)] hover:border-neutral-200"
-                }`}
-              >
-                {/* Circular Icon Badge: Zooms in when active, remains normal when inactive */}
-                <div
-                  className={`relative w-16 h-16 md:w-20 md:h-20 rounded-full flex items-center justify-center flex-shrink-0 transition-all duration-500 ease-out ${
-                    isActive
-                      ? "scale-110 border-2 border-[#a87d24] bg-gradient-to-br from-[#fbf8f2] to-[#f5edd9] shadow-[0_6px_22px_rgba(168,125,36,0.25)]"
-                      : "scale-100 border border-neutral-200/80 bg-neutral-50/70 shadow-[0_2px_8px_rgba(0,0,0,0.04)]"
-                  }`}
-                >
-                  <div className="relative w-full h-full p-3.5 sm:p-4 flex items-center justify-center">
-                    <Image
-                      src={service.icon}
-                      alt={service.alt}
-                      width={64}
-                      height={64}
-                      className={`w-full h-full object-contain filter drop-shadow-[0_1px_2px_rgba(0,0,0,0.1)] transition-transform duration-500 ${
-                        isActive ? "scale-110" : "scale-100"
-                      }`}
-                    />
-                  </div>
-                </div>
-
-                {/* Service Label Text */}
-                <div className="flex flex-col justify-center">
-                  <h3
-                    className={`font-sans text-base sm:text-lg md:text-xl tracking-wide transition-colors duration-300 leading-snug ${
-                      isActive
-                        ? "text-[#a87d24] font-semibold"
-                        : "text-neutral-800 font-medium"
-                    }`}
+        {/* ======================================================== */}
+        {/* 3D ROTATING CAROUSEL RING (#fff Background Cards)        */}
+        {/* ======================================================== */}
+        <div className="carousel-stage-container">
+          <div className="carousel-stage">
+            <div className="carousel-ring">
+              {HOTEL_SERVICES.map((item, index) => {
+                return (
+                  <div
+                    key={item.id}
+                    style={{
+                      "--i": index,
+                    }}
+                    className="carousel-panel p-5 sm:p-6 flex flex-col justify-center items-center text-center gap-3 sm:gap-4 bg-white border border-[#e5dccf] rounded-[18px] shadow-[0_12px_32px_rgba(38,40,36,0.08),_0_2px_8px_rgba(197,167,123,0.12)] hover:border-[#C5A77B] transition-all duration-300 group"
                   >
-                    {service.title}
-                  </h3>
-                  {service.subtitle && (
-                    <span
-                      className={`text-xs sm:text-sm font-normal transition-colors duration-300 mt-0.5 ${
-                        isActive ? "text-[#8a681c]" : "text-neutral-500"
-                      }`}
-                    >
-                      {service.subtitle}
-                    </span>
-                  )}
-                </div>
-              </motion.div>
-            );
-          })}
+                    {/* Service Icon with Gentle Hover Zoom */}
+                    <div className="w-16 h-16 sm:w-20 sm:h-20 md:w-22 md:h-22 rounded-full bg-[#FFF6F6] border border-[#e2d8c7] flex items-center justify-center p-3 sm:p-3.5 md:p-4 shadow-sm group-hover:scale-105 group-hover:border-[#C5A77B]/50 transition-transform duration-300 flex-shrink-0">
+                      {item.iconSrc ? (
+                        <Image
+                          src={item.iconSrc}
+                          alt={item.title}
+                          width={60}
+                          height={60}
+                          className="w-full h-full object-contain filter drop-shadow-[0_1px_2px_rgba(0,0,0,0.06)]"
+                        />
+                      ) : (
+                        <item.IconComponent className="w-8 h-8 sm:w-9 sm:h-9 md:w-10 md:h-10 text-[#C5A77B]" />
+                      )}
+                    </div>
+
+                    {/* Service Title & Subtitle */}
+                    <div className="w-full flex flex-col items-center">
+                      <h3
+                        className="text-base sm:text-lg md:text-[22px] font-bold text-[#165823] tracking-wide leading-snug line-clamp-2 group-hover:text-[#C5A77B] transition-colors duration-300"
+                        style={{ fontFamily: "var(--font-montserrat), sans-serif" }}
+                      >
+                        {item.title}
+                      </h3>
+                      {item.subtitle && (
+                        <p
+                          className="text-xs sm:text-sm text-[#C5A77B] mt-1.5 line-clamp-1 font-medium tracking-wide"
+                          style={{ fontFamily: "var(--font-montserrat), sans-serif" }}
+                        >
+                          {item.subtitle}
+                        </p>
+                      )}
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        </div>
+
+        {/* ======================================================== */}
+        {/* CENTERED EXPLORE OUR AMENITIES CTA BUTTON                */}
+        {/* ======================================================== */}
+        <div className="flex justify-center mt-6 sm:mt-10">
+          <a
+            href="#rooms"
+            className="group/btn relative inline-flex items-center justify-center gap-2 px-8 sm:px-10 py-3 sm:py-3.5 rounded-full font-semibold uppercase text-[#FFF6F6] bg-[#165823] hover:bg-[#12481c] border border-[#165823] shadow-[0_4px_16px_rgba(22,88,35,0.35)] hover:shadow-[0_8px_24px_rgba(22,88,35,0.55)] hover:-translate-y-0.5 active:translate-y-0 text-xs sm:text-[13px] tracking-[0.14em] transition-all duration-300 cursor-pointer overflow-hidden"
+            style={{ fontFamily: "var(--font-montserrat), sans-serif" }}
+            aria-label="Explore Our Amenities"
+          >
+            {/* Shimmer sweep effect */}
+            <span
+              className="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-white/40 to-transparent -translate-x-full group-hover/btn:translate-x-full transition-transform duration-1000 ease-in-out pointer-events-none"
+              aria-hidden="true"
+            />
+            <span className="relative z-10 whitespace-nowrap">EXPLORE OUR AMENITIES</span>
+            <ArrowUpRight className="relative z-10 w-4 h-4 text-[#FFF6F6] transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+          </a>
         </div>
       </div>
     </section>

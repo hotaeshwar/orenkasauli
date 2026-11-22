@@ -1,0 +1,233 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 160" width="100" height="160" fill="none">
+  <defs>
+    <!-- Outer Ambient Light Aura -->
+    <radialGradient id="lantern-aura" cx="50%" cy="52%" r="48%" fx="50%" fy="52%">
+      <stop offset="0%" stop-color="#FFE4A0" stop-opacity="0.85"/>
+      <stop offset="35%" stop-color="#FFA826" stop-opacity="0.45"/>
+      <stop offset="70%" stop-color="#FF7A00" stop-opacity="0.15"/>
+      <stop offset="100%" stop-color="#FF5500" stop-opacity="0"/>
+    </radialGradient>
+
+    <!-- Inner Core Flame Glow -->
+    <radialGradient id="inner-core-glow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#FFFFFF" stop-opacity="1"/>
+      <stop offset="25%" stop-color="#FFF4B8" stop-opacity="0.95"/>
+      <stop offset="55%" stop-color="#FFAA2B" stop-opacity="0.8"/>
+      <stop offset="85%" stop-color="#E86800" stop-opacity="0.6"/>
+      <stop offset="100%" stop-color="#B84400" stop-opacity="0"/>
+    </radialGradient>
+
+    <!-- Amber Glass Chamber Background -->
+    <linearGradient id="amber-glass" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#FFC55A"/>
+      <stop offset="50%" stop-color="#FF9E1B"/>
+      <stop offset="100%" stop-color="#D95F02"/>
+    </linearGradient>
+
+    <!-- Side Facet Shadowed Glass -->
+    <linearGradient id="amber-glass-side" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#C24E00" stop-opacity="0.6"/>
+      <stop offset="100%" stop-color="#FF9E1B" stop-opacity="0.2"/>
+    </linearGradient>
+
+    <!-- Antique Gold Metallic (Main Frame) -->
+    <linearGradient id="antique-gold" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFF2CE"/>
+      <stop offset="25%" stop-color="#E1BF73"/>
+      <stop offset="50%" stop-color="#C5A77B"/>
+      <stop offset="75%" stop-color="#8E6B2C"/>
+      <stop offset="100%" stop-color="#553F17"/>
+    </linearGradient>
+
+    <!-- Antique Gold Horizontal (Caps, Rims & Collars) -->
+    <linearGradient id="gold-horizontal" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#5C4217"/>
+      <stop offset="20%" stop-color="#C5A77B"/>
+      <stop offset="50%" stop-color="#FFF0C6"/>
+      <stop offset="80%" stop-color="#C5A77B"/>
+      <stop offset="100%" stop-color="#4E3713"/>
+    </linearGradient>
+
+    <!-- Antique Gold Vertical (Struts & Ribs) -->
+    <linearGradient id="gold-vertical" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#FFF0C6"/>
+      <stop offset="30%" stop-color="#D4B26F"/>
+      <stop offset="70%" stop-color="#A5813A"/>
+      <stop offset="100%" stop-color="#553F17"/>
+    </linearGradient>
+
+    <!-- Glass Specular Highlight -->
+    <linearGradient id="glass-reflection" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.65"/>
+      <stop offset="40%" stop-color="#FFFFFF" stop-opacity="0.15"/>
+      <stop offset="100%" stop-color="#FFFFFF" stop-opacity="0"/>
+    </linearGradient>
+
+    <!-- Tassel Silk Gradient -->
+    <linearGradient id="tassel-silk" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#6E501C"/>
+      <stop offset="30%" stop-color="#C5A77B"/>
+      <stop offset="50%" stop-color="#FFEBB3"/>
+      <stop offset="70%" stop-color="#C5A77B"/>
+      <stop offset="100%" stop-color="#553E17"/>
+    </linearGradient>
+
+    <!-- Drop Shadow Filter -->
+    <filter id="lantern-shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="3" stdDeviation="3.5" flood-color="#000000" flood-opacity="0.45"/>
+    </filter>
+
+    <!-- Glow Filter -->
+    <filter id="amber-glow" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feComposite in="SourceGraphic" in2="blur" operator="over"/>
+    </filter>
+  </defs>
+
+  <!-- Ambient Golden-Amber Halo (Light Emission) -->
+  <ellipse cx="50" cy="80" rx="44" ry="46" fill="url(#lantern-aura)" />
+
+  <g filter="url(#lantern-shadow)">
+    <!-- ======================================================== -->
+    <!-- 1. TOP HANGING CHAIN & RING                             -->
+    <!-- ======================================================== -->
+    <!-- Hanging Chain Links -->
+    <line x1="50" y1="0" x2="50" y2="4" stroke="url(#antique-gold)" stroke-width="1.8" stroke-linecap="round"/>
+    
+    <!-- Top Chain Link 1 -->
+    <ellipse cx="50" cy="7" rx="2.4" ry="3.6" fill="none" stroke="url(#antique-gold)" stroke-width="1.3"/>
+    <!-- Chain Link 2 (interlocked) -->
+    <ellipse cx="50" cy="13" rx="2.4" ry="3.6" fill="none" stroke="url(#antique-gold)" stroke-width="1.3"/>
+    <!-- Chain Link 3 -->
+    <ellipse cx="50" cy="19" rx="2.4" ry="3.6" fill="none" stroke="url(#antique-gold)" stroke-width="1.3"/>
+
+    <!-- Lantern Top Mounting Ring -->
+    <ellipse cx="50" cy="25" rx="4.5" ry="5.5" fill="none" stroke="url(#gold-horizontal)" stroke-width="1.8"/>
+    <!-- Ring Mount Base -->
+    <rect x="47.5" y="29" width="5" height="3" rx="1" fill="url(#gold-horizontal)"/>
+
+    <!-- ======================================================== -->
+    <!-- 2. ROOF CANOPY & PAGODA TOP CAP                          -->
+    <!-- ======================================================== -->
+    <!-- Finial Spire -->
+    <path d="M50 29 L52 34 L48 34 Z" fill="url(#antique-gold)"/>
+
+    <!-- Upper Tier Dome -->
+    <path d="M43 37 C43 34.5 46 33.5 50 33.5 C54 33.5 57 34.5 57 37 L43 37 Z" fill="url(#gold-horizontal)"/>
+    <rect x="42" y="37" width="16" height="2" rx="0.5" fill="url(#antique-gold)"/>
+
+    <!-- Main Tier Flared Pagoda Roof with Eaves -->
+    <path d="M50 38.5 
+             C56 39 63 42 70 46.5 
+             C69 47.8 67 48.5 65 48.5 
+             L35 48.5 
+             C33 48.5 31 47.8 30 46.5 
+             C37 42 44 39 50 38.5 Z" 
+          fill="url(#gold-horizontal)" 
+          stroke="#3d2a0d" 
+          stroke-width="0.5"/>
+
+    <!-- Roof Under-Rim Beaded Collar -->
+    <rect x="33" y="48.5" width="34" height="3.5" rx="1.2" fill="url(#gold-horizontal)" stroke="#4d3512" stroke-width="0.4"/>
+    
+    <!-- Roof Decorative Studs -->
+    <circle cx="37" cy="50.2" r="0.9" fill="#FFF2CE"/>
+    <circle cx="43.5" cy="50.2" r="0.9" fill="#FFF2CE"/>
+    <circle cx="50" cy="50.2" r="0.9" fill="#FFF2CE"/>
+    <circle cx="56.5" cy="50.2" r="0.9" fill="#FFF2CE"/>
+    <circle cx="63" cy="50.2" r="0.9" fill="#FFF2CE"/>
+
+    <!-- ======================================================== -->
+    <!-- 3. ILLUMINATED AMBER GLASS CHAMBER                      -->
+    <!-- ======================================================== -->
+    <!-- Glass Chamber Base Silhouette -->
+    <path d="M34 52 L66 52 L62 108 L38 108 Z" fill="url(#amber-glass)"/>
+
+    <!-- Left Facet Shade Overlay -->
+    <path d="M34 52 L44 52 L45 108 L38 108 Z" fill="url(#amber-glass-side)"/>
+    <!-- Right Facet Shade Overlay -->
+    <path d="M56 52 L66 52 L62 108 L55 108 Z" fill="url(#amber-glass-side)"/>
+
+    <!-- Luminous Radiant Core Flame / Light Source -->
+    <ellipse cx="50" cy="78" rx="14" ry="20" fill="url(#inner-core-glow)" filter="url(#amber-glow)"/>
+    
+    <!-- Inner Radiant Flame Droplet -->
+    <path d="M50 67 C53 72 55 76 54 81 C53 85 47 85 46 81 C45 76 47 72 50 67 Z" 
+          fill="#FFFFFF" 
+          opacity="0.9" />
+
+    <!-- Glass Surface Specular Sheen (Diagonal Curved Highlight) -->
+    <path d="M38 54 L44 54 L41 106 L39 106 Z" fill="url(#glass-reflection)"/>
+    <path d="M46 54 L48 54 L45 106 L44 106 Z" fill="#FFFFFF" opacity="0.35"/>
+
+    <!-- ======================================================== -->
+    <!-- 4. ORNATE BRASS FRAME & STRUTS                          -->
+    <!-- ======================================================== -->
+    <!-- Left Outer Strut -->
+    <path d="M33.5 52 L35.5 52 L39.5 108 L37.5 108 Z" fill="url(#gold-vertical)"/>
+    <!-- Left Middle Strut (Facet Divider) -->
+    <path d="M43.5 52 L45 52 L46 108 L44.5 108 Z" fill="url(#gold-vertical)"/>
+    <!-- Right Middle Strut (Facet Divider) -->
+    <path d="M55 52 L56.5 52 L55.5 108 L54 108 Z" fill="url(#gold-vertical)"/>
+    <!-- Right Outer Strut -->
+    <path d="M64.5 52 L66.5 52 L62.5 108 L60.5 108 Z" fill="url(#gold-vertical)"/>
+
+    <!-- Strut Center Specular Lines -->
+    <line x1="44.2" y1="52" x2="45.2" y2="108" stroke="#FFE9A8" stroke-width="0.5" opacity="0.7"/>
+    <line x1="55.8" y1="52" x2="54.8" y2="108" stroke="#FFE9A8" stroke-width="0.5" opacity="0.7"/>
+
+    <!-- Horizontal Decorative Belly Band Ring (Midway) -->
+    <path d="M35.5 78 C40 79.2 60 79.2 64.5 78 L64.3 80 C60 81.2 40 81.2 35.7 80 Z" fill="url(#gold-horizontal)" stroke="#4d3512" stroke-width="0.3"/>
+
+    <!-- ======================================================== -->
+    <!-- 5. LOWER BRASS BASE & PEDESTAL                          -->
+    <!-- ======================================================== -->
+    <!-- Lower Retaining Collar -->
+    <rect x="36" y="108" width="28" height="4" rx="1" fill="url(#gold-horizontal)" stroke="#4d3512" stroke-width="0.4"/>
+    
+    <!-- Base Studs -->
+    <circle cx="40" cy="110" r="0.8" fill="#FFF2CE"/>
+    <circle cx="45" cy="110" r="0.8" fill="#FFF2CE"/>
+    <circle cx="50" cy="110" r="0.8" fill="#FFF2CE"/>
+    <circle cx="55" cy="110" r="0.8" fill="#FFF2CE"/>
+    <circle cx="60" cy="110" r="0.8" fill="#FFF2CE"/>
+
+    <!-- Inverted Pagoda Base Moldings -->
+    <path d="M37 112 
+             C40 115 44 117 48 118.5 
+             L52 118.5 
+             C56 117 60 115 63 112 Z" 
+          fill="url(#gold-horizontal)" 
+          stroke="#402d10" 
+          stroke-width="0.4"/>
+
+    <!-- Lower Knob / Finial Base -->
+    <circle cx="50" cy="122" r="3.5" fill="url(#antique-gold)" stroke="#402d10" stroke-width="0.4"/>
+    <ellipse cx="50" cy="126" rx="2" ry="1.5" fill="url(#gold-horizontal)"/>
+
+    <!-- Bottom Tassel Cap / Bell -->
+    <path d="M47.5 127.5 C47.5 127 52.5 127 52.5 127.5 L53.5 131 L46.5 131 Z" fill="url(#gold-horizontal)"/>
+    <ellipse cx="50" cy="131" rx="3.5" ry="1" fill="#4a3511"/>
+
+    <!-- ======================================================== -->
+    <!-- 6. DELICATE SILK TASSEL FRINGE                          -->
+    <!-- ======================================================== -->
+    <!-- Main Tassel Body -->
+    <path d="M46.8 131 
+             C46 137 45.2 147 44.5 156 
+             C47.5 157.2 52.5 157.2 55.5 156 
+             C54.8 147 54 137 53.2 131 Z" 
+          fill="url(#tassel-silk)"/>
+
+    <!-- Fine Silk Strands / Fringe Detail Lines -->
+    <line x1="47.5" y1="131" x2="46" y2="156" stroke="#FFE59E" stroke-width="0.6" opacity="0.65"/>
+    <line x1="49" y1="131" x2="48.5" y2="157" stroke="#FFF5D1" stroke-width="0.7" opacity="0.85"/>
+    <line x1="50" y1="131" x2="50" y2="157" stroke="#FFFFFF" stroke-width="0.8" opacity="0.9"/>
+    <line x1="51" y1="131" x2="51.5" y2="157" stroke="#FFF5D1" stroke-width="0.7" opacity="0.85"/>
+    <line x1="52.5" y1="131" x2="54" y2="156" stroke="#FFE59E" stroke-width="0.6" opacity="0.65"/>
+    <line x1="50" y1="134" x2="50" y2="155" stroke="#FFEAA8" stroke-width="1.2" opacity="0.4"/>
+
+    <!-- Tassel Neck Tie Ring -->
+    <ellipse cx="50" cy="133.5" rx="3.2" ry="0.8" fill="none" stroke="#FFEAA8" stroke-width="1"/>
+  </g>
+</svg>
