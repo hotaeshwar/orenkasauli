@@ -297,36 +297,56 @@ export default function Navbar() {
               <span className="relative z-10">BOOK NOW</span>
             </a>
 
-            {/* Pure Tailwind CSS Animated Hamburger Button */}
+            {/* Architectural Luxury Morphing Menu Button */}
             <button
               type="button"
               onClick={() => setMobileMenuOpen((prev) => !prev)}
-              className={`relative z-50 w-9 h-9 sm:w-10 sm:h-10 md:w-11 md:h-11 rounded-full border flex flex-col items-center justify-center gap-1 sm:gap-1.5 transition-all duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#165823] active:scale-90 cursor-pointer ${
+              className={`relative z-50 w-10 h-10 sm:w-11 sm:h-11 rounded-full border flex items-center justify-center transition-all duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#165823] active:scale-90 cursor-pointer ${
                 isLightNav
-                  ? "bg-white/90 hover:bg-white text-[#165823] border-[#165823]/20 shadow-sm"
-                  : "bg-black/45 hover:bg-black/65 text-white border-white/25 backdrop-blur-md"
+                  ? "bg-white/95 hover:bg-white text-[#165823] border-[#165823]/25 shadow-sm"
+                  : "bg-black/55 hover:bg-black/75 text-white border-white/25 backdrop-blur-md"
               }`}
               aria-label={mobileMenuOpen ? "Close navigation menu" : "Open navigation menu"}
               aria-expanded={mobileMenuOpen}
             >
-              {/* Top Bar */}
-              <span
-                className={`w-4 sm:w-5 h-[2px] rounded-full bg-current transition-all duration-300 ease-out origin-center ${
-                  mobileMenuOpen ? "translate-y-[6px] sm:translate-y-[7.5px] rotate-45" : ""
-                }`}
-              />
-              {/* Middle Bar */}
-              <span
-                className={`w-4 sm:w-5 h-[2px] rounded-full bg-current transition-all duration-300 ease-out ${
-                  mobileMenuOpen ? "opacity-0 scale-x-0" : "opacity-100 scale-x-100"
-                }`}
-              />
-              {/* Bottom Bar */}
-              <span
-                className={`w-4 sm:w-5 h-[2px] rounded-full bg-current transition-all duration-300 ease-out origin-center ${
-                  mobileMenuOpen ? "-translate-y-[6px] sm:-translate-y-[7.5px] -rotate-45" : ""
-                }`}
-              />
+              <motion.div
+                animate={{ rotate: mobileMenuOpen ? 180 : 0 }}
+                transition={{ type: "spring", stiffness: 260, damping: 20 }}
+                className="relative w-5 h-5 flex flex-col justify-center items-center"
+              >
+                {/* Top / Diagonal 1 Bar */}
+                <motion.span
+                  animate={
+                    mobileMenuOpen
+                      ? { rotate: 45, y: 0, width: "18px" }
+                      : { rotate: 0, y: -4, width: "20px" }
+                  }
+                  transition={{ type: "spring", stiffness: 300, damping: 22 }}
+                  className="absolute h-[2px] rounded-full bg-current origin-center"
+                />
+
+                {/* Center Accent Dot (Fades out when open) */}
+                <motion.span
+                  animate={
+                    mobileMenuOpen
+                      ? { scale: 0, opacity: 0 }
+                      : { scale: 1, opacity: 1 }
+                  }
+                  transition={{ duration: 0.15 }}
+                  className="absolute w-1 h-1 rounded-full bg-[#C5A77B]"
+                />
+
+                {/* Bottom / Diagonal 2 Bar */}
+                <motion.span
+                  animate={
+                    mobileMenuOpen
+                      ? { rotate: -45, y: 0, width: "18px" }
+                      : { rotate: 0, y: 4, width: "14px" }
+                  }
+                  transition={{ type: "spring", stiffness: 300, damping: 22 }}
+                  className="absolute h-[2px] rounded-full bg-current origin-center"
+                />
+              </motion.div>
             </button>
           </div>
         </div>
@@ -341,16 +361,16 @@ export default function Navbar() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -12 }}
             transition={{ duration: 0.22, ease: "easeOut" }}
-            className="lg:hidden fixed inset-x-0 top-20 md:top-24 h-[calc(100dvh-5rem)] md:h-[calc(100dvh-6rem)] bg-[#0c0a09]/98 backdrop-blur-2xl border-t border-white/10 z-[100] overflow-y-auto px-5 sm:px-8 py-6 sm:py-8 flex flex-col justify-between shadow-2xl pointer-events-auto"
+            className="lg:hidden fixed inset-x-0 top-20 md:top-24 h-[calc(100dvh-5rem)] md:h-[calc(100dvh-6rem)] bg-[#0c0a09]/98 backdrop-blur-2xl border-t border-white/10 z-[100] overflow-y-auto px-5 sm:px-8 py-8 flex flex-col justify-center shadow-2xl pointer-events-auto"
           >
-            <div className="flex flex-col space-y-4 max-w-md w-full mx-auto">
+            <div className="flex flex-col space-y-4 max-w-md w-full mx-auto my-auto">
               <span
-                className="text-[11px] uppercase tracking-[0.25em] text-emerald-400 font-medium"
+                className="text-[11px] uppercase tracking-[0.25em] text-emerald-400 font-medium text-center"
                 style={{ fontFamily: "var(--font-montserrat), sans-serif" }}
               >
                 Menu
               </span>
-              <nav className="flex flex-col space-y-1.5 sm:space-y-2">
+              <nav className="flex flex-col space-y-2">
                 {NAV_ITEMS.map((item) => {
                   const isActive = activeHref === item.href;
                   return (
@@ -359,7 +379,7 @@ export default function Navbar() {
                       href={item.href}
                       onClick={(e) => handleNavClick(e, item.href)}
                       aria-current={isActive ? "page" : undefined}
-                      className={`relative flex items-center justify-between py-2.5 sm:py-3 px-4 rounded-full text-xs sm:text-sm uppercase tracking-[0.16em] font-medium transition-colors ${
+                      className={`relative flex items-center justify-between py-3 px-5 rounded-full text-xs sm:text-sm uppercase tracking-[0.16em] font-medium transition-colors ${
                         isActive
                           ? "bg-[#165823]/25 text-emerald-400 font-bold border border-emerald-500/40 shadow-[0_2px_12px_rgba(22,88,35,0.3)]"
                           : "text-[#f8f9f7] hover:bg-white/10 hover:text-emerald-300"
@@ -376,27 +396,6 @@ export default function Navbar() {
                   );
                 })}
               </nav>
-
-              {/* Direct Full-Width Mobile Booking CTA inside drawer */}
-              <div className="pt-2">
-                <a
-                  href={BOOKING_URL}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-full inline-flex items-center justify-center gap-2 py-3.5 px-6 rounded-full font-semibold uppercase text-xs tracking-[0.16em] text-[#FFF6F6] bg-[#165823] hover:bg-[#12481c] border border-emerald-500/40 shadow-[0_4px_16px_rgba(22,88,35,0.4)] active:scale-95 transition-all"
-                  style={{ fontFamily: "var(--font-montserrat), sans-serif" }}
-                >
-                  <span>BOOK YOUR STAY</span>
-                  <ArrowUpRight className="w-4 h-4 text-[#FFF6F6]" />
-                </a>
-              </div>
-            </div>
-
-            {/* Mobile Contact Reference */}
-            <div className="pt-6 sm:pt-8 border-t border-white/10 flex flex-col space-y-1.5 text-xs text-[#f8f9f7]/70 max-w-md w-full mx-auto">
-              <p className="font-semibold text-[#f8f9f7]">Oren Kasauli, Himachal Pradesh</p>
-              <p>Direct: +91 9816155576 | +91 9816255576</p>
-              <p>Email: booking@oren.co.in</p>
             </div>
           </motion.div>
         )}
