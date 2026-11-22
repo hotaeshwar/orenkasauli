@@ -76,8 +76,8 @@ export default function Footer() {
       suppressHydrationWarning
       className="relative w-full bg-[#FFF6F6] text-[#165823] overflow-hidden border-t border-[#165823]/15 selection:bg-[#165823] selection:text-[#FFF6F6]"
     >
-      {/* Ambient Resort Background with White Light Overlay — Desktop & Tablet */}
-      <div className="hidden md:block absolute inset-0 z-0 overflow-hidden pointer-events-none" aria-hidden="true">
+      {/* Ambient Resort Background with White Light Overlay — Exclusively using galler23.jpg */}
+      <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none" aria-hidden="true">
         <Image
           src="/images/gallery/galler23.jpg"
           alt=""

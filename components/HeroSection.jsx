@@ -310,8 +310,8 @@ export default function HeroSection() {
         id="hero-intro"
         className="relative w-full bg-[#FFF6F6] text-[#165823] py-14 sm:py-18 md:py-24 px-4 sm:px-6 lg:px-8 border-b border-[#e2d8c7] z-10 overflow-hidden"
       >
-        {/* Ambient Resort Background with White Light Overlay — Desktop & Tablet */}
-        <div className="hidden md:block absolute inset-0 z-0 overflow-hidden pointer-events-none" aria-hidden="true">
+        {/* Ambient Resort Background with White Light Overlay */}
+        <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none" aria-hidden="true">
           <Image
             src="/images/gallery/galler12.jpg"
             alt=""

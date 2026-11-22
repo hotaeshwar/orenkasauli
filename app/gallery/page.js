@@ -429,8 +429,8 @@ export default function GalleryPage() {
 
       {/* Sleek, Compact Top Hero Banner with topimage.jpg & Light Backdrop */}
       <section className="relative min-h-[220px] sm:min-h-[250px] md:min-h-[280px] flex items-center justify-center pt-24 sm:pt-28 md:pt-32 pb-6 sm:pb-8 px-4 overflow-hidden border-b border-[#e2d8c7] bg-[#FFF6F6]">
-        {/* Background topimage.jpg with Luminous Light Backdrop — Desktop & Tablet */}
-        <div className="hidden md:block absolute inset-0 z-0 select-none overflow-hidden pointer-events-none" aria-hidden="true">
+        {/* Background topimage.jpg with Luminous Light Backdrop */}
+        <div className="absolute inset-0 z-0 select-none overflow-hidden pointer-events-none" aria-hidden="true">
           <Image
             src="/images/gallery/topimage.jpg"
             alt="Oren Kasauli Gallery Banner"
@@ -461,8 +461,8 @@ export default function GalleryPage() {
 
       {/* Main Gallery Section — Warm Ivory Background with galler12.jpg & White Light Overlay */}
       <main className="relative w-full bg-[#FFF6F6] pt-8 sm:pt-12 md:pt-14 pb-16 sm:pb-24 px-4 sm:px-6 lg:px-8 xl:px-12 overflow-hidden">
-        {/* Ambient Resort Background with White Light Overlay — Desktop & Tablet */}
-        <div className="hidden md:block absolute inset-0 z-0 overflow-hidden pointer-events-none" aria-hidden="true">
+        {/* Ambient Resort Background with White Light Overlay */}
+        <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none" aria-hidden="true">
           <Image
             src="/images/gallery/galler12.jpg"
             alt=""
@@ -522,8 +522,8 @@ export default function GalleryPage() {
 
       {/* Video Shoot By Guest Section */}
       <section className="relative w-full bg-[#FFF6F6] py-14 sm:py-20 md:py-24 px-4 sm:px-6 lg:px-8 xl:px-12 border-t border-[#e2d8c7] overflow-hidden">
-        {/* Ambient Resort Background with White Light Overlay — Desktop & Tablet */}
-        <div className="hidden md:block absolute inset-0 z-0 overflow-hidden pointer-events-none" aria-hidden="true">
+        {/* Ambient Resort Background with White Light Overlay */}
+        <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none" aria-hidden="true">
           <Image
             src="/images/gallery/galler12.jpg"
             alt=""
