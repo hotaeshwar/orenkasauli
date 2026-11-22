@@ -254,6 +254,9 @@ export default function HeroSection() {
 
   return (
     <>
+      {/* Transparent Fixed Header / Navbar rendered outside overflow-hidden viewport */}
+      <Navbar />
+
       {/* 1. Full-Viewport Cinematic Video Section */}
       <section
         id="hero-viewport"
@@ -299,11 +302,6 @@ export default function HeroSection() {
           >
             <source src="/videos/home.mp4" type="video/mp4" />
           </video>
-        </div>
-
-        {/* Transparent Fixed Header / Navbar */}
-        <div className="relative z-20 w-full">
-          <Navbar />
         </div>
       </section>
 

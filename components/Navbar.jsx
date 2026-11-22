@@ -299,8 +299,9 @@ export default function Navbar() {
 
             {/* Pure Tailwind CSS Animated Hamburger Button */}
             <button
-              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className={`relative w-9 h-9 sm:w-10 sm:h-10 md:w-11 md:h-11 rounded-full border flex flex-col items-center justify-center gap-1 sm:gap-1.5 transition-all duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#165823] active:scale-90 ${
+              type="button"
+              onClick={() => setMobileMenuOpen((prev) => !prev)}
+              className={`relative z-50 w-9 h-9 sm:w-10 sm:h-10 md:w-11 md:h-11 rounded-full border flex flex-col items-center justify-center gap-1 sm:gap-1.5 transition-all duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#165823] active:scale-90 cursor-pointer ${
                 isLightNav
                   ? "bg-white/90 hover:bg-white text-[#165823] border-[#165823]/20 shadow-sm"
                   : "bg-black/45 hover:bg-black/65 text-white border-white/25 backdrop-blur-md"
@@ -335,11 +336,12 @@ export default function Navbar() {
       <AnimatePresence>
         {mobileMenuOpen && (
           <motion.div
-            initial={{ opacity: 0, y: -16 }}
+            key="mobile-drawer-overlay"
+            initial={{ opacity: 0, y: -12 }}
             animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -16 }}
-            transition={{ duration: 0.25, ease: "easeOut" }}
-            className="lg:hidden fixed inset-x-0 top-20 md:top-24 bottom-0 bg-[#0c0a09]/95 backdrop-blur-2xl border-t border-white/10 z-40 overflow-y-auto px-5 sm:px-8 py-6 sm:py-8 flex flex-col justify-between shadow-2xl"
+            exit={{ opacity: 0, y: -12 }}
+            transition={{ duration: 0.22, ease: "easeOut" }}
+            className="lg:hidden fixed inset-x-0 top-20 md:top-24 h-[calc(100dvh-5rem)] md:h-[calc(100dvh-6rem)] bg-[#0c0a09]/98 backdrop-blur-2xl border-t border-white/10 z-[100] overflow-y-auto px-5 sm:px-8 py-6 sm:py-8 flex flex-col justify-between shadow-2xl pointer-events-auto"
           >
             <div className="flex flex-col space-y-4 max-w-md w-full mx-auto">
               <span
@@ -359,25 +361,16 @@ export default function Navbar() {
                       aria-current={isActive ? "page" : undefined}
                       className={`relative flex items-center justify-between py-2.5 sm:py-3 px-4 rounded-full text-xs sm:text-sm uppercase tracking-[0.16em] font-medium transition-colors ${
                         isActive
-                          ? "bg-[#165823]/20 text-emerald-400 font-bold border border-emerald-500/40 shadow-[0_2px_12px_rgba(22,88,35,0.3)]"
+                          ? "bg-[#165823]/25 text-emerald-400 font-bold border border-emerald-500/40 shadow-[0_2px_12px_rgba(22,88,35,0.3)]"
                           : "text-[#f8f9f7] hover:bg-white/10 hover:text-emerald-300"
                       }`}
                       style={{ fontFamily: "var(--font-montserrat), sans-serif" }}
                     >
                       <span>{item.name}</span>
                       {isActive && (
-                        <motion.div
-                          layoutId="mobile-sliding-lantern"
-                          transition={{
-                            type: "spring",
-                            stiffness: 350,
-                            damping: 28,
-                            mass: 0.85,
-                          }}
-                          className="relative flex items-center pr-1 pointer-events-none"
-                        >
+                        <div className="relative flex items-center pr-1 pointer-events-none">
                           <SlidingLantern isMobile />
-                        </motion.div>
+                        </div>
                       )}
                     </Link>
                   );
