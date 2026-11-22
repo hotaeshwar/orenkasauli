@@ -444,7 +444,7 @@ export default function RoomAndTariffPage() {
 
       {/* Sleek, Compact Top Hero Banner with Background Image (room.jpg) — Light Backdrop */}
       <section className="relative min-h-[220px] sm:min-h-[250px] md:min-h-[280px] flex items-center justify-center pt-24 sm:pt-28 md:pt-32 pb-6 sm:pb-8 px-4 overflow-hidden border-b border-[#e2d8c7] bg-[#FFF6F6]">
-        {/* Background room.jpg with Rich Ambient Backdrop Overlay */}
+        {/* Background room.jpg with Luminous Light Backdrop */}
         <div className="absolute inset-0 z-0 select-none overflow-hidden pointer-events-none" aria-hidden="true">
           <Image
             src="/images/room.jpg"
@@ -454,15 +454,15 @@ export default function RoomAndTariffPage() {
             sizes="100vw"
             className="object-cover object-center scale-105"
           />
-          {/* Subtle balanced scrim: preserves rich photographic depth without washing out */}
-          <div className="absolute inset-0 bg-[#FFF6F6]/55 pointer-events-none" />
-          <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-transparent to-black/25 pointer-events-none" />
+          {/* Luminous soft scrim: preserves room photography while ensuring crisp text contrast */}
+          <div className="absolute inset-0 bg-[#FFF6F6]/80 backdrop-blur-[2px] pointer-events-none" />
+          <div className="absolute inset-0 bg-gradient-to-b from-white/40 via-transparent to-white/50 pointer-events-none" />
         </div>
 
-        {/* Hero Content — Compact, Sleek Layout Matching Other Sections */}
+        {/* Hero Content */}
         <div className="max-w-4xl mx-auto text-center relative z-10 w-full px-2 flex flex-col items-center">
           <h1
-            className="font-serif text-[#165823] text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-normal tracking-[0.06em] leading-tight min-h-[1.25em] flex items-center justify-center break-words drop-shadow-[0_1px_8px_rgba(255,255,255,0.85)]"
+            className="font-serif text-[#165823] text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-medium tracking-[0.04em] leading-tight min-h-[1.25em] flex items-center justify-center break-words"
             style={{ fontFamily: "var(--font-cormorant), Georgia, serif" }}
           >
             <span>{currentHeadingText}</span>
@@ -471,6 +471,14 @@ export default function RoomAndTariffPage() {
               aria-hidden="true"
             />
           </h1>
+
+          {/* Rooms & Suites Narrative Story */}
+          <p
+            className="font-sans text-xs sm:text-sm md:text-base text-[#165823] font-medium max-w-2xl mx-auto leading-relaxed tracking-wide text-center mt-3"
+            style={{ fontFamily: "var(--font-montserrat), sans-serif" }}
+          >
+            Every stay has its own story. Choose from thoughtfully designed rooms and suites, each offering comfort and a beautiful connection with the surrounding hills. From cosy attic rooms and valley-facing balconies to private jacuzzis and plunge pool experiences, discover a room that suits the way you want to unwind.
+          </p>
         </div>
       </section>
 
@@ -510,11 +518,10 @@ export default function RoomAndTariffPage() {
                       delay: shouldReduceMotion ? 0 : 0.2,
                       ease: [0.22, 1, 0.36, 1],
                     }}
-                    className={`lg:col-span-6 xl:col-span-6 flex flex-col items-start ${
-                      isEven
-                        ? "order-2 lg:order-2 lg:col-start-7 xl:col-start-7 lg:pl-2 xl:pl-6"
-                        : "order-2 lg:order-1 lg:pr-2 xl:pr-6"
-                    }`}
+                    className={`lg:col-span-6 xl:col-span-6 flex flex-col items-start ${isEven
+                      ? "order-2 lg:order-2 lg:col-start-7 xl:col-start-7 lg:pl-2 xl:pl-6"
+                      : "order-2 lg:order-1 lg:pr-2 xl:pr-6"
+                      }`}
                   >
                     {/* Room Title in Pure Editorial Typography (Cardless) */}
                     <h2
@@ -598,18 +605,16 @@ export default function RoomAndTariffPage() {
                       delay: shouldReduceMotion ? 0 : 0.1,
                       ease: [0.22, 1, 0.36, 1],
                     }}
-                    className={`lg:col-span-6 xl:col-span-6 w-full ${
-                      isEven
-                        ? "order-1 lg:order-1 lg:col-start-1 xl:col-start-1"
-                        : "order-1 lg:order-2"
-                    }`}
+                    className={`lg:col-span-6 xl:col-span-6 w-full ${isEven
+                      ? "order-1 lg:order-1 lg:col-start-1 xl:col-start-1"
+                      : "order-1 lg:order-2"
+                      }`}
                   >
                     <div className="relative group w-full">
                       {/* Delicate Botanical Watercolor Watermark Accent Layer */}
                       <div
-                        className={`absolute -bottom-6 -right-6 sm:-bottom-8 sm:-right-8 w-44 sm:w-64 md:w-72 h-44 sm:h-64 md:h-72 pointer-events-none opacity-25 select-none transition-transform duration-1000 ease-out group-hover:scale-105 hidden sm:block ${
-                          isEven ? "-left-6 -bottom-6 sm:-left-8 sm:-bottom-8 right-auto" : ""
-                        }`}
+                        className={`absolute -bottom-6 -right-6 sm:-bottom-8 sm:-right-8 w-44 sm:w-64 md:w-72 h-44 sm:h-64 md:h-72 pointer-events-none opacity-25 select-none transition-transform duration-1000 ease-out group-hover:scale-105 hidden sm:block ${isEven ? "-left-6 -bottom-6 sm:-left-8 sm:-bottom-8 right-auto" : ""
+                          }`}
                         aria-hidden="true"
                       >
                         <svg
