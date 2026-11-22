@@ -58,8 +58,8 @@ export default function ContactPage() {
 
       {/* Sleek, Compact Top Hero Banner with contacttop.jpg & Light Backdrop */}
       <section className="relative min-h-[220px] sm:min-h-[250px] md:min-h-[280px] flex items-center justify-center pt-24 sm:pt-28 md:pt-32 pb-6 sm:pb-8 px-4 overflow-hidden border-b border-[#e5dccf] bg-[#FFF6F6]">
-        {/* Background contacttop.jpg with Luminous Light Backdrop */}
-        <div className="absolute inset-0 z-0 select-none overflow-hidden pointer-events-none" aria-hidden="true">
+        {/* Background contacttop.jpg with Luminous Light Backdrop — Desktop & Tablet */}
+        <div className="hidden md:block absolute inset-0 z-0 select-none overflow-hidden pointer-events-none" aria-hidden="true">
           <Image
             src="/images/contacttop.jpg"
             alt="Oren Kasauli Contact Us Banner"
@@ -90,8 +90,8 @@ export default function ContactPage() {
 
       {/* Main Contact Section — Warm Ivory Background with galler12.jpg & White Light Overlay */}
       <main className="relative w-full bg-[#FFF6F6] pt-8 sm:pt-10 md:pt-12 pb-16 sm:pb-20 px-4 sm:px-6 lg:px-8 xl:px-12 border-t border-[#e5dccf] overflow-hidden">
-        {/* Ambient Resort Background with White Light Overlay */}
-        <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none" aria-hidden="true">
+        {/* Ambient Resort Background with White Light Overlay — Desktop & Tablet */}
+        <div className="hidden md:block absolute inset-0 z-0 overflow-hidden pointer-events-none" aria-hidden="true">
           <Image
             src="/images/gallery/galler12.jpg"
             alt=""

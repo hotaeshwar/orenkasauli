@@ -218,8 +218,8 @@ export default function BlogSection() {
 
   return (
     <section className="relative w-full bg-[#FFF6F6] text-[#165823] pt-8 sm:pt-10 md:pt-12 pb-16 sm:pb-24 px-4 sm:px-6 lg:px-8 xl:px-12 border-t border-[#e2d8c7] overflow-hidden">
-      {/* Ambient Resort Background with White Light Overlay */}
-      <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none" aria-hidden="true">
+      {/* Ambient Resort Background with White Light Overlay — Desktop & Tablet */}
+      <div className="hidden md:block absolute inset-0 z-0 overflow-hidden pointer-events-none" aria-hidden="true">
         <Image
           src="/images/gallery/galler12.jpg"
           alt=""

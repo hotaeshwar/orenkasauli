@@ -50,8 +50,8 @@ export default function BlogPage() {
 
       {/* Sleek, Compact Top Hero Banner with Background, Light Backdrop & Typewriter Heading */}
       <section className="relative min-h-[220px] sm:min-h-[250px] md:min-h-[280px] flex items-center justify-center pt-24 sm:pt-28 md:pt-32 pb-6 sm:pb-8 px-4 overflow-hidden border-b border-[#e5dccf] bg-[#FFF6F6]">
-        {/* Atmospheric Background Image with Luminous Light Backdrop */}
-        <div className="absolute inset-0 z-0 select-none overflow-hidden pointer-events-none" aria-hidden="true">
+        {/* Atmospheric Background Image with Luminous Light Backdrop — Desktop & Tablet */}
+        <div className="hidden md:block absolute inset-0 z-0 select-none overflow-hidden pointer-events-none" aria-hidden="true">
           <Image
             src="/images/gallery/topimage.jpg"
             alt="Oren Kasauli Blog Banner"

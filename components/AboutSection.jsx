@@ -75,8 +75,8 @@ export default function AboutSection() {
       ref={sectionRef}
       className="relative w-full bg-[#FFF6F6] text-[#165823] py-16 sm:py-20 md:py-24 lg:py-28 xl:py-32 px-4 sm:px-6 lg:px-8 xl:px-12 overflow-hidden z-10 border-t border-[#e2d8c7]"
     >
-      {/* Ambient Resort Background with White Light Overlay */}
-      <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none" aria-hidden="true">
+      {/* Ambient Resort Background with White Light Overlay — Desktop & Tablet */}
+      <div className="hidden md:block absolute inset-0 z-0 overflow-hidden pointer-events-none" aria-hidden="true">
         <Image
           src="/images/gallery/galler12.jpg"
           alt=""
