@@ -459,7 +459,7 @@ export default function RoomAndTariffPage() {
           <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-transparent to-black/25 pointer-events-none" />
         </div>
 
-        {/* Hero Content */}
+        {/* Hero Content — Compact, Sleek Layout Matching Other Sections */}
         <div className="max-w-4xl mx-auto text-center relative z-10 w-full px-2 flex flex-col items-center">
           <h1
             className="font-serif text-[#165823] text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-normal tracking-[0.06em] leading-tight min-h-[1.25em] flex items-center justify-center break-words drop-shadow-[0_1px_8px_rgba(255,255,255,0.85)]"
@@ -471,14 +471,6 @@ export default function RoomAndTariffPage() {
               aria-hidden="true"
             />
           </h1>
-
-          {/* Rooms & Suites Narrative Story */}
-          <p
-            className="font-sans text-xs sm:text-sm md:text-base text-[#165823] font-medium max-w-2xl mx-auto leading-relaxed tracking-wide text-center mt-3 drop-shadow-[0_1px_6px_rgba(255,255,255,0.85)]"
-            style={{ fontFamily: "var(--font-montserrat), sans-serif" }}
-          >
-            Every stay has its own story. Choose from thoughtfully designed rooms and suites, each offering comfort and a beautiful connection with the surrounding hills. From cosy attic rooms and valley-facing balconies to private jacuzzis and plunge pool experiences, discover a room that suits the way you want to unwind.
-          </p>
         </div>
       </section>
 
