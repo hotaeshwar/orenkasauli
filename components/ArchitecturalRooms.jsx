@@ -17,6 +17,8 @@ import {
   Bath,
   Waves,
   X,
+  ChevronLeft,
+  ChevronRight,
 } from "lucide-react";
 import { ROOMS_COLLECTION, BOOKING_URL } from "./roomsData";
 
@@ -423,10 +425,9 @@ export default function ArchitecturalRooms() {
 
             {/* Stacked Cards Deck Container — Pauses rotation while mouse is over */}
             <div
-              data-gsap="image-reveal"
               onMouseEnter={() => setIsPaused(true)}
               onMouseLeave={() => setIsPaused(false)}
-              className="relative w-[235px] sm:w-[265px] md:w-[285px] lg:w-[305px] h-[330px] sm:h-[370px] md:h-[400px] lg:h-[420px] ml-auto select-none"
+              className="relative w-[235px] sm:w-[265px] md:w-[285px] lg:w-[305px] h-[330px] sm:h-[370px] md:h-[400px] lg:h-[420px] mx-auto lg:ml-auto lg:mr-0 select-none"
             >
               {[3, 2, 1, 0].map((stackIdx) => {
                 const roomIdx = (currentIndex + stackIdx) % ROOMS_COLLECTION.length;
@@ -443,8 +444,8 @@ export default function ArchitecturalRooms() {
                 const xOffset = isTop
                   ? 0
                   : isMobile
-                    ? -stackIdx * 12
-                    : -stackIdx * 18;
+                    ? -stackIdx * 10
+                    : -stackIdx * 16;
 
                 return (
                   <motion.div
@@ -452,6 +453,7 @@ export default function ArchitecturalRooms() {
                     style={{
                       zIndex: 20 - stackIdx,
                       transformOrigin: "bottom left",
+                      touchAction: "pan-y",
                     }}
                     animate={{
                       x: xOffset,
@@ -467,17 +469,17 @@ export default function ArchitecturalRooms() {
                     onDragEnd={
                       isTop
                         ? (e, info) => {
-                          if (info.offset.x < -50 || info.velocity.x < -200) {
+                          if (info.offset.x < -40 || info.velocity.x < -200) {
                             handleNext();
-                          } else if (info.offset.x > 50 || info.velocity.x > 200) {
+                          } else if (info.offset.x > 40 || info.velocity.x > 200) {
                             handlePrev();
                           }
                         }
                         : undefined
                     }
-                    onClick={!isTop ? () => handleSelectRoom(roomIdx) : undefined}
+                    onClick={!isTop ? () => handleSelectRoom(roomIdx) : () => setIsDetailsOpen(true)}
                     className={`group/card absolute inset-0 rounded-2xl sm:rounded-3xl overflow-hidden shadow-[0_22px_48px_-10px_rgba(0,0,0,0.2),0_12px_28px_-6px_rgba(16,52,48,0.25),0_0_20px_rgba(255,255,255,0.4)] border border-white/80 ring-1 ring-[#103430]/20 transition-all duration-300 ${isTop
-                      ? "cursor-pointer ring-2 ring-[#103430]/50 hover:ring-[#103430] hover:shadow-[0_28px_56px_-8px_rgba(16,52,48,0.35),0_14px_32px_rgba(16,52,48,0.25)]"
+                      ? "cursor-grab active:cursor-grabbing ring-2 ring-[#103430]/50 hover:ring-[#103430] hover:shadow-[0_28px_56px_-8px_rgba(16,52,48,0.35),0_14px_32px_rgba(16,52,48,0.25)]"
                       : "cursor-pointer"
                       }`}
                   >
@@ -523,6 +525,46 @@ export default function ArchitecturalRooms() {
                   </motion.div>
                 );
               })}
+            </div>
+
+            {/* Sleek Navigation Controls & Dot Indicators (Responsive Mobile & Desktop) */}
+            <div className="flex items-center justify-center gap-3 sm:gap-4 mt-5 sm:mt-6 z-20 w-full">
+              {/* Prev Button */}
+              <button
+                type="button"
+                onClick={handlePrev}
+                className="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-white/90 hover:bg-white border border-[#103430]/25 text-[#103430] flex items-center justify-center shadow-sm hover:shadow-md hover:scale-105 active:scale-95 transition-all duration-200 cursor-pointer"
+                aria-label="Previous room"
+              >
+                <ChevronLeft className="w-4 h-4 sm:w-5 sm:h-5 text-current" />
+              </button>
+
+              {/* Room Indicator Dots */}
+              <div className="flex items-center gap-1.5 sm:gap-2 px-3 py-1.5 rounded-full bg-white/80 backdrop-blur-sm border border-[#103430]/15 shadow-sm">
+                {ROOMS_COLLECTION.map((_, dotIdx) => (
+                  <button
+                    key={dotIdx}
+                    type="button"
+                    onClick={() => handleSelectRoom(dotIdx)}
+                    className={`h-2 rounded-full transition-all duration-300 cursor-pointer ${
+                      dotIdx === currentIndex
+                        ? "w-6 bg-[#103430]"
+                        : "w-2 bg-[#103430]/25 hover:bg-[#103430]/50"
+                    }`}
+                    aria-label={`Go to room ${dotIdx + 1}`}
+                  />
+                ))}
+              </div>
+
+              {/* Next Button */}
+              <button
+                type="button"
+                onClick={handleNext}
+                className="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-white/90 hover:bg-white border border-[#103430]/25 text-[#103430] flex items-center justify-center shadow-sm hover:shadow-md hover:scale-105 active:scale-95 transition-all duration-200 cursor-pointer"
+                aria-label="Next room"
+              >
+                <ChevronRight className="w-4 h-4 sm:w-5 sm:h-5 text-current" />
+              </button>
             </div>
           </div>
         </div>
