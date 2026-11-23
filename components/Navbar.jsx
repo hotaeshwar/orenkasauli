@@ -146,12 +146,10 @@ export default function Navbar() {
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-200 ease-out ${
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ease-out ${
         scrolled
           ? "bg-white/95 backdrop-blur-md shadow-[0_4px_24px_rgba(16, 52, 48,0.08)] border-b border-[#103430]/10"
-          : pathname !== "/"
-          ? "bg-[#FFF6F6]/85 backdrop-blur-md shadow-sm border-b border-[#103430]/10"
-          : "bg-transparent border-b border-transparent"
+          : "bg-[#FFF6F6]/90 backdrop-blur-md shadow-sm border-b border-[#103430]/10"
       }`}
     >
       {/* Main Always-Transparent Navbar */}
@@ -190,7 +188,7 @@ export default function Navbar() {
             {NAV_ITEMS.map((item) => {
               const isActive = activeHref === item.href;
               const isHovered = hoveredHref === item.href;
-              const shouldShowLantern = isLightNav && isActive;
+              const shouldShowLantern = isActive;
 
               return (
                 <Link
@@ -200,13 +198,9 @@ export default function Navbar() {
                   onMouseEnter={() => setHoveredHref(item.href)}
                   aria-current={isActive ? "page" : undefined}
                   className={`relative px-2 lg:px-2.5 xl:px-3.5 py-1.5 xl:py-2 text-[11px] lg:text-xs xl:text-[13px] uppercase tracking-[0.06em] lg:tracking-[0.08em] xl:tracking-[0.14em] font-medium transition-colors duration-200 z-10 whitespace-nowrap ${
-                    isLightNav
-                      ? isActive
-                        ? "text-[#103430] font-bold"
-                        : "text-[#103430]/75 hover:text-[#103430]"
-                      : isActive
-                      ? "text-emerald-400 font-bold drop-shadow-[0_1px_8px_rgba(0,0,0,0.9)]"
-                      : "text-white hover:text-emerald-300 drop-shadow-[0_1px_4px_rgba(0,0,0,0.85)]"
+                    isActive
+                      ? "text-[#103430] font-bold"
+                      : "text-[#103430] hover:text-[#0b2421]"
                   }`}
                   style={{ fontFamily: "var(--font-montserrat), sans-serif" }}
                 >
@@ -232,7 +226,7 @@ export default function Navbar() {
                         >
                           <SlidingLantern
                             slideDirection={slideDirection}
-                            isScrolled={isLightNav}
+                            isScrolled={true}
                           />
                         </motion.div>
                       </motion.div>
@@ -243,11 +237,7 @@ export default function Navbar() {
                   {isHovered && !isActive && (
                     <motion.span
                       layoutId="navbar-pill"
-                      className={`absolute inset-0 rounded-full -z-10 ${
-                        isLightNav
-                          ? "bg-[#103430]/8 border border-[#103430]/15 shadow-sm"
-                          : "bg-white/15 backdrop-blur-md border border-white/20 shadow-[0_2px_12px_rgba(0,0,0,0.35)]"
-                      }`}
+                      className="absolute inset-0 rounded-full -z-10 bg-[#103430]/10 border border-[#103430]/20 shadow-sm"
                       transition={{
                         type: "spring",
                         stiffness: 450,
@@ -301,11 +291,7 @@ export default function Navbar() {
             <button
               type="button"
               onClick={() => setMobileMenuOpen((prev) => !prev)}
-              className={`relative z-50 w-10 h-10 sm:w-11 sm:h-11 rounded-full border flex items-center justify-center transition-all duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#103430] active:scale-90 cursor-pointer ${
-                isLightNav
-                  ? "bg-white/95 hover:bg-white text-[#103430] border-[#103430]/25 shadow-sm"
-                  : "bg-black/55 hover:bg-black/75 text-white border-white/25 backdrop-blur-md"
-              }`}
+              className="relative z-50 w-10 h-10 sm:w-11 sm:h-11 rounded-full border flex items-center justify-center transition-all duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#103430] active:scale-90 cursor-pointer bg-white/95 hover:bg-white text-[#103430] border-[#103430]/25 shadow-sm"
               aria-label={mobileMenuOpen ? "Close navigation menu" : "Open navigation menu"}
               aria-expanded={mobileMenuOpen}
             >
@@ -361,11 +347,11 @@ export default function Navbar() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -12 }}
             transition={{ duration: 0.22, ease: "easeOut" }}
-            className="lg:hidden fixed inset-x-0 top-20 md:top-24 h-[calc(100dvh-5rem)] md:h-[calc(100dvh-6rem)] bg-[#0c0a09]/98 backdrop-blur-2xl border-t border-white/10 z-[100] overflow-y-auto px-5 sm:px-8 py-8 flex flex-col justify-center shadow-2xl pointer-events-auto"
+            className="lg:hidden fixed inset-x-0 top-20 md:top-24 h-[calc(100dvh-5rem)] md:h-[calc(100dvh-6rem)] bg-[#FFF6F6]/98 backdrop-blur-2xl border-t border-[#103430]/15 z-[100] overflow-y-auto px-5 sm:px-8 py-8 flex flex-col justify-center shadow-2xl pointer-events-auto"
           >
             <div className="flex flex-col space-y-4 max-w-md w-full mx-auto my-auto">
               <span
-                className="text-[11px] uppercase tracking-[0.25em] text-emerald-400 font-medium text-center"
+                className="text-[11px] uppercase tracking-[0.25em] text-[#103430] font-semibold text-center"
                 style={{ fontFamily: "var(--font-montserrat), sans-serif" }}
               >
                 Menu
@@ -381,8 +367,8 @@ export default function Navbar() {
                       aria-current={isActive ? "page" : undefined}
                       className={`relative flex items-center justify-between py-3 px-5 rounded-full text-xs sm:text-sm uppercase tracking-[0.16em] font-medium transition-colors ${
                         isActive
-                          ? "bg-[#103430]/25 text-emerald-400 font-bold border border-emerald-500/40 shadow-[0_2px_12px_rgba(16, 52, 48,0.3)]"
-                          : "text-[#f8f9f7] hover:bg-white/10 hover:text-emerald-300"
+                          ? "bg-[#103430]/12 text-[#103430] font-bold border border-[#103430]/25 shadow-sm"
+                          : "text-[#103430] hover:bg-[#103430]/8 hover:text-[#0b2421]"
                       }`}
                       style={{ fontFamily: "var(--font-montserrat), sans-serif" }}
                     >
