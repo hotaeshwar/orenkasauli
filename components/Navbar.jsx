@@ -5,7 +5,6 @@ import Link from "next/link";
 import Image from "next/image";
 import { usePathname, useRouter } from "next/navigation";
 import { motion, AnimatePresence } from "motion/react";
-import { ArrowUpRight } from "lucide-react";
 import SlidingLantern from "./SlidingLantern";
 
 // Navigation items
@@ -377,22 +376,6 @@ export default function Navbar() {
             }}
           >
             <div className="flex flex-col space-y-4 max-w-md w-full mx-auto my-auto">
-              {/* Header eyebrow in mobile menu */}
-              <div className="flex items-center justify-between pb-2 border-b border-[#103430]/10">
-                <span
-                  className="text-[10px] uppercase tracking-[0.26em] text-[#103430]/70 font-semibold"
-                  style={{ fontFamily: "var(--font-manrope), sans-serif" }}
-                >
-                  Navigation
-                </span>
-                <span
-                  className="text-[10px] uppercase tracking-[0.2em] text-[#103430]/60 font-medium"
-                  style={{ fontFamily: "var(--font-manrope), sans-serif" }}
-                >
-                  Oren Kasauli
-                </span>
-              </div>
-
               {/* Navigation Links with Staggered Cascading Reveal */}
               <nav className="flex flex-col space-y-1.5 sm:space-y-2">
                 {NAV_ITEMS.map((item, index) => {
@@ -419,31 +402,12 @@ export default function Navbar() {
                         }`}
                         style={{ fontFamily: "var(--font-manrope), sans-serif" }}
                       >
-                        <div className="flex items-center gap-3">
-                          <span
-                            className={`text-[11px] font-serif transition-colors ${
-                              isActive ? "text-emerald-200" : "text-[#103430]/40"
-                            }`}
-                            style={{ fontFamily: "var(--font-cormorant), Georgia, serif" }}
-                          >
-                            0{index + 1}
-                          </span>
-                          <span>{item.name}</span>
-                        </div>
-                        <div className="flex items-center gap-1.5">
-                          {scrolled && isActive && (
-                            <div className="relative flex items-center pr-1 pointer-events-none">
-                              <SlidingLantern isMobile />
-                            </div>
-                          )}
-                          <ArrowUpRight
-                            className={`w-3.5 h-3.5 transition-transform duration-200 ${
-                              isActive
-                                ? "text-white opacity-90"
-                                : "text-[#103430]/40 group-hover:text-[#103430] group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
-                            }`}
-                          />
-                        </div>
+                        <span>{item.name}</span>
+                        {scrolled && isActive && (
+                          <div className="relative flex items-center pr-1 pointer-events-none">
+                            <SlidingLantern isMobile />
+                          </div>
+                        )}
                       </Link>
                     </motion.div>
                   );
@@ -469,18 +433,7 @@ export default function Navbar() {
                     aria-hidden="true"
                   />
                   <span className="relative z-10">BOOK YOUR STAY</span>
-                  <ArrowUpRight className="relative z-10 w-4 h-4 text-[#FFF6F6]" />
                 </a>
-              </motion.div>
-
-              {/* Mobile Menu Footer Info */}
-              <motion.div
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: 0.4, duration: 0.32 }}
-                className="pt-1 text-center text-[#103430]/65 text-[10px] tracking-widest uppercase font-medium"
-              >
-                Kasauli, Himachal Pradesh • Luxury & Peace
               </motion.div>
             </div>
           </motion.div>

@@ -310,11 +310,106 @@ export default function ArchitecturalRooms() {
         </div>
 
         {/* ======================================================== */}
-        {/* 2. MAIN SHOWCASE GRID                                    */}
-        {/* Left: Active Room Spotlight Details                      */}
-        {/* Right: Interactive Manual Card Swiper                     */}
+        {/* 2. MAIN SHOWCASE                                          */}
+        {/* Desktop: Side-by-side grid (details + stacked cards)      */}
+        {/* Mobile: Full-width auto-sliding room cards                */}
         {/* ======================================================== */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-8 xl:gap-12 items-center">
+
+        {/* =================== MOBILE AUTO-SLIDE =================== */}
+        <div className="block lg:hidden">
+          <div className="relative w-full overflow-hidden">
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={activeRoom.id}
+                initial={{ opacity: 0, x: 60 }}
+                animate={{ opacity: 1, x: 0 }}
+                exit={{ opacity: 0, x: -60 }}
+                transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
+                className="w-full"
+              >
+                {/* Room Image Card */}
+                <div className="relative w-full aspect-[4/3] rounded-2xl overflow-hidden shadow-[0_16px_40px_-8px_rgba(16,52,48,0.25)] border border-white/60 mb-4">
+                  <Image
+                    src={activeRoom.image}
+                    alt={activeRoom.alt}
+                    fill
+                    sizes="(max-width: 768px) 92vw, 50vw"
+                    className="object-cover object-center"
+                    priority
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent pointer-events-none" />
+                </div>
+
+                {/* Room Details Below Image */}
+                <div className="px-1">
+                  {/* Room Title & Count */}
+                  <div className="flex items-center justify-between mb-1.5">
+                    <h3
+                      className="font-serif text-2xl sm:text-3xl font-medium tracking-wide text-[#103430] leading-tight"
+                      style={{ fontFamily: "var(--font-cormorant), Georgia, serif" }}
+                    >
+                      {activeRoom.title}
+                    </h3>
+                    <span
+                      className="text-[10px] sm:text-xs uppercase tracking-widest font-semibold text-[#103430]/70 flex-shrink-0"
+                      style={{ fontFamily: "var(--font-manrope), sans-serif" }}
+                    >
+                      {activeRoom.count}
+                    </span>
+                  </div>
+
+                  {/* Tagline */}
+                  <p
+                    className="text-[11px] sm:text-xs font-semibold uppercase tracking-[0.2em] mb-2.5 text-[#103430]/80"
+                    style={{ fontFamily: "var(--font-manrope), sans-serif" }}
+                  >
+                    {activeRoom.tagline}
+                  </p>
+
+                  {/* Description */}
+                  <p
+                    className="font-sans text-xs sm:text-sm leading-relaxed font-normal mb-5 text-[#103430]/90 line-clamp-3"
+                    style={{ fontFamily: "var(--font-manrope), sans-serif" }}
+                  >
+                    {activeRoom.description}
+                  </p>
+
+                  {/* Action Buttons — Full-Width Stacked */}
+                  <div className="flex flex-col gap-2.5 w-full">
+                    <a
+                      href={BOOKING_URL}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="group/cta relative inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full font-semibold uppercase text-[#FFF6F6] bg-[#103430] hover:bg-[#0b2421] border border-[#103430] shadow-[0_4px_16px_rgba(16,52,48,0.25)] active:scale-95 transition-all duration-300 text-xs tracking-[0.12em] cursor-pointer select-none overflow-hidden w-full"
+                      style={{ fontFamily: "var(--font-manrope), sans-serif" }}
+                      aria-label={`Book ${activeRoom.title} now`}
+                    >
+                      <span
+                        className="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-white/30 to-transparent -translate-x-full group-hover/cta:translate-x-full transition-transform duration-1000 ease-in-out pointer-events-none"
+                        aria-hidden="true"
+                      />
+                      <span className="relative z-10 whitespace-nowrap">BOOK NOW</span>
+                      <ArrowUpRight className="relative z-10 w-4 h-4 text-[#FFF6F6] flex-shrink-0" />
+                    </a>
+
+                    <a
+                      href="/room-and-tariff"
+                      className="group/more inline-flex items-center justify-center gap-2 px-5 py-3 rounded-full font-semibold uppercase text-[#103430] bg-transparent border-2 border-[#103430] active:scale-95 transition-all duration-300 text-xs tracking-[0.12em] cursor-pointer select-none w-full"
+                      style={{ fontFamily: "var(--font-manrope), sans-serif" }}
+                      aria-label="Explore all rooms and tariff"
+                    >
+                      <Eye className="w-4 h-4 text-[#103430] flex-shrink-0" />
+                      <span className="whitespace-nowrap">EXPLORE ALL ROOMS</span>
+                    </a>
+                  </div>
+                </div>
+              </motion.div>
+            </AnimatePresence>
+          </div>
+        </div>
+
+        {/* =================== DESKTOP GRID =================== */}
+        <div className="hidden lg:grid lg:grid-cols-12 gap-8 xl:gap-12 items-center">
           {/* ------------------------------------------------------ */}
           {/* LEFT: ACTIVE ROOM SPOTLIGHT DETAILS (CARDLESS)         */}
           {/* ------------------------------------------------------ */}
@@ -376,14 +471,13 @@ export default function ArchitecturalRooms() {
               })}
             </div>
 
-            {/* Action Buttons: Responsive Stack on Mobile, Side by Side on Tablet/MacBook */}
-            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 max-w-md w-full">
-              {/* Button 1: BOOK NOW */}
+            {/* Action Buttons */}
+            <div className="flex flex-row gap-4 max-w-md w-full">
               <a
                 href={BOOKING_URL}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group/cta relative inline-flex items-center justify-center gap-1.5 sm:gap-2 px-6 sm:px-7 py-3 rounded-full font-semibold uppercase text-[#FFF6F6] bg-[#103430] hover:bg-[#0b2421] border border-[#103430] shadow-[0_4px_16px_rgba(16, 52, 48,0.25)] hover:shadow-[0_8px_24px_rgba(16, 52, 48,0.4)] hover:-translate-y-0.5 active:translate-y-0 transition-all duration-300 text-xs sm:text-[13px] tracking-[0.12em] sm:tracking-[0.14em] cursor-pointer select-none overflow-hidden text-center flex-1 w-full sm:w-auto"
+                className="group/cta relative inline-flex items-center justify-center gap-2 px-7 py-3 rounded-full font-semibold uppercase text-[#FFF6F6] bg-[#103430] hover:bg-[#0b2421] border border-[#103430] shadow-[0_4px_16px_rgba(16, 52, 48,0.25)] hover:shadow-[0_8px_24px_rgba(16, 52, 48,0.4)] hover:-translate-y-0.5 active:translate-y-0 transition-all duration-300 text-[13px] tracking-[0.14em] cursor-pointer select-none overflow-hidden text-center flex-1"
                 style={{ fontFamily: "var(--font-manrope), sans-serif" }}
                 aria-label={`Book ${activeRoom.title} now`}
               >
@@ -395,10 +489,9 @@ export default function ArchitecturalRooms() {
                 <ArrowUpRight className="relative z-10 w-4 h-4 text-[#FFF6F6] flex-shrink-0" />
               </a>
 
-              {/* Button 2: EXPLORE ALL ROOMS */}
               <a
                 href="/room-and-tariff"
-                className="group/more relative inline-flex items-center justify-center gap-1.5 sm:gap-2 px-5 sm:px-6 py-3 rounded-full font-semibold uppercase text-[#103430] hover:text-[#FFF6F6] bg-transparent hover:bg-[#103430] hover:border-[#103430] border-2 border-[#103430] shadow-sm hover:shadow-[0_4px_16px_rgba(16, 52, 48,0.25)] hover:-translate-y-0.5 active:translate-y-0 transition-all duration-300 text-xs sm:text-[13px] tracking-[0.12em] sm:tracking-[0.14em] cursor-pointer select-none text-center flex-1 w-full sm:w-auto"
+                className="group/more relative inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full font-semibold uppercase text-[#103430] hover:text-[#FFF6F6] bg-transparent hover:bg-[#103430] hover:border-[#103430] border-2 border-[#103430] shadow-sm hover:shadow-[0_4px_16px_rgba(16, 52, 48,0.25)] hover:-translate-y-0.5 active:translate-y-0 transition-all duration-300 text-[13px] tracking-[0.14em] cursor-pointer select-none text-center flex-1"
                 style={{ fontFamily: "var(--font-manrope), sans-serif" }}
                 aria-label="Explore all rooms and tariff"
               >
@@ -410,8 +503,9 @@ export default function ArchitecturalRooms() {
 
           {/* ------------------------------------------------------ */}
           {/* RIGHT: STACKED CARD DECK (HOVER TO PAUSE & FULL VIEW)  */}
+          {/* Desktop Only — Hidden on Mobile/Tablet                  */}
           {/* ------------------------------------------------------ */}
-          <div className="lg:col-span-5 xl:col-span-5 flex flex-col items-center lg:items-end justify-center relative py-4 sm:py-6">
+          <div className="lg:col-span-5 xl:col-span-5 flex flex-col items-end justify-center relative py-6">
             {/* Luminous Light Shadow Aura reflecting the room image */}
             <div
               className="absolute -inset-4 sm:-inset-6 rounded-[36px] overflow-hidden blur-2xl -z-10 pointer-events-none opacity-70 transition-all duration-700"

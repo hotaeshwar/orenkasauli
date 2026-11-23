@@ -5,13 +5,13 @@ import Image from "next/image";
 import { motion, useReducedMotion, animate } from "motion/react";
 
 /**
- * Oren Kasauli — Luxury Splash Screen
+ * Oren Kasauli — Fast Luxury Splash Screen
  *
- * Sequence:
- * 1. Logo smoothly glides up from the bottom into center position.
- * 2. Elegant slogan unveils softly beneath it.
- * 3. Loading animation sequence initiates with a sleek linear progress track and live 0% -> 100% counter.
- * 4. Ultra-smooth dissolution exit into the website.
+ * Fast & Responsive Sequence:
+ * 1. Immediate ivory background paint (0ms blank/delay).
+ * 2. Rapid, silky logo upward glide (0.5s) with specular shimmer.
+ * 3. Instant counter & progress bar starts right away (0% → 100% in 1.1s).
+ * 4. Crisp, elegant dissolution into the website (~1.7s total duration).
  */
 
 export default function SplashScreen() {
@@ -21,7 +21,7 @@ export default function SplashScreen() {
   const counterRef = useRef(null);
   const progressBarRef = useRef(null);
 
-  // Splash Lifecycle & Sequential Animation
+  // Splash Lifecycle & Fast Responsive Animation
   useEffect(() => {
     try {
       const navEntries =
@@ -53,7 +53,7 @@ export default function SplashScreen() {
     window.addEventListener("beforeunload", handleBeforeUnload);
 
     if (prefersReducedMotion) {
-      const timer = setTimeout(() => setIsActive(false), 200);
+      const timer = setTimeout(() => setIsActive(false), 150);
       return () => {
         window.removeEventListener("beforeunload", handleBeforeUnload);
         clearTimeout(timer);
@@ -62,11 +62,11 @@ export default function SplashScreen() {
 
     let counterControls = null;
 
-    // Start loading animation sequence AFTER the logo has smoothly arrived from bottom (850ms)
+    // Start loading counter immediately with zero hesitation (100ms)
     const startLoadingTimer = setTimeout(() => {
       counterControls = animate(0, 100, {
-        duration: 1.85,
-        ease: [0.22, 1, 0.36, 1],
+        duration: 1.15,
+        ease: [0.16, 1, 0.3, 1],
         onUpdate: (latest) => {
           const val = Math.round(latest);
           if (counterRef.current) {
@@ -77,20 +77,22 @@ export default function SplashScreen() {
           }
         },
       });
-    }, 850);
+    }, 100);
 
-    // Smooth curtain dissolve after loading hits 100%
+    // Smooth curtain dissolve promptly after 100% completion (1.35s)
     const wipeTimer = setTimeout(() => {
       setIsWiping(true);
-    }, 2850);
+    }, 1350);
 
+    // End splash and reveal website completely (1.75s)
     const exitTimer = setTimeout(() => {
       setIsActive(false);
-    }, 3450);
+    }, 1750);
 
+    // Safety fallback timer (2.2s)
     const maxSafetyTimer = setTimeout(() => {
       setIsActive(false);
-    }, 4200);
+    }, 2200);
 
     return () => {
       window.removeEventListener("beforeunload", handleBeforeUnload);
@@ -108,7 +110,7 @@ export default function SplashScreen() {
     <div
       id="oren-splash-screen"
       aria-label="Oren Kasauli Welcome Intro"
-      className="fixed inset-0 z-[9999] pointer-events-auto select-none overflow-hidden"
+      className="fixed inset-0 z-[9999] pointer-events-auto select-none overflow-hidden bg-[#FFF6F6]"
     >
       {/* Outer Dissolution Wrapper */}
       <motion.div
@@ -119,8 +121,8 @@ export default function SplashScreen() {
             ? {
                 opacity: 0,
                 scale: 1.03,
-                filter: "blur(4px)",
-                transition: { duration: 0.6, ease: [0.4, 0, 0.2, 1] },
+                filter: "blur(5px)",
+                transition: { duration: 0.4, ease: [0.4, 0, 0.2, 1] },
               }
             : { opacity: 1, scale: 1, filter: "blur(0px)" }
         }
@@ -129,33 +131,40 @@ export default function SplashScreen() {
         }}
       >
         {/* ======================================================== */}
-        {/* 1. galler12.jpg AMBIENT RESORT BACKGROUND                */}
+        {/* 1. CINEMATIC AMBIENT RESORT BACKGROUND                   */}
         {/* ======================================================== */}
         <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none" aria-hidden="true">
-          <Image
-            src="/images/gallery/galler12.jpg"
-            alt=""
-            fill
-            priority
-            sizes="100vw"
-            className="object-cover object-center scale-105"
-          />
+          <motion.div
+            initial={{ scale: 1.05 }}
+            animate={{ scale: 1.0 }}
+            transition={{ duration: 1.8, ease: "easeOut" }}
+            className="absolute inset-0 w-full h-full"
+          >
+            <Image
+              src="/images/gallery/galler12.jpg"
+              alt=""
+              fill
+              priority
+              sizes="100vw"
+              className="object-cover object-center"
+            />
+          </motion.div>
           {/* Frosted Ivory Scrim */}
-          <div className="absolute inset-0 bg-[#FFF6F6]/85 backdrop-blur-[4px] pointer-events-none" />
+          <div className="absolute inset-0 bg-[#FFF6F6]/88 backdrop-blur-[5px] pointer-events-none" />
           <div className="absolute inset-0 bg-stone-900/5 pointer-events-none" />
         </div>
 
-        {/* Ambient Warm Horizon Glow */}
+        {/* Ambient Warm Golden-Emerald Radial Glow */}
         <div
-          className="absolute top-1/2 left-0 right-0 -translate-y-1/2 h-72 bg-gradient-to-r from-transparent via-[#103430]/[0.06] to-transparent pointer-events-none z-[1]"
+          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-[650px] h-[450px] bg-[radial-gradient(circle_at_50%_50%,rgba(16,52,48,0.08)_0%,rgba(197,167,123,0.06)_40%,transparent_75%)] pointer-events-none blur-2xl z-[1]"
           aria-hidden="true"
         />
 
-        {/* Top Eyebrow Tag */}
+        {/* Top Eyebrow Tag: Kasauli • Himachal Pradesh */}
         <motion.div
-          initial={{ opacity: 0, y: -12 }}
+          initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.1, ease: "easeOut" }}
+          transition={{ duration: 0.45, delay: 0.05, ease: "easeOut" }}
           className="z-10 flex items-center justify-center gap-3 text-[#103430]/75"
         >
           <span className="w-8 sm:w-12 h-[1px] bg-[#103430]/30" />
@@ -172,15 +181,15 @@ export default function SplashScreen() {
         {/* 2. CENTER: LOGO GLIDING SMOOTHLY FROM BOTTOM             */}
         {/* ======================================================== */}
         <div className="w-full flex flex-col items-center justify-center z-10 text-center my-auto px-4 max-w-lg">
-          {/* Logo coming smoothly from the bottom */}
+          {/* Logo coming smoothly and rapidly from bottom with Specular Shimmer */}
           <motion.div
-            initial={{ opacity: 0, y: 55, scale: 0.94 }}
+            initial={{ opacity: 0, y: 35, scale: 0.95 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             transition={{
-              duration: 0.85,
+              duration: 0.5,
               ease: [0.16, 1, 0.3, 1],
             }}
-            className="relative w-52 sm:w-64 md:w-72 lg:w-80 h-28 sm:h-34 md:h-38 flex items-center justify-center p-2 mb-2 sm:mb-3"
+            className="relative w-52 sm:w-64 md:w-72 lg:w-80 h-28 sm:h-34 md:h-38 flex items-center justify-center p-2 mb-2 sm:mb-3 overflow-hidden rounded-2xl"
           >
             <Image
               src="/images/deep-teal-logo.png"
@@ -192,36 +201,44 @@ export default function SplashScreen() {
               fetchPriority="high"
               className="w-full h-full object-contain filter drop-shadow-[0_4px_24px_rgba(16,52,48,0.18)] select-none"
             />
+            {/* Specular Shimmer Sweep Effect Across Logo */}
+            <motion.div
+              initial={{ x: "-120%" }}
+              animate={{ x: "180%" }}
+              transition={{ delay: 0.25, duration: 0.8, ease: "easeInOut" }}
+              className="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-white/35 to-transparent pointer-events-none"
+              aria-hidden="true"
+            />
           </motion.div>
 
           {/* Slogan: "Explore to Luxury and Peace" in Cormorant Serif */}
           <motion.h2
-            initial={{ opacity: 0, y: 15 }}
+            initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.35, ease: "easeOut" }}
+            transition={{ duration: 0.45, delay: 0.15, ease: "easeOut" }}
             className="font-serif text-[#103430] text-sm sm:text-base md:text-lg lg:text-xl tracking-[0.24em] sm:tracking-[0.28em] uppercase font-normal select-none drop-shadow-sm"
             style={{ fontFamily: "var(--font-cormorant), Georgia, serif" }}
           >
             Explore to Luxury and Peace
           </motion.h2>
 
-          {/* Divider accent */}
+          {/* Elegant Expanding Center Hairline Accent */}
           <motion.div
             initial={{ scaleX: 0, opacity: 0 }}
             animate={{ scaleX: 1, opacity: 1 }}
-            transition={{ duration: 0.8, delay: 0.55, ease: "easeOut" }}
+            transition={{ duration: 0.5, delay: 0.2, ease: "easeOut" }}
             className="w-16 sm:w-24 h-[1.5px] bg-[#103430]/35 rounded-full mt-3 sm:mt-4"
             aria-hidden="true"
           />
 
           {/* ======================================================== */}
-          {/* 3. THEN LOADING ANIMATION (APPEARS SEQUENTIALLY)         */}
+          {/* 3. SLEEK ARCHITECTURAL HORIZON LOADER (STARTS AT ONCE)   */}
           {/* ======================================================== */}
           <motion.div
-            initial={{ opacity: 0, y: 15 }}
+            initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.85, ease: [0.16, 1, 0.3, 1] }}
-            className="w-full max-w-xs sm:max-w-sm flex flex-col items-center mt-8 sm:mt-10"
+            transition={{ duration: 0.4, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
+            className="w-full max-w-xs sm:max-w-sm flex flex-col items-center mt-7 sm:mt-9"
           >
             {/* Status & Live Numerical Percentage Counter */}
             <div className="w-full flex items-center justify-between text-[#103430]/75 font-sans font-medium text-[10px] sm:text-[11px] tracking-[0.22em] uppercase select-none mb-2 px-1">
@@ -231,14 +248,14 @@ export default function SplashScreen() {
               </span>
             </div>
 
-            {/* Smooth Linear Progress Horizon Bar */}
+            {/* Architectural Hairline Progress Track */}
             <div
-              className="w-full h-[2.5px] bg-[#103430]/15 backdrop-blur-sm rounded-full overflow-hidden relative"
+              className="w-full h-[2px] bg-[#103430]/15 backdrop-blur-sm rounded-full overflow-hidden relative"
               aria-hidden="true"
             >
               <div
                 ref={progressBarRef}
-                className="h-full w-full bg-gradient-to-r from-[#103430] via-[#1a4e47] to-[#103430] origin-left transform scale-x-0 transition-none shadow-[0_0_8px_rgba(16,52,48,0.4)]"
+                className="h-full w-full bg-gradient-to-r from-[#103430] via-[#1a4e47] to-[#103430] origin-left transform scale-x-0 transition-none shadow-[0_0_8px_rgba(16,52,48,0.5)]"
               />
             </div>
           </motion.div>
