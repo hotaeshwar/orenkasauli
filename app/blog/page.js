@@ -48,9 +48,9 @@ export default function BlogPage() {
       {/* Navigation Bar */}
       <Navbar />
 
-      {/* Sleek, Compact Top Hero Banner with Background, Light Backdrop & Typewriter Heading */}
-      <section className="relative min-h-[220px] sm:min-h-[250px] md:min-h-[280px] flex items-center justify-center pt-24 sm:pt-28 md:pt-32 pb-6 sm:pb-8 px-4 overflow-hidden border-b border-[#e5dccf] bg-[#FFF6F6]">
-        {/* Atmospheric Background Image with Luminous Light Backdrop */}
+      {/* Sleek, Compact Top Hero Banner with Background, Dark Overlay & Typewriter Heading */}
+      <section className="relative min-h-[220px] sm:min-h-[250px] md:min-h-[280px] flex items-center justify-center pt-24 sm:pt-28 md:pt-32 pb-6 sm:pb-8 px-4 overflow-hidden border-b border-[#e5dccf] bg-black">
+        {/* Atmospheric Background Image with Rich Dark Overlay */}
         <div className="absolute inset-0 z-0 select-none overflow-hidden pointer-events-none" aria-hidden="true">
           <Image
             src="/images/gallery/topimage.jpg"
@@ -60,15 +60,15 @@ export default function BlogPage() {
             sizes="100vw"
             className="object-cover object-center scale-105"
           />
-          {/* Luminous soft scrim: preserves blog photography while ensuring crisp text contrast */}
-          <div className="absolute inset-0 bg-[#FFF6F6]/80 backdrop-blur-[2px] pointer-events-none" />
-          <div className="absolute inset-0 bg-gradient-to-b from-white/40 via-transparent to-white/50 pointer-events-none" />
+          {/* Elegant Dark Vignette Scrim — preserves photography while ensuring crisp text contrast */}
+          <div className="absolute inset-0 bg-black/50 pointer-events-none" />
+          <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/30 to-black/60 pointer-events-none" />
         </div>
 
         {/* Hero Content */}
         <div className="max-w-4xl mx-auto text-center relative z-10 w-full px-2 flex flex-col items-center">
           <h1
-            className="font-serif text-[#103430] text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-medium tracking-[0.04em] leading-tight min-h-[1.25em] flex items-center justify-center break-words"
+            className="font-serif text-white text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-medium tracking-[0.04em] leading-tight min-h-[1.25em] flex items-center justify-center break-words drop-shadow-[0_2px_12px_rgba(0,0,0,0.8)]"
             style={{ fontFamily: "var(--font-cormorant), Georgia, serif" }}
           >
             <span>{currentHeadingText}</span>

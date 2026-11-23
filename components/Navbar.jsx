@@ -198,9 +198,13 @@ export default function Navbar() {
                   onMouseEnter={() => setHoveredHref(item.href)}
                   aria-current={isActive ? "page" : undefined}
                   className={`relative px-2 lg:px-2.5 xl:px-3.5 py-1.5 xl:py-2 text-[11px] lg:text-xs xl:text-[13px] uppercase tracking-[0.06em] lg:tracking-[0.08em] xl:tracking-[0.14em] font-medium transition-colors duration-200 z-10 whitespace-nowrap ${
-                    isActive
-                      ? "text-[#103430] font-bold"
-                      : "text-[#103430] hover:text-[#0b2421]"
+                    scrolled
+                      ? isActive
+                        ? "text-[#103430] font-bold"
+                        : "text-[#103430] hover:text-[#0b2421]"
+                      : isActive
+                      ? "text-white font-bold drop-shadow-[0_1px_8px_rgba(0,0,0,0.85)]"
+                      : "text-white hover:text-white/80 drop-shadow-[0_1px_4px_rgba(0,0,0,0.7)]"
                   }`}
                   style={{ fontFamily: "var(--font-montserrat), sans-serif" }}
                 >
@@ -226,7 +230,7 @@ export default function Navbar() {
                         >
                           <SlidingLantern
                             slideDirection={slideDirection}
-                            isScrolled={true}
+                            isScrolled={scrolled}
                           />
                         </motion.div>
                       </motion.div>
@@ -237,7 +241,11 @@ export default function Navbar() {
                   {isHovered && !isActive && (
                     <motion.span
                       layoutId="navbar-pill"
-                      className="absolute inset-0 rounded-full -z-10 bg-[#103430]/10 border border-[#103430]/20 shadow-sm"
+                      className={`absolute inset-0 rounded-full -z-10 ${
+                        scrolled
+                          ? "bg-[#103430]/10 border border-[#103430]/20 shadow-sm"
+                          : "bg-white/15 backdrop-blur-sm border border-white/20 shadow-[0_2px_12px_rgba(0,0,0,0.35)]"
+                      }`}
                       transition={{
                         type: "spring",
                         stiffness: 450,
@@ -291,7 +299,11 @@ export default function Navbar() {
             <button
               type="button"
               onClick={() => setMobileMenuOpen((prev) => !prev)}
-              className="relative z-50 w-10 h-10 sm:w-11 sm:h-11 rounded-full border flex items-center justify-center transition-all duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#103430] active:scale-90 cursor-pointer bg-white/95 hover:bg-white text-[#103430] border-[#103430]/25 shadow-sm"
+              className={`relative z-50 w-10 h-10 sm:w-11 sm:h-11 rounded-full border flex items-center justify-center transition-all duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#103430] active:scale-90 cursor-pointer ${
+                scrolled
+                  ? "bg-white/95 hover:bg-white text-[#103430] border-[#103430]/25 shadow-sm"
+                  : "bg-black/40 hover:bg-black/60 text-white border-white/25 backdrop-blur-md"
+              }`}
               aria-label={mobileMenuOpen ? "Close navigation menu" : "Open navigation menu"}
               aria-expanded={mobileMenuOpen}
             >

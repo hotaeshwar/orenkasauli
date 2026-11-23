@@ -442,9 +442,9 @@ export default function RoomAndTariffPage() {
       {/* Navigation Bar */}
       <Navbar />
 
-      {/* Sleek, Compact Top Hero Banner with Background Image (room.jpg) — Light Backdrop */}
-      <section className="relative min-h-[220px] sm:min-h-[250px] md:min-h-[280px] flex items-center justify-center pt-24 sm:pt-28 md:pt-32 pb-6 sm:pb-8 px-4 overflow-hidden border-b border-[#e2d8c7] bg-[#FFF6F6]">
-        {/* Background room.jpg with Luminous Light Backdrop */}
+      {/* Sleek, Compact Top Hero Banner with Background Image (room.jpg) — Dark Elegant Scrim */}
+      <section className="relative min-h-[220px] sm:min-h-[250px] md:min-h-[280px] flex items-center justify-center pt-24 sm:pt-28 md:pt-32 pb-6 sm:pb-8 px-4 overflow-hidden border-b border-[#e2d8c7] bg-black">
+        {/* Background room.jpg with Ambient Dark Overlay */}
         <div className="absolute inset-0 z-0 select-none overflow-hidden pointer-events-none" aria-hidden="true">
           <Image
             src="/images/room.jpg"
@@ -454,15 +454,15 @@ export default function RoomAndTariffPage() {
             sizes="100vw"
             className="object-cover object-center scale-105"
           />
-          {/* Luminous soft scrim: preserves room photography while ensuring crisp text contrast */}
-          <div className="absolute inset-0 bg-[#FFF6F6]/80 backdrop-blur-[2px] pointer-events-none" />
-          <div className="absolute inset-0 bg-gradient-to-b from-white/40 via-transparent to-white/50 pointer-events-none" />
+          {/* Elegant Dark Vignette Scrim — keeps room photo rich and gives white navbar links & banner text crisp contrast */}
+          <div className="absolute inset-0 bg-black/50 pointer-events-none" />
+          <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/30 to-black/60 pointer-events-none" />
         </div>
 
         {/* Hero Content */}
         <div className="max-w-4xl mx-auto text-center relative z-10 w-full px-2 flex flex-col items-center">
           <h1
-            className="font-serif text-[#103430] text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-medium tracking-[0.04em] leading-tight min-h-[1.25em] flex items-center justify-center break-words"
+            className="font-serif text-white text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-medium tracking-[0.04em] leading-tight min-h-[1.25em] flex items-center justify-center break-words drop-shadow-[0_2px_12px_rgba(0,0,0,0.8)]"
             style={{ fontFamily: "var(--font-cormorant), Georgia, serif" }}
           >
             <span>{currentHeadingText}</span>
@@ -474,7 +474,7 @@ export default function RoomAndTariffPage() {
 
           {/* Rooms & Suites Narrative Story */}
           <p
-            className="font-sans text-xs sm:text-sm md:text-base text-[#103430] font-medium max-w-2xl mx-auto leading-relaxed tracking-wide text-center mt-3"
+            className="font-sans text-xs sm:text-sm md:text-base text-white/90 font-normal max-w-2xl mx-auto leading-relaxed tracking-wide text-center mt-3 drop-shadow-[0_1px_6px_rgba(0,0,0,0.7)]"
             style={{ fontFamily: "var(--font-montserrat), sans-serif" }}
           >
             Every stay has its own story. Choose from thoughtfully designed rooms and suites, each offering comfort and a beautiful connection with the surrounding hills. From cosy attic rooms and valley-facing balconies to private jacuzzis and plunge pool experiences, discover a room that suits the way you want to unwind.

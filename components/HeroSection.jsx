@@ -302,6 +302,8 @@ export default function HeroSection() {
           >
             <source src="/videos/home.mp4" type="video/mp4" />
           </video>
+          {/* Ambient subtle vignette for luxury contrast and white navbar readability */}
+          <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-transparent to-black/35 pointer-events-none" />
         </div>
       </section>
 
