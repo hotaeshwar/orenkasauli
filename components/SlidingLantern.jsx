@@ -59,6 +59,7 @@ export default function SlidingLantern({
           className="relative w-5 h-8 flex-shrink-0"
         >
           <Image
+            suppressHydrationWarning
             src="/assets/lantern.svg"
             alt="Active Navigation Lantern Indicator"
             width={20}
@@ -115,6 +116,7 @@ export default function SlidingLantern({
         {/* Scaled-down, Refined Lantern Graphic */}
         <div className="relative w-5 h-8 xl:w-5.5 xl:h-[34px] flex items-center justify-center drop-shadow-[0_2px_8px_rgba(0,0,0,0.4)]">
           <Image
+            suppressHydrationWarning
             src="/assets/lantern.svg"
             alt="Active Navigation Lantern"
             width={24}

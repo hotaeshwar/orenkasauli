@@ -443,7 +443,7 @@ export default function RoomAndTariffPage() {
       <Navbar />
 
       {/* Sleek, Compact Top Hero Banner with Background Image (room.jpg) — Dark Elegant Scrim */}
-      <section className="relative min-h-[220px] sm:min-h-[250px] md:min-h-[280px] flex items-center justify-center pt-24 sm:pt-28 md:pt-32 pb-6 sm:pb-8 px-4 overflow-hidden border-b border-[#e2d8c7] bg-black">
+      <section className="relative min-h-[200px] sm:min-h-[220px] md:min-h-[250px] flex items-center justify-center pt-24 sm:pt-28 md:pt-32 pb-8 sm:pb-10 px-4 overflow-hidden border-b border-[#e2d8c7] bg-black">
         {/* Background room.jpg with Ambient Dark Overlay */}
         <div className="absolute inset-0 z-0 select-none overflow-hidden pointer-events-none" aria-hidden="true">
           <Image
@@ -471,21 +471,11 @@ export default function RoomAndTariffPage() {
               aria-hidden="true"
             />
           </h1>
-
-          {/* Rooms & Suites Narrative Story — Highlighted in Green Span Tag */}
-          <div className="mt-4 sm:mt-5 max-w-2xl lg:max-w-3xl mx-auto px-2">
-            <span
-              className="inline-block px-5 sm:px-7 py-3 sm:py-3.5 rounded-2xl bg-[#FFF6F6]/95 backdrop-blur-md border border-[#103430]/20 shadow-[0_8px_30px_rgba(0,0,0,0.35)] text-[#103430] text-xs sm:text-sm md:text-[15px] font-medium leading-relaxed tracking-wide text-center"
-              style={{ fontFamily: "var(--font-montserrat), sans-serif" }}
-            >
-              Every stay has its own story. Choose from thoughtfully designed rooms and suites, each offering comfort and a beautiful connection with the surrounding hills. From cosy attic rooms and valley-facing balconies to private jacuzzis and plunge pool experiences, discover a room that suits the way you want to unwind.
-            </span>
-          </div>
         </div>
       </section>
 
       {/* Main Ladder-Type Cardless Showcase Section */}
-      <section className="relative w-full bg-[#FFF6F6] pt-8 sm:pt-12 md:pt-14 pb-16 sm:pb-24 px-4 sm:px-6 lg:px-8 xl:px-12 overflow-hidden">
+      <section className="relative w-full bg-[#FFF6F6] pt-10 sm:pt-14 md:pt-16 pb-16 sm:pb-24 px-4 sm:px-6 lg:px-8 xl:px-12 overflow-hidden">
         {/* Ambient Resort Background with White Light Overlay */}
         <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none" aria-hidden="true">
           <Image
@@ -500,6 +490,16 @@ export default function RoomAndTariffPage() {
         </div>
 
         <div className="max-w-7xl mx-auto relative z-10">
+          {/* Rooms & Suites Narrative Story — Below Header without Capsule, Green Text in Span */}
+          <div className="max-w-3xl mx-auto text-center mb-12 sm:mb-16 md:mb-20 px-4">
+            <span
+              className="block text-[#103430] text-sm sm:text-base md:text-lg font-medium leading-relaxed tracking-wide text-center"
+              style={{ fontFamily: "var(--font-montserrat), sans-serif" }}
+            >
+              Every stay has its own story. Choose from thoughtfully designed rooms and suites, each offering comfort and a beautiful connection with the surrounding hills. From cosy attic rooms and valley-facing balconies to private jacuzzis and plunge pool experiences, discover a room that suits the way you want to unwind.
+            </span>
+            <div className="w-16 h-[2px] bg-[#C5A77B] mx-auto mt-6 rounded-full" aria-hidden="true" />
+          </div>
           {/* 8 Rooms in a Proper Cardless Ladder Layout (Alternating Staggered Steps) */}
           <div className="space-y-16 sm:space-y-24 md:space-y-32 lg:space-y-40">
             {ROOMS_TARIFF_DATA.map((room, index) => {

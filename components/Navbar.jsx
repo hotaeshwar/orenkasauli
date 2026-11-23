@@ -39,8 +39,6 @@ export default function Navbar() {
         : activeSection
       : pathname;
 
-  const isLightNav = scrolled || pathname !== "/";
-
   // Instant background appearance when user begins scrolling
   useEffect(() => {
     const handleScroll = () => {
@@ -146,6 +144,7 @@ export default function Navbar() {
 
   return (
     <header
+      suppressHydrationWarning
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ease-out ${
         scrolled
           ? "bg-white/95 backdrop-blur-md shadow-[0_4px_24px_rgba(16, 52, 48,0.08)] border-b border-[#103430]/10"
