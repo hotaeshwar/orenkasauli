@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
@@ -472,13 +472,15 @@ export default function RoomAndTariffPage() {
             />
           </h1>
 
-          {/* Rooms & Suites Narrative Story */}
-          <p
-            className="font-sans text-xs sm:text-sm md:text-base text-white/90 font-normal max-w-2xl mx-auto leading-relaxed tracking-wide text-center mt-3 drop-shadow-[0_1px_6px_rgba(0,0,0,0.7)]"
-            style={{ fontFamily: "var(--font-montserrat), sans-serif" }}
-          >
-            Every stay has its own story. Choose from thoughtfully designed rooms and suites, each offering comfort and a beautiful connection with the surrounding hills. From cosy attic rooms and valley-facing balconies to private jacuzzis and plunge pool experiences, discover a room that suits the way you want to unwind.
-          </p>
+          {/* Rooms & Suites Narrative Story — Highlighted in Green Span Tag */}
+          <div className="mt-4 sm:mt-5 max-w-2xl lg:max-w-3xl mx-auto px-2">
+            <span
+              className="inline-block px-5 sm:px-7 py-3 sm:py-3.5 rounded-2xl bg-[#FFF6F6]/95 backdrop-blur-md border border-[#103430]/20 shadow-[0_8px_30px_rgba(0,0,0,0.35)] text-[#103430] text-xs sm:text-sm md:text-[15px] font-medium leading-relaxed tracking-wide text-center"
+              style={{ fontFamily: "var(--font-montserrat), sans-serif" }}
+            >
+              Every stay has its own story. Choose from thoughtfully designed rooms and suites, each offering comfort and a beautiful connection with the surrounding hills. From cosy attic rooms and valley-facing balconies to private jacuzzis and plunge pool experiences, discover a room that suits the way you want to unwind.
+            </span>
+          </div>
         </div>
       </section>
 
