@@ -197,7 +197,7 @@ export default function BlogSection() {
     ? ""
     : TYPEWRITER_TEXT.slice(charIndex);
 
-  // Close modal on Escape key press
+  // Close modal on Escape key press & synchronize Lenis scroll locking
   useEffect(() => {
     const handleKeyDown = (e) => {
       if (e.key === "Escape") {
@@ -207,12 +207,21 @@ export default function BlogSection() {
     if (selectedPost) {
       window.addEventListener("keydown", handleKeyDown);
       document.body.style.overflow = "hidden";
+      if (typeof window !== "undefined" && window.lenis) {
+        window.lenis.stop();
+      }
     } else {
       document.body.style.overflow = "unset";
+      if (typeof window !== "undefined" && window.lenis) {
+        window.lenis.start();
+      }
     }
     return () => {
       window.removeEventListener("keydown", handleKeyDown);
       document.body.style.overflow = "unset";
+      if (typeof window !== "undefined" && window.lenis) {
+        window.lenis.start();
+      }
     };
   }, [selectedPost]);
 
@@ -372,7 +381,8 @@ export default function BlogSection() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.25 }}
-            className="fixed inset-0 z-50 bg-black/85 backdrop-blur-md flex items-center justify-center p-3 sm:p-5 md:p-8"
+            data-lenis-prevent="true"
+            className="fixed inset-0 z-50 bg-black/85 backdrop-blur-md flex items-center justify-center p-3 sm:p-5 md:p-8 overscroll-contain overflow-y-auto"
             onClick={() => setSelectedPost(null)}
           >
             <motion.div
@@ -381,13 +391,15 @@ export default function BlogSection() {
               exit={{ scale: 0.94, opacity: 0, y: 25 }}
               transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
               onClick={(e) => e.stopPropagation()}
-              className="relative w-full max-w-3xl max-h-[92vh] sm:max-h-[88vh] bg-[#FFF6F6] text-[#103430] rounded-2xl sm:rounded-3xl shadow-[0_20px_60px_rgba(16, 52, 48,0.25)] border border-[#e2d8c7] overflow-hidden flex flex-col"
+              data-lenis-prevent="true"
+              className="relative w-full max-w-3xl h-[88vh] sm:h-[85vh] max-h-[88vh] bg-[#FFF6F6] text-[#103430] rounded-2xl sm:rounded-3xl shadow-[0_20px_60px_rgba(16, 52, 48,0.25)] border border-[#e2d8c7] overflow-hidden flex flex-col my-auto"
             >
               {/* Modal Top Header with Close Button */}
               <div className="absolute top-3 right-3 sm:top-4 sm:right-4 z-20">
                 <button
+                  type="button"
                   onClick={() => setSelectedPost(null)}
-                  className="w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-black/60 hover:bg-black/90 text-white backdrop-blur-md border border-white/20 flex items-center justify-center transition-all duration-200 shadow-lg hover:scale-105 active:scale-95"
+                  className="w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-black/60 hover:bg-black/90 text-white backdrop-blur-md border border-white/20 flex items-center justify-center transition-all duration-200 shadow-lg hover:scale-105 active:scale-95 cursor-pointer"
                   aria-label="Close modal"
                 >
                   <X className="w-5 h-5 text-white" />
@@ -395,7 +407,14 @@ export default function BlogSection() {
               </div>
 
               {/* Scrollable Body Content */}
-              <div className="overflow-y-auto w-full flex-1">
+              <div
+                data-lenis-prevent="true"
+                className="overflow-y-auto w-full flex-1 min-h-0 overscroll-contain touch-pan-y"
+                style={{
+                  WebkitOverflowScrolling: "touch",
+                  overscrollBehavior: "contain",
+                }}
+              >
                 {/* Hero Image Inside Modal — 100% Crisp & Fully Visible */}
                 <div
                   className="relative w-full h-[220px] sm:h-[300px] md:h-[350px] bg-neutral-900 overflow-hidden"

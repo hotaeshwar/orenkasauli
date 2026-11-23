@@ -71,11 +71,14 @@ export default function RoomInformation({
 }) {
   const isContentVisible = doorState === "open" || doorState === "opening";
 
-  // Manage modal open state: lock background scroll and handle Escape key dismiss
+  // Manage modal open state: lock background scroll and handle Escape key dismiss + Lenis sync
   useEffect(() => {
     if (!isDetailsOpen) return;
 
     document.body.style.overflow = "hidden";
+    if (typeof window !== "undefined" && window.lenis) {
+      window.lenis.stop();
+    }
 
     const handleKeyDown = (e) => {
       if (e.key === "Escape") {
@@ -87,6 +90,9 @@ export default function RoomInformation({
 
     return () => {
       document.body.style.overflow = "";
+      if (typeof window !== "undefined" && window.lenis) {
+        window.lenis.start();
+      }
       window.removeEventListener("keydown", handleKeyDown);
     };
   }, [isDetailsOpen, setIsDetailsOpen]);
@@ -149,14 +155,16 @@ export default function RoomInformation({
       {/* ======================================================== */}
       {isDetailsOpen && (
         <div
-          className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-5 md:p-6 bg-black/70 backdrop-blur-md animate-fadeIn"
+          data-lenis-prevent="true"
+          className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-5 md:p-6 bg-black/70 backdrop-blur-md animate-fadeIn overflow-y-auto overscroll-contain"
           onClick={() => setIsDetailsOpen(false)}
           role="dialog"
           aria-modal="true"
           aria-labelledby="modal-room-title"
         >
           <div
-            className="relative w-full max-w-2xl lg:max-w-3xl bg-[#FFF6F6] text-[#103430] rounded-2xl sm:rounded-3xl border border-[#103430]/20 shadow-[0_25px_60px_-15px_rgba(16, 52, 48,0.4)] overflow-hidden max-h-[92vh] flex flex-col animate-scaleUp"
+            data-lenis-prevent="true"
+            className="relative w-full max-w-2xl lg:max-w-3xl bg-[#FFF6F6] text-[#103430] rounded-2xl sm:rounded-3xl border border-[#103430]/20 shadow-[0_25px_60px_-15px_rgba(16, 52, 48,0.4)] overflow-hidden h-[90vh] sm:h-[88vh] max-h-[90vh] flex flex-col my-auto animate-scaleUp"
             onClick={(e) => e.stopPropagation()}
           >
             {/* Modal Header */}
@@ -193,7 +201,14 @@ export default function RoomInformation({
             </div>
 
             {/* Modal Scrollable Content */}
-            <div className="overflow-y-auto p-4 sm:p-6 md:p-8 space-y-6 flex-1">
+            <div
+              data-lenis-prevent="true"
+              className="overflow-y-auto p-4 sm:p-6 md:p-8 space-y-6 flex-1 min-h-0 overscroll-contain touch-pan-y"
+              style={{
+                WebkitOverflowScrolling: "touch",
+                overscrollBehavior: "contain",
+              }}
+            >
               {/* High-res Room Preview Banner */}
               <div className="relative w-full aspect-[16/9] min-h-[190px] sm:min-h-[240px] rounded-xl sm:rounded-2xl overflow-hidden bg-neutral-900 border border-[#e5dccf] shadow-md">
                 <Image

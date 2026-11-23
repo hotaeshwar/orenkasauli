@@ -96,15 +96,24 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, [pathname]);
 
-  // Prevent background scrolling when mobile menu is open
+  // Prevent background scrolling when mobile menu is open & pause Lenis
   useEffect(() => {
     if (mobileMenuOpen) {
       document.body.style.overflow = "hidden";
+      if (typeof window !== "undefined" && window.lenis) {
+        window.lenis.stop();
+      }
     } else {
       document.body.style.overflow = "unset";
+      if (typeof window !== "undefined" && window.lenis) {
+        window.lenis.start();
+      }
     }
     return () => {
       document.body.style.overflow = "unset";
+      if (typeof window !== "undefined" && window.lenis) {
+        window.lenis.start();
+      }
     };
   }, [mobileMenuOpen]);
 
@@ -299,49 +308,51 @@ export default function Navbar() {
               type="button"
               onClick={() => setMobileMenuOpen((prev) => !prev)}
               className={`relative z-50 w-10 h-10 sm:w-11 sm:h-11 rounded-full border flex items-center justify-center transition-all duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#103430] active:scale-90 cursor-pointer ${
-                scrolled
+                mobileMenuOpen
+                  ? "bg-white text-[#103430] border-[#103430]/30 shadow-md"
+                  : scrolled
                   ? "bg-white/95 hover:bg-white text-[#103430] border-[#103430]/25 shadow-sm"
-                  : "bg-black/40 hover:bg-black/60 text-white border-white/25 backdrop-blur-md"
+                  : "bg-black/40 hover:bg-black/60 text-white border-white/25 backdrop-blur-md shadow-md"
               }`}
               aria-label={mobileMenuOpen ? "Close navigation menu" : "Open navigation menu"}
               aria-expanded={mobileMenuOpen}
             >
               <motion.div
-                animate={{ rotate: mobileMenuOpen ? 180 : 0 }}
-                transition={{ type: "spring", stiffness: 260, damping: 20 }}
-                className="relative w-5 h-5 flex flex-col justify-center items-center"
+                animate={{ rotate: mobileMenuOpen ? 90 : 0 }}
+                transition={{ type: "spring", stiffness: 320, damping: 24 }}
+                className="relative w-5 h-5 flex flex-col justify-center items-center gap-[4.5px]"
               >
-                {/* Top / Diagonal 1 Bar */}
+                {/* Top Bar — Translates down & rotates 45° to form the cross */}
                 <motion.span
                   animate={
                     mobileMenuOpen
-                      ? { rotate: 45, y: 0, width: "18px" }
-                      : { rotate: 0, y: -4, width: "20px" }
+                      ? { rotate: 45, y: 6.5, width: "18px" }
+                      : { rotate: 0, y: 0, width: "20px" }
                   }
-                  transition={{ type: "spring", stiffness: 300, damping: 22 }}
-                  className="absolute h-[2px] rounded-full bg-current origin-center"
+                  transition={{ type: "spring", stiffness: 320, damping: 24 }}
+                  className="h-[2px] rounded-full bg-current origin-center"
                 />
 
-                {/* Center Accent Dot (Fades out when open) */}
+                {/* Middle Bar — Smooth horizontal slide & fade out */}
                 <motion.span
                   animate={
                     mobileMenuOpen
-                      ? { scale: 0, opacity: 0 }
-                      : { scale: 1, opacity: 1 }
+                      ? { opacity: 0, x: -12, scaleX: 0 }
+                      : { opacity: 1, x: 0, scaleX: 1, width: "14px" }
                   }
-                  transition={{ duration: 0.15 }}
-                  className="absolute w-1 h-1 rounded-full bg-current"
+                  transition={{ duration: 0.2, ease: "easeOut" }}
+                  className="h-[2px] rounded-full bg-current origin-left"
                 />
 
-                {/* Bottom / Diagonal 2 Bar */}
+                {/* Bottom Bar — Translates up & rotates -45° to intersect */}
                 <motion.span
                   animate={
                     mobileMenuOpen
-                      ? { rotate: -45, y: 0, width: "18px" }
-                      : { rotate: 0, y: 4, width: "14px" }
+                      ? { rotate: -45, y: -6.5, width: "18px" }
+                      : { rotate: 0, y: 0, width: "20px" }
                   }
-                  transition={{ type: "spring", stiffness: 300, damping: 22 }}
-                  className="absolute h-[2px] rounded-full bg-current origin-center"
+                  transition={{ type: "spring", stiffness: 320, damping: 24 }}
+                  className="h-[2px] rounded-full bg-current origin-center"
                 />
               </motion.div>
             </button>
@@ -354,45 +365,123 @@ export default function Navbar() {
         {mobileMenuOpen && (
           <motion.div
             key="mobile-drawer-overlay"
-            initial={{ opacity: 0, y: -12 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -12 }}
-            transition={{ duration: 0.22, ease: "easeOut" }}
-            className="lg:hidden fixed inset-x-0 top-20 md:top-24 h-[calc(100dvh-5rem)] md:h-[calc(100dvh-6rem)] bg-[#FFF6F6]/98 backdrop-blur-2xl border-t border-[#103430]/15 z-[100] overflow-y-auto px-5 sm:px-8 py-8 flex flex-col justify-center shadow-2xl pointer-events-auto"
+            initial={{ opacity: 0, y: -24, scale: 0.98 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            exit={{ opacity: 0, y: -20, scale: 0.98 }}
+            transition={{ duration: 0.32, ease: [0.16, 1, 0.3, 1] }}
+            data-lenis-prevent="true"
+            className="lg:hidden fixed inset-x-0 top-20 md:top-24 h-[calc(100dvh-5rem)] md:h-[calc(100dvh-6rem)] bg-[#FFF6F6]/98 backdrop-blur-2xl border-t border-[#103430]/15 z-[100] overflow-y-auto px-5 sm:px-8 py-6 sm:py-8 flex flex-col justify-between shadow-2xl pointer-events-auto overscroll-contain touch-pan-y"
+            style={{
+              WebkitOverflowScrolling: "touch",
+              overscrollBehavior: "contain",
+            }}
           >
             <div className="flex flex-col space-y-4 max-w-md w-full mx-auto my-auto">
-              <span
-                className="text-[11px] uppercase tracking-[0.25em] text-[#103430] font-semibold text-center"
-                style={{ fontFamily: "var(--font-manrope), sans-serif" }}
-              >
-                Menu
-              </span>
-              <nav className="flex flex-col space-y-2">
-                {NAV_ITEMS.map((item) => {
+              {/* Header eyebrow in mobile menu */}
+              <div className="flex items-center justify-between pb-2 border-b border-[#103430]/10">
+                <span
+                  className="text-[10px] uppercase tracking-[0.26em] text-[#103430]/70 font-semibold"
+                  style={{ fontFamily: "var(--font-manrope), sans-serif" }}
+                >
+                  Navigation
+                </span>
+                <span
+                  className="text-[10px] uppercase tracking-[0.2em] text-[#103430]/60 font-medium"
+                  style={{ fontFamily: "var(--font-manrope), sans-serif" }}
+                >
+                  Oren Kasauli
+                </span>
+              </div>
+
+              {/* Navigation Links with Staggered Cascading Reveal */}
+              <nav className="flex flex-col space-y-1.5 sm:space-y-2">
+                {NAV_ITEMS.map((item, index) => {
                   const isActive = activeHref === item.href;
                   return (
-                    <Link
+                    <motion.div
                       key={item.href}
-                      href={item.href}
-                      onClick={(e) => handleNavClick(e, item.href)}
-                      aria-current={isActive ? "page" : undefined}
-                      className={`relative flex items-center justify-between py-3 px-5 rounded-full text-xs sm:text-sm uppercase tracking-[0.16em] font-medium transition-colors ${
-                        isActive
-                          ? "bg-[#103430]/12 text-[#103430] font-bold border border-[#103430]/25 shadow-sm"
-                          : "text-[#103430] hover:bg-[#103430]/8 hover:text-[#0b2421]"
-                      }`}
-                      style={{ fontFamily: "var(--font-manrope), sans-serif" }}
+                      initial={{ opacity: 0, x: -16 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{
+                        delay: 0.05 + index * 0.035,
+                        duration: 0.32,
+                        ease: [0.16, 1, 0.3, 1],
+                      }}
                     >
-                      <span>{item.name}</span>
-                      {scrolled && isActive && (
-                        <div className="relative flex items-center pr-1 pointer-events-none">
-                          <SlidingLantern isMobile />
+                      <Link
+                        href={item.href}
+                        onClick={(e) => handleNavClick(e, item.href)}
+                        aria-current={isActive ? "page" : undefined}
+                        className={`group relative flex items-center justify-between py-2.5 sm:py-3 px-4 sm:px-5 rounded-2xl text-xs sm:text-sm uppercase tracking-[0.16em] font-medium transition-all duration-200 ${
+                          isActive
+                            ? "bg-[#103430] text-white font-bold shadow-md shadow-[#103430]/20"
+                            : "text-[#103430] hover:bg-[#103430]/8 hover:text-[#0b2421]"
+                        }`}
+                        style={{ fontFamily: "var(--font-manrope), sans-serif" }}
+                      >
+                        <div className="flex items-center gap-3">
+                          <span
+                            className={`text-[11px] font-serif transition-colors ${
+                              isActive ? "text-emerald-200" : "text-[#103430]/40"
+                            }`}
+                            style={{ fontFamily: "var(--font-cormorant), Georgia, serif" }}
+                          >
+                            0{index + 1}
+                          </span>
+                          <span>{item.name}</span>
                         </div>
-                      )}
-                    </Link>
+                        <div className="flex items-center gap-1.5">
+                          {scrolled && isActive && (
+                            <div className="relative flex items-center pr-1 pointer-events-none">
+                              <SlidingLantern isMobile />
+                            </div>
+                          )}
+                          <ArrowUpRight
+                            className={`w-3.5 h-3.5 transition-transform duration-200 ${
+                              isActive
+                                ? "text-white opacity-90"
+                                : "text-[#103430]/40 group-hover:text-[#103430] group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+                            }`}
+                          />
+                        </div>
+                      </Link>
+                    </motion.div>
                   );
                 })}
               </nav>
+
+              {/* Direct Booking CTA inside mobile menu */}
+              <motion.div
+                initial={{ opacity: 0, y: 12 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.35, duration: 0.32 }}
+                className="pt-2"
+              >
+                <a
+                  href={BOOKING_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group relative w-full inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-full font-semibold uppercase text-[#FFF6F6] bg-[#103430] hover:bg-[#0b2421] border border-[#103430] shadow-[0_4px_16px_rgba(16, 52, 48,0.35)] hover:shadow-[0_8px_24px_rgba(16, 52, 48,0.55)] active:scale-95 transition-all duration-300 text-xs tracking-[0.16em] overflow-hidden text-center cursor-pointer"
+                  style={{ fontFamily: "var(--font-manrope), sans-serif" }}
+                >
+                  <span
+                    className="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-white/40 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-in-out pointer-events-none"
+                    aria-hidden="true"
+                  />
+                  <span className="relative z-10">BOOK YOUR STAY</span>
+                  <ArrowUpRight className="relative z-10 w-4 h-4 text-[#FFF6F6]" />
+                </a>
+              </motion.div>
+
+              {/* Mobile Menu Footer Info */}
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 0.4, duration: 0.32 }}
+                className="pt-1 text-center text-[#103430]/65 text-[10px] tracking-widest uppercase font-medium"
+              >
+                Kasauli, Himachal Pradesh • Luxury & Peace
+              </motion.div>
             </div>
           </motion.div>
         )}
