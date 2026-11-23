@@ -17,8 +17,6 @@ import {
   Bath,
   Waves,
   X,
-  ChevronLeft,
-  ChevronRight,
 } from "lucide-react";
 import { ROOMS_COLLECTION, BOOKING_URL } from "./roomsData";
 
@@ -525,46 +523,6 @@ export default function ArchitecturalRooms() {
                   </motion.div>
                 );
               })}
-            </div>
-
-            {/* Sleek Navigation Controls & Dot Indicators (Responsive Mobile & Desktop) */}
-            <div className="flex items-center justify-center gap-3 sm:gap-4 mt-5 sm:mt-6 z-20 w-full">
-              {/* Prev Button */}
-              <button
-                type="button"
-                onClick={handlePrev}
-                className="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-white/90 hover:bg-white border border-[#103430]/25 text-[#103430] flex items-center justify-center shadow-sm hover:shadow-md hover:scale-105 active:scale-95 transition-all duration-200 cursor-pointer"
-                aria-label="Previous room"
-              >
-                <ChevronLeft className="w-4 h-4 sm:w-5 sm:h-5 text-current" />
-              </button>
-
-              {/* Room Indicator Dots */}
-              <div className="flex items-center gap-1.5 sm:gap-2 px-3 py-1.5 rounded-full bg-white/80 backdrop-blur-sm border border-[#103430]/15 shadow-sm">
-                {ROOMS_COLLECTION.map((_, dotIdx) => (
-                  <button
-                    key={dotIdx}
-                    type="button"
-                    onClick={() => handleSelectRoom(dotIdx)}
-                    className={`h-2 rounded-full transition-all duration-300 cursor-pointer ${
-                      dotIdx === currentIndex
-                        ? "w-6 bg-[#103430]"
-                        : "w-2 bg-[#103430]/25 hover:bg-[#103430]/50"
-                    }`}
-                    aria-label={`Go to room ${dotIdx + 1}`}
-                  />
-                ))}
-              </div>
-
-              {/* Next Button */}
-              <button
-                type="button"
-                onClick={handleNext}
-                className="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-white/90 hover:bg-white border border-[#103430]/25 text-[#103430] flex items-center justify-center shadow-sm hover:shadow-md hover:scale-105 active:scale-95 transition-all duration-200 cursor-pointer"
-                aria-label="Next room"
-              >
-                <ChevronRight className="w-4 h-4 sm:w-5 sm:h-5 text-current" />
-              </button>
             </div>
           </div>
         </div>
