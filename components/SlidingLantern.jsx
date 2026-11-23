@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import Image from "next/image";
 import { motion, useReducedMotion } from "motion/react";
@@ -43,7 +43,7 @@ export default function SlidingLantern({
       <div className="relative flex items-center justify-center pointer-events-none select-none">
         {/* Soft Ambient Glow behind Mobile Lantern */}
         <div
-          className="absolute inset-0 rounded-full bg-[radial-gradient(circle,rgba(16, 52, 48,0.35)_0%,rgba(197,167,123,0.15)_40%,transparent_75%)] blur-sm"
+          className="absolute inset-0 rounded-full bg-[radial-gradient(circle,rgba(16,52,48,0.35)_0%,rgba(52,211,153,0.15)_40%,transparent_75%)] blur-sm"
           aria-hidden="true"
         />
 

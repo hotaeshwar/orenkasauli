@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
@@ -77,15 +77,17 @@ export default function AboutSection() {
     >
       {/* Ambient Resort Background with White Light Overlay */}
       <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none" aria-hidden="true">
-        <Image
-          src="/images/gallery/galler12.jpg"
-          alt=""
-          fill
-          sizes="100vw"
-          className="object-cover object-center scale-105"
-        />
-        <div className="absolute inset-0 bg-[#FFF6F6]/82 pointer-events-none" />
-        <div className="absolute inset-0 bg-gradient-to-b from-white/50 via-transparent to-white/50 pointer-events-none" />
+        <div data-gsap="parallax" data-parallax-speed="-8" className="absolute inset-0 w-full h-[120%] -top-[10%]">
+          <Image
+            src="/images/gallery/galler12.jpg"
+            alt=""
+            fill
+            sizes="100vw"
+            className="object-cover object-center scale-105"
+          />
+        </div>
+        <div className="absolute inset-0 bg-[#FFF6F6]/75 pointer-events-none" />
+        <div className="absolute inset-0 bg-stone-900/5 pointer-events-none" />
       </div>
 
       <div className="max-w-7xl mx-auto relative z-10">
@@ -101,12 +103,12 @@ export default function AboutSection() {
               className="flex items-center gap-3 sm:gap-4 mb-3 sm:mb-4"
             >
               <span
-                className="w-10 sm:w-14 h-[2px] bg-[#C5A77B] rounded-full flex-shrink-0"
+                className="w-10 sm:w-14 h-[2px] bg-[#103430] rounded-full flex-shrink-0"
                 aria-hidden="true"
               />
               <span
-                className="text-xs sm:text-sm font-bold uppercase tracking-[0.26em] text-[#C5A77B]"
-                style={{ fontFamily: "var(--font-montserrat), sans-serif" }}
+                className="text-xs sm:text-sm font-bold uppercase tracking-[0.26em] text-[#103430]"
+                style={{ fontFamily: "var(--font-manrope), sans-serif" }}
               >
                 ABOUT US
               </span>
@@ -122,8 +124,8 @@ export default function AboutSection() {
                 delay: shouldReduceMotion ? 0 : 0.7,
                 ease: "easeOut",
               }}
-              className="font-serif text-[#103430] text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-normal tracking-wide leading-tight mb-6 select-none"
-              style={{ fontFamily: "var(--font-cormorant), Georgia, serif", fontWeight: 400 }}
+              className="font-serif text-[#103430] text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-medium tracking-wide leading-tight mb-6 select-none"
+              style={{ fontFamily: "var(--font-cormorant), Georgia, serif", fontWeight: 500 }}
             >
               {/* Screen reader full text */}
               <span className="sr-only">{TYPEWRITER_TEXT}</span>
@@ -134,7 +136,7 @@ export default function AboutSection() {
                 {/* Zero-width cursor container guarantees 0px horizontal layout shift */}
                 {!shouldReduceMotion && (
                   <span className="inline-block w-0 relative align-middle" aria-hidden="true">
-                    <span className="absolute left-0.5 sm:left-1 top-1/2 -translate-y-1/2 w-[2px] sm:w-[3px] h-[0.8em] bg-[#C5A77B] rounded-full animate-pulse" />
+                    <span className="absolute left-0.5 sm:left-1 top-1/2 -translate-y-1/2 w-[2px] sm:w-[3px] h-[0.8em] bg-[#103430] rounded-full animate-pulse" />
                   </span>
                 )}
                 {/* Invisible ghost remainder locks width, height, and line wraps */}
@@ -157,7 +159,7 @@ export default function AboutSection() {
                 ease: "easeOut",
               }}
               className="text-[#103430] text-base sm:text-lg md:text-xl leading-relaxed font-normal mb-5 tracking-wide"
-              style={{ fontFamily: "var(--font-montserrat), sans-serif", fontWeight: 400 }}
+              style={{ fontFamily: "var(--font-manrope), sans-serif", fontWeight: 400 }}
             >
               Nestled amidst the serene surroundings of Kasauli, OREN offers a welcoming stay experience with beautiful valley views and the charm of the Shivalik Hills.
             </motion.p>
@@ -173,7 +175,7 @@ export default function AboutSection() {
                 ease: "easeOut",
               }}
               className="text-[#103430] text-sm sm:text-base md:text-[17px] leading-relaxed font-normal mb-5 tracking-wide"
-              style={{ fontFamily: "var(--font-montserrat), sans-serif", fontWeight: 400 }}
+              style={{ fontFamily: "var(--font-manrope), sans-serif", fontWeight: 400 }}
             >
               With 40 valley-facing rooms, thoughtfully designed spaces and warm hospitality, every part of your stay is shaped around comfort and relaxation. From peaceful mornings overlooking the hills to evenings spent enjoying good food and meaningful moments, OREN brings together the experiences that make a mountain getaway special.
             </motion.p>
@@ -189,7 +191,7 @@ export default function AboutSection() {
                 ease: "easeOut",
               }}
               className="text-[#103430] text-sm sm:text-base md:text-[17px] leading-relaxed font-normal mb-8 tracking-wide"
-              style={{ fontFamily: "var(--font-montserrat), sans-serif", fontWeight: 400 }}
+              style={{ fontFamily: "var(--font-manrope), sans-serif", fontWeight: 400 }}
             >
               Whether you are planning a family holiday, a couple&apos;s getaway or a refreshing break with friends, discover a comfortable stay at OREN Kasauli.
             </motion.p>
@@ -209,7 +211,7 @@ export default function AboutSection() {
               <a
                 href="#rooms"
                 className="group relative inline-flex w-full sm:w-auto items-center justify-center gap-2 rounded-full font-bold uppercase whitespace-nowrap text-[#FFF6F6] bg-[#103430] hover:bg-[#0b2421] border-2 border-[#103430] shadow-[0_6px_22px_rgba(16, 52, 48,0.35)] hover:shadow-[0_12px_36px_rgba(16, 52, 48,0.55)] hover:-translate-y-1 hover:scale-[1.03] active:translate-y-0 active:scale-95 transition-all duration-300 px-7 sm:px-10 py-3.5 sm:py-4 text-xs sm:text-sm tracking-[0.16em] sm:tracking-[0.18em] cursor-pointer select-none overflow-hidden"
-                style={{ fontFamily: "var(--font-montserrat), sans-serif" }}
+                style={{ fontFamily: "var(--font-manrope), sans-serif" }}
                 aria-label="Discover Oren Kasauli"
               >
                 {/* Specular Shimmer Sweep Effect across the button on hover */}
@@ -239,7 +241,7 @@ export default function AboutSection() {
               }}
               className="w-full"
             >
-              <div className="relative w-full rounded-2xl overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.12)] border border-neutral-200/80 bg-neutral-900 aspect-video">
+              <div data-gsap="image-reveal" className="relative w-full rounded-2xl overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.12)] border border-neutral-200/80 bg-neutral-900 aspect-video">
                 <video
                   ref={videoRef}
                   src="/videos/about.mp4"

@@ -1,6 +1,7 @@
-﻿import { Cormorant_Garamond, Montserrat, Manrope } from "next/font/google";
+import { Cormorant_Garamond, Montserrat, Manrope } from "next/font/google";
 import "./globals.css";
 import Footer from "@/components/Footer";
+import SmoothScroll from "@/components/SmoothScroll";
 
 const cormorant = Cormorant_Garamond({
   variable: "--font-cormorant",
@@ -43,8 +44,7 @@ export default function RootLayout({ children }) {
     <html
       lang="en"
       suppressHydrationWarning
-      data-scroll-behavior="smooth"
-      className={`${cormorant.variable} ${manrope.variable} ${montserrat.variable} scroll-smooth antialiased`}
+      className={`${cormorant.variable} ${manrope.variable} ${montserrat.variable} antialiased`}
     >
       <head>
         <link rel="preload" href="/images/deep-teal-logo.png" as="image" type="image/png" fetchPriority="high" />
@@ -53,10 +53,12 @@ export default function RootLayout({ children }) {
         suppressHydrationWarning
         className="min-h-screen w-full overflow-x-hidden font-sans bg-[#FFF6F6] text-[#103430] selection:bg-[#103430] selection:text-[#FFF6F6] flex flex-col justify-between"
       >
-        <div suppressHydrationWarning className="flex-1 w-full">
-          {children}
-        </div>
-        <Footer />
+        <SmoothScroll>
+          <div suppressHydrationWarning className="flex-1 w-full">
+            {children}
+          </div>
+          <Footer />
+        </SmoothScroll>
       </body>
     </html>
   );

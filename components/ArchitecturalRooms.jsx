@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
@@ -245,11 +245,11 @@ export default function ArchitecturalRooms() {
 
         {/* Protective ambient gradient scrim keeping text & controls 100% readable while richly reflecting the active room */}
         <div
-          className={`absolute inset-0 bg-gradient-to-r from-[#FFF6F6]/95 via-[#FFF6F6]/80 to-[#FFF6F6]/55 transition-opacity duration-500 pointer-events-none ${
+          className={`absolute inset-0 bg-gradient-to-r from-[#FFF6F6]/80 via-[#FFF6F6]/65 to-[#FFF6F6]/45 transition-opacity duration-500 pointer-events-none ${
             isPaused ? "opacity-75" : "opacity-90"
           }`}
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-[#FFF6F6]/85 via-transparent to-[#FFF6F6]/75 pointer-events-none" />
+        <div className="absolute inset-0 bg-black/10 pointer-events-none" />
       </div>
 
       <div className="max-w-7xl mx-auto relative z-10">
@@ -260,24 +260,24 @@ export default function ArchitecturalRooms() {
           {/* Eyebrow Label: STAY WITH A VIEW */}
           <div className="flex items-center justify-center gap-3 sm:gap-4 mb-3 sm:mb-4">
             <span
-              className="w-10 sm:w-14 h-[2px] bg-[#C5A77B] rounded-full flex-shrink-0"
+              className="w-10 sm:w-14 h-[2px] bg-[#103430] rounded-full flex-shrink-0"
               aria-hidden="true"
             />
             <span
-              className="text-xs sm:text-sm font-bold uppercase tracking-[0.26em] text-[#C5A77B]"
-              style={{ fontFamily: "var(--font-montserrat), sans-serif" }}
+              className="text-xs sm:text-sm font-bold uppercase tracking-[0.26em] text-[#103430]"
+              style={{ fontFamily: "var(--font-manrope), sans-serif" }}
             >
               STAY WITH A VIEW
             </span>
             <span
-              className="w-10 sm:w-14 h-[2px] bg-[#C5A77B] rounded-full flex-shrink-0"
+              className="w-10 sm:w-14 h-[2px] bg-[#103430] rounded-full flex-shrink-0"
               aria-hidden="true"
             />
           </div>
 
           {/* Main Title: Find Your Perfect Stay in Kasauli */}
           <h2
-            className="font-serif text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-normal tracking-wide leading-tight text-center break-words select-none text-[#103430]"
+            className="font-serif text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-medium tracking-wide leading-tight text-center break-words select-none text-[#103430]"
             style={{ fontFamily: "var(--font-cormorant), Georgia, serif" }}
           >
             <span className="sr-only">{TYPEWRITER_TEXT}</span>
@@ -316,14 +316,14 @@ export default function ArchitecturalRooms() {
             {/* Category / Badge & Room Inventory Count */}
             <div className="flex items-center gap-2.5 mb-2 sm:mb-3">
               <span
-                className="text-xs sm:text-sm font-semibold uppercase tracking-[0.22em] text-[#C5A77B]"
-                style={{ fontFamily: "var(--font-montserrat), sans-serif" }}
+                className="text-xs sm:text-sm font-semibold uppercase tracking-[0.22em] text-[#103430]"
+                style={{ fontFamily: "var(--font-manrope), sans-serif" }}
               >
                 {activeRoom.badge}
               </span>
               <span
-                className="text-xs uppercase tracking-widest font-normal text-[#103430]/60"
-                style={{ fontFamily: "var(--font-montserrat), sans-serif" }}
+                className="text-xs sm:text-sm uppercase tracking-widest font-semibold text-[#103430]"
+                style={{ fontFamily: "var(--font-manrope), sans-serif" }}
               >
                 • {activeRoom.count}
               </span>
@@ -339,16 +339,16 @@ export default function ArchitecturalRooms() {
 
             {/* Tagline */}
             <p
-              className="text-xs sm:text-sm font-semibold uppercase tracking-[0.22em] mb-4 sm:mb-5 text-[#C5A77B]"
-              style={{ fontFamily: "var(--font-montserrat), sans-serif" }}
+              className="text-xs sm:text-sm font-semibold uppercase tracking-[0.22em] mb-4 sm:mb-5 text-[#103430]"
+              style={{ fontFamily: "var(--font-manrope), sans-serif" }}
             >
               {activeRoom.tagline}
             </p>
 
             {/* Description */}
             <p
-              className="font-sans text-sm sm:text-base leading-relaxed font-normal mb-6 sm:mb-8 max-w-xl text-[#103430]/80"
-              style={{ fontFamily: "var(--font-montserrat), sans-serif" }}
+              className="font-sans text-sm sm:text-base leading-relaxed font-normal mb-6 sm:mb-8 max-w-xl text-[#103430]"
+              style={{ fontFamily: "var(--font-manrope), sans-serif" }}
             >
               {activeRoom.description}
             </p>
@@ -360,10 +360,10 @@ export default function ArchitecturalRooms() {
                 return (
                   <span
                     key={idx}
-                    className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs font-medium bg-white border border-[#e2d8c7] text-[#103430] shadow-sm hover:border-[#103430]/30 transition-colors"
-                    style={{ fontFamily: "var(--font-montserrat), sans-serif" }}
+                    className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs font-semibold bg-white border border-[#103430]/20 text-[#103430] shadow-sm hover:border-[#103430] transition-colors"
+                    style={{ fontFamily: "var(--font-manrope), sans-serif" }}
                   >
-                    <Icon className="w-3.5 h-3.5 text-[#C5A77B] flex-shrink-0" />
+                    <Icon className="w-3.5 h-3.5 text-[#103430] flex-shrink-0" />
                     <span>{amenity.name}</span>
                   </span>
                 );
@@ -378,7 +378,7 @@ export default function ArchitecturalRooms() {
                 target="_blank"
                 rel="noopener noreferrer"
                 className="group/cta relative inline-flex items-center justify-center gap-1.5 sm:gap-2 px-6 sm:px-7 py-3 rounded-full font-semibold uppercase text-[#FFF6F6] bg-[#103430] hover:bg-[#0b2421] border border-[#103430] shadow-[0_4px_16px_rgba(16, 52, 48,0.25)] hover:shadow-[0_8px_24px_rgba(16, 52, 48,0.4)] hover:-translate-y-0.5 active:translate-y-0 transition-all duration-300 text-xs sm:text-[13px] tracking-[0.12em] sm:tracking-[0.14em] cursor-pointer select-none overflow-hidden text-center flex-1 w-full sm:w-auto"
-                style={{ fontFamily: "var(--font-montserrat), sans-serif" }}
+                style={{ fontFamily: "var(--font-manrope), sans-serif" }}
                 aria-label={`Book ${activeRoom.title} now`}
               >
                 <span
@@ -393,7 +393,7 @@ export default function ArchitecturalRooms() {
               <a
                 href="/room-and-tariff"
                 className="group/more relative inline-flex items-center justify-center gap-1.5 sm:gap-2 px-5 sm:px-6 py-3 rounded-full font-semibold uppercase text-[#103430] hover:text-[#FFF6F6] bg-transparent hover:bg-[#103430] hover:border-[#103430] border-2 border-[#103430] shadow-sm hover:shadow-[0_4px_16px_rgba(16, 52, 48,0.25)] hover:-translate-y-0.5 active:translate-y-0 transition-all duration-300 text-xs sm:text-[13px] tracking-[0.12em] sm:tracking-[0.14em] cursor-pointer select-none text-center flex-1 w-full sm:w-auto"
-                style={{ fontFamily: "var(--font-montserrat), sans-serif" }}
+                style={{ fontFamily: "var(--font-manrope), sans-serif" }}
                 aria-label="Explore all rooms and tariff"
               >
                 <Eye className="w-4 h-4 text-[#103430] group-hover/more:text-white transition-colors flex-shrink-0" />
@@ -418,11 +418,12 @@ export default function ArchitecturalRooms() {
                 sizes="(max-width: 768px) 320px, 360px"
                 className="object-cover scale-125 brightness-110 saturate-150 transition-all duration-1000"
               />
-              <div className="absolute inset-0 bg-gradient-to-tr from-[#C5A77B]/40 via-emerald-800/20 to-amber-100/30 mix-blend-overlay" />
+              <div className="absolute inset-0 bg-gradient-to-tr from-[#103430]/30 via-emerald-800/15 to-transparent mix-blend-overlay" />
             </div>
 
             {/* Stacked Cards Deck Container — Pauses rotation while mouse is over */}
             <div
+              data-gsap="image-reveal"
               onMouseEnter={() => setIsPaused(true)}
               onMouseLeave={() => setIsPaused(false)}
               className="relative w-[235px] sm:w-[265px] md:w-[285px] lg:w-[305px] h-[330px] sm:h-[370px] md:h-[400px] lg:h-[420px] ml-auto select-none"
@@ -475,8 +476,8 @@ export default function ArchitecturalRooms() {
                         : undefined
                     }
                     onClick={!isTop ? () => handleSelectRoom(roomIdx) : undefined}
-                    className={`group/card absolute inset-0 rounded-2xl sm:rounded-3xl overflow-hidden shadow-[0_22px_48px_-10px_rgba(0,0,0,0.2),0_12px_28px_-6px_rgba(197,167,123,0.38),0_0_20px_rgba(255,255,255,0.4)] border border-white/80 ring-1 ring-[#C5A77B]/30 transition-all duration-300 ${isTop
-                      ? "cursor-pointer ring-2 ring-[#C5A77B]/60 hover:ring-[#103430] hover:shadow-[0_28px_56px_-8px_rgba(16, 52, 48,0.3),0_14px_32px_rgba(197,167,123,0.45)]"
+                    className={`group/card absolute inset-0 rounded-2xl sm:rounded-3xl overflow-hidden shadow-[0_22px_48px_-10px_rgba(0,0,0,0.2),0_12px_28px_-6px_rgba(16,52,48,0.25),0_0_20px_rgba(255,255,255,0.4)] border border-white/80 ring-1 ring-[#103430]/20 transition-all duration-300 ${isTop
+                      ? "cursor-pointer ring-2 ring-[#103430]/50 hover:ring-[#103430] hover:shadow-[0_28px_56px_-8px_rgba(16,52,48,0.35),0_14px_32px_rgba(16,52,48,0.25)]"
                       : "cursor-pointer"
                       }`}
                   >
@@ -499,7 +500,7 @@ export default function ArchitecturalRooms() {
                       <div className="absolute bottom-0 inset-x-0 p-4 sm:p-5 z-20 flex flex-col items-start transition-opacity duration-300 group-hover/card:opacity-0 pointer-events-none">
                         <span
                           className="text-[10px] sm:text-[11px] font-semibold uppercase tracking-[0.2em] text-[#FFE4A0] mb-0.5 drop-shadow-md truncate max-w-full"
-                          style={{ fontFamily: "var(--font-montserrat), sans-serif" }}
+                          style={{ fontFamily: "var(--font-manrope), sans-serif" }}
                         >
                           {room.badge}
                         </span>
@@ -513,7 +514,7 @@ export default function ArchitecturalRooms() {
 
                         <p
                           className="text-[11px] sm:text-xs text-white/90 font-normal tracking-wide drop-shadow-md"
-                          style={{ fontFamily: "var(--font-montserrat), sans-serif" }}
+                          style={{ fontFamily: "var(--font-manrope), sans-serif" }}
                         >
                           {room.count}
                         </p>
@@ -539,7 +540,7 @@ export default function ArchitecturalRooms() {
           aria-labelledby="modal-room-title"
         >
           <div
-            className="relative w-full max-w-2xl lg:max-w-3xl bg-[#FFF6F6] text-[#103430] rounded-2xl sm:rounded-3xl border border-[#C5A77B]/50 shadow-[0_25px_60px_-15px_rgba(0,0,0,0.6)] overflow-hidden max-h-[92vh] flex flex-col"
+            className="relative w-full max-w-2xl lg:max-w-3xl bg-[#FFF6F6] text-[#103430] rounded-2xl sm:rounded-3xl border border-[#103430]/25 shadow-[0_25px_60px_-15px_rgba(0,0,0,0.6)] overflow-hidden max-h-[92vh] flex flex-col"
             onClick={(e) => e.stopPropagation()}
           >
             {/* Modal Header */}
@@ -547,12 +548,12 @@ export default function ArchitecturalRooms() {
               <div className="flex items-center gap-3">
                 <h4
                   id="modal-room-title"
-                  className="font-serif text-xl sm:text-2xl text-[#103430] font-normal tracking-wide truncate"
+                  className="font-serif text-xl sm:text-2xl text-[#103430] font-medium tracking-wide truncate"
                   style={{ fontFamily: "var(--font-cormorant), Georgia, serif" }}
                 >
                   {activeRoom.title}
                 </h4>
-                <span className="text-xs uppercase tracking-widest text-[#103430]/60 font-semibold hidden sm:inline-block">
+                <span className="text-xs uppercase tracking-widest text-[#103430] font-bold hidden sm:inline-block">
                   • {activeRoom.count}
                 </span>
               </div>
@@ -561,7 +562,7 @@ export default function ArchitecturalRooms() {
               <button
                 type="button"
                 onClick={() => setIsDetailsOpen(false)}
-                className="w-9 h-9 sm:w-10 sm:h-10 rounded-full border border-[#C5A77B]/40 hover:border-[#C5A77B] bg-white hover:bg-[#C5A77B]/15 text-[#103430] flex items-center justify-center transition-all duration-200 cursor-pointer"
+                className="w-9 h-9 sm:w-10 sm:h-10 rounded-full border border-[#103430]/25 hover:border-[#103430] bg-white hover:bg-[#103430]/10 text-[#103430] flex items-center justify-center transition-all duration-200 cursor-pointer"
                 aria-label="Close suite details"
               >
                 <X className="w-5 h-5" />
@@ -578,7 +579,7 @@ export default function ArchitecturalRooms() {
                   fill
                   className="object-cover"
                 />
-                <div className="absolute top-3 right-3 px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wider bg-black/70 backdrop-blur-md text-[#FFE4A0] border border-[#C5A77B]/50">
+                <div className="absolute top-3 right-3 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-black/75 backdrop-blur-md text-white border border-white/30">
                   {activeRoom.badge}
                 </div>
               </div>
@@ -586,22 +587,22 @@ export default function ArchitecturalRooms() {
               {/* Tagline and Description */}
               <div>
                 <p
-                  className="text-xs sm:text-sm uppercase tracking-[0.2em] text-[#C5A77B] font-semibold mb-2"
-                  style={{ fontFamily: "var(--font-montserrat), sans-serif" }}
+                  className="text-xs sm:text-sm uppercase tracking-[0.2em] text-[#103430] font-bold mb-2"
+                  style={{ fontFamily: "var(--font-manrope), sans-serif" }}
                 >
                   {activeRoom.tagline}
                 </p>
-                <p className="font-sans text-sm sm:text-base text-[#103430]/85 leading-relaxed font-normal">
+                <p className="font-sans text-sm sm:text-base text-[#103430] leading-relaxed font-normal">
                   {activeRoom.description}
                 </p>
               </div>
 
               {/* The Oren Suites Narrative */}
-              <div className="p-4 sm:p-5 rounded-2xl bg-[#103430]/[0.04] border border-[#C5A77B]/30 text-[#103430]/85 text-xs sm:text-sm leading-relaxed">
+              <div className="p-4 sm:p-5 rounded-2xl bg-[#103430]/[0.05] border border-[#103430]/20 text-[#103430] text-xs sm:text-sm leading-relaxed">
                 <p className="font-serif text-sm sm:text-base font-medium mb-1 text-[#103430]" style={{ fontFamily: "var(--font-cormorant), Georgia, serif" }}>
                   Every Stay Has Its Own Story
                 </p>
-                <p className="font-light">
+                <p className="font-normal text-[#103430]/90">
                   Choose from thoughtfully designed rooms and suites, each offering comfort and a beautiful connection with the surrounding hills. From cosy attic rooms and valley-facing balconies to private jacuzzis and plunge pool experiences, discover a room that suits the way you want to unwind.
                 </p>
               </div>
@@ -609,8 +610,8 @@ export default function ArchitecturalRooms() {
               {/* Signature Amenities Grid */}
               <div className="pt-2 border-t border-[#e2d8c7]">
                 <h5
-                  className="text-xs uppercase tracking-[0.2em] text-[#103430]/70 font-semibold mb-4"
-                  style={{ fontFamily: "var(--font-montserrat), sans-serif" }}
+                  className="text-xs uppercase tracking-[0.2em] text-[#103430] font-bold mb-4"
+                  style={{ fontFamily: "var(--font-manrope), sans-serif" }}
                 >
                   SIGNATURE SUITE AMENITIES
                 </h5>
@@ -622,10 +623,10 @@ export default function ArchitecturalRooms() {
                         key={idx}
                         className="flex items-center gap-3 p-3 rounded-xl bg-white border border-[#e2d8c7] shadow-sm"
                       >
-                        <div className="w-8 h-8 rounded-lg bg-[#FFF6F6] flex items-center justify-center text-[#C5A77B] flex-shrink-0">
+                        <div className="w-8 h-8 rounded-lg bg-[#103430]/10 flex items-center justify-center text-[#103430] flex-shrink-0">
                           <Icon className="w-4 h-4" />
                         </div>
-                        <span className="text-xs sm:text-sm font-medium text-[#103430]">
+                        <span className="text-xs sm:text-sm font-semibold text-[#103430]">
                           {item.name}
                         </span>
                       </div>
@@ -647,7 +648,7 @@ export default function ArchitecturalRooms() {
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex-1 sm:flex-initial inline-flex items-center justify-center gap-2 px-6 sm:px-8 py-2.5 sm:py-3 rounded-full font-semibold uppercase text-[#FFF6F6] bg-[#103430] hover:bg-[#0b2421] shadow-md hover:shadow-lg transition-all text-xs tracking-[0.14em]"
-                  style={{ fontFamily: "var(--font-montserrat), sans-serif" }}
+                  style={{ fontFamily: "var(--font-manrope), sans-serif" }}
                 >
                   <span>RESERVE NOW</span>
                   <ArrowUpRight className="w-4 h-4" />

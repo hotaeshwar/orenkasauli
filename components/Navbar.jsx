@@ -187,7 +187,7 @@ export default function Navbar() {
             {NAV_ITEMS.map((item) => {
               const isActive = activeHref === item.href;
               const isHovered = hoveredHref === item.href;
-              const shouldShowLantern = isActive;
+              const shouldShowLantern = scrolled && isActive;
 
               return (
                 <Link
@@ -205,7 +205,7 @@ export default function Navbar() {
                       ? "text-white font-bold drop-shadow-[0_1px_8px_rgba(0,0,0,0.85)]"
                       : "text-white hover:text-white/80 drop-shadow-[0_1px_4px_rgba(0,0,0,0.7)]"
                   }`}
-                  style={{ fontFamily: "var(--font-montserrat), sans-serif" }}
+                  style={{ fontFamily: "var(--font-manrope), sans-serif" }}
                 >
                   {/* Sliding Lantern Navigation Indicator — Active on Room, Gallery, Blog, Contact & upon Scroll */}
                   <AnimatePresence>
@@ -264,7 +264,7 @@ export default function Navbar() {
               target="_blank"
               rel="noopener noreferrer"
               className="group relative inline-flex items-center justify-center rounded-full font-semibold uppercase whitespace-nowrap text-[#FFF6F6] bg-[#103430] hover:bg-[#0b2421] border border-[#103430] shadow-[0_4px_16px_rgba(16, 52, 48,0.35)] hover:shadow-[0_8px_24px_rgba(16, 52, 48,0.55)] hover:-translate-y-0.5 hover:scale-[1.03] active:translate-y-0 active:scale-95 transition-all duration-300 ml-1.5 lg:ml-2.5 xl:ml-5 px-3 lg:px-4 xl:px-5 py-1.5 xl:py-2 text-[10px] lg:text-[11px] xl:text-xs tracking-[0.1em] xl:tracking-[0.16em] overflow-hidden"
-              style={{ fontFamily: "var(--font-montserrat), sans-serif" }}
+              style={{ fontFamily: "var(--font-manrope), sans-serif" }}
               aria-label="Book Now (opens reservation system)"
             >
               {/* Shimmer sweep effect */}
@@ -284,7 +284,7 @@ export default function Navbar() {
               target="_blank"
               rel="noopener noreferrer"
               className="group relative inline-flex items-center justify-center rounded-full font-semibold uppercase whitespace-nowrap text-[#FFF6F6] bg-[#103430] hover:bg-[#0b2421] border border-[#103430] shadow-[0_3px_12px_rgba(16, 52, 48,0.35)] hover:shadow-[0_6px_20px_rgba(16, 52, 48,0.55)] active:scale-95 transition-all duration-300 px-2.5 sm:px-4 py-1.5 md:py-2 text-[10px] sm:text-[11px] md:text-xs tracking-[0.1em] sm:tracking-[0.14em] md:tracking-[0.16em] overflow-hidden"
-              style={{ fontFamily: "var(--font-montserrat), sans-serif" }}
+              style={{ fontFamily: "var(--font-manrope), sans-serif" }}
               aria-label="Book Now"
             >
               <span
@@ -330,7 +330,7 @@ export default function Navbar() {
                       : { scale: 1, opacity: 1 }
                   }
                   transition={{ duration: 0.15 }}
-                  className="absolute w-1 h-1 rounded-full bg-[#C5A77B]"
+                  className="absolute w-1 h-1 rounded-full bg-current"
                 />
 
                 {/* Bottom / Diagonal 2 Bar */}
@@ -363,7 +363,7 @@ export default function Navbar() {
             <div className="flex flex-col space-y-4 max-w-md w-full mx-auto my-auto">
               <span
                 className="text-[11px] uppercase tracking-[0.25em] text-[#103430] font-semibold text-center"
-                style={{ fontFamily: "var(--font-montserrat), sans-serif" }}
+                style={{ fontFamily: "var(--font-manrope), sans-serif" }}
               >
                 Menu
               </span>
@@ -381,10 +381,10 @@ export default function Navbar() {
                           ? "bg-[#103430]/12 text-[#103430] font-bold border border-[#103430]/25 shadow-sm"
                           : "text-[#103430] hover:bg-[#103430]/8 hover:text-[#0b2421]"
                       }`}
-                      style={{ fontFamily: "var(--font-montserrat), sans-serif" }}
+                      style={{ fontFamily: "var(--font-manrope), sans-serif" }}
                     >
                       <span>{item.name}</span>
-                      {isActive && (
+                      {scrolled && isActive && (
                         <div className="relative flex items-center pr-1 pointer-events-none">
                           <SlidingLantern isMobile />
                         </div>

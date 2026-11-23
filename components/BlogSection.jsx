@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import { useState, useEffect } from "react";
 import Image from "next/image";
@@ -220,15 +220,17 @@ export default function BlogSection() {
     <section className="relative w-full bg-[#FFF6F6] text-[#103430] pt-8 sm:pt-10 md:pt-12 pb-16 sm:pb-24 px-4 sm:px-6 lg:px-8 xl:px-12 border-t border-[#e2d8c7] overflow-hidden">
       {/* Ambient Resort Background with White Light Overlay */}
       <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none" aria-hidden="true">
-        <Image
-          src="/images/gallery/galler12.jpg"
-          alt=""
-          fill
-          sizes="100vw"
-          className="object-cover object-center scale-105"
-        />
-        <div className="absolute inset-0 bg-[#FFF6F6]/82 pointer-events-none" />
-        <div className="absolute inset-0 bg-gradient-to-b from-white/50 via-transparent to-white/50 pointer-events-none" />
+        <div data-gsap="parallax" data-parallax-speed="-8" className="absolute inset-0 w-full h-[120%] -top-[10%]">
+          <Image
+            src="/images/gallery/galler12.jpg"
+            alt=""
+            fill
+            sizes="100vw"
+            className="object-cover object-center scale-105"
+          />
+        </div>
+        <div className="absolute inset-0 bg-[#FFF6F6]/75 pointer-events-none" />
+        <div className="absolute inset-0 bg-stone-900/5 pointer-events-none" />
       </div>
 
       <div className="max-w-7xl mx-auto relative z-10">
@@ -236,22 +238,22 @@ export default function BlogSection() {
         <div className="flex flex-col items-center text-center mb-10 sm:mb-14">
           <div className="flex items-center justify-center gap-3 sm:gap-4 mb-3 sm:mb-4">
             <span
-              className="w-10 sm:w-14 h-[2px] bg-[#C5A77B] rounded-full flex-shrink-0"
+              className="w-10 sm:w-14 h-[2px] bg-[#103430] rounded-full flex-shrink-0"
               aria-hidden="true"
             />
             <span
-              className="text-xs sm:text-sm font-bold uppercase tracking-[0.26em] text-[#C5A77B]"
-              style={{ fontFamily: "var(--font-montserrat), sans-serif" }}
+              className="text-xs sm:text-sm font-bold uppercase tracking-[0.26em] text-[#103430]"
+              style={{ fontFamily: "var(--font-manrope), sans-serif" }}
             >
               KASAULI TRAVEL STORIES
             </span>
             <span
-              className="w-10 sm:w-14 h-[2px] bg-[#C5A77B] rounded-full flex-shrink-0"
+              className="w-10 sm:w-14 h-[2px] bg-[#103430] rounded-full flex-shrink-0"
               aria-hidden="true"
             />
           </div>
           <h2
-            className="font-serif text-[#103430] text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-normal tracking-wide leading-tight select-none"
+            className="font-serif text-[#103430] text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-medium tracking-wide leading-tight select-none"
             style={{ fontFamily: "var(--font-cormorant), Georgia, serif" }}
           >
             {/* Screen reader full text */}
@@ -263,7 +265,7 @@ export default function BlogSection() {
               {/* Zero-width cursor container guarantees 0px horizontal layout shift */}
               {!shouldReduceMotion && (
                 <span className="inline-block w-0 relative align-middle" aria-hidden="true">
-                  <span className="absolute left-0.5 sm:left-1 top-1/2 -translate-y-1/2 w-[2px] sm:w-[3px] h-[0.8em] bg-[#C5A77B] rounded-full animate-pulse" />
+                  <span className="absolute left-0.5 sm:left-1 top-1/2 -translate-y-1/2 w-[2px] sm:w-[3px] h-[0.8em] bg-[#103430] rounded-full animate-pulse" />
                 </span>
               )}
               {/* Invisible ghost remainder locks width, height, and line wraps */}
@@ -277,7 +279,7 @@ export default function BlogSection() {
         </div>
 
         {/* Blog Post Grid: Responsive 1, 2, or 3 columns with same animation style as in Gallery */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-7 lg:gap-8">
+        <div data-gsap="stagger" className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-7 lg:gap-8">
           {BLOG_POSTS.map((post, index) => {
             const columnDelay = (index % 3) * 0.12;
 
@@ -293,7 +295,7 @@ export default function BlogSection() {
                   ease: [0.16, 1, 0.3, 1],
                 }}
                 onClick={() => setSelectedPost(post)}
-                className="group cursor-pointer rounded-2xl sm:rounded-3xl bg-white border border-[#e2d8c7] shadow-[0_4px_20px_rgba(0,0,0,0.04)] hover:shadow-[0_16px_36px_rgba(197,167,123,0.22)] hover:border-[#C5A77B]/80 transition-all duration-300 flex flex-col overflow-hidden will-change-transform"
+                className="group cursor-pointer rounded-2xl sm:rounded-3xl bg-white border border-[#e2d8c7] shadow-[0_4px_20px_rgba(0,0,0,0.04)] hover:shadow-[0_16px_36px_rgba(16,52,48,0.18)] hover:border-[#103430]/60 transition-all duration-300 flex flex-col overflow-hidden will-change-transform"
               >
                 {/* 1. Image on Top with Subtle Zoom on Hover */}
                 <div
@@ -315,9 +317,9 @@ export default function BlogSection() {
                 <div className="p-5 sm:p-6 md:p-7 flex-1 flex flex-col justify-between">
                   <div>
                     {/* Read time and Category line */}
-                    <div className="flex items-center justify-between text-[11px] sm:text-xs text-[#C5A77B] font-medium tracking-wider uppercase mb-2">
+                    <div className="flex items-center justify-between text-[11px] sm:text-xs text-[#103430] font-semibold tracking-wider uppercase mb-2">
                       <span className="inline-flex items-center gap-1.5">
-                        <span className="w-1.5 h-1.5 rounded-full bg-[#C5A77B]" />
+                        <span className="w-1.5 h-1.5 rounded-full bg-[#103430]" />
                         {post.category}
                       </span>
                       <span className="text-[#103430]/60 font-light lowercase tracking-normal">
@@ -327,7 +329,7 @@ export default function BlogSection() {
 
                     {/* Attraction / Blog Name */}
                     <h3
-                      className="font-serif text-[#103430] group-hover:text-[#C5A77B] text-xl sm:text-2xl font-normal leading-snug tracking-normal transition-colors duration-200 mb-3"
+                      className="font-serif text-[#103430] group-hover:text-[#0b2421] text-xl sm:text-2xl font-normal leading-snug tracking-normal transition-colors duration-200 mb-3"
                       style={{ fontFamily: "var(--font-cormorant), Georgia, serif" }}
                     >
                       {post.title}
@@ -336,7 +338,7 @@ export default function BlogSection() {
                     {/* Excerpt with Montserrat */}
                     <p
                       className="text-xs sm:text-sm text-[#103430]/80 line-clamp-3 leading-relaxed font-light tracking-wide"
-                      style={{ fontFamily: "var(--font-montserrat), sans-serif" }}
+                      style={{ fontFamily: "var(--font-manrope), sans-serif" }}
                     >
                       {post.excerpt}
                     </p>
@@ -345,13 +347,13 @@ export default function BlogSection() {
                   {/* Bottom "Read Story" CTA Button */}
                   <div className="pt-5 sm:pt-6 mt-4 border-t border-[#e2d8c7]/80 flex items-center justify-between">
                     <span
-                      className="text-xs sm:text-[13px] font-medium text-[#C5A77B] group-hover:text-[#b38e5c] inline-flex items-center gap-1.5 tracking-wider uppercase transition-colors"
-                      style={{ fontFamily: "var(--font-montserrat), sans-serif" }}
+                      className="text-xs sm:text-[13px] font-semibold text-[#103430] group-hover:text-[#0b2421] inline-flex items-center gap-1.5 tracking-wider uppercase transition-colors"
+                      style={{ fontFamily: "var(--font-manrope), sans-serif" }}
                     >
                       <span>READ FULL STORY</span>
                       <ChevronRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                     </span>
-                    <div className="w-8 h-8 rounded-full bg-[#FFF6F6] group-hover:bg-[#C5A77B] group-hover:text-[#103430] flex items-center justify-center text-[#103430] transition-colors border border-[#e2d8c7]">
+                    <div className="w-8 h-8 rounded-full bg-[#FFF6F6] group-hover:bg-[#103430] group-hover:text-white flex items-center justify-center text-[#103430] transition-colors border border-[#e2d8c7]">
                       <ArrowUpRight className="w-4 h-4" />
                     </div>
                   </div>
@@ -413,18 +415,18 @@ export default function BlogSection() {
                   {/* Modal Header Title in Signature Green */}
                   <div>
                     <h2
-                      className="font-serif text-[#103430] text-2xl sm:text-3xl md:text-4xl font-normal leading-tight"
+                      className="font-serif text-[#103430] text-2xl sm:text-3xl md:text-4xl font-medium leading-tight"
                       style={{ fontFamily: "var(--font-cormorant), Georgia, serif" }}
                     >
                       {selectedPost.title}
                     </h2>
-                    <div className="w-16 h-[2px] bg-[#C5A77B] rounded-full mt-3" aria-hidden="true" />
+                    <div className="w-16 h-[2px] bg-[#103430] rounded-full mt-3" aria-hidden="true" />
                   </div>
                   {/* Highlights Grid */}
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 p-4 sm:p-5 rounded-2xl bg-[#103430]/5 border border-[#103430]/15">
                     {selectedPost.highlights.map((h, i) => (
                       <div key={i} className="flex flex-col">
-                        <span className="text-[11px] font-bold uppercase tracking-wider text-[#C5A77B]">
+                        <span className="text-[11px] font-bold uppercase tracking-wider text-[#103430]">
                           {h.label}
                         </span>
                         <span className="text-xs sm:text-sm font-semibold text-[#103430] mt-0.5">
@@ -476,7 +478,7 @@ export default function BlogSection() {
                     <button
                       onClick={() => setSelectedPost(null)}
                       className="group relative w-full sm:w-auto px-8 py-3 rounded-full text-xs sm:text-sm font-semibold uppercase tracking-wider text-[#FFF6F6] bg-[#103430] hover:bg-[#0b2421] border border-[#103430] shadow-[0_4px_16px_rgba(16, 52, 48,0.35)] hover:shadow-[0_8px_24px_rgba(16, 52, 48,0.55)] hover:-translate-y-0.5 hover:scale-[1.03] active:translate-y-0 active:scale-95 transition-all duration-300 cursor-pointer text-center overflow-hidden"
-                      style={{ fontFamily: "var(--font-montserrat), sans-serif" }}
+                      style={{ fontFamily: "var(--font-manrope), sans-serif" }}
                     >
                       <span
                         className="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-white/50 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-in-out pointer-events-none"

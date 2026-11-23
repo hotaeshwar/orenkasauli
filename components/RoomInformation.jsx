@@ -105,7 +105,7 @@ export default function RoomInformation({
       >
         {/* Pure Room Title (No extra text on top) */}
         <h3
-          className="font-serif text-2xl sm:text-3xl md:text-4xl text-[#262824] font-normal tracking-wide text-center sm:text-left"
+          className="font-serif text-2xl sm:text-3xl md:text-4xl text-[#262824] font-medium tracking-wide text-center sm:text-left"
           style={{ fontFamily: "var(--font-cormorant), Georgia, serif" }}
         >
           {currentRoom.title}
@@ -118,27 +118,27 @@ export default function RoomInformation({
             href={bookingUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="group/cta relative inline-flex items-center justify-center gap-1.5 sm:gap-2 px-5 sm:px-7 py-2.5 sm:py-3 rounded-full font-semibold uppercase text-[#262824] bg-[#C5A77B] hover:bg-[#d6bc94] border border-[#e5d4bc] shadow-[0_4px_16px_rgba(197,167,123,0.35)] hover:shadow-[0_8px_24px_rgba(197,167,123,0.55)] hover:-translate-y-0.5 active:translate-y-0 transition-all duration-300 text-[11px] sm:text-xs md:text-[13px] tracking-[0.12em] sm:tracking-[0.14em] cursor-pointer select-none overflow-hidden text-center"
-            style={{ fontFamily: "var(--font-montserrat), sans-serif" }}
+            className="group/cta relative inline-flex items-center justify-center gap-1.5 sm:gap-2 px-5 sm:px-7 py-2.5 sm:py-3 rounded-full font-semibold uppercase text-[#FFF6F6] bg-[#103430] hover:bg-[#0b2421] border border-[#103430] shadow-[0_4px_16px_rgba(16, 52, 48,0.3)] hover:shadow-[0_8px_24px_rgba(16, 52, 48,0.5)] hover:-translate-y-0.5 active:translate-y-0 transition-all duration-300 text-[11px] sm:text-xs md:text-[13px] tracking-[0.12em] sm:tracking-[0.14em] cursor-pointer select-none overflow-hidden text-center"
+            style={{ fontFamily: "var(--font-manrope), sans-serif" }}
             aria-label={`Book ${currentRoom.title} now (opens booking engine)`}
           >
             <span
-              className="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-white/50 to-transparent -translate-x-full group-hover/cta:translate-x-full transition-transform duration-1000 ease-in-out pointer-events-none"
+              className="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-white/40 to-transparent -translate-x-full group-hover/cta:translate-x-full transition-transform duration-1000 ease-in-out pointer-events-none"
               aria-hidden="true"
             />
             <span className="relative z-10 whitespace-nowrap">BOOK NOW</span>
-            <ArrowUpRight className="relative z-10 w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#262824] flex-shrink-0" />
+            <ArrowUpRight className="relative z-10 w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#FFF6F6] flex-shrink-0" />
           </a>
 
           {/* Button 2: VIEW MORE */}
           <button
             type="button"
             onClick={() => setIsDetailsOpen(true)}
-            className="group/more relative inline-flex items-center justify-center gap-1.5 sm:gap-2 px-5 sm:px-7 py-2.5 sm:py-3 rounded-full font-semibold uppercase text-[#262824] bg-white hover:bg-[#C5A77B] hover:border-[#C5A77B] border-2 border-[#C5A77B] shadow-sm hover:shadow-[0_4px_16px_rgba(197,167,123,0.3)] hover:-translate-y-0.5 active:translate-y-0 transition-all duration-300 text-[11px] sm:text-xs md:text-[13px] tracking-[0.12em] sm:tracking-[0.14em] cursor-pointer select-none text-center"
-            style={{ fontFamily: "var(--font-montserrat), sans-serif" }}
+            className="group/more relative inline-flex items-center justify-center gap-1.5 sm:gap-2 px-5 sm:px-7 py-2.5 sm:py-3 rounded-full font-semibold uppercase text-[#103430] hover:text-[#FFF6F6] bg-white hover:bg-[#103430] hover:border-[#103430] border-2 border-[#103430] shadow-sm hover:shadow-[0_4px_16px_rgba(16, 52, 48,0.25)] hover:-translate-y-0.5 active:translate-y-0 transition-all duration-300 text-[11px] sm:text-xs md:text-[13px] tracking-[0.12em] sm:tracking-[0.14em] cursor-pointer select-none text-center"
+            style={{ fontFamily: "var(--font-manrope), sans-serif" }}
             aria-label={`View more details for ${currentRoom.title}`}
           >
-            <Eye className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#C5A77B] group-hover/more:text-[#262824] transition-colors flex-shrink-0" />
+            <Eye className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#103430] group-hover/more:text-[#FFF6F6] transition-colors flex-shrink-0" />
             <span className="whitespace-nowrap">VIEW MORE</span>
           </button>
         </div>
@@ -156,25 +156,25 @@ export default function RoomInformation({
           aria-labelledby="modal-room-title"
         >
           <div
-            className="relative w-full max-w-2xl lg:max-w-3xl bg-[#FAF7F2] rounded-2xl sm:rounded-3xl border border-[#C5A77B]/50 shadow-[0_25px_60px_-15px_rgba(24,59,50,0.4)] overflow-hidden max-h-[92vh] flex flex-col animate-scaleUp"
+            className="relative w-full max-w-2xl lg:max-w-3xl bg-[#FFF6F6] text-[#103430] rounded-2xl sm:rounded-3xl border border-[#103430]/20 shadow-[0_25px_60px_-15px_rgba(16, 52, 48,0.4)] overflow-hidden max-h-[92vh] flex flex-col animate-scaleUp"
             onClick={(e) => e.stopPropagation()}
           >
             {/* Modal Header */}
             <div className="flex items-center justify-between p-4 sm:p-6 border-b border-[#e5dccf] bg-white/70">
               <div className="flex items-center gap-3">
                 <span
-                  className="font-serif text-2xl sm:text-3xl text-[#C5A77B] font-light"
+                  className="font-serif text-2xl sm:text-3xl text-[#103430] font-semibold"
                   style={{ fontFamily: "var(--font-cormorant), Georgia, serif" }}
                 >
                   {String(currentIndex + 1).padStart(2, "0")}
                 </span>
-                <span className="text-xs uppercase tracking-[0.2em] text-[#262824]/50">
+                <span className="text-xs uppercase tracking-[0.2em] text-[#103430]/60 font-semibold">
                   / {String(totalRooms).padStart(2, "0")}
                 </span>
-                <span className="h-3.5 w-[1px] bg-[#C5A77B]/40 mx-1 hidden sm:block" />
+                <span className="h-3.5 w-[1px] bg-[#103430]/20 mx-1 hidden sm:block" />
                 <h4
                   id="modal-room-title"
-                  className="font-serif text-xl sm:text-2xl text-[#262824] font-normal tracking-wide"
+                  className="font-serif text-xl sm:text-2xl text-[#103430] font-medium tracking-wide"
                   style={{ fontFamily: "var(--font-cormorant), Georgia, serif" }}
                 >
                   {currentRoom.title}
@@ -185,7 +185,7 @@ export default function RoomInformation({
               <button
                 type="button"
                 onClick={() => setIsDetailsOpen(false)}
-                className="w-9 h-9 sm:w-10 sm:h-10 rounded-full border border-[#C5A77B]/40 hover:border-[#C5A77B] bg-white hover:bg-[#C5A77B]/15 text-[#262824] flex items-center justify-center transition-all duration-200 cursor-pointer"
+                className="w-9 h-9 sm:w-10 sm:h-10 rounded-full border border-[#103430]/20 hover:border-[#103430] bg-white hover:bg-[#103430]/10 text-[#103430] flex items-center justify-center transition-all duration-200 cursor-pointer"
                 aria-label="Close suite details"
               >
                 <X className="w-5 h-5" />
@@ -207,12 +207,12 @@ export default function RoomInformation({
 
               {/* Narrative Description */}
               <div>
-                <span className="text-[11px] uppercase tracking-[0.22em] text-[#C5A77B] font-semibold block mb-1.5">
+                <span className="text-[11px] uppercase tracking-[0.22em] text-[#103430] font-semibold block mb-1.5">
                   ABOUT THIS RETREAT
                 </span>
                 <p
-                  className="text-sm sm:text-base text-[#262824]/80 font-light leading-relaxed tracking-wide"
-                  style={{ fontFamily: "var(--font-montserrat), sans-serif" }}
+                  className="text-sm sm:text-base text-[#262824]/80 font-normal leading-relaxed tracking-wide"
+                  style={{ fontFamily: "var(--font-manrope), sans-serif" }}
                 >
                   {currentRoom.description}
                 </p>
@@ -220,7 +220,7 @@ export default function RoomInformation({
 
               {/* Signature Amenities Grid (All 6 Items) */}
               <div>
-                <span className="text-[11px] uppercase tracking-[0.22em] text-[#C5A77B] font-semibold block mb-3">
+                <span className="text-[11px] uppercase tracking-[0.22em] text-[#103430] font-semibold block mb-3">
                   SIGNATURE SUITE AMENITIES
                 </span>
                 <div className="grid grid-cols-2 sm:grid-cols-3 gap-2.5 sm:gap-3">
@@ -231,12 +231,12 @@ export default function RoomInformation({
                         key={`modal-amenity-${item.name}-${idx}`}
                         className="flex items-center gap-2.5 p-2.5 sm:p-3 rounded-xl bg-white border border-[#e5dccf] shadow-sm"
                       >
-                        <div className="w-7 h-7 rounded-lg bg-[#C5A77B]/15 text-[#C5A77B] flex items-center justify-center flex-shrink-0">
+                        <div className="w-7 h-7 rounded-lg bg-[#103430]/10 text-[#103430] flex items-center justify-center flex-shrink-0">
                           <IconComponent className="w-3.5 h-3.5" />
                         </div>
                         <span
-                          className="text-xs text-[#262824] font-medium leading-snug line-clamp-1"
-                          style={{ fontFamily: "var(--font-montserrat), sans-serif" }}
+                          className="text-xs text-[#103430] font-semibold leading-snug line-clamp-1"
+                          style={{ fontFamily: "var(--font-manrope), sans-serif" }}
                         >
                           {item.name}
                         </span>
@@ -247,9 +247,9 @@ export default function RoomInformation({
               </div>
 
               {/* Key Inclusions Callout */}
-              <div className="p-3.5 sm:p-4 rounded-xl bg-[#C5A77B]/10 border border-[#C5A77B]/30 flex items-start gap-2.5 text-xs text-[#262824]/80">
-                <Check className="w-4 h-4 text-[#8c6d3f] mt-0.5 flex-shrink-0" />
-                <span>
+              <div className="p-3.5 sm:p-4 rounded-xl bg-[#103430]/[0.05] border border-[#103430]/20 flex items-start gap-2.5 text-xs text-[#103430]">
+                <Check className="w-4 h-4 text-[#103430] mt-0.5 flex-shrink-0" />
+                <span className="font-medium">
                   Includes daily housekeeping, complimentary Wi-Fi, 24/7 mountain assistance, and access to all resort amenities.
                 </span>
               </div>
@@ -259,8 +259,8 @@ export default function RoomInformation({
             <div className="p-4 sm:p-6 border-t border-[#e5dccf] bg-white/80 flex flex-wrap items-center justify-between gap-3">
               <Link
                 href={currentRoom.tariffUrl || "/room-and-tariff"}
-                className="text-xs sm:text-[13px] font-semibold uppercase tracking-[0.14em] text-[#262824] hover:text-[#8c6d3f] underline underline-offset-4 transition-colors"
-                style={{ fontFamily: "var(--font-montserrat), sans-serif" }}
+                className="text-xs sm:text-[13px] font-semibold uppercase tracking-[0.14em] text-[#103430] hover:text-[#0b2421] underline underline-offset-4 transition-colors"
+                style={{ fontFamily: "var(--font-manrope), sans-serif" }}
               >
                 View Full Tariff & Policies
               </Link>
@@ -269,7 +269,7 @@ export default function RoomInformation({
                 <button
                   type="button"
                   onClick={() => setIsDetailsOpen(false)}
-                  className="px-5 py-2.5 rounded-full border border-[#e5dccf] text-xs font-semibold uppercase tracking-[0.12em] text-[#262824] hover:bg-neutral-100 transition-colors flex-1 sm:flex-initial"
+                  className="px-5 py-2.5 rounded-full border border-[#103430]/25 text-xs font-semibold uppercase tracking-[0.12em] text-[#103430] hover:bg-[#103430]/10 transition-colors flex-1 sm:flex-initial"
                 >
                   Close
                 </button>
@@ -278,8 +278,8 @@ export default function RoomInformation({
                   href={bookingUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center justify-center gap-1.5 px-6 sm:px-7 py-2.5 rounded-full font-semibold uppercase text-[#262824] bg-[#C5A77B] hover:bg-[#d6bc94] border border-[#e5d4bc] shadow-[0_4px_16px_rgba(197,167,123,0.35)] text-xs tracking-[0.14em] transition-all flex-1 sm:flex-initial text-center"
-                  style={{ fontFamily: "var(--font-montserrat), sans-serif" }}
+                  className="inline-flex items-center justify-center gap-1.5 px-6 sm:px-7 py-2.5 rounded-full font-semibold uppercase text-[#FFF6F6] bg-[#103430] hover:bg-[#0b2421] border border-[#103430] shadow-[0_4px_16px_rgba(16, 52, 48,0.35)] text-xs tracking-[0.14em] transition-all flex-1 sm:flex-initial text-center"
+                  style={{ fontFamily: "var(--font-manrope), sans-serif" }}
                 >
                   <span>Book Now</span>
                   <ArrowUpRight className="w-3.5 h-3.5" />

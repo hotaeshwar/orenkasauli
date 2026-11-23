@@ -321,26 +321,26 @@ export default function HeroSection() {
             sizes="100vw"
             className="object-cover object-center scale-105"
           />
-          <div className="absolute inset-0 bg-[#FFF6F6]/82 pointer-events-none" />
-          <div className="absolute inset-0 bg-gradient-to-b from-white/50 via-transparent to-white/50 pointer-events-none" />
+          <div className="absolute inset-0 bg-[#FFF6F6]/75 pointer-events-none" />
+          <div className="absolute inset-0 bg-stone-900/5 pointer-events-none" />
         </div>
 
         <div className="max-w-4xl mx-auto text-center flex flex-col items-center relative z-10">
           {/* Eyebrow Accent */}
           <div className="flex items-center justify-center gap-3 sm:gap-4 mb-4 sm:mb-5">
-            <span className="w-10 sm:w-14 h-[2px] bg-[#C5A77B]" aria-hidden="true" />
+            <span className="w-10 sm:w-14 h-[2px] bg-[#103430]" aria-hidden="true" />
             <span
-              className="text-xs sm:text-sm font-bold uppercase tracking-[0.26em] text-[#C5A77B]"
-              style={{ fontFamily: "var(--font-montserrat), sans-serif" }}
+              className="text-xs sm:text-sm font-bold uppercase tracking-[0.26em] text-[#103430]"
+              style={{ fontFamily: "var(--font-manrope), sans-serif" }}
             >
               WELCOME TO OREN KASAULI
             </span>
-            <span className="w-10 sm:w-14 h-[2px] bg-[#C5A77B]" aria-hidden="true" />
+            <span className="w-10 sm:w-14 h-[2px] bg-[#103430]" aria-hidden="true" />
           </div>
 
           {/* H1 Main Heading with Zero-Layout-Shift Typewriter */}
           <h1
-            className="font-serif text-[#103430] text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-normal tracking-wide uppercase leading-tight mb-4 sm:mb-5 max-w-4xl select-none"
+            className="font-serif text-[#103430] text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-medium tracking-wide uppercase leading-tight mb-4 sm:mb-5 max-w-4xl select-none"
             style={{ fontFamily: "var(--font-cormorant), Georgia, serif" }}
           >
             {/* Screen reader full text */}
@@ -352,7 +352,7 @@ export default function HeroSection() {
               {/* Zero-width cursor container guarantees 0px horizontal layout shift */}
               {!shouldReduceMotion && (
                 <span className="inline-block w-0 relative align-middle" aria-hidden="true">
-                  <span className="absolute left-0.5 sm:left-1 top-1/2 -translate-y-1/2 w-[2px] sm:w-[3px] h-[0.8em] bg-[#C5A77B] rounded-full animate-pulse" />
+                  <span className="absolute left-0.5 sm:left-1 top-1/2 -translate-y-1/2 w-[2px] sm:w-[3px] h-[0.8em] bg-white rounded-full animate-pulse" />
                 </span>
               )}
               {/* Invisible ghost remainder locks width, height, and line wraps */}
@@ -367,7 +367,7 @@ export default function HeroSection() {
           {/* Hero Lead Paragraph - Reduced Font Size for Better Hierarchy */}
           <p
             className="font-sans text-xs sm:text-sm md:text-base text-[#103430] font-normal max-w-2xl mx-auto leading-relaxed mb-6 sm:mb-8 tracking-normal"
-            style={{ fontFamily: "var(--font-montserrat), sans-serif" }}
+            style={{ fontFamily: "var(--font-manrope), sans-serif" }}
           >
             Discover a mountain retreat where beautiful valley views, thoughtful comforts and warm hospitality come together. Experience the charm of Kasauli with a stay designed for relaxation, connection and memorable moments.
           </p>
@@ -380,7 +380,7 @@ export default function HeroSection() {
               target="_blank"
               rel="noopener noreferrer"
               className="group relative w-full sm:w-auto inline-flex items-center justify-center gap-2 rounded-full font-bold uppercase whitespace-nowrap text-[#FFF6F6] bg-[#103430] hover:bg-[#0b2421] border-2 border-[#103430] shadow-[0_4px_18px_rgba(16, 52, 48,0.35)] hover:shadow-[0_8px_24px_rgba(16, 52, 48,0.5)] hover:-translate-y-0.5 active:translate-y-0 transition-all duration-300 px-6 sm:px-8 md:px-10 py-3 sm:py-3.5 md:py-4 text-xs sm:text-sm tracking-[0.12em] sm:tracking-[0.16em] text-center overflow-hidden"
-              style={{ fontFamily: "var(--font-montserrat), sans-serif" }}
+              style={{ fontFamily: "var(--font-manrope), sans-serif" }}
               aria-label="Book Your Stay at Oren Kasauli"
             >
               <span
@@ -395,7 +395,7 @@ export default function HeroSection() {
             <a
               href="#about"
               className="w-full sm:w-auto relative inline-flex items-center justify-center rounded-full font-bold uppercase whitespace-nowrap text-[#103430] hover:text-[#FFF6F6] bg-transparent hover:bg-[#103430] border-2 border-[#103430] transition-all duration-300 px-6 sm:px-8 md:px-10 py-3 sm:py-3.5 md:py-4 text-xs sm:text-sm tracking-[0.12em] sm:tracking-[0.16em] text-center hover:shadow-[0_4px_16px_rgba(16, 52, 48,0.25)] hover:-translate-y-0.5 active:translate-y-0"
-              style={{ fontFamily: "var(--font-montserrat), sans-serif" }}
+              style={{ fontFamily: "var(--font-manrope), sans-serif" }}
               aria-label="Explore Oren Kasauli"
             >
               <span>EXPLORE OREN</span>

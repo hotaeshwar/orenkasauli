@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import Image from "next/image";
 import Link from "next/link";
@@ -85,13 +85,13 @@ export default function Footer() {
           sizes="100vw"
           className="object-cover object-center scale-105"
         />
-        <div className="absolute inset-0 bg-[#FFF6F6]/82 pointer-events-none" />
-        <div className="absolute inset-0 bg-gradient-to-b from-white/50 via-transparent to-white/50 pointer-events-none" />
+        <div className="absolute inset-0 bg-[#FFF6F6]/75 pointer-events-none" />
+        <div className="absolute inset-0 bg-stone-900/5 pointer-events-none" />
       </div>
 
-      {/* Decorative Golden Ambient Glow on Top Center */}
+      {/* Decorative Spruce Ambient Glow on Top Center */}
       <div
-        className="absolute top-0 left-1/2 -translate-x-1/2 w-96 sm:w-[600px] h-32 bg-gradient-to-b from-[#C5A77B]/15 to-transparent blur-3xl pointer-events-none z-0"
+        className="absolute top-0 left-1/2 -translate-x-1/2 w-96 sm:w-[600px] h-32 bg-gradient-to-b from-[#103430]/10 to-transparent blur-3xl pointer-events-none z-0"
         aria-hidden="true"
       />
 
@@ -162,7 +162,7 @@ export default function Footer() {
               className="text-xs sm:text-[13px] font-bold uppercase tracking-[0.2em] text-[#103430] mb-4 sm:mb-5 font-sans flex items-center gap-2"
             >
               <span>Navigation</span>
-              <span className="w-6 h-[1.5px] bg-[#C5A77B] rounded-full" aria-hidden="true" />
+              <span className="w-6 h-[1.5px] bg-[#103430] rounded-full" aria-hidden="true" />
             </span>
             <ul
               className="flex flex-col space-y-1 sm:space-y-1.5"
@@ -203,13 +203,13 @@ export default function Footer() {
                     >
                       {/* 3D Floating Frosted Ambient Pill on Hover */}
                       <span
-                        className="absolute inset-0 rounded-xl bg-gradient-to-r from-white/95 via-[#C5A77B]/15 to-transparent border border-[#C5A77B]/30 shadow-[0_8px_20px_-4px_rgba(16, 52, 48,0.12)] opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none -z-10"
+                        className="absolute inset-0 rounded-xl bg-gradient-to-r from-white/95 via-[#103430]/10 to-transparent border border-[#103430]/20 shadow-[0_8px_20px_-4px_rgba(16, 52, 48,0.12)] opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none -z-10"
                         aria-hidden="true"
                       />
 
                       {/* 3D Elevated Pin / Dot in Z-Space */}
                       <span
-                        className="w-1.5 h-1.5 rounded-full bg-[#C5A77B] shadow-[0_0_8px_#C5A77B] opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 ease-out mr-2 flex-shrink-0"
+                        className="w-1.5 h-1.5 rounded-full bg-[#103430] shadow-[0_0_8px_#103430] opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 ease-out mr-2 flex-shrink-0"
                         style={{ transform: "translateZ(15px)" }}
                         aria-hidden="true"
                       />
@@ -227,7 +227,7 @@ export default function Footer() {
 
                       {/* 3D Elevated Micro-Arrow */}
                       <ArrowUpRight
-                        className="w-3.5 h-3.5 text-[#C5A77B] opacity-0 -translate-x-1.5 group-hover:opacity-100 group-hover:translate-x-1 transition-all duration-300 ease-out ml-1.5 flex-shrink-0"
+                        className="w-3.5 h-3.5 text-[#103430] opacity-0 -translate-x-1.5 group-hover:opacity-100 group-hover:translate-x-1 transition-all duration-300 ease-out ml-1.5 flex-shrink-0"
                         style={{ transform: "translateZ(16px)" }}
                         aria-hidden="true"
                       />
@@ -274,23 +274,23 @@ export default function Footer() {
             <div className="flex flex-col space-y-3 text-xs sm:text-sm text-[#103430]/85 mb-6">
               {/* Phone Numbers */}
               <div className="flex items-start gap-2.5">
-                <Phone className="w-4 h-4 text-[#C5A77B] flex-shrink-0 mt-0.5" />
+                <Phone className="w-4 h-4 text-[#103430] flex-shrink-0 mt-0.5" />
                 <div className="flex flex-col space-y-0.5">
                   <a
                     href="tel:+919816155576"
-                    className="hover:text-[#103430] transition-colors"
+                    className="hover:text-[#0b2421] transition-colors"
                   >
                     +91 98161 55576
                   </a>
                   <a
                     href="tel:+919816255576"
-                    className="hover:text-[#103430] transition-colors"
+                    className="hover:text-[#0b2421] transition-colors"
                   >
                     +91 98162 55576
                   </a>
                   <a
                     href="tel:01792298076"
-                    className="hover:text-[#103430] transition-colors"
+                    className="hover:text-[#0b2421] transition-colors"
                   >
                     01792 298076
                   </a>
@@ -299,17 +299,17 @@ export default function Footer() {
 
               {/* Email Addresses */}
               <div className="flex items-start gap-2.5">
-                <Mail className="w-4 h-4 text-[#C5A77B] flex-shrink-0 mt-0.5" />
+                <Mail className="w-4 h-4 text-[#103430] flex-shrink-0 mt-0.5" />
                 <div className="flex flex-col space-y-0.5">
                   <a
                     href="mailto:booking@oren.co.in"
-                    className="hover:text-[#103430] transition-colors"
+                    className="hover:text-[#0b2421] transition-colors"
                   >
                     booking@oren.co.in
                   </a>
                   <a
                     href="mailto:orenkasauli@gmail.com"
-                    className="hover:text-[#103430] transition-colors"
+                    className="hover:text-[#0b2421] transition-colors"
                   >
                     orenkasauli@gmail.com
                   </a>
@@ -318,7 +318,7 @@ export default function Footer() {
 
               {/* Address */}
               <div className="flex items-start gap-2.5">
-                <MapPin className="w-4 h-4 text-[#C5A77B] flex-shrink-0 mt-0.5" />
+                <MapPin className="w-4 h-4 text-[#103430] flex-shrink-0 mt-0.5" />
                 <p className="leading-relaxed text-[#103430]/80 text-xs">
                   Dharampur–Kasauli Road, V.P.O. Sanawar, Tehsil Kasauli, District Solan, Himachal Pradesh – 173202.
                 </p>
@@ -331,7 +331,7 @@ export default function Footer() {
               target="_blank"
               rel="noopener noreferrer"
               className="group relative inline-flex w-full sm:w-auto items-center justify-center gap-2 rounded-full font-semibold uppercase whitespace-nowrap text-[#FFF6F6] bg-[#103430] hover:bg-[#0b2421] border border-[#103430] shadow-[0_4px_16px_rgba(16, 52, 48,0.35)] hover:shadow-[0_8px_24px_rgba(16, 52, 48,0.55)] hover:-translate-y-0.5 hover:scale-[1.03] active:translate-y-0 active:scale-95 transition-all duration-300 px-6 py-3 text-xs tracking-[0.16em] text-center overflow-hidden"
-              style={{ fontFamily: "var(--font-montserrat), sans-serif" }}
+              style={{ fontFamily: "var(--font-manrope), sans-serif" }}
             >
               {/* Shimmer sweep effect */}
               <span

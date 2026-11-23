@@ -22,6 +22,7 @@ const BOOKING_URL =
   "https://letsbook.me/booking/orenkasauli?checkin=2026-10-26&checkout=2026-10-27&adults=2&children=0";
 
 const TYPEWRITER_TEXT = "Room & Tariff";
+const FACILITIES_HEADING = "Room Facilities";
 
 const ROOM_FACILITIES = [
   {
@@ -437,6 +438,39 @@ export default function RoomAndTariffPage() {
 
   const currentHeadingText = TYPEWRITER_TEXT.slice(0, charIndex);
 
+  // Typewriter effect that writes and erases "Room Facilities" on loop
+  const [facilitiesCharIndex, setFacilitiesCharIndex] = useState(0);
+  const [isFacilitiesDeleting, setIsFacilitiesDeleting] = useState(false);
+
+  useEffect(() => {
+    let timer;
+    if (!isFacilitiesDeleting) {
+      if (facilitiesCharIndex < FACILITIES_HEADING.length) {
+        timer = setTimeout(() => {
+          setFacilitiesCharIndex((prev) => prev + 1);
+        }, 95);
+      } else {
+        timer = setTimeout(() => {
+          setIsFacilitiesDeleting(true);
+        }, 2400);
+      }
+    } else {
+      if (facilitiesCharIndex > 0) {
+        timer = setTimeout(() => {
+          setFacilitiesCharIndex((prev) => prev - 1);
+        }, 50);
+      } else {
+        timer = setTimeout(() => {
+          setIsFacilitiesDeleting(false);
+        }, 400);
+      }
+    }
+    return () => clearTimeout(timer);
+  }, [facilitiesCharIndex, isFacilitiesDeleting]);
+
+  const currentFacilitiesHeading = FACILITIES_HEADING.slice(0, facilitiesCharIndex);
+  const ghostFacilitiesRemainder = FACILITIES_HEADING.slice(facilitiesCharIndex);
+
   return (
     <div className="relative min-h-screen w-full bg-[#FFF6F6] text-[#103430] overflow-x-hidden">
       {/* Navigation Bar */}
@@ -467,7 +501,7 @@ export default function RoomAndTariffPage() {
           >
             <span>{currentHeadingText}</span>
             <span
-              className="inline-block w-[2.5px] sm:w-[3.5px] h-[0.8em] bg-[#C5A77B] ml-2 animate-pulse align-middle"
+              className="inline-block w-[2.5px] sm:w-[3.5px] h-[0.8em] bg-white ml-2 animate-pulse align-middle"
               aria-hidden="true"
             />
           </h1>
@@ -485,8 +519,8 @@ export default function RoomAndTariffPage() {
             sizes="100vw"
             className="object-cover object-center scale-105"
           />
-          <div className="absolute inset-0 bg-[#FFF6F6]/82 pointer-events-none" />
-          <div className="absolute inset-0 bg-gradient-to-b from-white/50 via-transparent to-white/50 pointer-events-none" />
+          <div className="absolute inset-0 bg-[#FFF6F6]/75 pointer-events-none" />
+          <div className="absolute inset-0 bg-stone-900/5 pointer-events-none" />
         </div>
 
         <div className="max-w-7xl mx-auto relative z-10">
@@ -494,11 +528,11 @@ export default function RoomAndTariffPage() {
           <div className="max-w-3xl mx-auto text-center mb-12 sm:mb-16 md:mb-20 px-4">
             <span
               className="block text-[#103430] text-sm sm:text-base md:text-lg font-medium leading-relaxed tracking-wide text-center"
-              style={{ fontFamily: "var(--font-montserrat), sans-serif" }}
+              style={{ fontFamily: "var(--font-manrope), sans-serif" }}
             >
               Every stay has its own story. Choose from thoughtfully designed rooms and suites, each offering comfort and a beautiful connection with the surrounding hills. From cosy attic rooms and valley-facing balconies to private jacuzzis and plunge pool experiences, discover a room that suits the way you want to unwind.
             </span>
-            <div className="w-16 h-[2px] bg-[#C5A77B] mx-auto mt-6 rounded-full" aria-hidden="true" />
+            <div className="w-16 h-[2px] bg-[#103430] mx-auto mt-6 rounded-full" aria-hidden="true" />
           </div>
           {/* 8 Rooms in a Proper Cardless Ladder Layout (Alternating Staggered Steps) */}
           <div className="space-y-16 sm:space-y-24 md:space-y-32 lg:space-y-40">
@@ -527,24 +561,24 @@ export default function RoomAndTariffPage() {
                   >
                     {/* Room Title in Pure Editorial Typography (Cardless) */}
                     <h2
-                      className="font-serif text-[#103430] text-2xl sm:text-3xl md:text-4xl lg:text-[40px] font-light tracking-wide leading-tight mb-2 uppercase break-words"
+                      className="font-serif text-[#103430] text-2xl sm:text-3xl md:text-4xl lg:text-[40px] font-medium tracking-wide leading-tight mb-2 uppercase break-words"
                       style={{ fontFamily: "var(--font-cormorant), Georgia, serif" }}
                     >
                       {room.title}
                     </h2>
 
-                    {/* Total Rooms Count in Champagne Gold */}
+                    {/* Total Rooms Count in High-Contrast Spruce Green */}
                     <div
-                      className="text-sm sm:text-base font-medium text-[#C5A77B] tracking-wide mb-3 sm:mb-4"
-                      style={{ fontFamily: "var(--font-montserrat), sans-serif" }}
+                      className="text-sm sm:text-base font-semibold text-[#103430] tracking-wide mb-3 sm:mb-4"
+                      style={{ fontFamily: "var(--font-manrope), sans-serif" }}
                     >
                       Total Rooms: {room.totalRooms}
                     </div>
 
                     {/* Description Paragraph */}
                     <p
-                      className="text-xs sm:text-sm md:text-[15px] text-[#103430]/85 leading-relaxed font-light tracking-wide mb-5 sm:mb-6"
-                      style={{ fontFamily: "var(--font-montserrat), sans-serif" }}
+                      className="text-xs sm:text-sm md:text-[15px] text-[#103430]/85 leading-relaxed font-normal tracking-wide mb-5 sm:mb-6"
+                      style={{ fontFamily: "var(--font-manrope), sans-serif" }}
                     >
                       {room.description}
                     </p>
@@ -552,7 +586,7 @@ export default function RoomAndTariffPage() {
                     {/* Key Amenities Title */}
                     <h3
                       className="text-sm sm:text-base md:text-lg font-medium text-[#103430] mb-3 tracking-tight"
-                      style={{ fontFamily: "var(--font-montserrat), sans-serif" }}
+                      style={{ fontFamily: "var(--font-manrope), sans-serif" }}
                     >
                       Key Amenities:
                     </h3>
@@ -563,10 +597,10 @@ export default function RoomAndTariffPage() {
                         <div
                           key={aIdx}
                           className="flex items-center gap-2.5 text-xs sm:text-sm text-[#103430]/85"
-                          style={{ fontFamily: "var(--font-montserrat), sans-serif" }}
+                          style={{ fontFamily: "var(--font-manrope), sans-serif" }}
                         >
                           <span
-                            className="w-4 h-4 sm:w-5 sm:h-5 rounded-full bg-[#C5A77B] text-[#103430] flex items-center justify-center flex-shrink-0 shadow-sm"
+                            className="w-4 h-4 sm:w-5 sm:h-5 rounded-full bg-[#103430] text-white flex items-center justify-center flex-shrink-0 shadow-sm"
                             aria-hidden="true"
                           >
                             <Check className="w-2.5 h-2.5 sm:w-3 sm:h-3 stroke-[3]" />
@@ -583,7 +617,7 @@ export default function RoomAndTariffPage() {
                         target="_blank"
                         rel="noopener noreferrer"
                         className="group relative inline-flex items-center justify-center gap-2.5 rounded-full font-semibold uppercase whitespace-nowrap text-[#FFF6F6] bg-[#103430] hover:bg-[#0b2421] border border-[#103430] shadow-[0_4px_16px_rgba(16, 52, 48,0.35)] hover:shadow-[0_8px_24px_rgba(16, 52, 48,0.55)] hover:-translate-y-0.5 hover:scale-[1.03] active:translate-y-0 active:scale-95 transition-all duration-300 px-7 sm:px-8 py-2.5 sm:py-3 text-xs sm:text-sm tracking-[0.14em] cursor-pointer select-none w-full sm:w-auto text-center overflow-hidden"
-                        style={{ fontFamily: "var(--font-montserrat), sans-serif" }}
+                        style={{ fontFamily: "var(--font-manrope), sans-serif" }}
                         aria-label={`Book ${room.title} (opens booking engine)`}
                       >
                         {/* Shimmer sweep effect */}
@@ -672,22 +706,46 @@ export default function RoomAndTariffPage() {
       </section>
 
       {/* BEST SERVICES & ROOM FACILITIES WITH AUTOMATIC GALLERY CAROUSEL */}
-      <section className="relative py-16 sm:py-20 md:py-24 px-4 sm:px-6 lg:px-8 bg-[#0c0a09] text-white overflow-hidden border-t border-neutral-800">
+      <section className="relative py-16 sm:py-20 md:py-24 px-4 sm:px-6 lg:px-8 bg-[#FFF6F6] text-[#103430] overflow-hidden border-t border-[#e2d8c7]">
+        {/* Ambient Resort Background with Darkened Soft Overlay */}
+        <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none" aria-hidden="true">
+          <Image
+            src="/images/gallery/galler12.jpg"
+            alt=""
+            fill
+            sizes="100vw"
+            className="object-cover object-center scale-105"
+          />
+          <div className="absolute inset-0 bg-[#FFF6F6]/75 pointer-events-none" />
+          <div className="absolute inset-0 bg-stone-900/5 pointer-events-none" />
+        </div>
+
         <div className="max-w-7xl mx-auto relative z-10">
           {/* Header */}
           <div className="flex flex-col items-center text-center mb-10 sm:mb-14">
             <div className="inline-flex items-center justify-center gap-2 sm:gap-3 mb-2.5 sm:mb-3">
-              <span className="w-6 sm:w-10 h-[1.5px] bg-[#c59737]" />
-              <span className="text-[11px] sm:text-xs md:text-sm font-semibold tracking-[0.22em] text-[#c59737] uppercase font-sans">
+              <span className="w-6 sm:w-10 h-[1.5px] bg-[#103430]" />
+              <span className="text-[11px] sm:text-xs md:text-sm font-semibold tracking-[0.22em] text-[#103430] uppercase font-sans">
                 BEST SERVICES FROM OREN KASAULI HOTEL
               </span>
-              <span className="w-6 sm:w-10 h-[1.5px] bg-[#c59737]" />
+              <span className="w-6 sm:w-10 h-[1.5px] bg-[#103430]" />
             </div>
             <h2
-              className="font-serif text-white text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-light tracking-wide leading-tight"
+              className="font-serif text-[#103430] text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-medium tracking-wide leading-tight select-none"
               style={{ fontFamily: "var(--font-cormorant), Georgia, serif" }}
             >
-              Room Facilities
+              <span className="sr-only">{FACILITIES_HEADING}</span>
+              <span aria-hidden="true" className="inline relative">
+                <span>{currentFacilitiesHeading}</span>
+                <span className="inline-block w-0 relative align-middle">
+                  <span className="absolute left-0.5 sm:left-1 top-1/2 -translate-y-1/2 w-[2px] sm:w-[3px] h-[0.8em] bg-[#103430] rounded-full animate-pulse" />
+                </span>
+                {ghostFacilitiesRemainder && (
+                  <span className="opacity-0 select-none pointer-events-none">
+                    {ghostFacilitiesRemainder}
+                  </span>
+                )}
+              </span>
             </h2>
           </div>
 
@@ -698,13 +756,13 @@ export default function RoomAndTariffPage() {
               return (
                 <div
                   key={idx}
-                  className="group relative p-4 sm:p-5 rounded-2xl bg-white/[0.04] hover:bg-white/[0.07] border border-white/10 hover:border-[#c59737]/60 shadow-[0_8px_24px_rgba(0,0,0,0.25)] hover:shadow-[0_12px_32px_rgba(197,151,55,0.18)] transition-all duration-300 flex items-start gap-3 sm:gap-3.5"
+                  className="group relative p-4 sm:p-5 rounded-2xl bg-white/85 hover:bg-white border border-[#e5dccf] hover:border-[#103430]/30 shadow-sm hover:shadow-md transition-all duration-300 flex items-start gap-3 sm:gap-3.5"
                 >
-                  <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-gradient-to-br from-[#c59737]/25 to-[#886216]/15 border border-[#c59737]/40 flex items-center justify-center flex-shrink-0 text-[#f3d999] group-hover:scale-105 group-hover:border-[#ffe8a8] transition-all duration-300">
-                    <IconComp className="w-4 h-4 sm:w-5 sm:h-5 text-[#f3d999]" />
+                  <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-[#103430]/10 border border-[#103430]/20 flex items-center justify-center flex-shrink-0 text-[#103430] group-hover:scale-105 group-hover:bg-[#103430] group-hover:text-white transition-all duration-300">
+                    <IconComp className="w-4 h-4 sm:w-5 sm:h-5 text-current" />
                   </div>
                   <div className="flex-1 min-w-0">
-                    <p className="text-neutral-100 text-xs sm:text-sm font-medium leading-relaxed group-hover:text-white transition-colors duration-300">
+                    <p className="text-[#103430] text-xs sm:text-sm font-medium leading-relaxed">
                       {facility.text}
                     </p>
                   </div>
@@ -730,7 +788,7 @@ export default function RoomAndTariffPage() {
             </a>
             <Link
               href="/"
-              className="w-full sm:w-auto relative inline-flex items-center justify-center rounded-full font-medium uppercase whitespace-nowrap text-white/90 hover:text-white bg-white/10 hover:bg-white/15 border border-white/20 transition-all duration-300 px-7 sm:px-8 py-3 sm:py-3.5 text-xs sm:text-sm tracking-[0.16em] text-center"
+              className="w-full sm:w-auto relative inline-flex items-center justify-center rounded-full font-medium uppercase whitespace-nowrap text-[#103430] hover:text-[#0b2421] bg-white/70 hover:bg-white border border-[#103430]/25 shadow-sm transition-all duration-300 px-7 sm:px-8 py-3 sm:py-3.5 text-xs sm:text-sm tracking-[0.16em] text-center"
             >
               <span>BACK TO HOME</span>
             </Link>

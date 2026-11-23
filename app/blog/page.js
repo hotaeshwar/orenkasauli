@@ -44,7 +44,7 @@ export default function BlogPage() {
   const currentHeadingText = TYPEWRITER_TEXT.slice(0, charIndex);
 
   return (
-    <div className="relative min-h-screen w-full bg-[#FFF6F6] text-[#103430] overflow-x-hidden selection:bg-[#C5A77B] selection:text-[#103430]">
+    <div className="relative min-h-screen w-full bg-[#FFF6F6] text-[#103430] overflow-x-hidden selection:bg-[#103430] selection:text-white">
       {/* Navigation Bar */}
       <Navbar />
 
@@ -73,7 +73,7 @@ export default function BlogPage() {
           >
             <span>{currentHeadingText}</span>
             <span
-              className="inline-block w-[2.5px] sm:w-[3.5px] h-[0.8em] bg-[#C5A77B] ml-2 animate-pulse align-middle"
+              className="inline-block w-[2.5px] sm:w-[3.5px] h-[0.8em] bg-white ml-2 animate-pulse align-middle"
               aria-hidden="true"
             />
           </h1>

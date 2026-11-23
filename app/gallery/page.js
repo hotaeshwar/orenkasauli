@@ -25,7 +25,8 @@ const BOOKING_URL =
   "https://letsbook.me/booking/orenkasauli?checkin=2026-10-27&checkout=2026-10-28&adults=2&children=0";
 
 const TYPEWRITER_TEXT = "Gallery";
-const VIDEO_HEADING_TEXT = "Video Shoot By Guest";
+const ACTIVITIES_HEADING = "Activities";
+const VIDEO_HEADING_TEXT = "Stories Captured by Our Guests";
 const VACATION_HEADING_TEXT = "Book Your Next Vacation!";
 
 const GUEST_VIDEOS = [
@@ -302,7 +303,7 @@ export default function GalleryPage() {
 
   const currentHeadingText = TYPEWRITER_TEXT.slice(0, charIndex);
 
-  // Typewriter effect that writes and erases "Video Shoot By Guest" on loop
+  // Typewriter effect that writes and erases "Stories Captured by Our Guests" on loop
   const [videoCharIndex, setVideoCharIndex] = useState(0);
   const [isVideoDeleting, setIsVideoDeleting] = useState(false);
 
@@ -371,6 +372,39 @@ export default function GalleryPage() {
   const currentVacationHeading = VACATION_HEADING_TEXT.slice(0, vacationCharIndex);
   const ghostVacationRemainder = VACATION_HEADING_TEXT.slice(vacationCharIndex);
 
+  // Typewriter effect that writes and erases "Activities" on loop
+  const [activitiesCharIndex, setActivitiesCharIndex] = useState(0);
+  const [isActivitiesDeleting, setIsActivitiesDeleting] = useState(false);
+
+  useEffect(() => {
+    let timer;
+    if (!isActivitiesDeleting) {
+      if (activitiesCharIndex < ACTIVITIES_HEADING.length) {
+        timer = setTimeout(() => {
+          setActivitiesCharIndex((prev) => prev + 1);
+        }, 95);
+      } else {
+        timer = setTimeout(() => {
+          setIsActivitiesDeleting(true);
+        }, 2400);
+      }
+    } else {
+      if (activitiesCharIndex > 0) {
+        timer = setTimeout(() => {
+          setActivitiesCharIndex((prev) => prev - 1);
+        }, 50);
+      } else {
+        timer = setTimeout(() => {
+          setIsActivitiesDeleting(false);
+        }, 400);
+      }
+    }
+    return () => clearTimeout(timer);
+  }, [activitiesCharIndex, isActivitiesDeleting]);
+
+  const currentActivitiesHeading = ACTIVITIES_HEADING.slice(0, activitiesCharIndex);
+  const ghostActivitiesRemainder = ACTIVITIES_HEADING.slice(activitiesCharIndex);
+
   // Full-screen Lightbox & Video State
   const [selectedImageIndex, setSelectedImageIndex] = useState(null);
   const [selectedVideo, setSelectedVideo] = useState(null);
@@ -423,7 +457,7 @@ export default function GalleryPage() {
   }, [selectedImageIndex, selectedVideo]);
 
   return (
-    <div className="relative min-h-screen w-full bg-[#FFF6F6] text-[#103430] overflow-x-hidden selection:bg-[#C5A77B] selection:text-[#103430]">
+    <div className="relative min-h-screen w-full bg-[#FFF6F6] text-[#103430] overflow-x-hidden selection:bg-[#103430] selection:text-white">
       {/* Navigation Bar */}
       <Navbar />
 
@@ -452,7 +486,7 @@ export default function GalleryPage() {
           >
             <span>{currentHeadingText}</span>
             <span
-              className="inline-block w-[2.5px] sm:w-[3.5px] h-[0.8em] bg-[#C5A77B] ml-2 animate-pulse align-middle"
+              className="inline-block w-[2.5px] sm:w-[3.5px] h-[0.8em] bg-white ml-2 animate-pulse align-middle"
               aria-hidden="true"
             />
           </h1>
@@ -470,8 +504,8 @@ export default function GalleryPage() {
             sizes="100vw"
             className="object-cover object-center scale-105"
           />
-          <div className="absolute inset-0 bg-[#FFF6F6]/82 pointer-events-none" />
-          <div className="absolute inset-0 bg-gradient-to-b from-white/50 via-transparent to-white/50 pointer-events-none" />
+          <div className="absolute inset-0 bg-[#FFF6F6]/75 pointer-events-none" />
+          <div className="absolute inset-0 bg-stone-900/5 pointer-events-none" />
         </div>
 
         <div className="max-w-7xl mx-auto relative z-10">
@@ -496,7 +530,7 @@ export default function GalleryPage() {
                   onClick={() => setSelectedImageIndex(index)}
                 >
                   {/* Uniform Aspect-Ratio Card Container with Soft Shadow and Rounded Corners */}
-                  <div className="relative w-full aspect-[4/3] overflow-hidden rounded-2xl sm:rounded-3xl bg-[#ede6d8]/60 border border-[#e2d8c7] shadow-[0_4px_20px_rgba(0,0,0,0.04)] hover:shadow-[0_18px_45px_rgba(197,167,123,0.22)] hover:border-[#C5A77B]/80 transition-all duration-500">
+                  <div className="relative w-full aspect-[4/3] overflow-hidden rounded-2xl sm:rounded-3xl bg-[#ede6d8]/60 border border-[#e2d8c7] shadow-[0_4px_20px_rgba(0,0,0,0.04)] hover:shadow-[0_18px_45px_rgba(16,52,48,0.18)] hover:border-[#103430]/60 transition-all duration-500">
                     {/* Photograph with fill and smooth scale on hover */}
                     <Image
                       src={item.src}
@@ -520,7 +554,7 @@ export default function GalleryPage() {
         </div>
       </main>
 
-      {/* Video Shoot By Guest Section */}
+      {/* Stories Captured by Our Guests Section */}
       <section className="relative w-full bg-[#FFF6F6] py-14 sm:py-20 md:py-24 px-4 sm:px-6 lg:px-8 xl:px-12 border-t border-[#e2d8c7] overflow-hidden">
         {/* Ambient Resort Background with White Light Overlay */}
         <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none" aria-hidden="true">
@@ -531,32 +565,32 @@ export default function GalleryPage() {
             sizes="100vw"
             className="object-cover object-center scale-105"
           />
-          <div className="absolute inset-0 bg-[#FFF6F6]/82 pointer-events-none" />
-          <div className="absolute inset-0 bg-gradient-to-b from-white/50 via-transparent to-white/50 pointer-events-none" />
+          <div className="absolute inset-0 bg-[#FFF6F6]/75 pointer-events-none" />
+          <div className="absolute inset-0 bg-stone-900/5 pointer-events-none" />
         </div>
 
         <div className="max-w-7xl mx-auto relative z-10">
           {/* Section Header with Typewriter Write & Erase Effect */}
           <div className="flex flex-col items-center text-center mb-8 sm:mb-12">
             <div className="inline-flex items-center justify-center gap-2.5 sm:gap-3.5 mb-2.5 sm:mb-3">
-              <span className="w-8 sm:w-12 h-[1.5px] bg-[#C5A77B]" />
+              <span className="w-8 sm:w-12 h-[1.5px] bg-[#103430]" />
               <span
-                className="text-[11px] sm:text-xs md:text-sm font-semibold tracking-[0.24em] text-[#C5A77B] uppercase"
-                style={{ fontFamily: "var(--font-montserrat), sans-serif" }}
+                className="text-[11px] sm:text-xs md:text-sm font-semibold tracking-[0.24em] text-[#103430] uppercase"
+                style={{ fontFamily: "var(--font-manrope), sans-serif" }}
               >
                 AUTHENTIC MOMENTS &amp; EXPERIENCES
               </span>
-              <span className="w-8 sm:w-12 h-[1.5px] bg-[#C5A77B]" />
+              <span className="w-8 sm:w-12 h-[1.5px] bg-[#103430]" />
             </div>
 
             {/* Heading with Typewriter Erase & Write Effect */}
             <h2
-              className="font-serif text-[#103430] text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-light tracking-[0.04em] leading-tight min-h-[1.25em] flex items-center justify-center break-words text-center"
+              className="font-serif text-[#103430] text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-medium tracking-[0.04em] leading-tight min-h-[1.25em] flex items-center justify-center break-words text-center"
               style={{ fontFamily: "var(--font-cormorant), Georgia, serif" }}
             >
               <span>{currentVideoHeading}</span>
               <span
-                className="inline-block w-[2.5px] sm:w-[3.5px] h-[0.8em] bg-[#C5A77B] ml-2 animate-pulse align-middle"
+                className="inline-block w-[2.5px] sm:w-[3.5px] h-[0.8em] bg-[#103430] ml-2 animate-pulse align-middle"
                 aria-hidden="true"
               />
             </h2>
@@ -582,7 +616,7 @@ export default function GalleryPage() {
                   onClick={() => setSelectedVideo(video)}
                 >
                   {/* Clean Uniform Video Card (Without Any Text or Tags) */}
-                  <div className="relative w-full aspect-[16/10] rounded-2xl sm:rounded-3xl bg-neutral-950 border border-neutral-200/80 shadow-[0_4px_20px_rgba(0,0,0,0.06)] hover:shadow-[0_18px_45px_rgba(168,125,36,0.22)] hover:border-[#c59737]/80 transition-all duration-500 overflow-hidden flex items-center justify-center">
+                  <div className="relative w-full aspect-[16/10] rounded-2xl sm:rounded-3xl bg-neutral-950 border border-neutral-200/80 shadow-[0_4px_20px_rgba(0,0,0,0.06)] hover:shadow-[0_18px_45px_rgba(16,52,48,0.22)] hover:border-[#103430]/60 transition-all duration-500 overflow-hidden flex items-center justify-center">
                     {/* Video Preview */}
                     <video
                       src={`${video.src}#t=0.001`}
@@ -595,9 +629,9 @@ export default function GalleryPage() {
                     {/* Subtle Dark Vignette Overlay */}
                     <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-black/30 group-hover:from-black/40 group-hover:via-transparent transition-all duration-300" />
 
-                    {/* Center Animated Gold Play Button */}
+                    {/* Center Animated Play Button */}
                     <div className="absolute inset-0 flex items-center justify-center z-10 pointer-events-none">
-                      <div className="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 rounded-full bg-gradient-to-r from-[#c59737] via-[#a87d24] to-[#886216] border-2 border-white/90 shadow-[0_4px_24px_rgba(168,125,36,0.65)] flex items-center justify-center text-white group-hover:scale-110 group-hover:shadow-[0_6px_32px_rgba(168,125,36,0.9)] transition-all duration-300">
+                      <div className="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 rounded-full bg-[#103430] border-2 border-white/90 shadow-[0_4px_24px_rgba(16,52,48,0.55)] flex items-center justify-center text-white group-hover:scale-110 group-hover:bg-[#0b2421] transition-all duration-300">
                         <Play className="w-5 h-5 sm:w-6 sm:h-6 fill-white text-white ml-0.5 sm:ml-1" />
                       </div>
                     </div>
@@ -609,36 +643,48 @@ export default function GalleryPage() {
         </div>
       </section>
 
-      {/* BEST SERVICES FROM OREN KASAULI HOTEL - Activities & Vacation Booking Section with topimage.jpg Background */}
-      <section className="relative w-full py-16 sm:py-20 md:py-28 px-4 sm:px-6 lg:px-8 xl:px-12 overflow-hidden text-white border-t border-neutral-200">
-        {/* Background topimage.jpg with Deep Contrast Atmospheric Overlay */}
-        <div className="absolute inset-0 z-0 select-none">
+      {/* BEST SERVICES FROM OREN KASAULI HOTEL - Activities & Vacation Booking Section */}
+      <section className="relative w-full py-16 sm:py-20 md:py-28 px-4 sm:px-6 lg:px-8 xl:px-12 overflow-hidden bg-[#FFF6F6] text-[#103430] border-t border-[#e2d8c7]">
+        {/* Ambient Resort Background with Darkened Soft Overlay */}
+        <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none" aria-hidden="true">
           <Image
-            src="/images/gallery/topimage.jpg"
-            alt="Oren Kasauli Activities Background"
+            src="/images/gallery/galler12.jpg"
+            alt=""
             fill
-            priority={false}
-            className="object-cover object-center filter brightness-[0.5]"
+            sizes="100vw"
+            className="object-cover object-center scale-105"
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-black/85 via-black/75 to-black/90" />
+          <div className="absolute inset-0 bg-[#FFF6F6]/75 pointer-events-none" />
+          <div className="absolute inset-0 bg-stone-900/5 pointer-events-none" />
         </div>
 
         <div className="max-w-6xl mx-auto relative z-10 text-center flex flex-col items-center">
           {/* Eyebrow: BEST SERVICES FROM OREN KASAULI HOTEL */}
           <div className="inline-flex items-center justify-center gap-2.5 sm:gap-3.5 mb-3">
-            <span className="w-8 sm:w-12 h-[1.5px] bg-[#c59737]" />
-            <span className="text-[11px] sm:text-xs md:text-sm font-bold tracking-[0.24em] text-[#c59737] uppercase font-sans">
+            <span className="w-8 sm:w-12 h-[1.5px] bg-[#103430]" />
+            <span className="text-[11px] sm:text-xs md:text-sm font-semibold tracking-[0.24em] text-[#103430] uppercase font-sans">
               BEST SERVICES FROM OREN KASAULI HOTEL
             </span>
-            <span className="w-8 sm:w-12 h-[1.5px] bg-[#c59737]" />
+            <span className="w-8 sm:w-12 h-[1.5px] bg-[#103430]" />
           </div>
 
-          {/* Section Title: Activities */}
+          {/* Section Title: Activities with Typewriter Write & Erase */}
           <h2
-            className="font-serif text-white text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-light tracking-wide leading-tight mb-8 sm:mb-12"
+            className="font-serif text-[#103430] text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-medium tracking-wide leading-tight mb-8 sm:mb-12 select-none"
             style={{ fontFamily: "var(--font-cormorant), Georgia, serif" }}
           >
-            Activities
+            <span className="sr-only">{ACTIVITIES_HEADING}</span>
+            <span aria-hidden="true" className="inline relative">
+              <span>{currentActivitiesHeading}</span>
+              <span className="inline-block w-0 relative align-middle">
+                <span className="absolute left-0.5 sm:left-1 top-1/2 -translate-y-1/2 w-[2px] sm:w-[3px] h-[0.8em] bg-[#103430] rounded-full animate-pulse" />
+              </span>
+              {ghostActivitiesRemainder && (
+                <span className="opacity-0 select-none pointer-events-none">
+                  {ghostActivitiesRemainder}
+                </span>
+              )}
+            </span>
           </h2>
 
           {/* 6 Activities Grid with Proper Icons */}
@@ -648,13 +694,13 @@ export default function GalleryPage() {
               return (
                 <div
                   key={idx}
-                  className="group relative p-4 sm:p-5 rounded-2xl bg-white/[0.06] hover:bg-white/[0.1] border border-white/15 hover:border-[#c59737]/70 shadow-[0_8px_24px_rgba(0,0,0,0.3)] hover:shadow-[0_12px_32px_rgba(197,151,55,0.22)] backdrop-blur-md transition-all duration-300 flex items-center gap-4"
+                  className="group relative p-4 sm:p-5 rounded-2xl bg-white/85 hover:bg-white border border-[#e5dccf] hover:border-[#103430]/30 shadow-sm hover:shadow-md transition-all duration-300 flex items-center gap-4"
                 >
-                  <div className="w-11 h-11 sm:w-12 sm:h-12 rounded-xl bg-gradient-to-br from-[#c59737]/30 to-[#886216]/15 border border-[#c59737]/50 flex items-center justify-center flex-shrink-0 text-[#f3d999] group-hover:scale-105 group-hover:border-[#ffe8a8] transition-all duration-300 shadow-sm">
-                    <IconComponent className="w-5 h-5 sm:w-6 sm:h-6 text-[#f3d999]" />
+                  <div className="w-11 h-11 sm:w-12 sm:h-12 rounded-xl bg-[#103430]/10 border border-[#103430]/20 flex items-center justify-center flex-shrink-0 text-[#103430] group-hover:scale-105 group-hover:bg-[#103430] group-hover:text-white transition-all duration-300 shadow-sm">
+                    <IconComponent className="w-5 h-5 sm:w-6 sm:h-6 text-current" />
                   </div>
                   <div className="flex-1 min-w-0">
-                    <h3 className="text-white text-sm sm:text-base font-medium leading-snug tracking-wide group-hover:text-[#f3d999] transition-colors duration-300">
+                    <h3 className="text-[#103430] text-sm sm:text-base font-medium leading-snug tracking-wide">
                       {activity.title}
                     </h3>
                   </div>
@@ -663,16 +709,16 @@ export default function GalleryPage() {
             })}
           </div>
 
-          {/* Elegant Gold Divider */}
-          <div className="w-full max-w-md mx-auto h-[1px] bg-gradient-to-r from-transparent via-[#c59737]/50 to-transparent mb-10 sm:mb-14" />
+          {/* Elegant Spruce Divider */}
+          <div className="w-full max-w-md mx-auto h-[1px] bg-gradient-to-r from-transparent via-[#103430]/25 to-transparent mb-10 sm:mb-14" />
 
           {/* CONTACT US TODAY & Book Your Next Vacation! */}
           <div className="flex flex-col items-center">
-            <span className="text-[11px] sm:text-xs md:text-sm font-bold uppercase tracking-[0.25em] text-[#e8c67a] mb-2 sm:mb-2.5">
+            <span className="text-[11px] sm:text-xs md:text-sm font-semibold uppercase tracking-[0.25em] text-[#103430] mb-2 sm:mb-2.5">
               CONTACT US TODAY
             </span>
             <h3
-              className="font-serif text-white text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-light tracking-wide leading-tight mb-7 sm:mb-9 select-none text-center"
+              className="font-serif text-[#103430] text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-medium tracking-wide leading-tight mb-7 sm:mb-9 select-none text-center"
               style={{ fontFamily: "var(--font-cormorant), Georgia, serif" }}
             >
               {/* Screen reader full text */}
@@ -683,7 +729,7 @@ export default function GalleryPage() {
                 <span>{currentVacationHeading}</span>
                 {/* Zero-width cursor container guarantees 0px horizontal layout shift */}
                 <span className="inline-block w-0 relative align-middle" aria-hidden="true">
-                  <span className="absolute left-0.5 sm:left-1 top-1/2 -translate-y-1/2 w-[2px] sm:w-[3px] h-[0.8em] bg-[#FFE4A0] rounded-full animate-pulse" />
+                  <span className="absolute left-0.5 sm:left-1 top-1/2 -translate-y-1/2 w-[2px] sm:w-[3px] h-[0.8em] bg-[#103430] rounded-full animate-pulse" />
                 </span>
                 {/* Invisible ghost remainder locks width, height, and line wraps */}
                 {ghostVacationRemainder && (
@@ -700,7 +746,7 @@ export default function GalleryPage() {
                 target="_blank"
                 rel="noopener noreferrer"
                 className="group relative w-full sm:w-auto inline-flex items-center justify-center gap-2.5 rounded-full font-semibold uppercase whitespace-nowrap text-[#FFF6F6] bg-[#103430] hover:bg-[#0b2421] border border-[#103430] shadow-[0_4px_18px_rgba(16, 52, 48,0.38)] hover:shadow-[0_8px_28px_rgba(16, 52, 48,0.6)] hover:-translate-y-0.5 hover:scale-[1.03] active:translate-y-0 active:scale-95 transition-all duration-300 px-9 sm:px-12 py-3.5 sm:py-4 text-xs sm:text-sm tracking-[0.18em] text-center overflow-hidden"
-                style={{ fontFamily: "var(--font-montserrat), sans-serif" }}
+                style={{ fontFamily: "var(--font-manrope), sans-serif" }}
               >
                 {/* Shimmer sweep effect */}
                 <span
@@ -712,8 +758,8 @@ export default function GalleryPage() {
               </a>
               <Link
                 href="/"
-                className="w-full sm:w-auto relative inline-flex items-center justify-center rounded-full font-medium uppercase whitespace-nowrap text-white/90 hover:text-white bg-white/10 hover:bg-white/15 border border-white/20 transition-all duration-300 px-8 sm:px-10 py-3.5 sm:py-4 text-xs sm:text-sm tracking-[0.16em] text-center"
-                style={{ fontFamily: "var(--font-montserrat), sans-serif" }}
+                className="w-full sm:w-auto relative inline-flex items-center justify-center rounded-full font-medium uppercase whitespace-nowrap text-[#103430] hover:text-[#0b2421] bg-white/70 hover:bg-white border border-[#103430]/25 shadow-sm transition-all duration-300 px-8 sm:px-10 py-3.5 sm:py-4 text-xs sm:text-sm tracking-[0.16em] text-center"
+                style={{ fontFamily: "var(--font-manrope), sans-serif" }}
               >
                 <span>BACK TO HOME</span>
               </Link>
@@ -746,7 +792,7 @@ export default function GalleryPage() {
               <div className="flex items-center gap-3">
                 <button
                   onClick={handleClose}
-                  className="w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-white/10 hover:bg-white/20 border border-white/20 text-white flex items-center justify-center transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[#c59737]"
+                  className="w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-white/10 hover:bg-white/20 border border-white/20 text-white flex items-center justify-center transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[#103430]"
                   aria-label="Close fullscreen gallery"
                 >
                   <X className="w-5 h-5 sm:w-6 sm:h-6" />
@@ -834,8 +880,8 @@ export default function GalleryPage() {
               onClick={(e) => e.stopPropagation()}
             >
               <div className="flex items-center gap-2.5 text-white">
-                <span className="w-2.5 h-2.5 rounded-full bg-[#c59737] animate-pulse" />
-                <span className="text-xs sm:text-sm uppercase tracking-[0.2em] font-semibold text-[#f3d999]">
+                <span className="w-2.5 h-2.5 rounded-full bg-[#103430] animate-pulse" />
+                <span className="text-xs sm:text-sm uppercase tracking-[0.2em] font-semibold text-[#b4d6d1]">
                   Guest Video
                 </span>
                 <span className="text-white/40 hidden sm:inline">•</span>
@@ -846,7 +892,7 @@ export default function GalleryPage() {
 
               <button
                 onClick={() => setSelectedVideo(null)}
-                className="w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-white/10 hover:bg-white/20 border border-white/20 text-white flex items-center justify-center transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[#c59737]"
+                className="w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-white/10 hover:bg-white/20 border border-white/20 text-white flex items-center justify-center transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[#103430]"
                 aria-label="Close video player"
               >
                 <X className="w-5 h-5 sm:w-6 sm:h-6" />
