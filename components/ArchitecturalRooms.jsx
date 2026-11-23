@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
@@ -213,7 +213,7 @@ export default function ArchitecturalRooms() {
       id="rooms"
       ref={sectionRef}
       suppressHydrationWarning
-      className="relative w-full min-h-[720px] lg:min-h-[800px] py-16 sm:py-20 md:py-24 px-4 sm:px-6 lg:px-8 xl:px-12 overflow-hidden z-10 bg-[#FFF6F6] text-[#165823] border-t border-[#e2d8c7]"
+      className="relative w-full min-h-[720px] lg:min-h-[800px] py-16 sm:py-20 md:py-24 px-4 sm:px-6 lg:px-8 xl:px-12 overflow-hidden z-10 bg-[#FFF6F6] text-[#103430] border-t border-[#e2d8c7]"
     >
       {/* ======================================================== */}
       {/* AUTOMATIC CINEMATIC BACKGROUND REFLECTING ACTIVE ROOM    */}
@@ -277,7 +277,7 @@ export default function ArchitecturalRooms() {
 
           {/* Main Title: Find Your Perfect Stay in Kasauli */}
           <h2
-            className="font-serif text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-normal tracking-wide leading-tight text-center break-words select-none text-[#165823]"
+            className="font-serif text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-normal tracking-wide leading-tight text-center break-words select-none text-[#103430]"
             style={{ fontFamily: "var(--font-cormorant), Georgia, serif" }}
           >
             <span className="sr-only">{TYPEWRITER_TEXT}</span>
@@ -288,7 +288,7 @@ export default function ArchitecturalRooms() {
                   className="inline-block w-0 relative align-middle"
                   aria-hidden="true"
                 >
-                  <span className="absolute left-0.5 sm:left-1 top-1/2 -translate-y-1/2 w-[2px] sm:w-[3px] h-[0.8em] bg-[#165823] rounded-full animate-pulse" />
+                  <span className="absolute left-0.5 sm:left-1 top-1/2 -translate-y-1/2 w-[2px] sm:w-[3px] h-[0.8em] bg-[#103430] rounded-full animate-pulse" />
                 </span>
               )}
               {ghostRemainder && (
@@ -322,7 +322,7 @@ export default function ArchitecturalRooms() {
                 {activeRoom.badge}
               </span>
               <span
-                className="text-xs uppercase tracking-widest font-normal text-[#165823]/60"
+                className="text-xs uppercase tracking-widest font-normal text-[#103430]/60"
                 style={{ fontFamily: "var(--font-montserrat), sans-serif" }}
               >
                 • {activeRoom.count}
@@ -331,7 +331,7 @@ export default function ArchitecturalRooms() {
 
             {/* Room Title */}
             <h3
-              className="font-serif text-3xl sm:text-4xl md:text-5xl font-normal tracking-wide leading-tight mb-2 text-[#165823]"
+              className="font-serif text-3xl sm:text-4xl md:text-5xl font-normal tracking-wide leading-tight mb-2 text-[#103430]"
               style={{ fontFamily: "var(--font-cormorant), Georgia, serif" }}
             >
               {activeRoom.title}
@@ -347,7 +347,7 @@ export default function ArchitecturalRooms() {
 
             {/* Description */}
             <p
-              className="font-sans text-sm sm:text-base leading-relaxed font-normal mb-6 sm:mb-8 max-w-xl text-[#165823]/80"
+              className="font-sans text-sm sm:text-base leading-relaxed font-normal mb-6 sm:mb-8 max-w-xl text-[#103430]/80"
               style={{ fontFamily: "var(--font-montserrat), sans-serif" }}
             >
               {activeRoom.description}
@@ -360,7 +360,7 @@ export default function ArchitecturalRooms() {
                 return (
                   <span
                     key={idx}
-                    className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs font-medium bg-white border border-[#e2d8c7] text-[#165823] shadow-sm hover:border-[#165823]/30 transition-colors"
+                    className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs font-medium bg-white border border-[#e2d8c7] text-[#103430] shadow-sm hover:border-[#103430]/30 transition-colors"
                     style={{ fontFamily: "var(--font-montserrat), sans-serif" }}
                   >
                     <Icon className="w-3.5 h-3.5 text-[#C5A77B] flex-shrink-0" />
@@ -377,7 +377,7 @@ export default function ArchitecturalRooms() {
                 href={BOOKING_URL}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group/cta relative inline-flex items-center justify-center gap-1.5 sm:gap-2 px-6 sm:px-7 py-3 rounded-full font-semibold uppercase text-[#FFF6F6] bg-[#165823] hover:bg-[#12481c] border border-[#165823] shadow-[0_4px_16px_rgba(22,88,35,0.25)] hover:shadow-[0_8px_24px_rgba(22,88,35,0.4)] hover:-translate-y-0.5 active:translate-y-0 transition-all duration-300 text-xs sm:text-[13px] tracking-[0.12em] sm:tracking-[0.14em] cursor-pointer select-none overflow-hidden text-center flex-1 w-full sm:w-auto"
+                className="group/cta relative inline-flex items-center justify-center gap-1.5 sm:gap-2 px-6 sm:px-7 py-3 rounded-full font-semibold uppercase text-[#FFF6F6] bg-[#103430] hover:bg-[#0b2421] border border-[#103430] shadow-[0_4px_16px_rgba(16, 52, 48,0.25)] hover:shadow-[0_8px_24px_rgba(16, 52, 48,0.4)] hover:-translate-y-0.5 active:translate-y-0 transition-all duration-300 text-xs sm:text-[13px] tracking-[0.12em] sm:tracking-[0.14em] cursor-pointer select-none overflow-hidden text-center flex-1 w-full sm:w-auto"
                 style={{ fontFamily: "var(--font-montserrat), sans-serif" }}
                 aria-label={`Book ${activeRoom.title} now`}
               >
@@ -392,11 +392,11 @@ export default function ArchitecturalRooms() {
               {/* Button 2: EXPLORE ALL ROOMS */}
               <a
                 href="/room-and-tariff"
-                className="group/more relative inline-flex items-center justify-center gap-1.5 sm:gap-2 px-5 sm:px-6 py-3 rounded-full font-semibold uppercase text-[#165823] hover:text-[#FFF6F6] bg-transparent hover:bg-[#165823] hover:border-[#165823] border-2 border-[#165823] shadow-sm hover:shadow-[0_4px_16px_rgba(22,88,35,0.25)] hover:-translate-y-0.5 active:translate-y-0 transition-all duration-300 text-xs sm:text-[13px] tracking-[0.12em] sm:tracking-[0.14em] cursor-pointer select-none text-center flex-1 w-full sm:w-auto"
+                className="group/more relative inline-flex items-center justify-center gap-1.5 sm:gap-2 px-5 sm:px-6 py-3 rounded-full font-semibold uppercase text-[#103430] hover:text-[#FFF6F6] bg-transparent hover:bg-[#103430] hover:border-[#103430] border-2 border-[#103430] shadow-sm hover:shadow-[0_4px_16px_rgba(16, 52, 48,0.25)] hover:-translate-y-0.5 active:translate-y-0 transition-all duration-300 text-xs sm:text-[13px] tracking-[0.12em] sm:tracking-[0.14em] cursor-pointer select-none text-center flex-1 w-full sm:w-auto"
                 style={{ fontFamily: "var(--font-montserrat), sans-serif" }}
                 aria-label="Explore all rooms and tariff"
               >
-                <Eye className="w-4 h-4 text-[#165823] group-hover/more:text-white transition-colors flex-shrink-0" />
+                <Eye className="w-4 h-4 text-[#103430] group-hover/more:text-white transition-colors flex-shrink-0" />
                 <span className="whitespace-nowrap">EXPLORE ALL ROOMS</span>
               </a>
             </div>
@@ -476,7 +476,7 @@ export default function ArchitecturalRooms() {
                     }
                     onClick={!isTop ? () => handleSelectRoom(roomIdx) : undefined}
                     className={`group/card absolute inset-0 rounded-2xl sm:rounded-3xl overflow-hidden shadow-[0_22px_48px_-10px_rgba(0,0,0,0.2),0_12px_28px_-6px_rgba(197,167,123,0.38),0_0_20px_rgba(255,255,255,0.4)] border border-white/80 ring-1 ring-[#C5A77B]/30 transition-all duration-300 ${isTop
-                      ? "cursor-pointer ring-2 ring-[#C5A77B]/60 hover:ring-[#165823] hover:shadow-[0_28px_56px_-8px_rgba(22,88,35,0.3),0_14px_32px_rgba(197,167,123,0.45)]"
+                      ? "cursor-pointer ring-2 ring-[#C5A77B]/60 hover:ring-[#103430] hover:shadow-[0_28px_56px_-8px_rgba(16, 52, 48,0.3),0_14px_32px_rgba(197,167,123,0.45)]"
                       : "cursor-pointer"
                       }`}
                   >
@@ -539,7 +539,7 @@ export default function ArchitecturalRooms() {
           aria-labelledby="modal-room-title"
         >
           <div
-            className="relative w-full max-w-2xl lg:max-w-3xl bg-[#FFF6F6] text-[#165823] rounded-2xl sm:rounded-3xl border border-[#C5A77B]/50 shadow-[0_25px_60px_-15px_rgba(0,0,0,0.6)] overflow-hidden max-h-[92vh] flex flex-col"
+            className="relative w-full max-w-2xl lg:max-w-3xl bg-[#FFF6F6] text-[#103430] rounded-2xl sm:rounded-3xl border border-[#C5A77B]/50 shadow-[0_25px_60px_-15px_rgba(0,0,0,0.6)] overflow-hidden max-h-[92vh] flex flex-col"
             onClick={(e) => e.stopPropagation()}
           >
             {/* Modal Header */}
@@ -547,12 +547,12 @@ export default function ArchitecturalRooms() {
               <div className="flex items-center gap-3">
                 <h4
                   id="modal-room-title"
-                  className="font-serif text-xl sm:text-2xl text-[#165823] font-normal tracking-wide truncate"
+                  className="font-serif text-xl sm:text-2xl text-[#103430] font-normal tracking-wide truncate"
                   style={{ fontFamily: "var(--font-cormorant), Georgia, serif" }}
                 >
                   {activeRoom.title}
                 </h4>
-                <span className="text-xs uppercase tracking-widest text-[#165823]/60 font-semibold hidden sm:inline-block">
+                <span className="text-xs uppercase tracking-widest text-[#103430]/60 font-semibold hidden sm:inline-block">
                   • {activeRoom.count}
                 </span>
               </div>
@@ -561,7 +561,7 @@ export default function ArchitecturalRooms() {
               <button
                 type="button"
                 onClick={() => setIsDetailsOpen(false)}
-                className="w-9 h-9 sm:w-10 sm:h-10 rounded-full border border-[#C5A77B]/40 hover:border-[#C5A77B] bg-white hover:bg-[#C5A77B]/15 text-[#165823] flex items-center justify-center transition-all duration-200 cursor-pointer"
+                className="w-9 h-9 sm:w-10 sm:h-10 rounded-full border border-[#C5A77B]/40 hover:border-[#C5A77B] bg-white hover:bg-[#C5A77B]/15 text-[#103430] flex items-center justify-center transition-all duration-200 cursor-pointer"
                 aria-label="Close suite details"
               >
                 <X className="w-5 h-5" />
@@ -591,14 +591,14 @@ export default function ArchitecturalRooms() {
                 >
                   {activeRoom.tagline}
                 </p>
-                <p className="font-sans text-sm sm:text-base text-[#165823]/85 leading-relaxed font-normal">
+                <p className="font-sans text-sm sm:text-base text-[#103430]/85 leading-relaxed font-normal">
                   {activeRoom.description}
                 </p>
               </div>
 
               {/* The Oren Suites Narrative */}
-              <div className="p-4 sm:p-5 rounded-2xl bg-[#165823]/[0.04] border border-[#C5A77B]/30 text-[#165823]/85 text-xs sm:text-sm leading-relaxed">
-                <p className="font-serif text-sm sm:text-base font-medium mb-1 text-[#165823]" style={{ fontFamily: "var(--font-cormorant), Georgia, serif" }}>
+              <div className="p-4 sm:p-5 rounded-2xl bg-[#103430]/[0.04] border border-[#C5A77B]/30 text-[#103430]/85 text-xs sm:text-sm leading-relaxed">
+                <p className="font-serif text-sm sm:text-base font-medium mb-1 text-[#103430]" style={{ fontFamily: "var(--font-cormorant), Georgia, serif" }}>
                   Every Stay Has Its Own Story
                 </p>
                 <p className="font-light">
@@ -609,7 +609,7 @@ export default function ArchitecturalRooms() {
               {/* Signature Amenities Grid */}
               <div className="pt-2 border-t border-[#e2d8c7]">
                 <h5
-                  className="text-xs uppercase tracking-[0.2em] text-[#165823]/70 font-semibold mb-4"
+                  className="text-xs uppercase tracking-[0.2em] text-[#103430]/70 font-semibold mb-4"
                   style={{ fontFamily: "var(--font-montserrat), sans-serif" }}
                 >
                   SIGNATURE SUITE AMENITIES
@@ -625,7 +625,7 @@ export default function ArchitecturalRooms() {
                         <div className="w-8 h-8 rounded-lg bg-[#FFF6F6] flex items-center justify-center text-[#C5A77B] flex-shrink-0">
                           <Icon className="w-4 h-4" />
                         </div>
-                        <span className="text-xs sm:text-sm font-medium text-[#165823]">
+                        <span className="text-xs sm:text-sm font-medium text-[#103430]">
                           {item.name}
                         </span>
                       </div>
@@ -637,7 +637,7 @@ export default function ArchitecturalRooms() {
 
             {/* Modal Sticky Footer CTA */}
             <div className="p-4 sm:p-6 border-t border-[#e2d8c7] bg-white/70 flex flex-col sm:flex-row items-center justify-between gap-3 sm:gap-4">
-              <span className="text-xs text-[#165823]/70 font-medium tracking-wide">
+              <span className="text-xs text-[#103430]/70 font-medium tracking-wide">
                 Best direct rates guaranteed with complimentary breakfast
               </span>
 
@@ -646,7 +646,7 @@ export default function ArchitecturalRooms() {
                   href={BOOKING_URL}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex-1 sm:flex-initial inline-flex items-center justify-center gap-2 px-6 sm:px-8 py-2.5 sm:py-3 rounded-full font-semibold uppercase text-[#FFF6F6] bg-[#165823] hover:bg-[#12481c] shadow-md hover:shadow-lg transition-all text-xs tracking-[0.14em]"
+                  className="flex-1 sm:flex-initial inline-flex items-center justify-center gap-2 px-6 sm:px-8 py-2.5 sm:py-3 rounded-full font-semibold uppercase text-[#FFF6F6] bg-[#103430] hover:bg-[#0b2421] shadow-md hover:shadow-lg transition-all text-xs tracking-[0.14em]"
                   style={{ fontFamily: "var(--font-montserrat), sans-serif" }}
                 >
                   <span>RESERVE NOW</span>

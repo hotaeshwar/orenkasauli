@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
@@ -438,7 +438,7 @@ export default function RoomAndTariffPage() {
   const currentHeadingText = TYPEWRITER_TEXT.slice(0, charIndex);
 
   return (
-    <div className="relative min-h-screen w-full bg-[#FFF6F6] text-[#165823] overflow-x-hidden">
+    <div className="relative min-h-screen w-full bg-[#FFF6F6] text-[#103430] overflow-x-hidden">
       {/* Navigation Bar */}
       <Navbar />
 
@@ -462,7 +462,7 @@ export default function RoomAndTariffPage() {
         {/* Hero Content */}
         <div className="max-w-4xl mx-auto text-center relative z-10 w-full px-2 flex flex-col items-center">
           <h1
-            className="font-serif text-[#165823] text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-medium tracking-[0.04em] leading-tight min-h-[1.25em] flex items-center justify-center break-words"
+            className="font-serif text-[#103430] text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-medium tracking-[0.04em] leading-tight min-h-[1.25em] flex items-center justify-center break-words"
             style={{ fontFamily: "var(--font-cormorant), Georgia, serif" }}
           >
             <span>{currentHeadingText}</span>
@@ -474,7 +474,7 @@ export default function RoomAndTariffPage() {
 
           {/* Rooms & Suites Narrative Story */}
           <p
-            className="font-sans text-xs sm:text-sm md:text-base text-[#165823] font-medium max-w-2xl mx-auto leading-relaxed tracking-wide text-center mt-3"
+            className="font-sans text-xs sm:text-sm md:text-base text-[#103430] font-medium max-w-2xl mx-auto leading-relaxed tracking-wide text-center mt-3"
             style={{ fontFamily: "var(--font-montserrat), sans-serif" }}
           >
             Every stay has its own story. Choose from thoughtfully designed rooms and suites, each offering comfort and a beautiful connection with the surrounding hills. From cosy attic rooms and valley-facing balconies to private jacuzzis and plunge pool experiences, discover a room that suits the way you want to unwind.
@@ -525,7 +525,7 @@ export default function RoomAndTariffPage() {
                   >
                     {/* Room Title in Pure Editorial Typography (Cardless) */}
                     <h2
-                      className="font-serif text-[#165823] text-2xl sm:text-3xl md:text-4xl lg:text-[40px] font-light tracking-wide leading-tight mb-2 uppercase break-words"
+                      className="font-serif text-[#103430] text-2xl sm:text-3xl md:text-4xl lg:text-[40px] font-light tracking-wide leading-tight mb-2 uppercase break-words"
                       style={{ fontFamily: "var(--font-cormorant), Georgia, serif" }}
                     >
                       {room.title}
@@ -541,7 +541,7 @@ export default function RoomAndTariffPage() {
 
                     {/* Description Paragraph */}
                     <p
-                      className="text-xs sm:text-sm md:text-[15px] text-[#165823]/85 leading-relaxed font-light tracking-wide mb-5 sm:mb-6"
+                      className="text-xs sm:text-sm md:text-[15px] text-[#103430]/85 leading-relaxed font-light tracking-wide mb-5 sm:mb-6"
                       style={{ fontFamily: "var(--font-montserrat), sans-serif" }}
                     >
                       {room.description}
@@ -549,7 +549,7 @@ export default function RoomAndTariffPage() {
 
                     {/* Key Amenities Title */}
                     <h3
-                      className="text-sm sm:text-base md:text-lg font-medium text-[#165823] mb-3 tracking-tight"
+                      className="text-sm sm:text-base md:text-lg font-medium text-[#103430] mb-3 tracking-tight"
                       style={{ fontFamily: "var(--font-montserrat), sans-serif" }}
                     >
                       Key Amenities:
@@ -560,11 +560,11 @@ export default function RoomAndTariffPage() {
                       {room.amenities.map((amenity, aIdx) => (
                         <div
                           key={aIdx}
-                          className="flex items-center gap-2.5 text-xs sm:text-sm text-[#165823]/85"
+                          className="flex items-center gap-2.5 text-xs sm:text-sm text-[#103430]/85"
                           style={{ fontFamily: "var(--font-montserrat), sans-serif" }}
                         >
                           <span
-                            className="w-4 h-4 sm:w-5 sm:h-5 rounded-full bg-[#C5A77B] text-[#165823] flex items-center justify-center flex-shrink-0 shadow-sm"
+                            className="w-4 h-4 sm:w-5 sm:h-5 rounded-full bg-[#C5A77B] text-[#103430] flex items-center justify-center flex-shrink-0 shadow-sm"
                             aria-hidden="true"
                           >
                             <Check className="w-2.5 h-2.5 sm:w-3 sm:h-3 stroke-[3]" />
@@ -580,7 +580,7 @@ export default function RoomAndTariffPage() {
                         href={BOOKING_URL}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="group relative inline-flex items-center justify-center gap-2.5 rounded-full font-semibold uppercase whitespace-nowrap text-[#FFF6F6] bg-[#165823] hover:bg-[#12481c] border border-[#165823] shadow-[0_4px_16px_rgba(22,88,35,0.35)] hover:shadow-[0_8px_24px_rgba(22,88,35,0.55)] hover:-translate-y-0.5 hover:scale-[1.03] active:translate-y-0 active:scale-95 transition-all duration-300 px-7 sm:px-8 py-2.5 sm:py-3 text-xs sm:text-sm tracking-[0.14em] cursor-pointer select-none w-full sm:w-auto text-center overflow-hidden"
+                        className="group relative inline-flex items-center justify-center gap-2.5 rounded-full font-semibold uppercase whitespace-nowrap text-[#FFF6F6] bg-[#103430] hover:bg-[#0b2421] border border-[#103430] shadow-[0_4px_16px_rgba(16, 52, 48,0.35)] hover:shadow-[0_8px_24px_rgba(16, 52, 48,0.55)] hover:-translate-y-0.5 hover:scale-[1.03] active:translate-y-0 active:scale-95 transition-all duration-300 px-7 sm:px-8 py-2.5 sm:py-3 text-xs sm:text-sm tracking-[0.14em] cursor-pointer select-none w-full sm:w-auto text-center overflow-hidden"
                         style={{ fontFamily: "var(--font-montserrat), sans-serif" }}
                         aria-label={`Book ${room.title} (opens booking engine)`}
                       >
@@ -722,7 +722,7 @@ export default function RoomAndTariffPage() {
               href={BOOKING_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="w-full sm:w-auto relative inline-flex items-center justify-center rounded-full font-semibold uppercase whitespace-nowrap text-[#FFF6F6] bg-[#165823] hover:bg-[#12481c] border border-[#165823] shadow-[0_4px_20px_rgba(22,88,35,0.4)] hover:shadow-[0_8px_28px_rgba(22,88,35,0.6)] hover:-translate-y-0.5 hover:scale-[1.02] active:translate-y-0 active:scale-95 transition-all duration-300 px-8 sm:px-10 py-3.5 sm:py-4 text-xs sm:text-sm tracking-[0.16em] text-center overflow-hidden cursor-pointer"
+              className="w-full sm:w-auto relative inline-flex items-center justify-center rounded-full font-semibold uppercase whitespace-nowrap text-[#FFF6F6] bg-[#103430] hover:bg-[#0b2421] border border-[#103430] shadow-[0_4px_20px_rgba(16, 52, 48,0.4)] hover:shadow-[0_8px_28px_rgba(16, 52, 48,0.6)] hover:-translate-y-0.5 hover:scale-[1.02] active:translate-y-0 active:scale-95 transition-all duration-300 px-8 sm:px-10 py-3.5 sm:py-4 text-xs sm:text-sm tracking-[0.16em] text-center overflow-hidden cursor-pointer"
             >
               <span>BOOK YOUR STAY NOW</span>
             </a>

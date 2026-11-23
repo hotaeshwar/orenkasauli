@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
@@ -148,9 +148,9 @@ export default function Navbar() {
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-200 ease-out ${
         scrolled
-          ? "bg-white/95 backdrop-blur-md shadow-[0_4px_24px_rgba(22,88,35,0.08)] border-b border-[#165823]/10"
+          ? "bg-white/95 backdrop-blur-md shadow-[0_4px_24px_rgba(16, 52, 48,0.08)] border-b border-[#103430]/10"
           : pathname !== "/"
-          ? "bg-[#FFF6F6]/85 backdrop-blur-md shadow-sm border-b border-[#165823]/10"
+          ? "bg-[#FFF6F6]/85 backdrop-blur-md shadow-sm border-b border-[#103430]/10"
           : "bg-transparent border-b border-transparent"
       }`}
     >
@@ -162,7 +162,7 @@ export default function Navbar() {
             <Link
               href="/"
               onClick={(e) => handleNavClick(e, "/")}
-              className="relative flex items-center focus:outline-none focus-visible:ring-2 focus-visible:ring-[#165823] rounded-full"
+              className="relative flex items-center focus:outline-none focus-visible:ring-2 focus-visible:ring-[#103430] rounded-full"
               aria-label="Oren Kasauli Homepage"
             >
               <div className="relative h-14 sm:h-16 md:h-20 lg:h-[72px] xl:h-[84px] w-auto flex items-center">
@@ -202,8 +202,8 @@ export default function Navbar() {
                   className={`relative px-2 lg:px-2.5 xl:px-3.5 py-1.5 xl:py-2 text-[11px] lg:text-xs xl:text-[13px] uppercase tracking-[0.06em] lg:tracking-[0.08em] xl:tracking-[0.14em] font-medium transition-colors duration-200 z-10 whitespace-nowrap ${
                     isLightNav
                       ? isActive
-                        ? "text-[#165823] font-bold"
-                        : "text-[#165823]/75 hover:text-[#165823]"
+                        ? "text-[#103430] font-bold"
+                        : "text-[#103430]/75 hover:text-[#103430]"
                       : isActive
                       ? "text-emerald-400 font-bold drop-shadow-[0_1px_8px_rgba(0,0,0,0.9)]"
                       : "text-white hover:text-emerald-300 drop-shadow-[0_1px_4px_rgba(0,0,0,0.85)]"
@@ -245,7 +245,7 @@ export default function Navbar() {
                       layoutId="navbar-pill"
                       className={`absolute inset-0 rounded-full -z-10 ${
                         isLightNav
-                          ? "bg-[#165823]/8 border border-[#165823]/15 shadow-sm"
+                          ? "bg-[#103430]/8 border border-[#103430]/15 shadow-sm"
                           : "bg-white/15 backdrop-blur-md border border-white/20 shadow-[0_2px_12px_rgba(0,0,0,0.35)]"
                       }`}
                       transition={{
@@ -266,7 +266,7 @@ export default function Navbar() {
               href={BOOKING_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="group relative inline-flex items-center justify-center rounded-full font-semibold uppercase whitespace-nowrap text-[#FFF6F6] bg-[#165823] hover:bg-[#12481c] border border-[#165823] shadow-[0_4px_16px_rgba(22,88,35,0.35)] hover:shadow-[0_8px_24px_rgba(22,88,35,0.55)] hover:-translate-y-0.5 hover:scale-[1.03] active:translate-y-0 active:scale-95 transition-all duration-300 ml-1.5 lg:ml-2.5 xl:ml-5 px-3 lg:px-4 xl:px-5 py-1.5 xl:py-2 text-[10px] lg:text-[11px] xl:text-xs tracking-[0.1em] xl:tracking-[0.16em] overflow-hidden"
+              className="group relative inline-flex items-center justify-center rounded-full font-semibold uppercase whitespace-nowrap text-[#FFF6F6] bg-[#103430] hover:bg-[#0b2421] border border-[#103430] shadow-[0_4px_16px_rgba(16, 52, 48,0.35)] hover:shadow-[0_8px_24px_rgba(16, 52, 48,0.55)] hover:-translate-y-0.5 hover:scale-[1.03] active:translate-y-0 active:scale-95 transition-all duration-300 ml-1.5 lg:ml-2.5 xl:ml-5 px-3 lg:px-4 xl:px-5 py-1.5 xl:py-2 text-[10px] lg:text-[11px] xl:text-xs tracking-[0.1em] xl:tracking-[0.16em] overflow-hidden"
               style={{ fontFamily: "var(--font-montserrat), sans-serif" }}
               aria-label="Book Now (opens reservation system)"
             >
@@ -286,7 +286,7 @@ export default function Navbar() {
               href={BOOKING_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="group relative inline-flex items-center justify-center rounded-full font-semibold uppercase whitespace-nowrap text-[#FFF6F6] bg-[#165823] hover:bg-[#12481c] border border-[#165823] shadow-[0_3px_12px_rgba(22,88,35,0.35)] hover:shadow-[0_6px_20px_rgba(22,88,35,0.55)] active:scale-95 transition-all duration-300 px-2.5 sm:px-4 py-1.5 md:py-2 text-[10px] sm:text-[11px] md:text-xs tracking-[0.1em] sm:tracking-[0.14em] md:tracking-[0.16em] overflow-hidden"
+              className="group relative inline-flex items-center justify-center rounded-full font-semibold uppercase whitespace-nowrap text-[#FFF6F6] bg-[#103430] hover:bg-[#0b2421] border border-[#103430] shadow-[0_3px_12px_rgba(16, 52, 48,0.35)] hover:shadow-[0_6px_20px_rgba(16, 52, 48,0.55)] active:scale-95 transition-all duration-300 px-2.5 sm:px-4 py-1.5 md:py-2 text-[10px] sm:text-[11px] md:text-xs tracking-[0.1em] sm:tracking-[0.14em] md:tracking-[0.16em] overflow-hidden"
               style={{ fontFamily: "var(--font-montserrat), sans-serif" }}
               aria-label="Book Now"
             >
@@ -301,9 +301,9 @@ export default function Navbar() {
             <button
               type="button"
               onClick={() => setMobileMenuOpen((prev) => !prev)}
-              className={`relative z-50 w-10 h-10 sm:w-11 sm:h-11 rounded-full border flex items-center justify-center transition-all duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#165823] active:scale-90 cursor-pointer ${
+              className={`relative z-50 w-10 h-10 sm:w-11 sm:h-11 rounded-full border flex items-center justify-center transition-all duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#103430] active:scale-90 cursor-pointer ${
                 isLightNav
-                  ? "bg-white/95 hover:bg-white text-[#165823] border-[#165823]/25 shadow-sm"
+                  ? "bg-white/95 hover:bg-white text-[#103430] border-[#103430]/25 shadow-sm"
                   : "bg-black/55 hover:bg-black/75 text-white border-white/25 backdrop-blur-md"
               }`}
               aria-label={mobileMenuOpen ? "Close navigation menu" : "Open navigation menu"}
@@ -381,7 +381,7 @@ export default function Navbar() {
                       aria-current={isActive ? "page" : undefined}
                       className={`relative flex items-center justify-between py-3 px-5 rounded-full text-xs sm:text-sm uppercase tracking-[0.16em] font-medium transition-colors ${
                         isActive
-                          ? "bg-[#165823]/25 text-emerald-400 font-bold border border-emerald-500/40 shadow-[0_2px_12px_rgba(22,88,35,0.3)]"
+                          ? "bg-[#103430]/25 text-emerald-400 font-bold border border-emerald-500/40 shadow-[0_2px_12px_rgba(16, 52, 48,0.3)]"
                           : "text-[#f8f9f7] hover:bg-white/10 hover:text-emerald-300"
                       }`}
                       style={{ fontFamily: "var(--font-montserrat), sans-serif" }}

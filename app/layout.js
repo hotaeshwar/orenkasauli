@@ -1,4 +1,4 @@
-import { Cormorant_Garamond, Montserrat, Manrope } from "next/font/google";
+﻿import { Cormorant_Garamond, Montserrat, Manrope } from "next/font/google";
 import "./globals.css";
 import Footer from "@/components/Footer";
 
@@ -51,7 +51,7 @@ export default function RootLayout({ children }) {
       </head>
       <body
         suppressHydrationWarning
-        className="min-h-screen w-full overflow-x-hidden font-sans bg-[#FFF6F6] text-[#165823] selection:bg-[#165823] selection:text-[#FFF6F6] flex flex-col justify-between"
+        className="min-h-screen w-full overflow-x-hidden font-sans bg-[#FFF6F6] text-[#103430] selection:bg-[#103430] selection:text-[#FFF6F6] flex flex-col justify-between"
       >
         <div suppressHydrationWarning className="flex-1 w-full">
           {children}

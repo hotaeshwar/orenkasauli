@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useState, useEffect } from "react";
 import Image from "next/image";
@@ -44,7 +44,7 @@ export default function BlogPage() {
   const currentHeadingText = TYPEWRITER_TEXT.slice(0, charIndex);
 
   return (
-    <div className="relative min-h-screen w-full bg-[#FFF6F6] text-[#165823] overflow-x-hidden selection:bg-[#C5A77B] selection:text-[#165823]">
+    <div className="relative min-h-screen w-full bg-[#FFF6F6] text-[#103430] overflow-x-hidden selection:bg-[#C5A77B] selection:text-[#103430]">
       {/* Navigation Bar */}
       <Navbar />
 
@@ -68,7 +68,7 @@ export default function BlogPage() {
         {/* Hero Content */}
         <div className="max-w-4xl mx-auto text-center relative z-10 w-full px-2 flex flex-col items-center">
           <h1
-            className="font-serif text-[#165823] text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-medium tracking-[0.04em] leading-tight min-h-[1.25em] flex items-center justify-center break-words"
+            className="font-serif text-[#103430] text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-medium tracking-[0.04em] leading-tight min-h-[1.25em] flex items-center justify-center break-words"
             style={{ fontFamily: "var(--font-cormorant), Georgia, serif" }}
           >
             <span>{currentHeadingText}</span>

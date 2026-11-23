@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useState, useEffect } from "react";
 import Image from "next/image";
@@ -52,7 +52,7 @@ export default function ContactPage() {
   const currentHeadingText = TYPEWRITER_TEXT.slice(0, charIndex);
 
   return (
-    <div className="relative min-h-screen w-full bg-[#FFF6F6] text-[#165823] overflow-x-hidden selection:bg-[#C5A77B] selection:text-[#165823]">
+    <div className="relative min-h-screen w-full bg-[#FFF6F6] text-[#103430] overflow-x-hidden selection:bg-[#C5A77B] selection:text-[#103430]">
       {/* Navigation Bar */}
       <Navbar />
 
@@ -76,7 +76,7 @@ export default function ContactPage() {
         {/* Hero Content */}
         <div className="max-w-4xl mx-auto text-center relative z-10 w-full px-2 flex flex-col items-center">
           <h1
-            className="font-serif text-[#165823] text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-medium tracking-[0.04em] leading-tight min-h-[1.25em] flex items-center justify-center break-words"
+            className="font-serif text-[#103430] text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-medium tracking-[0.04em] leading-tight min-h-[1.25em] flex items-center justify-center break-words"
             style={{ fontFamily: "var(--font-cormorant), Georgia, serif" }}
           >
             <span>{currentHeadingText}</span>
@@ -123,13 +123,13 @@ export default function ContactPage() {
               />
             </div>
             <h2
-              className="font-serif text-[#165823] text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-normal tracking-wide leading-tight text-center select-none"
+              className="font-serif text-[#103430] text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-normal tracking-wide leading-tight text-center select-none"
               style={{ fontFamily: "var(--font-cormorant), Georgia, serif" }}
             >
               We Are Here To Assist You
             </h2>
             <p
-              className="font-sans text-xs sm:text-sm md:text-base text-[#165823]/80 font-normal max-w-xl mx-auto leading-relaxed text-center mt-2.5 sm:mt-3"
+              className="font-sans text-xs sm:text-sm md:text-base text-[#103430]/80 font-normal max-w-xl mx-auto leading-relaxed text-center mt-2.5 sm:mt-3"
               style={{ fontFamily: "var(--font-montserrat), sans-serif" }}
             >
               Reach out directly for customized valley stays, corporate getaways, and authentic mountain dining experiences in Kasauli.
@@ -147,8 +147,8 @@ export default function ContactPage() {
               className="group p-5 sm:p-6 rounded-2xl bg-white/90 border border-[#e2d8c7] shadow-[0_4px_20px_rgba(0,0,0,0.04)] hover:shadow-[0_12px_28px_rgba(197,167,123,0.22)] hover:border-[#C5A77B]/80 transition-all duration-300 flex flex-col justify-between"
             >
               <div className="flex items-center gap-3.5 mb-3">
-                <div className="w-10 h-10 rounded-xl bg-[#C5A77B]/20 border border-[#C5A77B]/40 flex items-center justify-center flex-shrink-0 text-[#165823] group-hover:scale-110 group-hover:border-[#C5A77B] transition-all duration-300 shadow-sm">
-                  <Phone className="w-4 h-4 text-[#165823]" />
+                <div className="w-10 h-10 rounded-xl bg-[#C5A77B]/20 border border-[#C5A77B]/40 flex items-center justify-center flex-shrink-0 text-[#103430] group-hover:scale-110 group-hover:border-[#C5A77B] transition-all duration-300 shadow-sm">
+                  <Phone className="w-4 h-4 text-[#103430]" />
                 </div>
                 <div>
                   <span
@@ -158,14 +158,14 @@ export default function ContactPage() {
                     Call Direct
                   </span>
                   <h3
-                    className="font-serif text-[#165823] text-base sm:text-lg font-normal leading-snug"
+                    className="font-serif text-[#103430] text-base sm:text-lg font-normal leading-snug"
                     style={{ fontFamily: "var(--font-cormorant), Georgia, serif" }}
                   >
                     Phone Reservations
                   </h3>
                 </div>
               </div>
-              <div className="flex flex-col space-y-1 text-xs sm:text-[13px] text-[#165823]/85 pt-1">
+              <div className="flex flex-col space-y-1 text-xs sm:text-[13px] text-[#103430]/85 pt-1">
                 <a
                   href="tel:+919816155576"
                   className="hover:text-[#C5A77B] transition-colors font-medium tracking-wide"
@@ -196,8 +196,8 @@ export default function ContactPage() {
               className="group p-5 sm:p-6 rounded-2xl bg-white/90 border border-[#e2d8c7] shadow-[0_4px_20px_rgba(0,0,0,0.04)] hover:shadow-[0_12px_28px_rgba(197,167,123,0.22)] hover:border-[#C5A77B]/80 transition-all duration-300 flex flex-col justify-between"
             >
               <div className="flex items-center gap-3.5 mb-3">
-                <div className="w-10 h-10 rounded-xl bg-[#C5A77B]/20 border border-[#C5A77B]/40 flex items-center justify-center flex-shrink-0 text-[#165823] group-hover:scale-110 group-hover:border-[#C5A77B] transition-all duration-300 shadow-sm">
-                  <Mail className="w-4 h-4 text-[#165823]" />
+                <div className="w-10 h-10 rounded-xl bg-[#C5A77B]/20 border border-[#C5A77B]/40 flex items-center justify-center flex-shrink-0 text-[#103430] group-hover:scale-110 group-hover:border-[#C5A77B] transition-all duration-300 shadow-sm">
+                  <Mail className="w-4 h-4 text-[#103430]" />
                 </div>
                 <div>
                   <span
@@ -207,14 +207,14 @@ export default function ContactPage() {
                     Email Inquiries
                   </span>
                   <h3
-                    className="font-serif text-[#165823] text-base sm:text-lg font-normal leading-snug"
+                    className="font-serif text-[#103430] text-base sm:text-lg font-normal leading-snug"
                     style={{ fontFamily: "var(--font-cormorant), Georgia, serif" }}
                   >
                     Direct Messaging
                   </h3>
                 </div>
               </div>
-              <div className="flex flex-col space-y-1 text-xs sm:text-[13px] text-[#165823]/85 pt-1">
+              <div className="flex flex-col space-y-1 text-xs sm:text-[13px] text-[#103430]/85 pt-1">
                 <a
                   href="mailto:booking@oren.co.in"
                   className="hover:text-[#C5A77B] transition-colors font-medium tracking-wide truncate"
@@ -239,8 +239,8 @@ export default function ContactPage() {
               className="group p-5 sm:p-6 rounded-2xl bg-white/90 border border-[#e2d8c7] shadow-[0_4px_20px_rgba(0,0,0,0.04)] hover:shadow-[0_12px_28px_rgba(197,167,123,0.22)] hover:border-[#C5A77B]/80 transition-all duration-300 flex flex-col justify-between"
             >
               <div className="flex items-center gap-3.5 mb-3">
-                <div className="w-10 h-10 rounded-xl bg-[#C5A77B]/20 border border-[#C5A77B]/40 flex items-center justify-center flex-shrink-0 text-[#165823] group-hover:scale-110 group-hover:border-[#C5A77B] transition-all duration-300 shadow-sm">
-                  <MapPin className="w-4 h-4 text-[#165823]" />
+                <div className="w-10 h-10 rounded-xl bg-[#C5A77B]/20 border border-[#C5A77B]/40 flex items-center justify-center flex-shrink-0 text-[#103430] group-hover:scale-110 group-hover:border-[#C5A77B] transition-all duration-300 shadow-sm">
+                  <MapPin className="w-4 h-4 text-[#103430]" />
                 </div>
                 <div>
                   <span
@@ -250,14 +250,14 @@ export default function ContactPage() {
                     Resort Location
                   </span>
                   <h3
-                    className="font-serif text-[#165823] text-base sm:text-lg font-normal leading-snug"
+                    className="font-serif text-[#103430] text-base sm:text-lg font-normal leading-snug"
                     style={{ fontFamily: "var(--font-cormorant), Georgia, serif" }}
                   >
                     Kasauli, Himachal
                   </h3>
                 </div>
               </div>
-              <p className="text-xs sm:text-[13px] text-[#165823]/75 leading-relaxed pt-1 font-light">
+              <p className="text-xs sm:text-[13px] text-[#103430]/75 leading-relaxed pt-1 font-light">
                 Dharampur - Kasauli Road, V.P.O. Sanawar, Solan - 173202
               </p>
             </motion.div>
@@ -271,8 +271,8 @@ export default function ContactPage() {
               className="group p-5 sm:p-6 rounded-2xl bg-white/90 border border-[#e2d8c7] shadow-[0_4px_20px_rgba(0,0,0,0.04)] hover:shadow-[0_12px_28px_rgba(197,167,123,0.22)] hover:border-[#C5A77B]/80 transition-all duration-300 flex flex-col justify-between"
             >
               <div className="flex items-center gap-3.5 mb-3">
-                <div className="w-10 h-10 rounded-xl bg-[#165823]/10 border border-[#165823]/25 flex items-center justify-center flex-shrink-0 text-[#165823] group-hover:scale-110 group-hover:border-[#165823] transition-all duration-300 shadow-sm">
-                  <Clock className="w-4 h-4 text-[#165823]" />
+                <div className="w-10 h-10 rounded-xl bg-[#103430]/10 border border-[#103430]/25 flex items-center justify-center flex-shrink-0 text-[#103430] group-hover:scale-110 group-hover:border-[#103430] transition-all duration-300 shadow-sm">
+                  <Clock className="w-4 h-4 text-[#103430]" />
                 </div>
                 <div>
                   <span
@@ -282,14 +282,14 @@ export default function ContactPage() {
                     Front Desk
                   </span>
                   <h3
-                    className="font-serif text-[#165823] text-base sm:text-lg font-normal leading-snug"
+                    className="font-serif text-[#103430] text-base sm:text-lg font-normal leading-snug"
                     style={{ fontFamily: "var(--font-cormorant), Georgia, serif" }}
                   >
                     24/7 Assistance
                   </h3>
                 </div>
               </div>
-              <p className="text-xs sm:text-[13px] text-[#165823]/75 leading-relaxed pt-1 font-light">
+              <p className="text-xs sm:text-[13px] text-[#103430]/75 leading-relaxed pt-1 font-light">
                 Assisting guests round-the-clock for bookings, check-ins, and local travel.
               </p>
             </motion.div>
@@ -315,13 +315,13 @@ export default function ContactPage() {
                       SEND A MESSAGE
                     </span>
                     <h3
-                      className="font-serif text-[#165823] text-2xl sm:text-3xl font-normal leading-tight"
+                      className="font-serif text-[#103430] text-2xl sm:text-3xl font-normal leading-tight"
                       style={{ fontFamily: "var(--font-cormorant), Georgia, serif" }}
                     >
                       Leave Us An Inquiry
                     </h3>
                     <p
-                      className="text-xs sm:text-sm text-[#165823]/75 mt-1 font-light tracking-wide"
+                      className="text-xs sm:text-sm text-[#103430]/75 mt-1 font-light tracking-wide"
                       style={{ fontFamily: "var(--font-montserrat), sans-serif" }}
                     >
                       Fill out the form below and our team will get back to you promptly.
@@ -347,7 +347,7 @@ export default function ContactPage() {
                       <div>
                         <label
                           htmlFor="name"
-                          className="block text-xs sm:text-[13px] font-medium text-[#165823] uppercase tracking-wider mb-1.5"
+                          className="block text-xs sm:text-[13px] font-medium text-[#103430] uppercase tracking-wider mb-1.5"
                           style={{ fontFamily: "var(--font-montserrat), sans-serif" }}
                         >
                           Name <span className="text-[#C5A77B]">*</span>
@@ -358,14 +358,14 @@ export default function ContactPage() {
                           name="name"
                           required
                           placeholder="Your Full Name"
-                          className="w-full px-4 py-2.5 sm:py-3 text-sm rounded-xl bg-[#FAF7F0] border border-[#e2d8c7] text-[#165823] placeholder-neutral-400 focus:outline-none focus:border-[#C5A77B] focus:ring-2 focus:ring-[#C5A77B]/20 transition-all duration-200 shadow-sm"
+                          className="w-full px-4 py-2.5 sm:py-3 text-sm rounded-xl bg-[#FAF7F0] border border-[#e2d8c7] text-[#103430] placeholder-neutral-400 focus:outline-none focus:border-[#C5A77B] focus:ring-2 focus:ring-[#C5A77B]/20 transition-all duration-200 shadow-sm"
                         />
                       </div>
 
                       <div>
                         <label
                           htmlFor="email"
-                          className="block text-xs sm:text-[13px] font-medium text-[#165823] uppercase tracking-wider mb-1.5"
+                          className="block text-xs sm:text-[13px] font-medium text-[#103430] uppercase tracking-wider mb-1.5"
                           style={{ fontFamily: "var(--font-montserrat), sans-serif" }}
                         >
                           E-Mail <span className="text-[#C5A77B]">*</span>
@@ -376,7 +376,7 @@ export default function ContactPage() {
                           name="email"
                           required
                           placeholder="your.email@example.com"
-                          className="w-full px-4 py-2.5 sm:py-3 text-sm rounded-xl bg-[#FAF7F0] border border-[#e2d8c7] text-[#165823] placeholder-neutral-400 focus:outline-none focus:border-[#C5A77B] focus:ring-2 focus:ring-[#C5A77B]/20 transition-all duration-200 shadow-sm"
+                          className="w-full px-4 py-2.5 sm:py-3 text-sm rounded-xl bg-[#FAF7F0] border border-[#e2d8c7] text-[#103430] placeholder-neutral-400 focus:outline-none focus:border-[#C5A77B] focus:ring-2 focus:ring-[#C5A77B]/20 transition-all duration-200 shadow-sm"
                         />
                       </div>
                     </div>
@@ -386,7 +386,7 @@ export default function ContactPage() {
                       <div>
                         <label
                           htmlFor="phone"
-                          className="block text-xs sm:text-[13px] font-medium text-[#165823] uppercase tracking-wider mb-1.5"
+                          className="block text-xs sm:text-[13px] font-medium text-[#103430] uppercase tracking-wider mb-1.5"
                           style={{ fontFamily: "var(--font-montserrat), sans-serif" }}
                         >
                           Phone Number <span className="text-[#C5A77B]">*</span>
@@ -397,14 +397,14 @@ export default function ContactPage() {
                           name="phone"
                           required
                           placeholder="+91 98765 43210"
-                          className="w-full px-4 py-2.5 sm:py-3 text-sm rounded-xl bg-[#FAF7F0] border border-[#e2d8c7] text-[#165823] placeholder-neutral-400 focus:outline-none focus:border-[#C5A77B] focus:ring-2 focus:ring-[#C5A77B]/20 transition-all duration-200 shadow-sm"
+                          className="w-full px-4 py-2.5 sm:py-3 text-sm rounded-xl bg-[#FAF7F0] border border-[#e2d8c7] text-[#103430] placeholder-neutral-400 focus:outline-none focus:border-[#C5A77B] focus:ring-2 focus:ring-[#C5A77B]/20 transition-all duration-200 shadow-sm"
                         />
                       </div>
 
                       <div>
                         <label
                           htmlFor="subject"
-                          className="block text-xs sm:text-[13px] font-medium text-[#165823] uppercase tracking-wider mb-1.5"
+                          className="block text-xs sm:text-[13px] font-medium text-[#103430] uppercase tracking-wider mb-1.5"
                           style={{ fontFamily: "var(--font-montserrat), sans-serif" }}
                         >
                           Subject <span className="text-[#C5A77B]">*</span>
@@ -415,7 +415,7 @@ export default function ContactPage() {
                           name="subject"
                           required
                           placeholder="Reservation / Tariff / Inquiry"
-                          className="w-full px-4 py-2.5 sm:py-3 text-sm rounded-xl bg-[#FAF7F0] border border-[#e2d8c7] text-[#165823] placeholder-neutral-400 focus:outline-none focus:border-[#C5A77B] focus:ring-2 focus:ring-[#C5A77B]/20 transition-all duration-200 shadow-sm"
+                          className="w-full px-4 py-2.5 sm:py-3 text-sm rounded-xl bg-[#FAF7F0] border border-[#e2d8c7] text-[#103430] placeholder-neutral-400 focus:outline-none focus:border-[#C5A77B] focus:ring-2 focus:ring-[#C5A77B]/20 transition-all duration-200 shadow-sm"
                         />
                       </div>
                     </div>
@@ -424,7 +424,7 @@ export default function ContactPage() {
                     <div>
                       <label
                         htmlFor="message"
-                        className="block text-xs sm:text-[13px] font-medium text-[#165823] uppercase tracking-wider mb-1.5"
+                        className="block text-xs sm:text-[13px] font-medium text-[#103430] uppercase tracking-wider mb-1.5"
                         style={{ fontFamily: "var(--font-montserrat), sans-serif" }}
                       >
                         Message <span className="text-[#C5A77B]">*</span>
@@ -435,7 +435,7 @@ export default function ContactPage() {
                         rows={4}
                         required
                         placeholder="Please share your dates, room requirements, or special requests..."
-                        className="w-full px-4 py-2.5 sm:py-3 text-sm rounded-xl bg-[#FAF7F0] border border-[#e2d8c7] text-[#165823] placeholder-neutral-400 focus:outline-none focus:border-[#C5A77B] focus:ring-2 focus:ring-[#C5A77B]/20 transition-all duration-200 shadow-sm resize-none"
+                        className="w-full px-4 py-2.5 sm:py-3 text-sm rounded-xl bg-[#FAF7F0] border border-[#e2d8c7] text-[#103430] placeholder-neutral-400 focus:outline-none focus:border-[#C5A77B] focus:ring-2 focus:ring-[#C5A77B]/20 transition-all duration-200 shadow-sm resize-none"
                       />
                     </div>
 
@@ -443,7 +443,7 @@ export default function ContactPage() {
                     <div className="pt-2">
                       <button
                         type="submit"
-                        className="group relative w-full sm:w-auto inline-flex items-center justify-center gap-2.5 rounded-full font-semibold uppercase whitespace-nowrap text-[#FFF6F6] bg-[#165823] hover:bg-[#12481c] border border-[#165823] shadow-[0_4px_18px_rgba(22,88,35,0.38)] hover:shadow-[0_8px_24px_rgba(22,88,35,0.6)] hover:-translate-y-0.5 hover:scale-[1.02] active:translate-y-0 active:scale-95 transition-all duration-300 px-8 sm:px-10 py-3 sm:py-3.5 text-xs sm:text-sm tracking-[0.18em] cursor-pointer overflow-hidden"
+                        className="group relative w-full sm:w-auto inline-flex items-center justify-center gap-2.5 rounded-full font-semibold uppercase whitespace-nowrap text-[#FFF6F6] bg-[#103430] hover:bg-[#0b2421] border border-[#103430] shadow-[0_4px_18px_rgba(16, 52, 48,0.38)] hover:shadow-[0_8px_24px_rgba(16, 52, 48,0.6)] hover:-translate-y-0.5 hover:scale-[1.02] active:translate-y-0 active:scale-95 transition-all duration-300 px-8 sm:px-10 py-3 sm:py-3.5 text-xs sm:text-sm tracking-[0.18em] cursor-pointer overflow-hidden"
                         style={{ fontFamily: "var(--font-montserrat), sans-serif" }}
                       >
                         <span
@@ -470,8 +470,8 @@ export default function ContactPage() {
               <div className="relative w-full h-full min-h-[460px] sm:min-h-[500px] rounded-2xl sm:rounded-3xl overflow-hidden border border-[#e2d8c7] shadow-[0_6px_28px_rgba(0,0,0,0.06)] bg-white/90 flex flex-col">
                 {/* Sleek Floating Location Pill */}
                 <div className="absolute top-3.5 left-3.5 sm:top-4 sm:left-4 z-10 pointer-events-none bg-white/95 backdrop-blur-md px-3.5 py-1.5 sm:px-4 sm:py-2 rounded-full border border-neutral-200/90 shadow-[0_2px_12px_rgba(0,0,0,0.08)] flex items-center gap-2">
-                  <MapPin className="w-3.5 h-3.5 text-[#165823]" />
-                  <span className="text-[11px] sm:text-xs font-semibold text-[#165823] tracking-wider uppercase">
+                  <MapPin className="w-3.5 h-3.5 text-[#103430]" />
+                  <span className="text-[11px] sm:text-xs font-semibold text-[#103430] tracking-wider uppercase">
                     OREN KASAULI
                   </span>
                 </div>
@@ -481,7 +481,7 @@ export default function ContactPage() {
                   href="https://maps.google.com/?q=OREN+KASAULI"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="absolute top-3.5 right-3.5 sm:top-4 sm:right-4 z-10 bg-white/95 hover:bg-white backdrop-blur-md px-3 py-1.5 sm:px-4 sm:py-2 rounded-full border border-neutral-200/90 shadow-[0_2px_12px_rgba(0,0,0,0.08)] flex items-center gap-1.5 text-[11px] sm:text-xs font-semibold text-[#165823] hover:text-[#C5A77B] transition-all group"
+                  className="absolute top-3.5 right-3.5 sm:top-4 sm:right-4 z-10 bg-white/95 hover:bg-white backdrop-blur-md px-3 py-1.5 sm:px-4 sm:py-2 rounded-full border border-neutral-200/90 shadow-[0_2px_12px_rgba(0,0,0,0.08)] flex items-center gap-1.5 text-[11px] sm:text-xs font-semibold text-[#103430] hover:text-[#C5A77B] transition-all group"
                 >
                   <span>Get Directions</span>
                   <ArrowUpRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform text-[#C5A77B]" />
@@ -501,8 +501,8 @@ export default function ContactPage() {
                 />
 
                 {/* Bottom Route & Transit Highlights */}
-                <div className="p-3.5 sm:p-4 bg-white/95 border-t border-[#e2d8c7] flex flex-wrap items-center justify-between gap-2 text-[11px] sm:text-xs text-[#165823]/80">
-                  <span className="font-medium text-[#165823]">
+                <div className="p-3.5 sm:p-4 bg-white/95 border-t border-[#e2d8c7] flex flex-wrap items-center justify-between gap-2 text-[11px] sm:text-xs text-[#103430]/80">
+                  <span className="font-medium text-[#103430]">
                     • Dharampur: 10 km
                   </span>
                   <span>• Kalka Rly Stn: 35 km</span>

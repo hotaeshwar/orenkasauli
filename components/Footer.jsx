@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import Image from "next/image";
 import Link from "next/link";
@@ -74,7 +74,7 @@ export default function Footer() {
   return (
     <footer
       suppressHydrationWarning
-      className="relative w-full bg-[#FFF6F6] text-[#165823] overflow-hidden border-t border-[#165823]/15 selection:bg-[#165823] selection:text-[#FFF6F6]"
+      className="relative w-full bg-[#FFF6F6] text-[#103430] overflow-hidden border-t border-[#103430]/15 selection:bg-[#103430] selection:text-[#FFF6F6]"
     >
       {/* Ambient Resort Background with White Light Overlay — Exclusively using galler23.jpg */}
       <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none" aria-hidden="true">
@@ -120,19 +120,19 @@ export default function Footer() {
               </div>
             </Link>
 
-            <p className="font-sans text-xs sm:text-sm text-[#165823]/85 leading-relaxed mb-6 max-w-sm sm:max-w-md lg:max-w-sm">
+            <p className="font-sans text-xs sm:text-sm text-[#103430]/85 leading-relaxed mb-6 max-w-sm sm:max-w-md lg:max-w-sm">
               OREN Kasauli brings together comfortable mountain stays, valley-facing rooms, authentic vegetarian dining and warm hospitality in the beautiful surroundings of Kasauli, Himachal Pradesh.
             </p>
 
             {/* 24/7 Front Desk Status Pill */}
-            <div className="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-[#165823]/5 border border-[#165823]/15 text-[11px] sm:text-xs text-[#165823] mb-6">
+            <div className="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-[#103430]/5 border border-[#103430]/15 text-[11px] sm:text-xs text-[#103430] mb-6">
               <span className="w-2 h-2 rounded-full bg-emerald-600 animate-pulse" />
               <span>24/7 Front Desk &amp; Concierge Available</span>
             </div>
 
             {/* Social Media Links */}
             <div className="flex flex-col items-start">
-              <span className="text-xs sm:text-[13px] font-bold uppercase tracking-[0.2em] text-[#165823] mb-3 font-sans">
+              <span className="text-xs sm:text-[13px] font-bold uppercase tracking-[0.2em] text-[#103430] mb-3 font-sans">
                 Follow Us
               </span>
               <div className="flex items-center gap-3">
@@ -146,7 +146,7 @@ export default function Footer() {
                       rel="noopener noreferrer"
                       aria-label={item.label}
                       title={item.name}
-                      className="group relative flex items-center justify-center w-10 h-10 rounded-full bg-white/70 border border-[#165823]/15 text-[#165823] hover:text-[#FFF6F6] hover:border-[#165823] hover:bg-[#165823] hover:shadow-[0_4px_12px_rgba(14,57,56,0.25)] hover:scale-110 active:scale-95 transition-all duration-300 shadow-sm"
+                      className="group relative flex items-center justify-center w-10 h-10 rounded-full bg-white/70 border border-[#103430]/15 text-[#103430] hover:text-[#FFF6F6] hover:border-[#103430] hover:bg-[#103430] hover:shadow-[0_4px_12px_rgba(14,57,56,0.25)] hover:scale-110 active:scale-95 transition-all duration-300 shadow-sm"
                     >
                       <Icon className="w-4 h-4 fill-current transition-transform duration-300 group-hover:scale-110" />
                     </a>
@@ -159,7 +159,7 @@ export default function Footer() {
           {/* Column 2: Quick Links with 3D Immersive Animation & Hotel Cormorant Font */}
           <div className="sm:col-span-1 lg:col-span-2 flex flex-col">
             <span
-              className="text-xs sm:text-[13px] font-bold uppercase tracking-[0.2em] text-[#165823] mb-4 sm:mb-5 font-sans flex items-center gap-2"
+              className="text-xs sm:text-[13px] font-bold uppercase tracking-[0.2em] text-[#103430] mb-4 sm:mb-5 font-sans flex items-center gap-2"
             >
               <span>Navigation</span>
               <span className="w-6 h-[1.5px] bg-[#C5A77B] rounded-full" aria-hidden="true" />
@@ -203,7 +203,7 @@ export default function Footer() {
                     >
                       {/* 3D Floating Frosted Ambient Pill on Hover */}
                       <span
-                        className="absolute inset-0 rounded-xl bg-gradient-to-r from-white/95 via-[#C5A77B]/15 to-transparent border border-[#C5A77B]/30 shadow-[0_8px_20px_-4px_rgba(22,88,35,0.12)] opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none -z-10"
+                        className="absolute inset-0 rounded-xl bg-gradient-to-r from-white/95 via-[#C5A77B]/15 to-transparent border border-[#C5A77B]/30 shadow-[0_8px_20px_-4px_rgba(16, 52, 48,0.12)] opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none -z-10"
                         aria-hidden="true"
                       />
 
@@ -216,7 +216,7 @@ export default function Footer() {
 
                       {/* Editorial Hotel Serif Font Text with 3D Depth */}
                       <span
-                        className="font-serif text-base sm:text-lg lg:text-[19px] tracking-wide text-[#165823]/80 group-hover:text-[#165823] group-hover:font-medium transition-colors duration-300 drop-shadow-[0_1px_2px_rgba(0,0,0,0.04)] group-hover:drop-shadow-[0_4px_8px_rgba(22,88,35,0.18)]"
+                        className="font-serif text-base sm:text-lg lg:text-[19px] tracking-wide text-[#103430]/80 group-hover:text-[#103430] group-hover:font-medium transition-colors duration-300 drop-shadow-[0_1px_2px_rgba(0,0,0,0.04)] group-hover:drop-shadow-[0_4px_8px_rgba(16, 52, 48,0.18)]"
                         style={{
                           fontFamily: "var(--font-cormorant), Georgia, serif",
                           transform: "translateZ(12px)",
@@ -240,26 +240,26 @@ export default function Footer() {
 
           {/* Column 3: Resort Experiences */}
           <div className="sm:col-span-1 lg:col-span-3 flex flex-col">
-            <span className="text-xs sm:text-[13px] font-bold uppercase tracking-[0.2em] text-[#165823] mb-4 sm:mb-5 font-sans">
+            <span className="text-xs sm:text-[13px] font-bold uppercase tracking-[0.2em] text-[#103430] mb-4 sm:mb-5 font-sans">
               Experiences
             </span>
-            <ul className="flex flex-col space-y-2.5 text-xs sm:text-sm text-[#165823]/80">
-              <li className="hover:text-[#165823] transition-colors">
+            <ul className="flex flex-col space-y-2.5 text-xs sm:text-sm text-[#103430]/80">
+              <li className="hover:text-[#103430] transition-colors">
                 Panoramic Valley Balconies
               </li>
-              <li className="hover:text-[#165823] transition-colors">
+              <li className="hover:text-[#103430] transition-colors">
                 Private Hot Tub &amp; Jacuzzi
               </li>
-              <li className="hover:text-[#165823] transition-colors">
+              <li className="hover:text-[#103430] transition-colors">
                 Infinity Plunge Pool Suites
               </li>
-              <li className="hover:text-[#165823] transition-colors">
+              <li className="hover:text-[#103430] transition-colors">
                 Open to Sky Pure Veg Dining
               </li>
-              <li className="hover:text-[#165823] transition-colors">
+              <li className="hover:text-[#103430] transition-colors">
                 Private Forest Trails &amp; Bonfire
               </li>
-              <li className="hover:text-[#165823] transition-colors">
+              <li className="hover:text-[#103430] transition-colors">
                 UNESCO Toy Train (10 km away)
               </li>
             </ul>
@@ -267,30 +267,30 @@ export default function Footer() {
 
           {/* Column 4: Contact Information & Direct Booking */}
           <div className="sm:col-span-2 lg:col-span-3 flex flex-col">
-            <span className="text-xs sm:text-[13px] font-bold uppercase tracking-[0.2em] text-[#165823] mb-4 sm:mb-5 font-sans">
+            <span className="text-xs sm:text-[13px] font-bold uppercase tracking-[0.2em] text-[#103430] mb-4 sm:mb-5 font-sans">
               Contact &amp; Reservations
             </span>
 
-            <div className="flex flex-col space-y-3 text-xs sm:text-sm text-[#165823]/85 mb-6">
+            <div className="flex flex-col space-y-3 text-xs sm:text-sm text-[#103430]/85 mb-6">
               {/* Phone Numbers */}
               <div className="flex items-start gap-2.5">
                 <Phone className="w-4 h-4 text-[#C5A77B] flex-shrink-0 mt-0.5" />
                 <div className="flex flex-col space-y-0.5">
                   <a
                     href="tel:+919816155576"
-                    className="hover:text-[#165823] transition-colors"
+                    className="hover:text-[#103430] transition-colors"
                   >
                     +91 98161 55576
                   </a>
                   <a
                     href="tel:+919816255576"
-                    className="hover:text-[#165823] transition-colors"
+                    className="hover:text-[#103430] transition-colors"
                   >
                     +91 98162 55576
                   </a>
                   <a
                     href="tel:01792298076"
-                    className="hover:text-[#165823] transition-colors"
+                    className="hover:text-[#103430] transition-colors"
                   >
                     01792 298076
                   </a>
@@ -303,13 +303,13 @@ export default function Footer() {
                 <div className="flex flex-col space-y-0.5">
                   <a
                     href="mailto:booking@oren.co.in"
-                    className="hover:text-[#165823] transition-colors"
+                    className="hover:text-[#103430] transition-colors"
                   >
                     booking@oren.co.in
                   </a>
                   <a
                     href="mailto:orenkasauli@gmail.com"
-                    className="hover:text-[#165823] transition-colors"
+                    className="hover:text-[#103430] transition-colors"
                   >
                     orenkasauli@gmail.com
                   </a>
@@ -319,7 +319,7 @@ export default function Footer() {
               {/* Address */}
               <div className="flex items-start gap-2.5">
                 <MapPin className="w-4 h-4 text-[#C5A77B] flex-shrink-0 mt-0.5" />
-                <p className="leading-relaxed text-[#165823]/80 text-xs">
+                <p className="leading-relaxed text-[#103430]/80 text-xs">
                   Dharampur–Kasauli Road, V.P.O. Sanawar, Tehsil Kasauli, District Solan, Himachal Pradesh – 173202.
                 </p>
               </div>
@@ -330,7 +330,7 @@ export default function Footer() {
               href={BOOKING_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="group relative inline-flex w-full sm:w-auto items-center justify-center gap-2 rounded-full font-semibold uppercase whitespace-nowrap text-[#FFF6F6] bg-[#165823] hover:bg-[#12481c] border border-[#165823] shadow-[0_4px_16px_rgba(22,88,35,0.35)] hover:shadow-[0_8px_24px_rgba(22,88,35,0.55)] hover:-translate-y-0.5 hover:scale-[1.03] active:translate-y-0 active:scale-95 transition-all duration-300 px-6 py-3 text-xs tracking-[0.16em] text-center overflow-hidden"
+              className="group relative inline-flex w-full sm:w-auto items-center justify-center gap-2 rounded-full font-semibold uppercase whitespace-nowrap text-[#FFF6F6] bg-[#103430] hover:bg-[#0b2421] border border-[#103430] shadow-[0_4px_16px_rgba(16, 52, 48,0.35)] hover:shadow-[0_8px_24px_rgba(16, 52, 48,0.55)] hover:-translate-y-0.5 hover:scale-[1.03] active:translate-y-0 active:scale-95 transition-all duration-300 px-6 py-3 text-xs tracking-[0.16em] text-center overflow-hidden"
               style={{ fontFamily: "var(--font-montserrat), sans-serif" }}
             >
               {/* Shimmer sweep effect */}
@@ -345,18 +345,18 @@ export default function Footer() {
         </div>
 
         {/* Bottom Bar: Copyright, Socials & Back to Top */}
-        <div suppressHydrationWarning className="pt-8 border-t border-[#165823]/15 flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-[#165823]/70">
-          <p className="text-center md:text-left text-[#165823]/75">
+        <div suppressHydrationWarning className="pt-8 border-t border-[#103430]/15 flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-[#103430]/70">
+          <p className="text-center md:text-left text-[#103430]/75">
             © 2026 Oren Kasauli Hotel. All rights reserved.
           </p>
 
           <div className="flex flex-wrap items-center justify-center md:justify-end gap-3 sm:gap-4">
-            <span className="hidden sm:inline text-[#165823]/30">|</span>
-            <span className="text-[#165823]/75 text-center">Sanawar, Kasauli, Himachal Pradesh</span>
+            <span className="hidden sm:inline text-[#103430]/30">|</span>
+            <span className="text-[#103430]/75 text-center">Sanawar, Kasauli, Himachal Pradesh</span>
 
             <button
               onClick={scrollToTop}
-              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/70 hover:bg-[#165823] text-[#165823] hover:text-[#FFF6F6] border border-[#165823]/15 transition-colors ml-1 sm:ml-2 shadow-sm"
+              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/70 hover:bg-[#103430] text-[#103430] hover:text-[#FFF6F6] border border-[#103430]/15 transition-colors ml-1 sm:ml-2 shadow-sm"
               aria-label="Back to top of page"
             >
               <span>Top</span>

@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
@@ -308,7 +308,7 @@ export default function HeroSection() {
       {/* 2. Hero Content Section (Positioned Directly Below Hero Video) */}
       <section
         id="hero-intro"
-        className="relative w-full bg-[#FFF6F6] text-[#165823] py-14 sm:py-18 md:py-24 px-4 sm:px-6 lg:px-8 border-b border-[#e2d8c7] z-10 overflow-hidden"
+        className="relative w-full bg-[#FFF6F6] text-[#103430] py-14 sm:py-18 md:py-24 px-4 sm:px-6 lg:px-8 border-b border-[#e2d8c7] z-10 overflow-hidden"
       >
         {/* Ambient Resort Background with White Light Overlay */}
         <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none" aria-hidden="true">
@@ -338,7 +338,7 @@ export default function HeroSection() {
 
           {/* H1 Main Heading with Zero-Layout-Shift Typewriter */}
           <h1
-            className="font-serif text-[#165823] text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-normal tracking-wide uppercase leading-tight mb-4 sm:mb-5 max-w-4xl select-none"
+            className="font-serif text-[#103430] text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-normal tracking-wide uppercase leading-tight mb-4 sm:mb-5 max-w-4xl select-none"
             style={{ fontFamily: "var(--font-cormorant), Georgia, serif" }}
           >
             {/* Screen reader full text */}
@@ -364,7 +364,7 @@ export default function HeroSection() {
 
           {/* Hero Lead Paragraph - Reduced Font Size for Better Hierarchy */}
           <p
-            className="font-sans text-xs sm:text-sm md:text-base text-[#165823] font-normal max-w-2xl mx-auto leading-relaxed mb-6 sm:mb-8 tracking-normal"
+            className="font-sans text-xs sm:text-sm md:text-base text-[#103430] font-normal max-w-2xl mx-auto leading-relaxed mb-6 sm:mb-8 tracking-normal"
             style={{ fontFamily: "var(--font-montserrat), sans-serif" }}
           >
             Discover a mountain retreat where beautiful valley views, thoughtful comforts and warm hospitality come together. Experience the charm of Kasauli with a stay designed for relaxation, connection and memorable moments.
@@ -377,7 +377,7 @@ export default function HeroSection() {
               href={BOOKING_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="group relative w-full sm:w-auto inline-flex items-center justify-center gap-2 rounded-full font-bold uppercase whitespace-nowrap text-[#FFF6F6] bg-[#165823] hover:bg-[#12481c] border-2 border-[#165823] shadow-[0_4px_18px_rgba(22,88,35,0.35)] hover:shadow-[0_8px_24px_rgba(22,88,35,0.5)] hover:-translate-y-0.5 active:translate-y-0 transition-all duration-300 px-6 sm:px-8 md:px-10 py-3 sm:py-3.5 md:py-4 text-xs sm:text-sm tracking-[0.12em] sm:tracking-[0.16em] text-center overflow-hidden"
+              className="group relative w-full sm:w-auto inline-flex items-center justify-center gap-2 rounded-full font-bold uppercase whitespace-nowrap text-[#FFF6F6] bg-[#103430] hover:bg-[#0b2421] border-2 border-[#103430] shadow-[0_4px_18px_rgba(16, 52, 48,0.35)] hover:shadow-[0_8px_24px_rgba(16, 52, 48,0.5)] hover:-translate-y-0.5 active:translate-y-0 transition-all duration-300 px-6 sm:px-8 md:px-10 py-3 sm:py-3.5 md:py-4 text-xs sm:text-sm tracking-[0.12em] sm:tracking-[0.16em] text-center overflow-hidden"
               style={{ fontFamily: "var(--font-montserrat), sans-serif" }}
               aria-label="Book Your Stay at Oren Kasauli"
             >
@@ -392,7 +392,7 @@ export default function HeroSection() {
             {/* Secondary CTA: EXPLORE OREN */}
             <a
               href="#about"
-              className="w-full sm:w-auto relative inline-flex items-center justify-center rounded-full font-bold uppercase whitespace-nowrap text-[#165823] hover:text-[#FFF6F6] bg-transparent hover:bg-[#165823] border-2 border-[#165823] transition-all duration-300 px-6 sm:px-8 md:px-10 py-3 sm:py-3.5 md:py-4 text-xs sm:text-sm tracking-[0.12em] sm:tracking-[0.16em] text-center hover:shadow-[0_4px_16px_rgba(22,88,35,0.25)] hover:-translate-y-0.5 active:translate-y-0"
+              className="w-full sm:w-auto relative inline-flex items-center justify-center rounded-full font-bold uppercase whitespace-nowrap text-[#103430] hover:text-[#FFF6F6] bg-transparent hover:bg-[#103430] border-2 border-[#103430] transition-all duration-300 px-6 sm:px-8 md:px-10 py-3 sm:py-3.5 md:py-4 text-xs sm:text-sm tracking-[0.12em] sm:tracking-[0.16em] text-center hover:shadow-[0_4px_16px_rgba(16, 52, 48,0.25)] hover:-translate-y-0.5 active:translate-y-0"
               style={{ fontFamily: "var(--font-montserrat), sans-serif" }}
               aria-label="Explore Oren Kasauli"
             >

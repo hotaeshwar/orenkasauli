@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useState, useEffect, useCallback } from "react";
 import Image from "next/image";
@@ -423,7 +423,7 @@ export default function GalleryPage() {
   }, [selectedImageIndex, selectedVideo]);
 
   return (
-    <div className="relative min-h-screen w-full bg-[#FFF6F6] text-[#165823] overflow-x-hidden selection:bg-[#C5A77B] selection:text-[#165823]">
+    <div className="relative min-h-screen w-full bg-[#FFF6F6] text-[#103430] overflow-x-hidden selection:bg-[#C5A77B] selection:text-[#103430]">
       {/* Navigation Bar */}
       <Navbar />
 
@@ -447,7 +447,7 @@ export default function GalleryPage() {
         {/* Hero Content */}
         <div className="max-w-4xl mx-auto text-center relative z-10 w-full px-2 flex flex-col items-center">
           <h1
-            className="font-serif text-[#165823] text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-medium tracking-[0.04em] leading-tight min-h-[1.25em] flex items-center justify-center break-words"
+            className="font-serif text-[#103430] text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-medium tracking-[0.04em] leading-tight min-h-[1.25em] flex items-center justify-center break-words"
             style={{ fontFamily: "var(--font-cormorant), Georgia, serif" }}
           >
             <span>{currentHeadingText}</span>
@@ -551,7 +551,7 @@ export default function GalleryPage() {
 
             {/* Heading with Typewriter Erase & Write Effect */}
             <h2
-              className="font-serif text-[#165823] text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-light tracking-[0.04em] leading-tight min-h-[1.25em] flex items-center justify-center break-words text-center"
+              className="font-serif text-[#103430] text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-light tracking-[0.04em] leading-tight min-h-[1.25em] flex items-center justify-center break-words text-center"
               style={{ fontFamily: "var(--font-cormorant), Georgia, serif" }}
             >
               <span>{currentVideoHeading}</span>
@@ -699,7 +699,7 @@ export default function GalleryPage() {
                 href={BOOKING_URL}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group relative w-full sm:w-auto inline-flex items-center justify-center gap-2.5 rounded-full font-semibold uppercase whitespace-nowrap text-[#FFF6F6] bg-[#165823] hover:bg-[#12481c] border border-[#165823] shadow-[0_4px_18px_rgba(22,88,35,0.38)] hover:shadow-[0_8px_28px_rgba(22,88,35,0.6)] hover:-translate-y-0.5 hover:scale-[1.03] active:translate-y-0 active:scale-95 transition-all duration-300 px-9 sm:px-12 py-3.5 sm:py-4 text-xs sm:text-sm tracking-[0.18em] text-center overflow-hidden"
+                className="group relative w-full sm:w-auto inline-flex items-center justify-center gap-2.5 rounded-full font-semibold uppercase whitespace-nowrap text-[#FFF6F6] bg-[#103430] hover:bg-[#0b2421] border border-[#103430] shadow-[0_4px_18px_rgba(16, 52, 48,0.38)] hover:shadow-[0_8px_28px_rgba(16, 52, 48,0.6)] hover:-translate-y-0.5 hover:scale-[1.03] active:translate-y-0 active:scale-95 transition-all duration-300 px-9 sm:px-12 py-3.5 sm:py-4 text-xs sm:text-sm tracking-[0.18em] text-center overflow-hidden"
                 style={{ fontFamily: "var(--font-montserrat), sans-serif" }}
               >
                 {/* Shimmer sweep effect */}

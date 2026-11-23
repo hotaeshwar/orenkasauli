@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import Image from "next/image";
 import { motion, useReducedMotion } from "motion/react";
@@ -43,7 +43,7 @@ export default function SlidingLantern({
       <div className="relative flex items-center justify-center pointer-events-none select-none">
         {/* Soft Ambient Glow behind Mobile Lantern */}
         <div
-          className="absolute inset-0 rounded-full bg-[radial-gradient(circle,rgba(22,88,35,0.35)_0%,rgba(197,167,123,0.15)_40%,transparent_75%)] blur-sm"
+          className="absolute inset-0 rounded-full bg-[radial-gradient(circle,rgba(16, 52, 48,0.35)_0%,rgba(197,167,123,0.15)_40%,transparent_75%)] blur-sm"
           aria-hidden="true"
         />
 
@@ -64,7 +64,7 @@ export default function SlidingLantern({
             width={20}
             height={32}
             style={{ width: "auto", height: "auto" }}
-            className="w-full h-full object-contain filter drop-shadow-[0_2px_6px_rgba(22,88,35,0.4)]"
+            className="w-full h-full object-contain filter drop-shadow-[0_2px_6px_rgba(16, 52, 48,0.4)]"
             priority
             unoptimized
           />
@@ -79,7 +79,7 @@ export default function SlidingLantern({
   return (
     <div className="relative flex flex-col items-center pointer-events-none select-none">
       {/* Top Sliding Green Ring (Mounts seamlessly to the top guide rail) */}
-      <div className="w-2 h-1.5 rounded-full border-[1.5px] border-[#165823] bg-[#165823] shadow-sm flex items-center justify-center -mb-[2px] z-20">
+      <div className="w-2 h-1.5 rounded-full border-[1.5px] border-[#103430] bg-[#103430] shadow-sm flex items-center justify-center -mb-[2px] z-20">
         <span className="w-0.5 h-0.5 rounded-full bg-emerald-300" />
       </div>
 
@@ -91,7 +91,7 @@ export default function SlidingLantern({
         className="relative flex flex-col items-center"
       >
         {/* Compact Chain */}
-        <div className="w-[1px] h-2 sm:h-2.5 shadow-sm bg-gradient-to-b from-[#165823] via-[#34d399] to-[#165823]" />
+        <div className="w-[1px] h-2 sm:h-2.5 shadow-sm bg-gradient-to-b from-[#103430] via-[#34d399] to-[#103430]" />
 
         {/* Ambient Subtle Light Aura */}
         <motion.div
@@ -108,7 +108,7 @@ export default function SlidingLantern({
             repeat: Infinity,
             ease: "easeInOut",
           }}
-          className="absolute top-1 w-10 h-10 -translate-y-1 rounded-full blur-md pointer-events-none bg-[radial-gradient(circle,rgba(52,211,153,0.3)_0%,rgba(22,88,35,0.15)_40%,transparent_75%)]"
+          className="absolute top-1 w-10 h-10 -translate-y-1 rounded-full blur-md pointer-events-none bg-[radial-gradient(circle,rgba(52,211,153,0.3)_0%,rgba(16, 52, 48,0.15)_40%,transparent_75%)]"
           aria-hidden="true"
         />
 
@@ -122,7 +122,7 @@ export default function SlidingLantern({
             style={{ width: "auto", height: "auto" }}
             className={`w-full h-full object-contain filter ${
               isScrolled
-                ? "drop-shadow-[0_0_6px_rgba(22,88,35,0.4)]"
+                ? "drop-shadow-[0_0_6px_rgba(16, 52, 48,0.4)]"
                 : "drop-shadow-[0_0_8px_rgba(255,160,30,0.5)]"
             }`}
             priority
@@ -144,7 +144,7 @@ export default function SlidingLantern({
             repeat: Infinity,
             ease: "easeInOut",
           }}
-          className="absolute -bottom-1.5 w-10 h-3.5 blur-[2px] pointer-events-none bg-[radial-gradient(ellipse_at_top,rgba(52,211,153,0.35)_0%,rgba(22,88,35,0.08)_50%,transparent_80%)]"
+          className="absolute -bottom-1.5 w-10 h-3.5 blur-[2px] pointer-events-none bg-[radial-gradient(ellipse_at_top,rgba(52,211,153,0.35)_0%,rgba(16, 52, 48,0.08)_50%,transparent_80%)]"
           aria-hidden="true"
         />
       </motion.div>

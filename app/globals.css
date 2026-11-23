@@ -1,13 +1,13 @@
-@import "tailwindcss";
+﻿@import "tailwindcss";
 
 :root {
   --font-serif: var(--font-cormorant);
   --font-sans: var(--font-montserrat), var(--font-manrope);
   --color-warm-ivory: #FFF6F6;
   --color-champagne-gold: #C5A77B;
-  --color-charcoal: #165823;
-  --color-deep-teal: #165823;
-  --color-brand-green: #165823;
+  --color-charcoal: #103430;
+  --color-deep-teal: #103430;
+  --color-brand-green: #103430;
   --brand-gold: #C5A77B;
   --brand-gold-hover: #b59567;
   --brand-gold-light: #d6bc94;
@@ -17,9 +17,9 @@
 @theme {
   --color-warm-ivory: #FFF6F6;
   --color-champagne-gold: #C5A77B;
-  --color-charcoal: #165823;
-  --color-deep-teal: #165823;
-  --color-brand-green: #165823;
+  --color-charcoal: #103430;
+  --color-deep-teal: #103430;
+  --color-brand-green: #103430;
   --color-brand-gold: #C5A77B;
   --color-brand-gold-hover: #b59567;
   --color-brand-gold-light: #d6bc94;
@@ -39,7 +39,7 @@ body {
   width: 100%;
   overflow-x: hidden;
   background-color: #FFF6F6;
-  color: #165823;
+  color: #103430;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }

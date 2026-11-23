@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
@@ -109,7 +109,7 @@ export default function SplashScreen() {
     >
       {/* Container with Smooth Dissolution Transition */}
       <motion.div
-        className="w-full h-full relative flex flex-col justify-between items-center px-4 sm:px-6 py-8 sm:py-10 md:py-12 overflow-hidden text-[#165823]"
+        className="w-full h-full relative flex flex-col justify-between items-center px-4 sm:px-6 py-8 sm:py-10 md:py-12 overflow-hidden text-[#103430]"
         initial={{ opacity: 1 }}
         animate={
           isWiping
@@ -143,7 +143,7 @@ export default function SplashScreen() {
 
         {/* Ambient Warm Golden Center Glow */}
         <div
-          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-80 sm:w-96 md:w-[520px] h-80 sm:h-96 md:h-[520px] rounded-full bg-[radial-gradient(circle,rgba(197,167,123,0.25)_0%,rgba(22,88,35,0.08)_45%,transparent_70%)] blur-2xl pointer-events-none z-[1]"
+          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-80 sm:w-96 md:w-[520px] h-80 sm:h-96 md:h-[520px] rounded-full bg-[radial-gradient(circle,rgba(197,167,123,0.25)_0%,rgba(16, 52, 48,0.08)_45%,transparent_70%)] blur-2xl pointer-events-none z-[1]"
           aria-hidden="true"
         />
 
@@ -166,9 +166,9 @@ export default function SplashScreen() {
             >
               <defs>
                 <linearGradient id="splash-spinner-grad" x1="0%" y1="0%" x2="100%" y2="100%">
-                  <stop offset="0%" stopColor="#165823" stopOpacity="0.05" />
+                  <stop offset="0%" stopColor="#103430" stopOpacity="0.05" />
                   <stop offset="50%" stopColor="#C5A77B" stopOpacity="0.75" />
-                  <stop offset="100%" stopColor="#165823" stopOpacity="1" />
+                  <stop offset="100%" stopColor="#103430" stopOpacity="1" />
                 </linearGradient>
               </defs>
 
@@ -178,7 +178,7 @@ export default function SplashScreen() {
                 cy="50"
                 r="46"
                 fill="none"
-                stroke="#165823"
+                stroke="#103430"
                 strokeWidth="1.2"
                 strokeOpacity="0.12"
               />
@@ -229,14 +229,14 @@ export default function SplashScreen() {
                 cx="50"
                 cy="96"
                 r="2"
-                fill="#165823"
-                className="drop-shadow-[0_0_4px_rgba(22,88,35,0.7)]"
+                fill="#103430"
+                className="drop-shadow-[0_0_4px_rgba(16, 52, 48,0.7)]"
               />
             </motion.svg>
 
             {/* Soft Ambient Radial Backlight behind the logo */}
             <div
-              className="absolute inset-8 sm:inset-10 md:inset-12 rounded-full bg-gradient-to-tr from-[#FFF6F6] via-[#C5A77B]/20 to-[#FFF6F6] backdrop-blur-[2px] shadow-[0_4px_24px_rgba(22,88,35,0.12)] border border-[#165823]/10 z-[3]"
+              className="absolute inset-8 sm:inset-10 md:inset-12 rounded-full bg-gradient-to-tr from-[#FFF6F6] via-[#C5A77B]/20 to-[#FFF6F6] backdrop-blur-[2px] shadow-[0_4px_24px_rgba(16, 52, 48,0.12)] border border-[#103430]/10 z-[3]"
               aria-hidden="true"
             />
 
@@ -258,14 +258,14 @@ export default function SplashScreen() {
                 priority
                 loading="eager"
                 fetchPriority="high"
-                className="w-full h-full object-contain filter drop-shadow-[0_4px_20px_rgba(22,88,35,0.22)] select-none"
+                className="w-full h-full object-contain filter drop-shadow-[0_4px_20px_rgba(16, 52, 48,0.22)] select-none"
               />
             </motion.div>
           </div>
 
           {/* Slogan: "Explore to Luxury and Peace" in Cormorant Serif */}
           <motion.h2
-            className="font-serif text-[#165823] text-sm sm:text-base md:text-lg lg:text-xl tracking-[0.22em] sm:tracking-[0.28em] uppercase font-normal flex items-center justify-center gap-1.5 sm:gap-2.5 select-none drop-shadow-sm mt-1"
+            className="font-serif text-[#103430] text-sm sm:text-base md:text-lg lg:text-xl tracking-[0.22em] sm:tracking-[0.28em] uppercase font-normal flex items-center justify-center gap-1.5 sm:gap-2.5 select-none drop-shadow-sm mt-1"
             style={{ fontFamily: "var(--font-cormorant), Georgia, serif" }}
             initial="hidden"
             animate="visible"
@@ -285,7 +285,7 @@ export default function SplashScreen() {
                     },
                   },
                 }}
-                className="text-[#165823]"
+                className="text-[#103430]"
               >
                 {word}
               </motion.span>
@@ -306,18 +306,18 @@ export default function SplashScreen() {
         {/* 3. BOTTOM SECTION: 0% -> 100% COUNTER & PROGRESS LINE    */}
         {/* ======================================================== */}
         <div className="w-full flex flex-col items-center justify-center pb-4 sm:pb-6 md:pb-8 z-10">
-          <div className="flex items-center gap-1.5 text-[#165823] font-sans font-medium tracking-[0.28em] text-xs sm:text-sm tabular-nums select-none drop-shadow-sm mb-2">
+          <div className="flex items-center gap-1.5 text-[#103430] font-sans font-medium tracking-[0.28em] text-xs sm:text-sm tabular-nums select-none drop-shadow-sm mb-2">
             <span ref={counterRef}>0%</span>
           </div>
 
           {/* Thin Progress Line within Frosted Glass Groove */}
           <div
-            className="w-36 sm:w-48 md:w-60 h-[2.5px] bg-[#165823]/10 backdrop-blur-md rounded-full overflow-hidden relative border border-[#165823]/15"
+            className="w-36 sm:w-48 md:w-60 h-[2.5px] bg-[#103430]/10 backdrop-blur-md rounded-full overflow-hidden relative border border-[#103430]/15"
             aria-hidden="true"
           >
             <div
               ref={progressBarRef}
-              className="h-full w-full bg-gradient-to-r from-[#165823] via-[#C5A77B] to-[#165823] origin-left transform scale-x-0 transition-none shadow-[0_0_10px_rgba(197,167,123,0.7)]"
+              className="h-full w-full bg-gradient-to-r from-[#103430] via-[#C5A77B] to-[#103430] origin-left transform scale-x-0 transition-none shadow-[0_0_10px_rgba(197,167,123,0.7)]"
             />
           </div>
         </div>

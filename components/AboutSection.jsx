@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
@@ -73,7 +73,7 @@ export default function AboutSection() {
     <section
       id="about"
       ref={sectionRef}
-      className="relative w-full bg-[#FFF6F6] text-[#165823] py-16 sm:py-20 md:py-24 lg:py-28 xl:py-32 px-4 sm:px-6 lg:px-8 xl:px-12 overflow-hidden z-10 border-t border-[#e2d8c7]"
+      className="relative w-full bg-[#FFF6F6] text-[#103430] py-16 sm:py-20 md:py-24 lg:py-28 xl:py-32 px-4 sm:px-6 lg:px-8 xl:px-12 overflow-hidden z-10 border-t border-[#e2d8c7]"
     >
       {/* Ambient Resort Background with White Light Overlay */}
       <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none" aria-hidden="true">
@@ -122,7 +122,7 @@ export default function AboutSection() {
                 delay: shouldReduceMotion ? 0 : 0.7,
                 ease: "easeOut",
               }}
-              className="font-serif text-[#165823] text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-normal tracking-wide leading-tight mb-6 select-none"
+              className="font-serif text-[#103430] text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-normal tracking-wide leading-tight mb-6 select-none"
               style={{ fontFamily: "var(--font-cormorant), Georgia, serif", fontWeight: 400 }}
             >
               {/* Screen reader full text */}
@@ -156,7 +156,7 @@ export default function AboutSection() {
                 delay: shouldReduceMotion ? 0 : 0.85,
                 ease: "easeOut",
               }}
-              className="text-[#165823] text-base sm:text-lg md:text-xl leading-relaxed font-normal mb-5 tracking-wide"
+              className="text-[#103430] text-base sm:text-lg md:text-xl leading-relaxed font-normal mb-5 tracking-wide"
               style={{ fontFamily: "var(--font-montserrat), sans-serif", fontWeight: 400 }}
             >
               Nestled amidst the serene surroundings of Kasauli, OREN offers a welcoming stay experience with beautiful valley views and the charm of the Shivalik Hills.
@@ -172,7 +172,7 @@ export default function AboutSection() {
                 delay: shouldReduceMotion ? 0 : 1.0,
                 ease: "easeOut",
               }}
-              className="text-[#165823] text-sm sm:text-base md:text-[17px] leading-relaxed font-normal mb-5 tracking-wide"
+              className="text-[#103430] text-sm sm:text-base md:text-[17px] leading-relaxed font-normal mb-5 tracking-wide"
               style={{ fontFamily: "var(--font-montserrat), sans-serif", fontWeight: 400 }}
             >
               With 40 valley-facing rooms, thoughtfully designed spaces and warm hospitality, every part of your stay is shaped around comfort and relaxation. From peaceful mornings overlooking the hills to evenings spent enjoying good food and meaningful moments, OREN brings together the experiences that make a mountain getaway special.
@@ -188,7 +188,7 @@ export default function AboutSection() {
                 delay: shouldReduceMotion ? 0 : 1.1,
                 ease: "easeOut",
               }}
-              className="text-[#165823] text-sm sm:text-base md:text-[17px] leading-relaxed font-normal mb-8 tracking-wide"
+              className="text-[#103430] text-sm sm:text-base md:text-[17px] leading-relaxed font-normal mb-8 tracking-wide"
               style={{ fontFamily: "var(--font-montserrat), sans-serif", fontWeight: 400 }}
             >
               Whether you are planning a family holiday, a couple&apos;s getaway or a refreshing break with friends, discover a comfortable stay at OREN Kasauli.
@@ -208,7 +208,7 @@ export default function AboutSection() {
             >
               <a
                 href="#rooms"
-                className="group relative inline-flex w-full sm:w-auto items-center justify-center gap-2 rounded-full font-bold uppercase whitespace-nowrap text-[#FFF6F6] bg-[#165823] hover:bg-[#12481c] border-2 border-[#165823] shadow-[0_6px_22px_rgba(22,88,35,0.35)] hover:shadow-[0_12px_36px_rgba(22,88,35,0.55)] hover:-translate-y-1 hover:scale-[1.03] active:translate-y-0 active:scale-95 transition-all duration-300 px-7 sm:px-10 py-3.5 sm:py-4 text-xs sm:text-sm tracking-[0.16em] sm:tracking-[0.18em] cursor-pointer select-none overflow-hidden"
+                className="group relative inline-flex w-full sm:w-auto items-center justify-center gap-2 rounded-full font-bold uppercase whitespace-nowrap text-[#FFF6F6] bg-[#103430] hover:bg-[#0b2421] border-2 border-[#103430] shadow-[0_6px_22px_rgba(16, 52, 48,0.35)] hover:shadow-[0_12px_36px_rgba(16, 52, 48,0.55)] hover:-translate-y-1 hover:scale-[1.03] active:translate-y-0 active:scale-95 transition-all duration-300 px-7 sm:px-10 py-3.5 sm:py-4 text-xs sm:text-sm tracking-[0.16em] sm:tracking-[0.18em] cursor-pointer select-none overflow-hidden"
                 style={{ fontFamily: "var(--font-montserrat), sans-serif" }}
                 aria-label="Discover Oren Kasauli"
               >

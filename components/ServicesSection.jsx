@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useState, useEffect } from "react";
 import Image from "next/image";
@@ -116,7 +116,7 @@ export default function ServicesSection() {
     <section
       id="services"
       suppressHydrationWarning
-      className="relative w-full bg-[#FFF6F6] text-[#165823] py-16 sm:py-20 md:py-24 lg:py-28 xl:py-32 px-4 sm:px-6 lg:px-8 xl:px-12 overflow-hidden z-10 border-t border-[#e2d8c7]"
+      className="relative w-full bg-[#FFF6F6] text-[#103430] py-16 sm:py-20 md:py-24 lg:py-28 xl:py-32 px-4 sm:px-6 lg:px-8 xl:px-12 overflow-hidden z-10 border-t border-[#e2d8c7]"
     >
       {/* Ambient Resort Background with White Light Overlay */}
       <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none" aria-hidden="true">
@@ -176,7 +176,7 @@ export default function ServicesSection() {
               delay: shouldReduceMotion ? 0 : 0.3,
               ease: "easeOut",
             }}
-            className="font-serif text-[#165823] text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-normal tracking-wide leading-tight max-w-4xl select-none mb-4"
+            className="font-serif text-[#103430] text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-normal tracking-wide leading-tight max-w-4xl select-none mb-4"
             style={{ fontFamily: "var(--font-cormorant), Georgia, serif" }}
           >
             {/* Screen reader full text */}
@@ -210,7 +210,7 @@ export default function ServicesSection() {
               delay: shouldReduceMotion ? 0 : 0.45,
               ease: "easeOut",
             }}
-            className="font-sans text-xs sm:text-sm md:text-[15px] text-[#165823] max-w-2xl mx-auto leading-relaxed font-normal tracking-normal"
+            className="font-sans text-xs sm:text-sm md:text-[15px] text-[#103430] max-w-2xl mx-auto leading-relaxed font-normal tracking-normal"
             style={{ fontFamily: "var(--font-montserrat), sans-serif", fontWeight: 400 }}
           >
             At OREN Kasauli, the experience goes beyond your room. Enjoy thoughtful amenities, relaxing spaces and experiences that make your time in the hills even more rewarding.
@@ -250,7 +250,7 @@ export default function ServicesSection() {
                     {/* Service Title & Subtitle */}
                     <div className="w-full flex flex-col items-center">
                       <h3
-                        className="text-base sm:text-lg md:text-[22px] font-bold text-[#165823] tracking-wide leading-snug line-clamp-2 group-hover:text-[#C5A77B] transition-colors duration-300"
+                        className="text-base sm:text-lg md:text-[22px] font-bold text-[#103430] tracking-wide leading-snug line-clamp-2 group-hover:text-[#C5A77B] transition-colors duration-300"
                         style={{ fontFamily: "var(--font-montserrat), sans-serif" }}
                       >
                         {item.title}
@@ -277,7 +277,7 @@ export default function ServicesSection() {
         <div className="flex justify-center mt-6 sm:mt-10">
           <a
             href="#rooms"
-            className="group/btn relative inline-flex items-center justify-center gap-2 px-8 sm:px-10 py-3 sm:py-3.5 rounded-full font-semibold uppercase text-[#FFF6F6] bg-[#165823] hover:bg-[#12481c] border border-[#165823] shadow-[0_4px_16px_rgba(22,88,35,0.35)] hover:shadow-[0_8px_24px_rgba(22,88,35,0.55)] hover:-translate-y-0.5 active:translate-y-0 text-xs sm:text-[13px] tracking-[0.14em] transition-all duration-300 cursor-pointer overflow-hidden"
+            className="group/btn relative inline-flex items-center justify-center gap-2 px-8 sm:px-10 py-3 sm:py-3.5 rounded-full font-semibold uppercase text-[#FFF6F6] bg-[#103430] hover:bg-[#0b2421] border border-[#103430] shadow-[0_4px_16px_rgba(16, 52, 48,0.35)] hover:shadow-[0_8px_24px_rgba(16, 52, 48,0.55)] hover:-translate-y-0.5 active:translate-y-0 text-xs sm:text-[13px] tracking-[0.14em] transition-all duration-300 cursor-pointer overflow-hidden"
             style={{ fontFamily: "var(--font-montserrat), sans-serif" }}
             aria-label="Explore Our Amenities"
           >

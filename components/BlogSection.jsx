@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useState, useEffect } from "react";
 import Image from "next/image";
@@ -217,7 +217,7 @@ export default function BlogSection() {
   }, [selectedPost]);
 
   return (
-    <section className="relative w-full bg-[#FFF6F6] text-[#165823] pt-8 sm:pt-10 md:pt-12 pb-16 sm:pb-24 px-4 sm:px-6 lg:px-8 xl:px-12 border-t border-[#e2d8c7] overflow-hidden">
+    <section className="relative w-full bg-[#FFF6F6] text-[#103430] pt-8 sm:pt-10 md:pt-12 pb-16 sm:pb-24 px-4 sm:px-6 lg:px-8 xl:px-12 border-t border-[#e2d8c7] overflow-hidden">
       {/* Ambient Resort Background with White Light Overlay */}
       <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none" aria-hidden="true">
         <Image
@@ -251,7 +251,7 @@ export default function BlogSection() {
             />
           </div>
           <h2
-            className="font-serif text-[#165823] text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-normal tracking-wide leading-tight select-none"
+            className="font-serif text-[#103430] text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-normal tracking-wide leading-tight select-none"
             style={{ fontFamily: "var(--font-cormorant), Georgia, serif" }}
           >
             {/* Screen reader full text */}
@@ -320,14 +320,14 @@ export default function BlogSection() {
                         <span className="w-1.5 h-1.5 rounded-full bg-[#C5A77B]" />
                         {post.category}
                       </span>
-                      <span className="text-[#165823]/60 font-light lowercase tracking-normal">
+                      <span className="text-[#103430]/60 font-light lowercase tracking-normal">
                         {post.readTime}
                       </span>
                     </div>
 
                     {/* Attraction / Blog Name */}
                     <h3
-                      className="font-serif text-[#165823] group-hover:text-[#C5A77B] text-xl sm:text-2xl font-normal leading-snug tracking-normal transition-colors duration-200 mb-3"
+                      className="font-serif text-[#103430] group-hover:text-[#C5A77B] text-xl sm:text-2xl font-normal leading-snug tracking-normal transition-colors duration-200 mb-3"
                       style={{ fontFamily: "var(--font-cormorant), Georgia, serif" }}
                     >
                       {post.title}
@@ -335,7 +335,7 @@ export default function BlogSection() {
 
                     {/* Excerpt with Montserrat */}
                     <p
-                      className="text-xs sm:text-sm text-[#165823]/80 line-clamp-3 leading-relaxed font-light tracking-wide"
+                      className="text-xs sm:text-sm text-[#103430]/80 line-clamp-3 leading-relaxed font-light tracking-wide"
                       style={{ fontFamily: "var(--font-montserrat), sans-serif" }}
                     >
                       {post.excerpt}
@@ -351,7 +351,7 @@ export default function BlogSection() {
                       <span>READ FULL STORY</span>
                       <ChevronRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                     </span>
-                    <div className="w-8 h-8 rounded-full bg-[#FFF6F6] group-hover:bg-[#C5A77B] group-hover:text-[#165823] flex items-center justify-center text-[#165823] transition-colors border border-[#e2d8c7]">
+                    <div className="w-8 h-8 rounded-full bg-[#FFF6F6] group-hover:bg-[#C5A77B] group-hover:text-[#103430] flex items-center justify-center text-[#103430] transition-colors border border-[#e2d8c7]">
                       <ArrowUpRight className="w-4 h-4" />
                     </div>
                   </div>
@@ -379,7 +379,7 @@ export default function BlogSection() {
               exit={{ scale: 0.94, opacity: 0, y: 25 }}
               transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
               onClick={(e) => e.stopPropagation()}
-              className="relative w-full max-w-3xl max-h-[92vh] sm:max-h-[88vh] bg-[#FFF6F6] text-[#165823] rounded-2xl sm:rounded-3xl shadow-[0_20px_60px_rgba(22,88,35,0.25)] border border-[#e2d8c7] overflow-hidden flex flex-col"
+              className="relative w-full max-w-3xl max-h-[92vh] sm:max-h-[88vh] bg-[#FFF6F6] text-[#103430] rounded-2xl sm:rounded-3xl shadow-[0_20px_60px_rgba(16, 52, 48,0.25)] border border-[#e2d8c7] overflow-hidden flex flex-col"
             >
               {/* Modal Top Header with Close Button */}
               <div className="absolute top-3 right-3 sm:top-4 sm:right-4 z-20">
@@ -409,11 +409,11 @@ export default function BlogSection() {
                 </div>
 
                 {/* Article Body Content — Signature Green Text Palette */}
-                <div className="p-5 sm:p-7 md:p-9 space-y-6 text-[#165823]">
+                <div className="p-5 sm:p-7 md:p-9 space-y-6 text-[#103430]">
                   {/* Modal Header Title in Signature Green */}
                   <div>
                     <h2
-                      className="font-serif text-[#165823] text-2xl sm:text-3xl md:text-4xl font-normal leading-tight"
+                      className="font-serif text-[#103430] text-2xl sm:text-3xl md:text-4xl font-normal leading-tight"
                       style={{ fontFamily: "var(--font-cormorant), Georgia, serif" }}
                     >
                       {selectedPost.title}
@@ -421,13 +421,13 @@ export default function BlogSection() {
                     <div className="w-16 h-[2px] bg-[#C5A77B] rounded-full mt-3" aria-hidden="true" />
                   </div>
                   {/* Highlights Grid */}
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 p-4 sm:p-5 rounded-2xl bg-[#165823]/5 border border-[#165823]/15">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 p-4 sm:p-5 rounded-2xl bg-[#103430]/5 border border-[#103430]/15">
                     {selectedPost.highlights.map((h, i) => (
                       <div key={i} className="flex flex-col">
                         <span className="text-[11px] font-bold uppercase tracking-wider text-[#C5A77B]">
                           {h.label}
                         </span>
-                        <span className="text-xs sm:text-sm font-semibold text-[#165823] mt-0.5">
+                        <span className="text-xs sm:text-sm font-semibold text-[#103430] mt-0.5">
                           {h.value}
                         </span>
                       </div>
@@ -435,7 +435,7 @@ export default function BlogSection() {
                   </div>
 
                   {/* Paragraphs in Signature Green */}
-                  <div className="space-y-4 font-sans text-sm sm:text-base text-[#165823] leading-relaxed">
+                  <div className="space-y-4 font-sans text-sm sm:text-base text-[#103430] leading-relaxed">
                     {selectedPost.fullContent.map((paragraph, pIdx) => {
                       // Format "How to Reach Kasauli Toy Train Boarding Point?" or "Location:" sections with bold styling
                       if (paragraph.includes("\n")) {
@@ -443,12 +443,12 @@ export default function BlogSection() {
                         return (
                           <div
                             key={pIdx}
-                            className="p-4 sm:p-5 rounded-2xl bg-[#165823]/5 border border-[#165823]/20 space-y-2 mt-4"
+                            className="p-4 sm:p-5 rounded-2xl bg-[#103430]/5 border border-[#103430]/20 space-y-2 mt-4"
                           >
-                            <h4 className="font-semibold text-[#165823] text-sm sm:text-base">
+                            <h4 className="font-semibold text-[#103430] text-sm sm:text-base">
                               {parts[0]}
                             </h4>
-                            <p className="text-[#165823]/90 text-xs sm:text-sm">
+                            <p className="text-[#103430]/90 text-xs sm:text-sm">
                               {parts.slice(1).join(" ")}
                             </p>
                           </div>
@@ -457,14 +457,14 @@ export default function BlogSection() {
 
                       if (paragraph.startsWith("Location:") || paragraph.startsWith("Start Point/End Point:")) {
                         return (
-                          <p key={pIdx} className="font-medium text-[#165823] bg-[#165823]/5 p-3 sm:p-4 rounded-xl border border-[#165823]/15">
+                          <p key={pIdx} className="font-medium text-[#103430] bg-[#103430]/5 p-3 sm:p-4 rounded-xl border border-[#103430]/15">
                             {paragraph}
                           </p>
                         );
                       }
 
                       return (
-                        <p key={pIdx} className="text-[#165823]/90">
+                        <p key={pIdx} className="text-[#103430]/90">
                           {paragraph}
                         </p>
                       );
@@ -475,7 +475,7 @@ export default function BlogSection() {
                   <div className="pt-5 sm:pt-6 border-t border-[#e2d8c7] flex justify-end">
                     <button
                       onClick={() => setSelectedPost(null)}
-                      className="group relative w-full sm:w-auto px-8 py-3 rounded-full text-xs sm:text-sm font-semibold uppercase tracking-wider text-[#FFF6F6] bg-[#165823] hover:bg-[#12481c] border border-[#165823] shadow-[0_4px_16px_rgba(22,88,35,0.35)] hover:shadow-[0_8px_24px_rgba(22,88,35,0.55)] hover:-translate-y-0.5 hover:scale-[1.03] active:translate-y-0 active:scale-95 transition-all duration-300 cursor-pointer text-center overflow-hidden"
+                      className="group relative w-full sm:w-auto px-8 py-3 rounded-full text-xs sm:text-sm font-semibold uppercase tracking-wider text-[#FFF6F6] bg-[#103430] hover:bg-[#0b2421] border border-[#103430] shadow-[0_4px_16px_rgba(16, 52, 48,0.35)] hover:shadow-[0_8px_24px_rgba(16, 52, 48,0.55)] hover:-translate-y-0.5 hover:scale-[1.03] active:translate-y-0 active:scale-95 transition-all duration-300 cursor-pointer text-center overflow-hidden"
                       style={{ fontFamily: "var(--font-montserrat), sans-serif" }}
                     >
                       <span
