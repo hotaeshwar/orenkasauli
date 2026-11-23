@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
@@ -149,7 +149,7 @@ export default function Navbar() {
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ease-out ${
         scrolled
           ? "bg-white/95 backdrop-blur-md shadow-[0_4px_24px_rgba(16, 52, 48,0.08)] border-b border-[#103430]/10"
-          : "bg-[#FFF6F6]/90 backdrop-blur-md shadow-sm border-b border-[#103430]/10"
+          : "bg-transparent border-b border-transparent shadow-none"
       }`}
     >
       {/* Main Always-Transparent Navbar */}
